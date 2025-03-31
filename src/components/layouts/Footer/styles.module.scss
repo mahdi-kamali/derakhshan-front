@@ -1,0 +1,81 @@
+.footer {
+    display: flex;
+    padding: 4em;
+    background: url("/images/backgrounds/footer.png");
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        
+        .logo {
+            width: 12.5rem;
+        }
+        .slug {
+            width: 12.5rem;
+            margin-top: -1rem;
+        }
+        .items {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            .item {
+                width: 5rem;
+            }
+        }
+    }
+
+    .left {
+        display: grid;
+        grid-template-columns: repeat(3, 12rem);
+        gap: 1rem;
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            padding-right: 1em;
+            h2 {
+                font-size: 1.25rem;
+            }
+            .group {
+                list-style: disc;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                h3 {
+                    font-size: 0.8rem;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                    padding-bottom: 0.5em;
+                    width: max-content;
+                }
+                .links {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+                    font-size: 0.8rem;
+
+                    .item {
+                        display: flex;
+                        align-items: center;
+                        list-style: disc;
+                        opacity: 0.5;
+                        gap: 0.5rem;
+                        text-transform: capitalize;
+                        label {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.25rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
