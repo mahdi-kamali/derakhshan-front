@@ -1,53 +1,106 @@
 import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
 import Button from "@/components/UI/Button/Button";
+import { motion } from "framer-motion";
 
 export default function AboutUs() {
   return (
-    <section className={styles.aboutUs}>
-      <div className={styles.right}>
-        <div className={styles.col}>
-          <div className={styles.first}>
+    <motion.section className={styles.aboutUs}>
+      {/* Right Section: Team Members */}
+      <motion.div
+        className={styles.right}
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <motion.div
+          className={styles.col}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.3 },
+            },
+          }}
+        >
+          {/* Founder */}
+          <motion.div
+            className={styles.first}
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 1 }}
+          >
             <div className={styles.info}>
               <h2>حسن غفورزاده نوبر</h2>
               <p>موسس شرکت درخشان پک</p>
             </div>
-            <img src='/images/about-us/image-2.png' />
-          </div>
-          <div className={styles.second}>
+            <img src="/images/about-us/image-2.png" />
+          </motion.div>
+
+          {/* Second Member */}
+          <motion.div
+            className={styles.second}
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <div className={styles.info}>
               <h2>فرشته غفورزاده نوبر </h2>
               <p>مدیرعامل و مدیر عامل شرکت درخشان پک</p>
             </div>
-            <img src='/images/about-us/image-1.png' />
-          </div>
-        </div>
-        <div className={styles.third}>
+            <img src="/images/about-us/image-1.png" />
+          </motion.div>
+        </motion.div>
+
+        {/* Third Member */}
+        <motion.div
+          className={styles.third}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <div className={styles.info}>
             <h2>رحیم غفورزاده نوبر </h2>
             <p>مدیرعامل و مدیر عامل شرکت درخشان پک</p>
-            <a href='ceo@dppack.com'>ceo@dppack.com</a>
+            <a href="ceo@dppack.com">ceo@dppack.com</a>
           </div>
-          <img src='/images/about-us/image-3.png' />
-        </div>
-      </div>
-      <div className={styles.left}>
-        <HighLight
-          text={"درباره ی ما"}
-          marked='درباره ی ما'
-        />
+          <img src="/images/about-us/image-3.png" />
+        </motion.div>
+      </motion.div>
 
-        <p>
+      {/* Left Section: About Us Text */}
+      <motion.div
+        className={styles.left}
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HighLight text={"درباره ی ما"} marked="درباره ی ما" />
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           ما یک شرکت چاپ افست با تجربه از سال 1972 هستیم و در بسته بندی لوکس
           تخصص داریم. این افتخار ماست که بسته بندی های سفارشی و منحصر به فرد را
           مطابق با نیاز شما به شما ارائه دهیم.
-        </p>
-        <Button
-          title='مشاهده بیشتر'
-          variant={"primary"}
-          icon='ep:top-right'
-        />
-      </div>
-    </section>
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <Button title="مشاهده بیشتر" variant={"primary"} icon="ep:top-right" />
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }
