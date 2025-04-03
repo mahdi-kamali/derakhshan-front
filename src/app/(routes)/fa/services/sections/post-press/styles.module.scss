@@ -1,11 +1,12 @@
-.hero {
+.PostPress {
+    min-height: 100dvh;
     padding: var(--services-section-padding);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    background: url("/images/backgrounds/services/hero.png");
+    background: url("/images/services/press/background.png");
     background-color: var(--color-dark-background);
     background-repeat: no-repeat;
     background-size: contain;
@@ -46,6 +47,7 @@
         flex-direction: column;
         max-width: 50rem;
         gap: 2rem;
+        direction: ltr;
         .row {
             display: flex;
             align-items: center;

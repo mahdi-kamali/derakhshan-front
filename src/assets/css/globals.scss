@@ -9,9 +9,10 @@
 
 body {
     background-color: var(--color-dark-background);
-    max-width: 1400px;
-    margin: auto;
+    margin: auto !important;
+    max-width: var(--app-max-width);
 }
+
 
 
 img {

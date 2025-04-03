@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import Slider from "@/components/UI/Slider/Slider";
 import Slide from "@/components/UI/Slider/Slide/Slide";
 
-export default function Hero() {
+export default function Press() {
   const configs = [
     "/images/services/hero/image-2.png",
     "/images/services/hero/image-3.png",
@@ -14,25 +14,24 @@ export default function Hero() {
   ];
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.press}>
       <div className={styles.info}>
         <div className={styles.right}>
           <img
-            src='/images/services/hero/image-1.png'
+            src='/images/services/press/main.png'
             alt=''
           />
         </div>
         <div className={styles.left}>
           <HighLight
-            text='خدمات پیش از چاپ'
-            marked='پیش از چاپ'
+            text='خدمات چاپی'
+            marked='چاپی'
           />
           <p>
-            مشاوره با مشتری هدف اصلی ما ارائه بهترین راه حل ها و پیشنهادات به
-            مشتریان با توجه به نیازها و محصولات آنهاست. این افتخار ماست که به
-            عنوان یکی از بهترین شرکت ها در ایران برای ارائه طرح های بسته بندی
-            نوآورانه به مشتریان خود شناخته می شویم. توانایی ارتقاء برند
-            بازاریابی و جذب .......
+            با دستگاه چاپ افست ما، می‌توانید به بهترین کیفیت مطابق با جدیدترین
+            فناوری دست یابید. چاپ افست معمولی و چاپ افست UV همراه با انواع
+            گسترده‌ای از لاک‌های UV مانند مات، براق، افکتی و ایریدیون ترکیب
+            می‌شوند.
           </p>
         </div>
       </div>

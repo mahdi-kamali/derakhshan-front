@@ -8,12 +8,13 @@
     gap: 1rem;
     left: 0;
     right: 0;
-    backdrop-filter: blur(0.3rem);
-    background-color: rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgb(59, 59, 59);
-    max-width: 1400px;
+    backdrop-filter: blur(0.5rem);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin: auto;
     direction: ltr;
+    z-index: 2;
+    max-width: var(--app-max-width);
 
     .left {
         .logo {

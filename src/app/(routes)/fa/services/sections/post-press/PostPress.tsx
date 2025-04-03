@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import Slider from "@/components/UI/Slider/Slider";
 import Slide from "@/components/UI/Slider/Slide/Slide";
 
-export default function Hero() {
+export default function PostPress() {
   const configs = [
     "/images/services/hero/image-2.png",
     "/images/services/hero/image-3.png",
@@ -14,25 +14,25 @@ export default function Hero() {
   ];
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.PostPress}>
       <div className={styles.info}>
         <div className={styles.right}>
           <img
-            src='/images/services/hero/image-1.png'
+            src='/images/services/press/main.png'
             alt=''
           />
         </div>
         <div className={styles.left}>
           <HighLight
-            text='خدمات پیش از چاپ'
-            marked='پیش از چاپ'
+            text='خدمات پس از چاپ'
+            marked='پس از چاپ'
           />
           <p>
-            مشاوره با مشتری هدف اصلی ما ارائه بهترین راه حل ها و پیشنهادات به
-            مشتریان با توجه به نیازها و محصولات آنهاست. این افتخار ماست که به
-            عنوان یکی از بهترین شرکت ها در ایران برای ارائه طرح های بسته بندی
-            نوآورانه به مشتریان خود شناخته می شویم. توانایی ارتقاء برند
-            بازاریابی و جذب .......
+            از ماشین های دایک کات و چسب تا لمینیت، وصله پنجره، خط تمام اتوماتیک
+            جعبه های سفت و سخت، برجسته سازی، و مهر زنی داغ، ما یک خط تولید کامل
+            برای بسته های جعبه سخت ارائه می دهیم. برای ایجاد طرح های خیره کننده،
+            از بین رنگ های مختلف فویل از جمله طلایی، نقره ای، سبز  انتخاب
+            کنید.
           </p>
         </div>
       </div>
