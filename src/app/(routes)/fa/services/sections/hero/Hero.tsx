@@ -3,6 +3,7 @@ import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
 import Slider from "@/components/UI/Slider/Slider";
 import Slide from "@/components/UI/Slider/Slide/Slide";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const configs = [
@@ -14,19 +15,29 @@ export default function Hero() {
   ];
 
   return (
-    <section className={styles.hero}>
-      <div className={styles.info}>
-        <div className={styles.right}>
-          <img
-            src='/images/services/hero/image-1.png'
-            alt=''
-          />
-        </div>
-        <div className={styles.left}>
-          <HighLight
-            text='خدمات پیش از چاپ'
-            marked='پیش از چاپ'
-          />
+    <motion.section className={styles.hero}>
+      {/* Hero Info Section */}
+      <motion.div className={styles.info}>
+        {/* Right Image */}
+        <motion.div
+          className={styles.right}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <img src="/images/services/hero/image-1.png" alt="" />
+        </motion.div>
+
+        {/* Left Text */}
+        <motion.div
+          className={styles.left}
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <HighLight text="خدمات پیش از چاپ" marked="پیش از چاپ" />
           <p>
             مشاوره با مشتری هدف اصلی ما ارائه بهترین راه حل ها و پیشنهادات به
             مشتریان با توجه به نیازها و محصولات آنهاست. این افتخار ماست که به
@@ -34,9 +45,11 @@ export default function Hero() {
             نوآورانه به مشتریان خود شناخته می شویم. توانایی ارتقاء برند
             بازاریابی و جذب .......
           </p>
-        </div>
-      </div>
-      <div className={styles.slider}>
+        </motion.div>
+      </motion.div>
+
+      {/* Slider Section */}
+      <motion.div className={styles.slider}>
         <Slider
           responsive={{
             "1000": {
@@ -54,55 +67,86 @@ export default function Hero() {
               slidesPerGroup: 3,
               spaceBetween: 10,
             },
-          }}>
-          {configs.map((slide) => {
-            return (
+          }}
+        >
+          {configs.map((slide, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.2, // Staggered animation
+              }}
+              viewport={{ once: true }}
+            >
               <Slide className={styles.slide}>
-                <img src={slide} />
+                <img src={slide} alt="" />
               </Slide>
-            );
-          })}
+            </motion.div>
+          ))}
         </Slider>
-      </div>
-      <div className={styles.services}>
-        <div className={styles.row}>
-          <div className={styles.left}>
-            <img
-              src='/images/services/hero/image-8.png'
-              alt=''
-            />
-          </div>
-          <div className={styles.right}>
-            <HighLight
-              text='آتلیه عکاسی'
-              marked='آتلیه عکاسی'
-            />
+      </motion.div>
+
+      {/* Services Section */}
+      <motion.div className={styles.services}>
+        <motion.div className={styles.row}>
+          {/* Left Image */}
+          <motion.div
+            className={styles.left}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <img src="/images/services/hero/image-8.png" alt="" />
+          </motion.div>
+
+          {/* Right Text */}
+          <motion.div
+            className={styles.right}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <HighLight text="آتلیه عکاسی" marked="آتلیه عکاسی" />
             <p>
               ما با الهام از جدیدترین خلاقیت، تصاویری با وضوح بالا از محصول خود
               را به شما پیشنهاد می کنیم تا برند خود را در بازار به نمایش
               بگذارید.
             </p>
-          </div>
-        </div>
-        <div className={styles.row}>
-          <div className={styles.left}>
-            <img
-              src='/images/services/hero/image-7.png'
-              alt=''
-            />
-          </div>
-          <div className={styles.right}>
-            <HighLight
-              text='استودیو طراحی'
-              marked='استودیو طراحی'
-            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div className={styles.row}>
+          {/* Left Image */}
+          <motion.div
+            className={styles.left}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <img src="/images/services/hero/image-7.png" alt="" />
+          </motion.div>
+
+          {/* Right Text */}
+          <motion.div
+            className={styles.right}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <HighLight text="استودیو طراحی" marked="استودیو طراحی" />
             <p>
               پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی
               خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }
