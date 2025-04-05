@@ -1,7 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./styles.module.scss";
-import Button from "@/components/UI/Button/Button";
 import HighLight from "@/components/UI/HighLight/HighLight";
 
 export default function Hero() {
@@ -10,7 +9,6 @@ export default function Hero() {
     company: {
       image: "/images/about-us/hero.png",
     },
-
     agents: [
       {
         name: "رحیم غفورزاده نبر",
@@ -31,48 +29,81 @@ export default function Hero() {
     ],
   };
 
-  const [name, setName] = useState("");
-
   return (
     <section className={styles.hero}>
-      <div className={styles.background}>
+      {/* Background Image */}
+      <motion.div
+        className={styles.background}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}>
         <img
           src={configs.background}
           alt=''
         />
-      </div>
-      <div className={styles.company}>
+      </motion.div>
+
+      {/* Company Image - Fades in first */}
+      <motion.div
+        className={styles.company}
+        initial={{ opacity: 0, y: 50, scale: 0.8 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 2.5, delay: 0.3, ease: "easeInOut" }}
+        viewport={{ once: true }}>
         <img
           src={configs.company.image}
           alt=''
         />
-      </div>
+      </motion.div>
 
-      <div className={styles.agents}>
-        <div className={styles.list}>
-          {configs.agents.map((agent) => {
-            return (
-              <div className={styles.agent}>
-                <div className={styles.left}>
-                  <img
-                    src={agent.image}
-                    alt=''
-                  />
-                </div>
-                <div className={styles.right}>
-                  <div className={styles.name}>{agent.name}</div>
-                  <div className={styles.roles}>
-                    {agent.roles?.map((role) => {
-                      return <span>{role}</span>;
-                    })}
-                  </div>
-                  <div className='email'>{agent.email}</div>
-                </div>
+      {/* Agents List */}
+      <motion.div
+        className={styles.agents}
+        initial={{
+          opacity: 0,
+        }}
+        whileInView={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 2,
+          delay: 2,
+        }}>
+        <motion.div className={styles.list}>
+          {configs.agents.map((agent, index) => (
+            <motion.div
+              className={styles.agent}
+              key={agent.name}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: index + 1, ease :"easeOut" }} // Ensures agents appear one by one after company fades in
+              viewport={{ once: true }}>
+              <div className={styles.left}>
+                <img
+                  src={agent.image}
+                  alt=''
+                />
               </div>
-            );
-          })}
-        </div>
-        <div className={styles.info}>
+              <div className={styles.right}>
+                <div className={styles.name}>{agent.name}</div>
+                <div className={styles.roles}>
+                  {agent.roles?.map((role) => (
+                    <span key={role}>{role}</span>
+                  ))}
+                </div>
+                <div className={styles.email}>{agent.email}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Info Section */}
+        <motion.div
+          className={styles.info}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}>
           <HighLight
             text='فهرست نمایندگی'
             marked='فهرست'
@@ -82,8 +113,8 @@ export default function Hero() {
             تخصص داریم. این افتخار ماست که بسته بندی های سفارشی و منحصر به فرد
             را مطابق با نیاز شما به شما ارائه دهیم.
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
