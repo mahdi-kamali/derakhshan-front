@@ -13,7 +13,8 @@ export default function layout(props: IProps) {
     if (!html) return;
 
     html.style.fontFamily = "var(--font-fa-primary)";
-    html.dir = "rtl"
+    html.lang = "fa";
+    html.dir = "rtl";
   }, []);
 
   return <>{children}</>;

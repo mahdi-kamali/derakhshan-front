@@ -1,13 +1,20 @@
+"use client";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import useSettings from "@/hooks/useSettings";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathName = usePathname();
+
+  const { language } = useSettings();
+
   const navMenu = [
     {
       title: "صفحه اصلی",
       icon: "material-symbols:home",
-      path: "/",
+      path: "/home",
     },
     {
       title: "سرویس ها",
@@ -27,12 +34,12 @@ export default function Header() {
     {
       title: "درباره ی ما",
       icon: "mdi:information-outline",
-      path: "/about",
+      path: "/about-us",
     },
     {
       title: "تماس با ما",
       icon: "ic:baseline-contact-mail",
-      path: "/contact",
+      path: "/contact-us",
     },
   ];
 
@@ -48,8 +55,15 @@ export default function Header() {
       </div>
       <nav className={styles.mid}>
         {navMenu.map((item) => {
+          const isActive = pathName.includes(item.path);
+
+          const classs = [isActive && styles.active].join(" ");
+
           return (
-            <Link href={item.path} key={item.path}>
+            <Link
+              href={`/${language}${item.path}`}
+              key={item.path}
+              className={classs}>
               <span>{item.title}</span>
               <Icon icon={item.icon} />
             </Link>
