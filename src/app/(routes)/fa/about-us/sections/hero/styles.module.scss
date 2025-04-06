@@ -25,15 +25,14 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 50%, #6666667e);
-        backdrop-filter: blur(4px);
+        background: linear-gradient(240deg, rgba(0, 0, 0, 0.75) 50%, #6666667e);
+        backdrop-filter: blur(12px);
         border-radius: 2rem;
         width: 90%;
-        box-shadow: 0 0 2rem 0.25em rgba(255, 255, 255, 0.1);
         height: max-content;
         margin: auto;
         padding: 2em;
-        top: -15rem;        
+        top: -15rem;
 
         .list {
             display: grid;
@@ -73,6 +72,47 @@
             border-top: 1px solid rgb(142, 142, 142);
             padding-top: 1em;
             margin-top: 2em;
+            p {
+                line-height: 2;
+            }
+        }
+    }
+
+    .stories {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin: auto;
+        margin-top: -12rem;
+        margin-bottom: 2rem;
+        width: 90%;
+        .item {
+            display: flex;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px rgba(255, 255, 255,0.5) solid;
+            align-items: center;
+            padding:0;
+            .left {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0 2em;
+                button {
+                    margin-top: 0.5rem;
+                }
+                p {
+                    line-height: 2;
+                }
+            }
+
+            .right {
+                img {
+                    width: 18rem;
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
+                }
+            }
         }
     }
 }

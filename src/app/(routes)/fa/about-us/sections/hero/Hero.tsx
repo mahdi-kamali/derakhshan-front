@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import styles from "./styles.module.scss";
 import HighLight from "@/components/UI/HighLight/HighLight";
+import Button from "@/components/UI/Button/Button";
 
 export default function Hero() {
   const configs = {
@@ -27,6 +28,35 @@ export default function Hero() {
         roles: ["مشاور درخشان پک"],
       },
     ],
+    stories: [
+      {
+        title: {
+          text: "1945 - تأسیس شرکت",
+          marked: "تأسیس",
+        },
+        image: "/images/about-us/stories/image-1.png",
+        description:
+          "در سال 1945، پدربزرگ ما، حسن غفورزاده نوبر، پایه های شرکت بسته بندی مدرن و کاملاً مجهز ما را در تبریز گذاشت. ما با لذت و افتخار به تاریخ 71 ساله شرکت خود نگاه می کنیم. به سفری در زمان خوش آمدید که نشان می دهد با اراده قوی و قدرت نوآوری می توان به چه چیزی دست یافت.",
+      },
+      {
+        title: {
+          text: "1979 - نسل دوم",
+          marked: "دوم",
+        },
+        image: "/images/about-us/stories/image-2.png",
+        description:
+          "رحیم غفورزاده نوبر به عنوان یک شرکت خانوادگی در نسل دوم خود درک کرد که حفظ کیفیت در عین برآورده کردن خواسته‌های مشتری چقدر مهم است. او در سال 1979 شرکت را به 12000 متر مربع گسترش داد.",
+      },
+      {
+        title: {
+          text: "2014 - جهانی و دیجیتالی شدن",
+          marked: "دیجیتالی",
+        },
+        image: "/images/about-us/stories/image-3.png",
+        description:
+          "جهان را کوچکتر می کند و همچنین قلمرو کسب و کار پک درخشان را گسترش می دهد، فرشته غفورزاده نوبر نسل سوم با شروع آکادمیک از دانشگاه های انگلستان، آلمان و ایران به این شرکت ملحق شد که منافعی را برای مشتریان ما به همراه خواهد داشت.",
+      },
+    ],
   };
 
   return (
@@ -42,20 +72,18 @@ export default function Hero() {
           alt=''
         />
       </motion.div>
-
       {/* Company Image - Fades in first */}
       <motion.div
         className={styles.company}
         initial={{ opacity: 0, y: 50, scale: 0.8 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 2.5, delay: 0.3, ease: "easeInOut" }}
+        transition={{ duration: 2.5, delay:0, ease: "easeInOut" }}
         viewport={{ once: true }}>
         <img
           src={configs.company.image}
           alt=''
         />
       </motion.div>
-
       {/* Agents List */}
       <motion.div
         className={styles.agents}
@@ -66,8 +94,8 @@ export default function Hero() {
           opacity: 1,
         }}
         transition={{
-          duration: 2,
-          delay: 2,
+          duration: 5,
+          delay: 0,
         }}>
         <motion.div className={styles.list}>
           {configs.agents.map((agent, index) => (
@@ -76,7 +104,7 @@ export default function Hero() {
               key={agent.name}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: index + 1, ease :"easeOut" }} // Ensures agents appear one by one after company fades in
+              transition={{ duration: 1, delay: index + 0.5, ease: "easeOut" }} // Ensures agents appear one by one after company fades in
               viewport={{ once: true }}>
               <div className={styles.left}>
                 <img
@@ -100,9 +128,9 @@ export default function Hero() {
         {/* Info Section */}
         <motion.div
           className={styles.info}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          initial={{ opacity: 0, y: 30 , scale : 0.8 }}
+          whileInView={{ opacity: 1, y: 0   ,scale : 1}}
+          transition={{ duration: 1.5, delay: 0.5 }}
           viewport={{ once: true }}>
           <HighLight
             text='فهرست نمایندگی'
@@ -115,6 +143,37 @@ export default function Hero() {
           </p>
         </motion.div>
       </motion.div>
+      <section className={styles.stories}>
+        {configs.stories.map((story, index) => (
+          <motion.div
+            className={styles.item}
+            key={story.image}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: index * 0.2 }}
+            viewport={{ once: true }}>
+            <div className={styles.right}>
+              <img
+                src={story.image}
+                alt=''
+              />
+            </div>
+            <div className={styles.left}>
+              <HighLight
+                text={story.title.text}
+                marked={story.title.marked}
+              />
+              <p>{story.description}</p>
+              <Button
+                title='ادامه مطلب'
+                icon={"ep:top-right"}
+                variant='primary'
+              />
+            </div>
+          </motion.div>
+        ))}
+      </section>
+      ;
     </section>
   );
 }
