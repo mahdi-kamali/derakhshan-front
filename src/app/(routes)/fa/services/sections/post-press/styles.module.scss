@@ -1,0 +1,66 @@
+.PostPress {
+    padding: var(--services-section-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background: url("/images/services/press/background.png");
+    background-color: var(--color-dark-background);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    .info {
+        display: grid;
+        grid-template-columns: var(--services-section-right-width) 25rem;
+        justify-content: centere;
+        align-items: center;
+        gap: var(--services-section-gap);
+        width: max-content;
+        .right {
+            max-width: 20rem;
+            img {
+                border-radius: 1rem;
+            }
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            line-height: 2rem;
+        }
+    }
+
+    .slider {
+        margin-top: 1rem;
+        max-width: 50rem;
+        .slide {
+            img {
+                border-radius: 0.75rem;
+            }
+        }
+    }
+
+    .services {
+        display: flex;
+        flex-direction: column;
+        max-width: 50rem;
+        gap: 2rem;
+        direction: ltr;
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            .left {
+                img {
+                    max-width: 30rem;
+                }
+            }
+            .right {
+                p {
+                    line-height: 2rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+.aboutUs {
+    background: url("/images/backgrounds/about-us.png");
+    padding: var(--home-section-padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--home-section-gap);
+    align-items: center;
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        p {
+            max-width: 53ch;
+            line-height: 2;
+        }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: var(--home-section-right-width);
+        img {
+            width: 10rem;
+            border-radius: 0.75rem;
+            border: 1.5px solid white;
+        }
+
+        .info {
+            h2 {
+                font-size: 1rem;
+            }
+            p {
+                font-size: 0.8rem;
+            }
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: end;
+            gap: 1rem;
+            .first {
+                display: flex;
+                gap: 1rem;
+                .info {
+                    text-align: end;
+                }
+            }
+            .second {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+                flex-direction: column-reverse;
+            }
+        }
+
+        .third {
+            position: absolute;
+            top: 3.5rem;
+            right: -7rem;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            text-align: center;
+            gap: 0.5rem;
+            flex-direction: column-reverse;
+            .info {
+                text-align: end;
+                padding-left: 4em;
+            }
+        }
+    }
+}

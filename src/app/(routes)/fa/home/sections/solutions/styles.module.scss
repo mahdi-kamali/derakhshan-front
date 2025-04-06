@@ -1,0 +1,20 @@
+.solutions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--home-section-gap);
+    // padding: var(--home-section-padding );
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        p {
+            max-width: 53ch;
+            line-height: 2;
+        }
+    }
+
+    .right {
+        width: var(--home-section-right-width);
+    }
+}

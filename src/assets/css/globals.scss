@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    color: var(--color-dark-font-description);
+}
+
+body {
+    background-color: var(--color-dark-background);
+    margin: auto !important;
+    max-width: var(--app-max-width);
+}
+
+
+
+img {
+    width: 100%;
+    display: flex;
+}

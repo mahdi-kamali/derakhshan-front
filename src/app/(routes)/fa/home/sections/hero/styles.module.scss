@@ -1,0 +1,66 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("/images/backgrounds/hero.png");
+    padding: 10em 5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .logo {
+        img {
+            width: 15rem;
+        }
+    }
+
+    .slug {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        direction: rtl;
+        img {
+            width: 20rem;
+        }
+        p {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    }
+
+    .description {
+        margin-top: 3rem;
+        max-width: 35ch;
+        text-align: center;
+        direction: rtl;
+    }
+
+    .contact {
+        margin-top: 1rem;
+        direction: rtl;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        .row {
+            display: grid;
+            grid-template-columns: 8rem 9ch;
+            align-items: center;
+            gap: 1rem;
+
+            .right {
+                direction: ltr;
+            }
+            .left {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                gap: 0.25rem;
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: iran-sans;
+    src: url("/fonts/iran-sans.ttf");
+}
+
+html {
+    --font-fa-primary: iran-sans;
+    --font-en-priamry: tahoma;
+}
