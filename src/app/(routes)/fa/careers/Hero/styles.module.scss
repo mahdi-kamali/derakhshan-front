@@ -1,0 +1,23 @@
+.hero {
+    position: relative;
+    margin-top: 4rem;
+    .background {
+    }
+    .info {
+        left: 0;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+        max-width: 100ch;
+        padding-left: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        p {
+            line-height: 2;
+        }
+        * {
+            color: black;
+        }
+    }
+}
