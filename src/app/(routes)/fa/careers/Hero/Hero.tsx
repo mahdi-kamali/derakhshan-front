@@ -1,5 +1,7 @@
+"use client";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const configs = {
@@ -17,20 +19,30 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.background}>
+      <motion.div
+        className={styles.background}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <img
           src={configs.hero.background}
           alt=''
         />
-      </div>
+      </motion.div>
 
-      <div className={styles.info}>
+      <motion.div
+        className={styles.info}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+      >
         <HighLight
           text={configs.hero.title.text}
           marked={configs.hero.title.marked}
         />
         <p>{configs.hero.description}</p>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import styles from "./styles.module.scss";
 import Job from "./components/Job/Job";
 import { motion } from "framer-motion";
 import Button from "@/components/UI/Button/Button";
+
 export default function Jobs() {
   const configs = [
     {
@@ -14,7 +15,6 @@ export default function Jobs() {
       requirements: [
         "آشنایی با صنعت چاپ و محصولات تکمیلی چاپ",
         "توانایی برقراری ارتباط موثر با مشتریان",
-
         "مهارت در مذاکره و ارائه خدمات",
         "حداقل 2 سال سابقه کار مرتبط",
       ],
@@ -61,14 +61,16 @@ export default function Jobs() {
 
   return (
     <section className={styles.careers}>
-      {configs.map((job) => {
-        return (
-          <Job
-            job={job}
-            key={job.image}
-          />
-        );
-      })}
+      {configs.map((job, index) => (
+        <motion.div
+          key={job.image}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: index * 0.2 }}
+          viewport={{ once: true }}>
+          <Job job={job} />
+        </motion.div>
+      ))}
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -77,7 +79,7 @@ export default function Jobs() {
         viewport={{ once: true }}>
         <Button
           title='مشاهده بیشتر'
-          variant={"primary"}
+          variant='primary'
           icon='ep:top-right'
         />
       </motion.div>
