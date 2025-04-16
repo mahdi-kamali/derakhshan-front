@@ -23,8 +23,7 @@ export default function Hero() {
         className={styles.background}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+        transition={{ duration: 1 }}>
         <img
           src={configs.hero.background}
           alt=''
@@ -36,8 +35,7 @@ export default function Hero() {
         className={styles.info}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-      >
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
         <HighLight
           text={configs.hero.title.text}
           marked={configs.hero.title.marked}
