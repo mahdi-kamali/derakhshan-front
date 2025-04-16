@@ -28,6 +28,7 @@ export default function Hero() {
         <img
           src={configs.hero.background}
           alt=''
+          className={styles.backgroundImg}
         />
       </motion.div>
 

@@ -12,15 +12,15 @@ export default function Hero() {
     },
     agents: [
       {
+        name: "حسن غفورزاده نبر",
+        image: "/images/about-us/image-2.png",
+        roles: ["بنیان‌گذار شرکت درخشان پک"],
+      },
+      {
         name: "رحیم غفورزاده نبر",
         image: "/images/about-us/image-3.png",
         roles: ["مدیرعامل و مدیر کل شرکت درخشان پک"],
         email: "ceo@dppack.com",
-      },
-      {
-        name: "حسن غفورزاده نبر",
-        image: "/images/about-us/image-2.png",
-        roles: ["بنیان‌گذار شرکت درخشان پک"],
       },
       {
         name: "فرشته نبر",

@@ -3,6 +3,12 @@
     margin-top: 4rem;
     .background {
     }
+
+
+    .backgroundImg{
+        // display: none !important;
+        filter: grayscale(100%);
+    }
     .info {
         left: 0;
         bottom: 0;
