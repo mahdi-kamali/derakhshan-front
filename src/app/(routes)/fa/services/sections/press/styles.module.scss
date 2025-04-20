@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    background: url("/images/services/press/background.png");
+    // background: url("/images/services/press/background.png");
     background-color: var(--color-dark-background);
     background-repeat: no-repeat;
     background-size: contain;
@@ -16,11 +16,12 @@
         justify-content: centere;
         align-items: center;
         gap: var(--services-section-gap);
-        width: max-content;
         .right {
-            max-width: 20rem;
+            
             img {
                 border-radius: 1rem;
+                aspect-ratio: 16/10;
+                object-fit: cover;
             }
         }
         .left {

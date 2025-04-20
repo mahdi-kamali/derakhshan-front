@@ -24,27 +24,29 @@ export default function Press() {
         transition={{ duration: 1 }}
         viewport={{ once: false }}>
         <motion.div
-          className={styles.right}
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false }}>
-          <img src='/images/services/press/main.png' alt='' />
-        </motion.div>
-
-        <motion.div
           className={styles.left}
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           viewport={{ once: false }}>
-          <HighLight text='خدمات چاپی' marked='چاپی' />
+          <HighLight
+            text='خدمات چاپی'
+            marked='چاپی'
+          />
           <p>
             با دستگاه چاپ افست ما، می‌توانید به بهترین کیفیت مطابق با جدیدترین
             فناوری دست یابید. چاپ افست معمولی و چاپ افست UV همراه با انواع
             گسترده‌ای از لاک‌های UV مانند مات، براق، افکتی و ایریدیون ترکیب
             می‌شوند.
           </p>
+        </motion.div>
+        <motion.div
+          className={styles.right}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false }}>
+          <img src='/images/services/press/main.png' alt='' />
         </motion.div>
       </motion.div>
 
@@ -81,16 +83,16 @@ export default function Press() {
         {[
           {
             img: "/images/services/hero/image-8.png",
-            text: "آتلیه عکاسی",
-            marked: "آتلیه عکاسی",
+            text: "UV خدمات چاپ انواع افست نرمال و" ,
+            marked: "UV خدمات چاپ انواع افست نرمال و",
             desc: "ما با الهام از جدیدترین خلاقیت، تصاویری با وضوح بالا از محصول خود را به شما پیشنهاد می کنیم تا برند خود را در بازار به نمایش بگذارید.",
           },
-          {
-            img: "/images/services/hero/image-7.png",
-            text: "استودیو طراحی",
-            marked: "استودیو طراحی",
-            desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
-          },
+          // {
+          //   img: "/images/services/hero/image-7.png",
+          //   text: "استودیو طراحی",
+          //   marked: "استودیو طراحی",
+          //   desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+          // },
         ].map((service, index) => (
           <motion.div
             key={index}
@@ -100,10 +102,16 @@ export default function Press() {
             transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.3 }}
             viewport={{ once: false }}>
             <div className={styles.left}>
-              <img src={service.img} alt='' />
+              <img
+                src={service.img}
+                alt=''
+              />
             </div>
             <div className={styles.right}>
-              <HighLight text={service.text} marked={service.marked} />
+              <HighLight
+                text={service.text}
+                marked={service.marked}
+              />
               <p>{service.desc}</p>
             </div>
           </motion.div>

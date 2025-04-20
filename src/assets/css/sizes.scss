@@ -1,10 +1,18 @@
 html {
-    --app-max-width: 1200px;
+    --app-max-width: 100dvw;
+
+    --app-section-height: 50rem;
+    --app-section-max-height: 100dvh;
+
+    --app-section-max-height: max-content;
+    --app-section-background: black;
+
+    --app-section-description-font-size: 1.25rem;
 
     // Home Page
     --home-section-right-width: 20rem;
     --home-section-gap: 3rem;
-    --home-section-padding: 4em 2em;
+    --home-section-padding: 10em 2em;
 
     // Services
     --services-section-right-width: 20rem;

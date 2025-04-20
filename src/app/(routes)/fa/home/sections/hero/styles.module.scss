@@ -8,35 +8,50 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    height: 100dvh !important;
 
     .logo {
-        img {
-            width: 15rem;
+        .image {
+            width: 22rem;
+            margin-left: 3rem;
+        }
+        .text {
+            width: 25rem;
         }
     }
 
-    .slug {
+    .logo {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        margin-top: 1rem;
         direction: rtl;
         img {
-            width: 20rem;
-        }
-        p {
-            font-size: 1.25rem;
-            font-weight: bold;
+            width: 30rem;
         }
     }
 
     .description {
-        margin-top: 3rem;
-        max-width: 35ch;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 0.5rem;
+        max-width: 2540rem;
         text-align: center;
         direction: rtl;
+        margin-top: 4rem;
+
+        .slug {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 4rem;
+        }
+
+        .content {
+            max-width: 40ch;
+            font-size: 1.5rem;
+        }
     }
 
     .contact {
@@ -46,8 +61,8 @@
         flex-direction: column;
         gap: 0.25rem;
         .row {
-            display: grid;
-            grid-template-columns: 8rem 9ch;
+            display: flex;
+            flex-direction: row-reverse;
             align-items: center;
             gap: 1rem;
 
@@ -59,7 +74,8 @@
                 align-items: center;
                 justify-content: end;
                 gap: 0.25rem;
-                font-size: 1.1rem;
+                font-size: 1.5rem;
+                flex-direction: row-reverse;
             }
         }
     }

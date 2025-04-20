@@ -13,7 +13,13 @@ body {
     max-width: var(--app-max-width);
 }
 
-
+.HomePage {
+    section {
+        height: var(--app-section-height);
+        max-height: var(--app-section-max-height);
+        padding: 10em 0 !important;
+    }
+}
 
 img {
     width: 100%;

@@ -1,0 +1,34 @@
+.job {
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    align-items: center;
+    width: 60rem;
+    gap: 2rem;
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        .requirements {
+            list-style: disc;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0.75;
+            li {
+                list-style: disc;
+                margin-right: 1.5rem;
+            }
+        }
+
+        .description {
+            line-height: 2.25;
+        }
+    }
+    .right {
+        img {
+            height: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 1rem;
+        }
+    }
+}

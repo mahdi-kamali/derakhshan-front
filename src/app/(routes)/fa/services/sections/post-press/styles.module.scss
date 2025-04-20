@@ -5,11 +5,13 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    background: url("/images/services/press/background.png");
-    background-color: var(--color-dark-background);
+    // background: url("/images/services/press/background.png");
+    // background-color: var(--color-dark-background);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
+    background-color: black;
+
     .info {
         display: grid;
         grid-template-columns: var(--services-section-right-width) 25rem;

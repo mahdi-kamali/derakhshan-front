@@ -29,7 +29,10 @@ export default function PostPress() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false }}>
-          <img src='/images/services/press/main.png' alt='' />
+          <img
+            src='/images/services/press/main.png'
+            alt=''
+          />
         </motion.div>
 
         <motion.div
@@ -38,7 +41,10 @@ export default function PostPress() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           viewport={{ once: false }}>
-          <HighLight text='خدمات پس از چاپ' marked='پس از چاپ' />
+          <HighLight
+            text='خدمات پس از چاپ'
+            marked='پس از چاپ'
+          />
           <p>
             از ماشین های دایک کات و چسب تا لمینیت، وصله پنجره، خط تمام اتوماتیک
             جعبه های سفت و سخت، برجسته سازی، و مهر زنی داغ، ما یک خط تولید کامل
@@ -80,15 +86,33 @@ export default function PostPress() {
       <div className={styles.services}>
         {[
           {
+            img: "/images/services/hero/image-7.png",
+            text: "طلاکوبی",
+            marked: "طلاکوبی",
+            desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+          },
+          {
             img: "/images/services/hero/image-8.png",
-            text: "آتلیه عکاسی",
-            marked: "آتلیه عکاسی",
+            text: "برجسته زنی",
+            marked: "برجسته زنی",
             desc: "ما با الهام از جدیدترین خلاقیت، تصاویری با وضوح بالا از محصول خود را به شما پیشنهاد می کنیم تا برند خود را در بازار به نمایش بگذارید.",
           },
           {
             img: "/images/services/hero/image-7.png",
-            text: "استودیو طراحی",
-            marked: "استودیو طراحی",
+            text: "پنجره چسبانی",
+            marked: "پنجره چسبانی",
+            desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+          },
+          {
+            img: "/images/services/hero/image-7.png",
+            text: "لمینت",
+            marked: "لمینت",
+            desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+          },
+          {
+            img: "/images/services/hero/image-7.png",
+            text: "جعبه های هادر باکس",
+            marked: "جعبه های هادر باکس",
             desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
           },
         ].map((service, index) => (
@@ -100,10 +124,16 @@ export default function PostPress() {
             transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.3 }}
             viewport={{ once: false }}>
             <div className={styles.left}>
-              <img src={service.img} alt='' />
+              <img
+                src={service.img}
+                alt=''
+              />
             </div>
             <div className={styles.right}>
-              <HighLight text={service.text} marked={service.marked} />
+              <HighLight
+                text={service.text}
+                marked={service.marked}
+              />
               <p>{service.desc}</p>
             </div>
           </motion.div>

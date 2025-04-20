@@ -8,12 +8,13 @@ interface IProps {
   icon: string;
   onClick?: () => void;
   variant: keyof typeof IVariant;
+  fill?: "fill" | "outline";
 }
 
 export default function Button(props: IProps) {
-  const { icon, title, variant, onClick } = props;
+  const { icon, title, variant, fill = "fill", onClick } = props;
 
-  const classs = [styles.button, styles[variant]].join(" ");
+  const classs = [styles.button, styles[variant], styles[fill]].join(" ");
 
   return (
     <button

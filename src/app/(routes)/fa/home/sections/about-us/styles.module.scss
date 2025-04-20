@@ -1,11 +1,13 @@
 .aboutUs {
-    background: url("/images/backgrounds/about-us.png");
     padding: var(--home-section-padding);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: var(--home-section-gap);
     align-items: center;
+    height: var(--app-section-height);
+    max-height: var(--app-section-max-height);
+    background-color: var(--app-section-background);
     .left {
         display: flex;
         flex-direction: column;
@@ -22,17 +24,17 @@
         position: relative;
         width: var(--home-section-right-width);
         img {
-            width: 10rem;
+            width: 15rem;
             border-radius: 0.75rem;
-            border: 1.5px solid white;
+            border: 1px solid white;
         }
 
         .info {
             h2 {
-                font-size: 1rem;
+                font-size: 1.5rem;
             }
             p {
-                font-size: 0.8rem;
+                font-size: 1rem;
             }
         }
 
@@ -41,12 +43,15 @@
             flex-direction: column;
             justify-content: end;
             align-items: end;
-            gap: 1rem;
+            gap: 2rem;
             .first {
                 display: flex;
+                justify-content: end;
                 gap: 1rem;
+                width: 30rem;
                 .info {
                     text-align: end;
+                    padding-top: 1em;
                 }
             }
             .second {
@@ -56,19 +61,21 @@
                 text-align: center;
                 gap: 1rem;
                 flex-direction: column-reverse;
+                padding-left: 1em;
             }
         }
 
         .third {
             position: absolute;
-            top: 3.5rem;
-            right: -7rem;
+            top: 4rem;
+            right: -15rem;
             display: flex;
             justify-content: center;
             align-items: end;
             text-align: center;
             gap: 0.5rem;
             flex-direction: column-reverse;
+            margin-top: 2rem;
             .info {
                 text-align: end;
                 padding-left: 4em;
