@@ -4,9 +4,12 @@
     align-items: center;
     gap: var(--home-section-gap);
     padding: var(--home-section-padding);
-    background: url("/images/backgrounds/products-1.png");
+    // background: url("/images/backgrounds/products-1.png");
+    background-color: black;
     background-size: cover;
     background-position: right;
+    flex-direction: row-reverse;
+    gap: 7rem;
     .left {
         display: flex;
         flex-direction: column;
@@ -20,7 +23,6 @@
     .right {
         position: relative;
         width: var(--home-section-right-width);
-        height: 100%;
         display: flex;
         height: 30rem;
 

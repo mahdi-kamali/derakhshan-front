@@ -24,9 +24,11 @@ export default function Hero() {
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <img src="/images/services/hero/image-1.png" alt="" />
+          viewport={{ once: true }}>
+          <img
+            src='/images/services/hero/image-1.png'
+            alt=''
+          />
         </motion.div>
 
         {/* Left Text */}
@@ -35,9 +37,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <HighLight text="خدمات پیش از چاپ" marked="پیش از چاپ" />
+          viewport={{ once: true }}>
+          <HighLight
+            text='خدمات پیش از چاپ'
+            marked='پیش از چاپ'
+          />
           <p>
             مشاوره با مشتری هدف اصلی ما ارائه بهترین راه حل ها و پیشنهادات به
             مشتریان با توجه به نیازها و محصولات آنهاست. این افتخار ماست که به
@@ -67,8 +71,7 @@ export default function Hero() {
               slidesPerGroup: 3,
               spaceBetween: 10,
             },
-          }}
-        >
+          }}>
           {configs.map((slide, index) => (
             <motion.div
               key={index}
@@ -78,10 +81,12 @@ export default function Hero() {
                 duration: 0.5,
                 delay: index * 0.2, // Staggered animation
               }}
-              viewport={{ once: true }}
-            >
+              viewport={{ once: true }}>
               <Slide className={styles.slide}>
-                <img src={slide} alt="" />
+                <img
+                  src={slide}
+                  alt=''
+                />
               </Slide>
             </motion.div>
           ))}
@@ -97,9 +102,11 @@ export default function Hero() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <img src="/images/services/hero/image-8.png" alt="" />
+            viewport={{ once: true }}>
+            <img
+              src='/images/services/hero/image-8.png'
+              alt=''
+            />
           </motion.div>
 
           {/* Right Text */}
@@ -108,9 +115,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <HighLight text="آتلیه عکاسی" marked="آتلیه عکاسی" />
+            viewport={{ once: true }}>
+            <HighLight
+              text='آتلیه عکاسی'
+              marked='آتلیه عکاسی'
+            />
             <p>
               ما با الهام از جدیدترین خلاقیت، تصاویری با وضوح بالا از محصول خود
               را به شما پیشنهاد می کنیم تا برند خود را در بازار به نمایش
@@ -126,9 +135,11 @@ export default function Hero() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <img src="/images/services/hero/image-7.png" alt="" />
+            viewport={{ once: true }}>
+            <img
+              src='/images/services/hero/image-7.png'
+              alt=''
+            />
           </motion.div>
 
           {/* Right Text */}
@@ -137,9 +148,43 @@ export default function Hero() {
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <HighLight text="استودیو طراحی" marked="استودیو طراحی" />
+            viewport={{ once: true }}>
+            <HighLight
+              text='استودیو طراحی'
+              marked='استودیو طراحی'
+            />
+            <p>
+              پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی
+              خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.
+            </p>
+          </motion.div>
+        </motion.div>
+
+        <motion.div className={styles.row}>
+          {/* Left Image */}
+          <motion.div
+            className={styles.left}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}>
+            <img
+              src='/images/services/hero/image-7.png'
+              alt=''
+            />
+          </motion.div>
+
+          {/* Right Text */}
+          <motion.div
+            className={styles.right}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            viewport={{ once: true }}>
+            <HighLight
+              text='خدمات لیتوگرافی'
+              marked='خدمات لیتوگرافی'
+            />
             <p>
               پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی
               خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.

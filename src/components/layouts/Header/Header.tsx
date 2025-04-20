@@ -17,14 +17,14 @@ export default function Header() {
       path: "/home",
     },
     {
-      title: "سرویس ها",
-      icon: "tabler:settings",
-      path: "/services",
-    },
-    {
       title: "محصولات",
       icon: "ph:shopping-bag",
       path: "/products",
+    },
+    {
+      title: "خدمات",
+      icon: "tabler:settings",
+      path: "/services",
     },
     {
       title: "فرصت های شغلی",
