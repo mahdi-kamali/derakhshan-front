@@ -22,7 +22,7 @@ export default function Solution() {
         className={styles.left}
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }} 
+        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
         viewport={{ once: true }}
       >
         <HighLight text="راه حل های بسته بندی پیشرفته" marked="بسته بندی" />
@@ -45,7 +45,7 @@ export default function Solution() {
           transition={{ duration: 1, delay: 0.9 }}
           viewport={{ once: true }}
         >
-          <Button title="مشاهده بیشتر" variant={"primary"} icon="ep:top-right" />
+          <Button title="مشاهده بیشتر" variant={"primary"} icon="none" />
         </motion.div>
       </motion.div>
     </motion.section>

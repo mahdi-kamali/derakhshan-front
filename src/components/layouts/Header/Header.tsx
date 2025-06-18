@@ -1,14 +1,35 @@
 "use client";
+
 import Link from "next/link";
-import styles from "./styles.module.scss";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import useSettings from "@/hooks/useSettings";
 import { usePathname } from "next/navigation";
+
+import { useState, useEffect } from "react";
+
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { useMediaQuery } from "react-responsive";
+import { AnimatePresence, motion } from "framer-motion";
+
+import useSettings from "@/hooks/useSettings";
+import Button from "@/components/UI/Button/Button";
+
+import styles from "./styles.module.scss";
 
 export default function Header() {
   const pathName = usePathname();
 
   const { language } = useSettings();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const handleMenuToggle = () => setMenuOpen((prev) => !prev);
+
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  const isMobile = useMediaQuery({ maxWidth: 991 });
+
+  if (!hasMounted) return null;
 
   const navMenu = [
     {
@@ -47,35 +68,56 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.left}>
         <div className={styles.logo}>
-          <img
-            src={"/images/logo.png"}
-            alt=''
-          />
+          <img src={"/images/logo.png"} alt="" />
         </div>
       </div>
-      <nav className={styles.mid}>
-        {navMenu.map((item) => {
-          const isActive = pathName.includes(item.path);
 
-          const classs = [isActive && styles.active].join(" ");
-
-          return (
-            <Link
-              href={`/${language}${item.path}`}
-              key={item.path}
-              className={classs}>
-              <span>{item.title}</span>
-              <Icon icon={item.icon} />
-            </Link>
-          );
-        })}
-      </nav>
       <div className={styles.right}>
-        <div className={styles.language}>
-          <span>فارسی</span>
-          <Icon icon='clarity:language-solid' />
+        <div
+          className={styles.menuButton}
+          style={!isMobile ? { display: "none" } : {}}
+        >
+          <Button
+            title=""
+            variant="none"
+            icon="line-md:menu"
+            onClick={handleMenuToggle}
+          ></Button>
         </div>
-        <Icon icon='line-md:menu' />
+
+        {
+          <AnimatePresence>
+            {(!isMobile || menuOpen) && (
+              <motion.nav
+                key="mobile-menu"
+                className={styles.menu}
+                initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                transition={{ duration: isMobile ? 0.3 : 0, ease: "easeInOut" }}
+              >
+                <div className={styles.language}>
+                  <span>فارسی</span>
+                  <Icon icon="clarity:language-solid" />
+                </div>
+                {navMenu.map((item) => {
+                  const isActive = pathName.includes(item.path);
+                  return (
+                    <Link
+                      href={`/${language}${item.path}`}
+                      key={item.path}
+                      className={isActive ? styles.active : ""}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <span>{item.title}</span>
+                      <Icon icon={item.icon} />
+                    </Link>
+                  );
+                })}
+              </motion.nav>
+            )}
+          </AnimatePresence>
+        }
       </div>
     </header>
   );

@@ -1,34 +1,44 @@
-.job {
-    display: grid;
-    grid-template-columns: 20rem 1fr;
-    align-items: center;
-    width: 60rem;
-    gap: 2rem;
-    .left {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        .requirements {
-            list-style: disc;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            opacity: 0.75;
-            li {
-                list-style: disc;
-                margin-right: 1.5rem;
-            }
-        }
+@import "src/assets/css/mixins";
 
-        .description {
-            line-height: 2.25;
-        }
+.job {
+  display: flex;
+  grid-template-columns: 20rem 1fr;
+  align-items: center;
+
+  width: 90%;
+  margin: auto;
+  gap: 2rem;
+
+  @include breakpoint-max(md) {
+    flex-direction: column;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .requirements {
+      list-style: disc;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      opacity: 0.75;
+      li {
+        list-style: disc;
+        margin-right: 1.5rem;
+      }
     }
-    .right {
-        img {
-            height: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 1rem;
-        }
+
+    .description {
+      line-height: 2.25;
     }
+  }
+  .right {
+    img {
+      width: 20rem;
+      height: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 1rem;
+    }
+  }
 }

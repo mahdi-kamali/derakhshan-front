@@ -1,29 +1,37 @@
+@import "src/assets/css/mixins";
+
 .hero {
-    position: relative;
-    margin-top: 4rem;
-    .background {
-    }
+  position: relative;
+  margin-top: 4rem;
 
+  .backgroundImg {
+    // display: none !important;
+    filter: grayscale(100%);
+    
+  }
+  .info {
+    left: 0;
+    bottom: 0;
+    top: 0;
+    position: absolute;
+    max-width: 100ch;
+    padding: 0px 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
 
-    .backgroundImg{
-        // display: none !important;
-        filter: grayscale(100%);
+    @include breakpoint-max(md) {
+      max-width: 85ch;
     }
-    .info {
-        left: 0;
-        bottom: 0;
-        top: 0;
-        position: absolute;
-        max-width: 100ch;
-        padding-left: 2em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        p {
-            line-height: 2;
-        }
-        * {
-            color: black;
-        }
+    @include breakpoint-max(sm) {
+      scale: 0.8;
     }
+    p {
+      line-height: 2;
+    }
+    * {
+      color: black;
+    }
+  }
 }

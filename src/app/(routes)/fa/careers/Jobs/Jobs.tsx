@@ -1,11 +1,13 @@
 "use client";
 import styles from "./styles.module.scss";
-import Job from "./components/Job/Job";
+import Job, { IJob } from "./components/Job/Job";
 import { motion } from "framer-motion";
 import Button from "@/components/UI/Button/Button";
+import { useRouter } from "next/navigation";
 
 export default function Jobs() {
-  const configs = [
+  const router = useRouter();
+  const configs: IJob[] = [
     {
       type: "special",
       title: {
@@ -61,26 +63,32 @@ export default function Jobs() {
 
   return (
     <section className={styles.careers}>
-      {configs.map((job, index) => (
-        <motion.div
-          key={job.image}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: index * 0.2 }}
-          viewport={{ once: true }}>
-          <Job job={job} />
-        </motion.div>
-      ))}
+      {configs.length > 0 &&
+        configs.map((job, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: index * 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Job job={job} isLast={index == 0 ? true : false} />
+          </motion.div>
+        ))}
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.6 }}
-        viewport={{ once: true }}>
+        viewport={{ once: true }}
+        className={styles.bottom}
+      >
+        <p> برای ارسال فرم برای استخدام به این صفحه مراجعه فرمایید</p>
         <Button
-          title='مشاهده بیشتر'
-          variant='primary'
-          icon='ep:top-right'
+          title="ارسال فرم"
+          variant="primary"
+          icon="ep:top-right"
+          onClick={() => router.push("/fa/form")}
         />
       </motion.div>
     </section>

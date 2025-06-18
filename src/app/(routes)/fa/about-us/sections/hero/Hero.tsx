@@ -12,20 +12,20 @@ export default function Hero() {
     },
     agents: [
       {
-        name: "حسن غفورزاده نبر",
+        name: "حسن غفورزاده نوبر",
         image: "/images/about-us/image-2.png",
-        roles: ["بنیان‌گذار شرکت درخشان پک"],
+        roles: ["بنیان‌گذار شرکت درخشان پاک"],
       },
       {
-        name: "رحیم غفورزاده نبر",
+        name: "رحیم غفورزاده نوبر",
         image: "/images/about-us/image-3.png",
-        roles: ["مدیرعامل و مدیر کل شرکت درخشان پک"],
+        roles: ["مدیرعامل شرکت درخشان پاک"],
         email: "ceo@dppack.com",
       },
       {
-        name: "فرشته نبر",
+        name: "فرشته نوبر",
         image: "/images/about-us/image-1.png",
-        roles: ["مشاور درخشان پک"],
+        roles: ["قائم مفام مدیر عامل درخشان پاک"],
       },
     ],
     stories: [
@@ -54,7 +54,7 @@ export default function Hero() {
         },
         image: "/images/about-us/stories/image-3.png",
         description:
-          "جهان را کوچکتر می کند و همچنین قلمرو کسب و کار پک درخشان را گسترش می دهد، فرشته غفورزاده نوبر نسل سوم با شروع آکادمیک از دانشگاه های انگلستان، آلمان و ایران به این شرکت ملحق شد که منافعی را برای مشتریان ما به همراه خواهد داشت.",
+          "جهانی شدن و دیجیتالی شدن، جهان را کوچک‌تر و قلمرو کسب و کار درخشان پک را گسترش می‌دهد. فرشته غفورزاده نوبر، نسل سوم خانواده، با شروع تحصیلات دانشگاهی از دانشگاه‌های آلمان و ایران به این شرکت پیوست که این امر برای مشتریان ما سودمند خواهد بود.",
       },
     ],
   };
@@ -66,23 +66,19 @@ export default function Hero() {
         className={styles.background}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}>
-        <img
-          src={configs.background}
-          alt=''
-        />
+        transition={{ duration: 1 }}
+      >
+        <img src={configs.background} alt="" />
       </motion.div>
       {/* Company Image - Fades in first */}
       <motion.div
         className={styles.company}
         initial={{ opacity: 0, y: 50, scale: 0.8 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 2.5, delay:0, ease: "easeInOut" }}
-        viewport={{ once: true }}>
-        <img
-          src={configs.company.image}
-          alt=''
-        />
+        transition={{ duration: 2.5, delay: 0, ease: "easeInOut" }}
+        viewport={{ once: true }}
+      >
+        <img src={configs.company.image} alt="" />
       </motion.div>
       {/* Agents List */}
       <motion.div
@@ -96,7 +92,8 @@ export default function Hero() {
         transition={{
           duration: 5,
           delay: 0,
-        }}>
+        }}
+      >
         <motion.div className={styles.list}>
           {configs.agents.map((agent, index) => (
             <motion.div
@@ -105,12 +102,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: index + 0.5, ease: "easeOut" }} // Ensures agents appear one by one after company fades in
-              viewport={{ once: true }}>
+              viewport={{ once: true }}
+            >
               <div className={styles.left}>
-                <img
-                  src={agent.image}
-                  alt=''
-                />
+                <img src={agent.image} alt="" />
               </div>
               <div className={styles.right}>
                 <div className={styles.name}>{agent.name}</div>
@@ -128,14 +123,12 @@ export default function Hero() {
         {/* Info Section */}
         <motion.div
           className={styles.info}
-          initial={{ opacity: 0, y: 30 , scale : 0.8 }}
-          whileInView={{ opacity: 1, y: 0   ,scale : 1}}
+          initial={{ opacity: 0, y: 30, scale: 0.8 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.5 }}
-          viewport={{ once: true }}>
-          <HighLight
-            text='فهرست نمایندگی'
-            marked='فهرست'
-          />
+          viewport={{ once: true }}
+        >
+          <HighLight text="فهرست نمایندگی" marked="فهرست" />
           <p>
             ما یک شرکت چاپ افست با تجربه از سال 1972 هستیم و در بسته بندی لوکس
             تخصص داریم. این افتخار ماست که بسته بندی های سفارشی و منحصر به فرد
@@ -151,29 +144,23 @@ export default function Hero() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: index * 0.2 }}
-            viewport={{ once: true }}>
+            viewport={{ once: true }}
+          >
             <div className={styles.right}>
-              <img
-                src={story.image}
-                alt=''
-              />
+              <img src={story.image} alt="" />
             </div>
             <div className={styles.left}>
-              <HighLight
-                text={story.title.text}
-                marked={story.title.marked}
-              />
+              <HighLight text={story.title.text} marked={story.title.marked} />
               <p>{story.description}</p>
               <Button
-                title='ادامه مطلب'
+                title="ادامه مطلب"
                 icon={"ep:top-right"}
-                variant='primary'
+                variant="primary"
               />
             </div>
           </motion.div>
         ))}
       </section>
-      ;
     </section>
   );
 }

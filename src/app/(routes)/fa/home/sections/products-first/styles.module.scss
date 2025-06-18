@@ -1,78 +1,113 @@
+@import "src/assets/css/mixins";
+
 .ProductsFirst {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--home-section-gap);
+  padding: var(--home-section-padding);
+ 
+  background-color: black;
+  background-size: cover;
+  background-position: right;
+  flex-direction: row-reverse;
+  gap: 7rem;
+  direction: ltr;
+
+  height: 100dvh !important;
+
+  @include breakpoint-max(md) {
+    flex-direction: column;
+  }
+
+  .left {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--home-section-gap);
-    padding: var(--home-section-padding);
-    // background: url("/images/backgrounds/products-1.png");
-    background-color: black;
-    background-size: cover;
-    background-position: right;
-    flex-direction: row-reverse;
-    gap: 7rem;
-    .left {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        p {
-            max-width: 53ch;
-            line-height: 2;
-        }
+    flex-direction: column;
+    gap: 0.5rem;
+    direction: rtl;
+
+    p {
+      text-align: justify;
+      max-width: 53ch;
+      line-height: 2;
+      @include breakpoint-max(sm) {
+        font-size: 1.2rem;
+      }
+      @include breakpoint-max(xs) {
+        max-width: 45ch;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    width: var(--home-section-right-width);
+    display: flex;
+    height: 30rem;
+
+    @include breakpoint-max(md) {
+      margin-bottom: 20rem;
+      scale: 0.9;
+    }
+    
+    @include breakpoint-max(sm) {
+      scale: 0.7;
     }
 
-    .right {
-        position: relative;
-        width: var(--home-section-right-width);
-        display: flex;
-        height: 30rem;
-
-        .first {
-            background: url("/images/products-first/box.png");
-            height: 13rem;
-            width: 13rem;
-            background-size: cover;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            img {
-                width: 22.5rem;
-                height: 22.5rem;
-                object-fit: contain;
-            }
-        }
-
-        .second {
-            background: url("/images/products-first/box.png");
-            height: 13rem;
-            width: 13rem;
-            background-size: cover;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: 14rem;
-            left: 0;
-            z-index: 1;
-            img {
-                object-fit: contain;
-            }
-        }
-        .third {
-            background: url("/images/products-first/box.png");
-            height: 13rem;
-            width: 13rem;
-            background-size: cover;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: 10rem;
-            right: -5rem;
-            img {
-                object-fit: contain;
-            }
-        }
+    @include breakpoint-max(xs) {
+      margin-bottom: 16rem;
     }
+
+    margin-right: 10%;
+
+    .first {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      img {
+        width: 170%;
+        height: 170%;
+        object-fit: contain;
+      }
+    }
+
+    .second {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 14rem;
+      left: 0;
+      z-index: 1;
+      img {
+        object-fit: contain;
+      }
+    }
+    .third {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 10rem;
+      right: -5rem;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
 }

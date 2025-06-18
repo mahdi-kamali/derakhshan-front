@@ -5,7 +5,7 @@ interface IProps {
   children: React.ReactElement;
 }
 
-export default function layout(props: IProps) {
+export default function Layout(props: IProps) {
   const { children } = props;
 
   useEffect(() => {

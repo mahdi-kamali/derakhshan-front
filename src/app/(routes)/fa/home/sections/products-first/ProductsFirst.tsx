@@ -18,11 +18,9 @@ export default function ProductsFirst() {
             ease: "easeOut",
             delay: 0, // No delay for the first image
           }}
-          viewport={{ once: true }}>
-          <img
-            src='/images/products-first/image-1.png'
-            alt=''
-          />
+          viewport={{ once: true }}
+        >
+          <img src="/images/products-first/image-1.png" alt="" />
         </motion.div>
 
         <motion.div
@@ -34,11 +32,9 @@ export default function ProductsFirst() {
             ease: "easeOut",
             delay: 0.3, // 0.3s delay for the second image
           }}
-          viewport={{ once: true }}>
-          <img
-            src='/images/products-first/image-2.png'
-            alt=''
-          />
+          viewport={{ once: true }}
+        >
+          <img src="/images/products-first/image-2.png" alt="" />
         </motion.div>
 
         <motion.div
@@ -50,11 +46,9 @@ export default function ProductsFirst() {
             ease: "easeOut",
             delay: 0.6, // 0.6s delay for the third image
           }}
-          viewport={{ once: true }}>
-          <img
-            src='/images/products-first/image-3.png'
-            alt=''
-          />
+          viewport={{ once: true }}
+        >
+          <img src="/images/products-first/image-3.png" alt="" />
         </motion.div>
       </motion.div>
 
@@ -68,17 +62,16 @@ export default function ProductsFirst() {
           ease: "easeOut",
           delay: 0.9, // Delay to match the images' pop-in timing
         }}
-        viewport={{ once: true }}>
-        <HighLight
-          text='جعبه های متالایز'
-          marked='متالایز'
-        />
+        viewport={{ once: true }}
+      >
+        <HighLight text="جعبه های متالایز" marked="متالایز" />
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.1 }}
-          viewport={{ once: true }}>
+          viewport={{ once: true }}
+        >
           <Description>
             با طیف وسیعی از فیلم‌های متالایز، سایه‌ها و رنگ‌های مختلف، می‌توانید
             بسته‌بندی متالایز خیره‌کننده داشته باشید که برای افزایش جذابیت برند
@@ -91,12 +84,9 @@ export default function ProductsFirst() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.3 }}
-          viewport={{ once: true }}>
-          <Button
-            title='مشاهده بیشتر'
-            variant={"primary"}
-            icon='ep:top-right'
-          />
+          viewport={{ once: true }}
+        >
+          <Button title="مشاهده بیشتر" variant={"primary"} icon="none" />
         </motion.div>
       </motion.div>
     </motion.section>

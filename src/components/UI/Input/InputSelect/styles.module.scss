@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  .type {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    .Input {
+      width: 100%;
+      input {
+        border-bottom: none;
+        width: 100%;
+      }
+      input:focus {
+        border-bottom: none;
+      }
+    }
+
+    .buttons {
+      width: 30%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      place-items: center;
+      button {
+        margin: 0px;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .selectList {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+
+    white-space: nowrap;
+
+    background-color: var(--color-dark-background);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 1000;
+    cursor: default;
+    li {
+      width: 100%;
+      height: 100%;
+      padding: 0.6rem 0;
+      padding-right: 1rem;
+      border-radius: 0.5rem;
+      &:hover {
+        cursor: pointer;
+        background-color: var(--color-section-background);
+      }
+    }
+  }
+}

@@ -1,7 +1,11 @@
+
+
+import { ReactNode } from "react";
+
 import styles from "./styles.module.scss";
 
 interface IProps {
-  children: any;
+  children: ReactNode;
 }
 
 export default function Description(props: IProps) {

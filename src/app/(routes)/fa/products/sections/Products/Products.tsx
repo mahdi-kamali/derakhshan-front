@@ -2,8 +2,11 @@
 import { motion } from "framer-motion";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function Products() {
+
+  const router = useRouter();
   const configs = [
     {
       title: "جعبه هارد باکس لوکس",
@@ -53,7 +56,7 @@ export default function Products() {
                 icon='ep:top-right'
                 title='مشاهده محصول'
                 variant='primary'
-                onClick={() => {}}
+                onClick={() => router.replace("/fa/gallery") }
               />
             </motion.div>
           );

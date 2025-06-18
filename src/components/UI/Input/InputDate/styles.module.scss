@@ -1,0 +1,40 @@
+.date {
+  font-family: inherit;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  .rmdp-calendar {
+    @apply shadow-lg rounded-xl bg-white p-4 border border-gray-200;
+  }
+
+  .rmdp-day {
+    @apply w-9 h-9 flex items-center justify-center rounded-full cursor-pointer;
+    &:hover {
+      @apply bg-gray-100;
+    }
+    &.rmdp-selected {
+      @apply bg-blue-500 text-white;
+    }
+    &.rmdp-today {
+      @apply border border-blue-500;
+    }
+  }
+}
+
+.dateInput {
+  font-family: inherit;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.dateContainer {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  background-color: rgb(0, 0, 0);
+}
+

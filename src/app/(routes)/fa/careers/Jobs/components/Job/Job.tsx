@@ -8,35 +8,42 @@ interface JobTitle {
   marked: string;
 }
 
-interface IJob {
+export interface IJob {
   type: string;
   title: JobTitle;
   requirements: string[];
   description: string;
+  apply: string;
   image: string;
 }
 
 interface IProps {
   job: IJob;
+  isLast: boolean;
 }
 
 export default function Job(props: IProps) {
-  const { job } = props;
+  const { job, isLast } = props;
   return (
     <div
+      style={
+        isLast
+          ? {
+              backgroundColor: "rgba(255, 242, 101,0.5)",
+              borderRadius: "15px",
+              padding: "20px",
+              border: "1px solid white",
+            }
+          : {}
+      }
       className={styles.job}
-      key={job.image}>
+      key={job.image}
+    >
       <div className={styles.right}>
-        <img
-          src={job.image}
-          alt=''
-        />
+        <img src={job.image} alt="" />
       </div>
       <div className={styles.left}>
-        <HighLight
-          text={job.title.text}
-          marked={job.title.marked}
-        />
+        <HighLight text={job.title.text} marked={job.title.marked} />
         <ul className={styles.requirements}>
           {job.requirements.map((req) => {
             return <li key={req}>{req}</li>;
@@ -46,10 +53,10 @@ export default function Job(props: IProps) {
         <div className={styles.description}>{job.description}</div>
 
         <Button
-          title='ارسال فرم استخدامی'
-          icon='ep:top-right'
-          variant='primary'
-          fill='outline'
+          title="ارسال فرم استخدامی"
+          icon="ep:top-right"
+          variant="primary"
+          fill={isLast ? "fill" : "outline"}
         />
       </div>
     </div>

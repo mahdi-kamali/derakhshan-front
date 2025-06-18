@@ -6,22 +6,30 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 interface IProps {
   title: string;
   icon: string;
-  onClick?: () => void;
   variant: keyof typeof IVariant;
   fill?: "fill" | "outline";
+  style?: object;
+  onClick?: () => void;
+  disabled?: boolean;
 }
 
 export default function Button(props: IProps) {
-  const { icon, title, variant, fill = "fill", onClick } = props;
+  const {
+    icon,
+    title,
+    variant,
+    fill = "fill",
+    style,
+    disabled,
+    onClick,
+  } = props;
 
   const classs = [styles.button, styles[variant], styles[fill]].join(" ");
 
   return (
-    <button
-      className={classs}
-      type='button'>
+    <button className={classs} type="button" style={style} onClick={onClick}>
       <Icon icon={icon} />
-      <span>{title}</span>
+      {title && <span>{title}</span>}
     </button>
   );
 }
