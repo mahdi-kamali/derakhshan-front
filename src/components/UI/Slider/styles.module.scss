@@ -28,6 +28,9 @@
         gap: 0.6rem;
         direction: rtl;
         width: max-content !important;
+        &.disable  {
+            display: none;
+        }
     }
 
     .leftArrow,
@@ -38,6 +41,9 @@
         transition: all 0.5s ease;
         &:hover {
             scale: 1.1;
+        }
+        &.disable  {
+            display: none;
         }
     }
 
@@ -65,5 +71,11 @@
         background-color: rgba(255, 255, 255, 0.25);
         height: 1px;
         border-radius: 100rem;
+        &.disable  {
+            display: none;
+        }
     }
+ 
 }
+
+

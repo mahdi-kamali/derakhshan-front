@@ -3,5 +3,7 @@ export enum IVariant {
   "danger",
   "warning",
   "info",
-  "primary"
+  "primary",
+  "none",
+  "disable",
 }

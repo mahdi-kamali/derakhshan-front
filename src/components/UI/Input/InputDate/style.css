@@ -1,0 +1,46 @@
+.rmdp-calendar {
+    background: var(--color-dark-background);
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+}
+
+.rmdp-day {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+}
+
+.rmdp-day:hover {
+    background-color: var(--color-dark-background);
+}
+
+.rmdp-selected {
+    background-color: var(--color-dark-background) !important;
+    color: var(--color-dark-background) !important;
+}
+
+.rmdp-today {
+    border: none;
+}
+
+.rmdp-wrapper {
+    background-color: var(--color-dark-background) !important;
+ 
+}
+ 
+.rmdp-input {
+    border: none !important;
+    border-bottom: 1px solid  rgba(255, 255, 255,0.5) !important;
+    border-radius: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+}

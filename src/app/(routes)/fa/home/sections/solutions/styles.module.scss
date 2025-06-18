@@ -1,20 +1,37 @@
-.solutions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--home-section-gap);
-    // padding: var(--home-section-padding );
-    .left {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        p {
-            max-width: 53ch;
-            line-height: 2;
-        }
-    }
+@import "src/assets/css/mixins";
 
-    .right {
-        width: var(--home-section-right-width);
+.solutions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--home-section-gap);
+  direction: ltr;
+  height: 100dvh !important;
+
+  background-color: var(--color-dark-background);
+
+  @include breakpoint-max(sm) {
+    flex-direction: column;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    direction: rtl;
+    font-size: 1.2rem;
+    p {
+      max-width: 53ch;
+      line-height: 2;
+      text-align: justify;
+
+      @include breakpoint-max(xs) {
+        max-width: 45ch;
+      }
     }
+  }
+
+  .right {
+    width: var(--home-section-right-width);
+  }
 }

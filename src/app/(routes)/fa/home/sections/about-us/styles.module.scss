@@ -1,85 +1,132 @@
+// responsive functions
+@import "src/assets/css/mixins";
+
 .aboutUs {
-    padding: var(--home-section-padding);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--home-section-gap);
+  align-items: center;
+  height: var(--app-section-height);
+  width: 100%;
+
+  padding: var(--home-section-padding);
+  background-color: var(--app-section-background);
+
+  height: 100dvh !important;
+
+  @include breakpoint-max(md) {
+    flex-direction: column;
+  }
+
+  .left {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--home-section-gap);
-    align-items: center;
-    height: var(--app-section-height);
-    max-height: var(--app-section-max-height);
-    background-color: var(--app-section-background);
-    .left {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        p {
-            max-width: 53ch;
-            line-height: 2;
-        }
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h1 {
+      font-size: 1.8rem;
     }
 
-    .right {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        width: var(--home-section-right-width);
-        img {
-            width: 15rem;
-            border-radius: 0.75rem;
-            border: 1px solid white;
-        }
+    p {
+      max-width: 53ch;
+      line-height: 2;
+      text-align: justify;
+      @include breakpoint-max(sm) {
+        font-size: 1.1rem;
+      }
+      @include breakpoint-max(xs) {
+        max-width: 45ch;
+        font-size: 1rem;
+      }
+    }
+  }
 
+  .right {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    @include breakpoint-max(xs) {
+      scale: 0.8;
+    }
+
+    img {
+      width: 15rem;
+      border-radius: 0.75rem;
+      border: 1px solid white;
+      @include breakpoint-max(sm) {
+        width: 9rem;
+      }
+    }
+
+    .info {
+      h2 {
+        font-size: 1.5rem;
+        @include breakpoint-max(md) {
+          font-size: 1.3rem;
+        }
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: end;
+      gap: 3rem;
+      position: relative;
+      @include breakpoint-max(sm) {
+        left: 2.8rem;
+      }
+      .first {
+        display: flex;
+        justify-content: end;
+        gap: 1rem;
+        width: 30rem;
         .info {
-            h2 {
-                font-size: 1.5rem;
-            }
-            p {
-                font-size: 1rem;
-            }
+          text-align: end;
+          padding-top: 1em;
         }
-
-        .col {
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
-            align-items: end;
-            gap: 2rem;
-            .first {
-                display: flex;
-                justify-content: end;
-                gap: 1rem;
-                width: 30rem;
-                .info {
-                    text-align: end;
-                    padding-top: 1em;
-                }
-            }
-            .second {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                gap: 1rem;
-                flex-direction: column-reverse;
-                padding-left: 1em;
-            }
+      }
+      .second {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        flex-direction: column-reverse;
+        padding-left: 1rem;
+        @include breakpoint-max(sm) {
+          padding-left: 0px;
         }
-
-        .third {
-            position: absolute;
-            top: 4rem;
-            right: -15rem;
-            display: flex;
-            justify-content: center;
-            align-items: end;
-            text-align: center;
-            gap: 0.5rem;
-            flex-direction: column-reverse;
-            margin-top: 2rem;
-            .info {
-                text-align: end;
-                padding-left: 4em;
-            }
-        }
+      }
     }
+
+    .third {
+      position: absolute;
+      top: 5.2rem;
+      right: -3.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      flex-direction: column-reverse;
+      margin-top: 2rem;
+      @include breakpoint-max(sm) {
+        right: 3.2rem;
+      }
+
+      .info {
+        text-align: end;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+  }
 }

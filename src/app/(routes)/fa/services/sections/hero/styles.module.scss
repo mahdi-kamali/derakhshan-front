@@ -1,68 +1,114 @@
+@import "src/assets/css/mixins";
+
 .hero {
-    padding: var(--services-section-padding);
+  // padding: 0 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-color: black;
+
+  width: 100%;
+  height: 400vh;
+ 
+  .drawer {
+    width: 100%;
+    height: 280vh;
+    position: relative;
+    top: 120vh;
+
+    .title {
+      width: 100%;
+      height: 5rem;
+      position: sticky;
+      top: 4.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      z-index: 100;
+      backdrop-filter: blur(0.5rem);
+      background-color: rgba(255, 255, 255, 0.2);
+      color: black;
+    }
+  }
+
+  .content {
+    width: 100%;
+    z-index: 90;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 1rem;
-    // background: url("/images/backgrounds/services/hero.png");
-    // background-color: var(--color-dark-background);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top;
-    padding-top: 10%;
-    background-color: black;
-
-    width: 100%;
+    position: absolute;
     .info {
-        display: grid;
-        grid-template-columns: var(--services-section-right-width) 25rem;
-        justify-content: centere;
-        align-items: center;
-        gap: var(--services-section-gap);
-        .right {
-            max-width: 20rem;
-            img {
-                border-radius: 1rem;
-            }
+      display: flex;
+      grid-template-columns: var(--services-section-right-width) 25rem;
+      justify-content: centere;
+      align-items: center;
+      gap: var(--services-section-gap);
+      max-width: 51rem;
+      margin-top: 25vh;
+      @include breakpoint-max(sm) {
+        flex-direction: column;
+      }
+
+      .right {
+        min-width: 20rem;
+        img {
+          border-radius: 1rem;
         }
-        .left {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            line-height: 2rem;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        line-height: 2rem;
+        p {
+          text-align: justify;
         }
+      }
     }
 
     .slider {
-        margin-top: 1rem;
-        max-width: 50rem;
-        .slide {
-            img {
-                border-radius: 0.75rem;
-            }
+      max-width: 50rem;
+      margin: 5rem 0;
+
+      .slide {
+        img {
+          border-radius: 0.75rem;
         }
+      }
     }
 
     .services {
+      display: flex;
+      flex-direction: column;
+      max-width: 80rem;
+      margin-top: 30rem;
+      .row {
         display: flex;
-        flex-direction: column;
-        max-width: 50rem;
+        align-items: center;
         gap: 2rem;
-        .row {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            .left {
-                img {
-                    max-width: 30rem;
-                }
-            }
-            .right {
-                p {
-                    line-height: 2rem;
-                }
-            }
+
+        margin: 10rem 0;
+
+        @include breakpoint-max(sm) {
+          flex-direction: column;
         }
+        .left {
+          img {
+            max-width: 490px;
+            min-width: 490px;
+          }
+        }
+        .right {
+          p {
+            line-height: 2rem;
+          }
+        }
+      }
     }
+  }
 }

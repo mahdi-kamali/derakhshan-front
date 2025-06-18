@@ -22,10 +22,11 @@ interface IProps {
     800?: SwiperOptions;
     400?: SwiperOptions;
   };
+  disableArrows?: boolean;
 }
 
 export default function Slider(props: IProps) {
-  const { children, responsive } = props;
+  const { children, responsive, disableArrows = false } = props;
 
   // Pagination Component
   const paginationRef = useRef<HTMLDivElement>(null);
@@ -46,8 +47,8 @@ export default function Slider(props: IProps) {
           wrapperClass={styles.wrapper}
           slidesPerView={5}
           spaceBetween={10}
-          breakpoints={responsive as any}
-          key={paginationRef.current as any}
+          breakpoints={responsive as SwiperOptions["breakpoints"]}
+          key={paginationRef.current ? "ready" : "not-ready"}
           navigation={{
             enabled: true,
             prevEl: `.${styles.rightArrow}`,
@@ -65,50 +66,65 @@ export default function Slider(props: IProps) {
               return `<div class="${styles.bullet} ${className}" data-index="${index}"></div>`;
             },
           }}
-          modules={[Navigation, Pagination]}>
-          {(Array.isArray(children) ? children : [children]).map((child) => {
-            return <SwiperSlide>{child}</SwiperSlide>;
-          })}
-          {(Array.isArray(children) ? children : [children]).map((child) => {
-            return <SwiperSlide>{child}</SwiperSlide>;
-          })}
-          {(Array.isArray(children) ? children : [children]).map((child) => {
-            return <SwiperSlide>{child}</SwiperSlide>;
-          })}
-          {(Array.isArray(children) ? children : [children]).map((child) => {
-            return <SwiperSlide>{child}</SwiperSlide>;
-          })}
+          modules={[Navigation, Pagination]}
+        >
+          {(Array.isArray(children) ? children : [children]).map(
+            (child, index) => {
+              return <SwiperSlide key={index}>{child}</SwiperSlide>;
+            }
+          )}
+          {(Array.isArray(children) ? children : [children]).map(
+            (child, index) => {
+              return <SwiperSlide key={index}>{child}</SwiperSlide>;
+            }
+          )}
+          {(Array.isArray(children) ? children : [children]).map(
+            (child, index) => {
+              return <SwiperSlide key={index}>{child}</SwiperSlide>;
+            }
+          )}
+          {(Array.isArray(children) ? children : [children]).map(
+            (child, index) => {
+              return <SwiperSlide key={index}>{child}</SwiperSlide>;
+            }
+          )}
         </Swiper>
       )}
       <motion.div
         className={styles.controlls}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}>
-        <div className={styles.line}></div>
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div
+          className={`${styles.line} ${disableArrows && styles.disable}`}
+        ></div>
 
         {/* Left Arrow */}
         <motion.div
-          className={styles.leftArrow}
+          className={`${styles.leftArrow} ${disableArrows && styles.disable}`}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}>
-          <Icon icon='icon-park-outline:left-c' />
+          whileTap={{ scale: 0.9 }}
+        >
+          <Icon icon="icon-park-outline:left-c" />
         </motion.div>
 
         {/* Pagination */}
         <motion.div
-          className={styles.pagination}
+          className={`${styles.pagination} ${disableArrows && styles.disable}`}
           ref={paginationRef}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}></motion.div>
+          transition={{ duration: 0.5, delay: 0.3 }}
+        ></motion.div>
 
         {/* Right Arrow */}
         <motion.div
-          className={styles.rightArrow}
+          className={`${styles.rightArrow} ${disableArrows && styles.disable}`}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}>
-          <Icon icon='icon-park-outline:right-c' />
+          whileTap={{ scale: 0.9 }}
+        >
+          <Icon icon="icon-park-outline:right-c" />
         </motion.div>
 
         <div className={styles.line}></div>

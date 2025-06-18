@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "@/components/UI/Button/Button";
 import { motion } from "framer-motion";
 
+
 export default function Hero() {
   const configs = {
     background: "/images/contact-us/background.png",
@@ -31,7 +32,7 @@ export default function Hero() {
           label: "تلفن",
           name: "phone",
           value: "+49 (0) 89 / 56 22 95",
-        },
+        }, 
         {
           label: "ایمیل",
           name: "email",
@@ -156,13 +157,11 @@ export default function Hero() {
             }}
           />
 
-          <Button
-            icon="ep:top-right"
-            title="ثبت فرم تماس"
-            variant="primary"
-          />
+          <Button icon="ep:top-right" title="ثبت فرم تماس" variant="primary" />
         </form>
       </motion.div>
+ 
+ 
     </section>
   );
 }

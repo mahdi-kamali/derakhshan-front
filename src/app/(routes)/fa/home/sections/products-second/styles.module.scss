@@ -1,79 +1,102 @@
+@import "src/assets/css/mixins";
+
 .ProductsFirst {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--home-section-gap);
+  padding: var(--home-section-padding);
+  // background: url("/images/backgrounds/products-2.png");
+  background-size: cover;
+  background-position: right;
+  gap: 4rem;
+
+  background-color: var(--color-dark-background);
+  direction: ltr;
+
+  height: 100dvh !important;
+
+  @include breakpoint-max(md) {
+    flex-direction: column;
+  }
+
+  .left {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--home-section-gap);
-    padding: var(--home-section-padding);
-    // background: url("/images/backgrounds/products-2.png");
-    background-size: cover;
-    background-position: right;
-    gap: 4rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    direction: rtl;
+    // display: none;
+    p {
+      max-width: 53ch;
+      line-height: 2;
+      text-align: justify;
+      @include breakpoint-max(xs) {
+        max-width: 40ch;
+      }
+    }
+  }
 
+  .right {
+    position: relative;
+    width: var(--home-section-right-width);
+    display: flex;
+    height: 30rem;
+    margin-right: 50px;
 
-   
-    .left {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        p {
-            max-width: 53ch;
-            line-height: 2;
-        }
+    @include breakpoint-max(md) {
+      margin-bottom: 27rem;
+    }
+    @include breakpoint-max(xs) {
+      margin-bottom: 19rem;
+      scale: 0.7;
+    }
+    .first {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      img {
+        width: 16rem;
+        height: 16rem;
+        object-fit: contain;
+      }
     }
 
-    .right {
-        position: relative;
-        width: var(--home-section-right-width);
-        display: flex;
-        height: 30rem;
-
-        .first {
-            background: url("/images/products-first/box.png");
-            height: 13rem;
-            width: 13rem;
-            background-size: cover;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            img {
-                width: 16rem;
-                height: 16rem;
-                object-fit: contain;
-            }
-        }
-
-        .second {
-            background: url("/images/products-first/box.png");
-            height: 13rem;
-            width: 13rem;
-            background-size: cover;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: 14rem;
-            left: 0;
-            z-index: 1;
-            img {
-                object-fit: contain;
-            }
-        }
-        .third {
-            background: url("/images/products-first/box.png");
-            height: 13rem;
-            width: 13rem;
-            background-size: cover;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: 10rem;
-            right: -5rem;
-            img {
-                object-fit: contain;
-            }
-        }
+    .second {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 14rem;
+      left: 0;
+      z-index: 1;
+      img {
+        object-fit: contain;
+      }
     }
+    .third {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 10rem;
+      right: -5rem;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
 }

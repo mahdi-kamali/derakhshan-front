@@ -1,27 +1,37 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-decoration: none;
-    color: var(--color-dark-font-description);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  color: var(--color-dark-font-description);
+}
+
+/* Disable scrollbar display */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 body {
-    background-color: var(--color-dark-background);
-    margin: auto !important;
-    max-width: var(--app-max-width);
+  background-color: var(--color-dark-background);
+  margin: auto !important;
+  max-width: var(--app-max-width);
 }
 
 .HomePage {
-    section {
-        height: var(--app-section-height);
-        max-height: var(--app-section-max-height);
-        padding: 10em 0 !important;
-    }
+  section {
+    height: var(--app-section-height);
+    max-height: var(--app-section-max-height);
+    // padding: 10em 0 !important;
+  }
 }
 
 img {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }

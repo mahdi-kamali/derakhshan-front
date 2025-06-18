@@ -1,11 +1,18 @@
 import styles from "./styles.module.scss";
+
 interface IProps {
   text: string;
   marked: string;
+  firstColor?: string;
+  secondColor?: string;
 }
 
-export default function HighLight(props: IProps) {
-  const { marked, text } = props;
+export default function HighLight({
+  marked,
+  text,
+  firstColor = "white",
+  secondColor = "white",
+}: IProps) {
 
   const start = text.indexOf(marked);
 
@@ -17,9 +24,15 @@ export default function HighLight(props: IProps) {
 
   return (
     <h1 className={styles.highLight}>
-      <span className={styles.first}>{firstString}</span>
-      <span className={styles.second}>{secondString}</span>
-      <span className={styles.third}>{thirdString}</span>
+      <span className={styles.first} style={{ color: firstColor }}>
+        {firstString}
+      </span>
+      <span className={styles.second} style={{ color: secondColor }}>
+        {secondString}
+      </span>
+      <span className={styles.third} style={{ color: firstColor }}>
+        {thirdString}
+      </span>
     </h1>
   );
 }

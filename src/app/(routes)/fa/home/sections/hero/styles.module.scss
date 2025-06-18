@@ -1,82 +1,134 @@
+@import "src/assets/css/mixins";
+
 .hero {
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: center;
+
+ 
+ 
+
+  height: 100dvh !important;
+  width: 100%;
+  position: relative;
+  z-index: -10;
+ 
+  .staticContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: url("/images/backgrounds/hero.png");
+ 
     padding: 10em 5em;
+  
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 100dvh !important;
+  
+    width: 100%;
+    position: fixed; 
+    background: url("/images/backgrounds/hero.png");
+
 
     .logo {
-        .image {
-            width: 22rem;
-            margin-left: 3rem;
+      margin-top: 2rem;
+      height: 100%;
+      .image {
+        width: 22rem;
+        margin-left: 10%;
+  
+        @include breakpoint-max(sm) {
+          width: 17rem;
         }
-        .text {
-            width: 25rem;
+        @include breakpoint-max(xs) {
+          width: 12rem;
         }
+      }
+      .text {
+        width: 25rem;
+        @include breakpoint-max(sm) {
+          width: 20rem;
+        }
+        @include breakpoint-max(xs) {
+          width: 16rem;
+        }
+      }
     }
-
+  
     .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      direction: rtl;
+      img {
+        width: 30rem;
+      }
+    }
+  
+    .description {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 4.5rem;
+      max-width: 2540rem;
+      text-align: center;
+      direction: rtl;
+      margin-top: 4rem;
+      @include breakpoint-max(xs) {
+        gap: 3.5rem;
+      }
+      .slug {
+        font-size: 1.75rem;
+        font-weight: bold;
+  
+        @include breakpoint-max(xs) {
+          font-size: 1.5rem;
+        }
+      }
+  
+      .content {
+        max-width: 40ch;
+        font-size: 1.5rem;
+        @include breakpoint-max(xs) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  
+    .contact {
+      margin-top: 1rem;
+      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      @include breakpoint-max(xs) {
+        font-size: 1.1rem;
+      }
+      .row {
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
-        direction: rtl;
-        img {
-            width: 30rem;
+        gap: 0.6rem;
+  
+        .right {
+          direction: ltr;
         }
+        .left {
+          display: flex;
+          align-items: center;
+          justify-content: end;
+          gap: 0.35rem;
+  
+          flex-direction: row-reverse;
+        }
+      }
     }
+  }
 
-    .description {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 0.5rem;
-        max-width: 2540rem;
-        text-align: center;
-        direction: rtl;
-        margin-top: 4rem;
 
-        .slug {
-            font-size: 1.75rem;
-            font-weight: bold;
-            margin-bottom: 4rem;
-        }
-
-        .content {
-            max-width: 40ch;
-            font-size: 1.5rem;
-        }
-    }
-
-    .contact {
-        margin-top: 1rem;
-        direction: rtl;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        .row {
-            display: flex;
-            flex-direction: row-reverse;
-            align-items: center;
-            gap: 1rem;
-
-            .right {
-                direction: ltr;
-            }
-            .left {
-                display: flex;
-                align-items: center;
-                justify-content: end;
-                gap: 0.25rem;
-                font-size: 1.5rem;
-                flex-direction: row-reverse;
-            }
-        }
-    }
 }
