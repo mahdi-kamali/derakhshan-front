@@ -1,5 +1,5 @@
 .form {
-  width: 1200px;
+  width: 100%;
   min-height: 600px;
   border: 1px solid;
   border-radius: 30px;
@@ -7,15 +7,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: start;
   // justify-content: center;
   margin-top: 10%;
   margin-bottom: 50px;
   position: relative;
-
-  font-size: 18px;
-
+  font-size: 1rem;
   padding: auto;
+
   .top {
+    width: 100dvw;
+    overflow: auto !important;
     .labels {
       margin: 3rem;
       display: flex;
@@ -40,9 +42,7 @@
   }
 
   .middle {
-    display: grid;
     width: 90%;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
     margin-bottom: 2rem;
 
@@ -59,6 +59,11 @@
       button {
         font-size: 18px;
       }
+    }
+
+    .contents {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     }
 
     &.personalInfo {
@@ -85,12 +90,47 @@
     }
   }
   .bottom {
-    position: absolute;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    bottom: 2rem;
     width: 90%;
+    margin-top: auto;
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .form {
+    width: 80%;
+    margin: auto !important;
+    margin-top: 5rem !important;
+    display: flex;
+    flex-direction: column !important;
+    gap: 0 !important;
+
+    .top {
+      .labels {
+        padding: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
+        justify-content: start;
+        gap: 0.5rem;
+        padding-right: 1em !important;
+      }
+    }
+
+    .middle {
+      .contents {
+        gap: 0;
+      }
+    }
+
+    .bottom {
+      // display: none !important;
+
+      width: 80%;
+    }
   }
 }

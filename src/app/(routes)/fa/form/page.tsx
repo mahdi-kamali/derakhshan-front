@@ -239,7 +239,7 @@ const Form = () => {
             <Button
               key={index}
               title={step.name}
-              icon="none"
+              icon='none'
               variant={currentStep === index ? "primary" : "success"}
               fill={currentStep === index ? "fill" : "outline"}
               onClick={() => setCurrentStep(index)}
@@ -250,60 +250,68 @@ const Form = () => {
 
       {/* Main input area */}
       <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
-        {isMultiEntryStep ? (
-          <>
-            {/* Inputs for multi-entry */}
-            {formSteps[currentStep].inputs.map((input, index) => (
-              <div key={index} className={styles.Input}>
+        <div className={styles.contents}>
+          {isMultiEntryStep ? (
+            <>
+              {/* Inputs for multi-entry */}
+              {formSteps[currentStep].inputs.map((input, index) => (
+                <div
+                  key={index}
+                  className={styles.Input}>
+                  <p>{input.title}</p>
+                  <Input
+                    type={input.type}
+                    value={tempItem[input.key as keyof SkillItem] || ""}
+                    onChange={(val: string) =>
+                      handleTempChange(input.key as keyof SkillItem, val)
+                    }
+                    options={input.options}
+                  />
+                </div>
+              ))}
+
+              {/* Add item button */}
+              <Button
+                title='Add'
+                icon='ic:baseline-plus'
+                variant='primary'
+                onClick={addTempItem}
+                disabled={!tempItem.skillType || !tempItem.level}
+              />
+            </>
+          ) : (
+            // Regular inputs
+            formSteps[currentStep].inputs.map((input, index) => (
+              <div
+                key={index}
+                className={styles.Input}>
                 <p>{input.title}</p>
                 <Input
                   type={input.type}
-                  value={tempItem[input.key as keyof SkillItem] || ""}
-                  onChange={(val: string) =>
-                    handleTempChange(input.key as keyof SkillItem, val)
+                  value={
+                    formData[input.key] !== undefined &&
+                    formData[input.key] !== null
+                      ? String(formData[input.key])
+                      : ""
+                  }
+                  onChange={(val: string | number | File) =>
+                    handleChange(input.key, val)
                   }
                   options={input.options}
                 />
               </div>
-            ))}
-
-            {/* Add item button */}
-            <Button
-              title="Add"
-              icon="ic:baseline-plus"
-              variant="primary"
-              onClick={addTempItem}
-              disabled={!tempItem.skillType || !tempItem.level}
-            />
-          </>
-        ) : (
-          // Regular inputs
-          formSteps[currentStep].inputs.map((input, index) => (
-            <div key={index} className={styles.Input}>
-              <p>{input.title}</p>
-              <Input
-                type={input.type}
-                value={
-                  formData[input.key] !== undefined &&
-                  formData[input.key] !== null
-                    ? String(formData[input.key])
-                    : ""
-                }
-                onChange={(val: string | number | File) =>
-                  handleChange(input.key, val)
-                }
-                options={input.options}
-              />
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
 
       {/* List of added items */}
       {isMultiEntryStep && (
         <div className={styles.list}>
           {currentMultiList.map((item, i) => (
-            <div key={i} className={styles.listItem}>
+            <div
+              key={i}
+              className={styles.listItem}>
               <p>
                 {item.skillType} - {item.level}
               </p>
@@ -315,8 +323,8 @@ const Form = () => {
       {/* Navigation buttons */}
       <div className={styles.bottom}>
         <Button
-          title="قبلی"
-          icon="none"
+          title='قبلی'
+          icon='none'
           variant={currentStep === 0 ? "disable" : "primary"}
           onClick={() => {
             if (isStepValid && currentStep > 0) {
@@ -328,9 +336,9 @@ const Form = () => {
 
         {currentStep < formSteps.length - 1 ? (
           <Button
-            title="بعدی"
-            icon="none"
-            variant="primary"
+            title='بعدی'
+            icon='none'
+            variant='primary'
             onClick={() => {
               if (isStepValid) {
                 setCurrentStep(currentStep + 1);
@@ -340,9 +348,9 @@ const Form = () => {
           />
         ) : (
           <Button
-            title="Submit"
-            icon="none"
-            variant="primary"
+            title='Submit'
+            icon='none'
+            variant='primary'
             onClick={handleSubmit}
           />
         )}
