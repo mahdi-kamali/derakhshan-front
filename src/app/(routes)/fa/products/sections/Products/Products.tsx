@@ -56,7 +56,7 @@ export default function Products() {
                 icon='ep:top-right'
                 title='مشاهده محصول'
                 variant='primary'
-                onClick={() => router.replace("/fa/gallery") }
+                onClick={() => router.replace("/fa/products/" + product.title) }
               />
             </motion.div>
           );
