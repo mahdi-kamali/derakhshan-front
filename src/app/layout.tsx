@@ -8,9 +8,18 @@ interface IProps {
   children: React.ReactNode;
 }
 
+export const metadata = {
+  title: "Product Page",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }: IProps) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={styles.layout}>
         <Header />
         {children}
