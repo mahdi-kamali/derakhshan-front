@@ -11,16 +11,19 @@
 
   background-color: black;
   width: 100%;
-  height: 250rem;
-  position: static;
+  height: 450vh;
+  position: relative;
+
+  // overflow-y: auto;
+
 
   .drawer {
     width: 100%;
-    height: 83%;
+    height: 100%;
     position: relative;
-    top: 17%;
+    top: 0rem;
 
-    left: 0%;
+    left: 0;
     .title {
       width: 100%;
       height: 5rem;
@@ -33,20 +36,27 @@
       font-size: 18px;
       z-index: 100;
       backdrop-filter: blur(0.5rem);
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(231, 0, 96, 0.5);
       color: black;
+      @include breakpoint-max(md) {
+        top: 3.5rem;
+      }
     }
   }
 
-  .content {
-    position: absolute;
+  .top {
+    position: relative;
     margin-top: 8rem;
-    width: 100%;
+  
     z-index: 90;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    height: 110vh;
+    width: 100%;
+ 
+    overflow: hidden;
 
     .info {
       display: flex;
@@ -56,6 +66,7 @@
       gap: var(--services-section-gap);
       max-width: 51rem;
       margin-bottom: 3rem;
+      width: 80%;
       @include breakpoint-max(sm) {
         flex-direction: column;
       }
@@ -79,12 +90,26 @@
       margin-top: 1rem;
       max-width: 50rem;
       margin-bottom: 15rem;
+      width: 80%;
       .slide {
         img {
           border-radius: 0.75rem;
         }
       }
     }
+  }
+
+  .bottom {
+    position: absolute;
+    margin-top: 8rem;
+    width: 80%;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 15rem;
+    top: 100vh;
 
     .services {
       display: flex;
@@ -104,12 +129,18 @@
           flex-direction: column;
         }
         .left {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           img {
+            width: 100%;
             max-width: 490px;
-            min-width: 490px;
+            // min-width: 490px;
           }
         }
         .right {
+          width: 100%;
           p {
             line-height: 2rem;
           }

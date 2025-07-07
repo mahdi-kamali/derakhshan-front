@@ -16,13 +16,7 @@ export default function Press() {
 
   return (
     <section className={styles.press}>
-      <div className={styles.drawer}>
-        <div className={styles.title}>
-          <p>خدمات پس از چاپ</p>
-        </div>
-      </div>
-
-      <div className={styles.content}>
+      <div className={styles.top}>
         {/* Info Section */}
         <motion.div
           className={styles.info}
@@ -87,7 +81,15 @@ export default function Press() {
             ))}
           </Slider>
         </motion.div>
+      </div>
 
+      <div className={styles.drawer}>
+        <div className={styles.title}>
+          <p>خدمات پس از چاپ</p>
+        </div>
+      </div>
+
+      <div className={styles.bottom}>
         {/* Services Section */}
         <div className={styles.services}>
           {[

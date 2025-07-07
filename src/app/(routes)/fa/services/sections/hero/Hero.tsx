@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
 import Slider from "@/components/UI/Slider/Slider";
@@ -6,6 +7,20 @@ import Slide from "@/components/UI/Slider/Slide/Slide";
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleHeroHeight = () => {
+      if (bottomRef.current && containerRef.current) {
+        const bottomHeight = bottomRef.current.offsetHeight;
+        containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`; //
+      }
+    };
+    handleHeroHeight();
+    window.addEventListener("resize", handleHeroHeight);
+  }, []);
+
   const configs = [
     "/images/services/hero/image-2.png",
     "/images/services/hero/image-3.png",
@@ -15,14 +30,8 @@ export default function Hero() {
   ];
 
   return (
-    <motion.section className={styles.hero}>
-      <div className={styles.drawer}>
-        <div className={styles.title}>
-          <p>خدمات پیش از چاپ</p>
-        </div>
-      </div>
-
-      <div className={styles.content}>
+    <motion.section ref={containerRef} className={styles.hero}>
+      <div className={styles.top}>
         {/* Hero Info Section */}
         <motion.div className={styles.info}>
           {/* Right Image */}
@@ -87,7 +96,15 @@ export default function Hero() {
             ))}
           </Slider>
         </motion.div>
+      </div>
 
+      <div className={styles.drawer}>
+        <div className={styles.title}>
+          <p>خدمات پیش از چاپ</p>
+        </div>
+      </div>
+
+      <div ref={bottomRef} className={styles.bottom}>
         {/* Services Section */}
         <motion.div className={styles.services}>
           <motion.div className={styles.row}>

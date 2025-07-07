@@ -1,7 +1,7 @@
 @import "src/assets/css/mixins";
 
 .hero {
-  // padding: 0 2em;
+ 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -10,13 +10,15 @@
   background-color: black;
 
   width: 100%;
-  height: 400vh;
- 
+  height: 420vh;
+
+  position: relative;
+
   .drawer {
     width: 100%;
-    height: 280vh;
+    height: 100%;
     position: relative;
-    top: 120vh;
+    top: 0;
 
     .title {
       width: 100%;
@@ -29,19 +31,24 @@
       font-size: 18px;
       z-index: 100;
       backdrop-filter: blur(0.5rem);
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(231, 0, 96, 0.5);
       color: black;
+      @include breakpoint-max(md) {
+        top: 3.5rem;
+      }
     }
   }
 
-  .content {
-    width: 100%;
+  .top {
+    width: 80%;
+    height: 150vh;
     z-index: 90;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    position: absolute;
+    position: relative;
+
     .info {
       display: flex;
       grid-template-columns: var(--services-section-right-width) 25rem;
@@ -81,29 +88,50 @@
         }
       }
     }
+  }
+
+  .bottom {
+    width: 80%;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 100vh;
+    padding-bottom: 15rem;
+    @include breakpoint-max(md) {
+      top: 120vh;
+    }
 
     .services {
       display: flex;
       flex-direction: column;
+
       max-width: 80rem;
-      margin-top: 30rem;
+      margin-top: 20rem;
+      gap: 10rem;
       .row {
         display: flex;
         align-items: center;
         gap: 2rem;
 
-        margin: 10rem 0;
-
         @include breakpoint-max(sm) {
           flex-direction: column;
         }
         .left {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           img {
+            width: 100%;
             max-width: 490px;
-            min-width: 490px;
+            // min-width: 490px;
           }
         }
         .right {
+          width: 100%;
           p {
             line-height: 2rem;
           }

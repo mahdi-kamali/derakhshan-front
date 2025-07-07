@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
@@ -6,6 +7,20 @@ import Slider from "@/components/UI/Slider/Slider";
 import Slide from "@/components/UI/Slider/Slide/Slide";
 
 export default function PostPress() {
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handlePostPressHeight = () => {
+      if (bottomRef.current && containerRef.current) {
+        const bottomHeight = bottomRef.current.offsetHeight;
+        containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`;
+      }
+    };
+    handlePostPressHeight();
+    window.addEventListener("resize", handlePostPressHeight);
+  }, []);
+
   const configs = [
     "/images/services/hero/image-2.png",
     "/images/services/hero/image-3.png",
@@ -15,14 +30,8 @@ export default function PostPress() {
   ];
 
   return (
-    <section className={styles.PostPress}>
-      <div className={styles.drawer}>
-        <div className={styles.title}>
-          <p>خدمات پس از چاپ</p>
-        </div>
-      </div>
-
-      <div className={styles.content}>
+    <section ref={containerRef} className={styles.PostPress}>
+      <div className={styles.top}>
         {/* Info Section */}
         <motion.div
           className={styles.info}
@@ -88,7 +97,16 @@ export default function PostPress() {
             ))}
           </Slider>
         </motion.div>
+      </div>
 
+      {/* drawer title section */}
+      <div className={styles.drawer}>
+        <div className={styles.title}>
+          <p>خدمات پس از چاپ</p>
+        </div>
+      </div>
+
+      <div ref={bottomRef} className={styles.bottom}>
         {/* Services Section */}
         <div className={styles.services}>
           {[
