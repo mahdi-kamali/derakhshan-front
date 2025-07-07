@@ -5,31 +5,36 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
 
 export default function Products() {
-
   const router = useRouter();
   const configs = [
     {
       title: "جعبه هارد باکس لوکس",
+      slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
     },
     {
       title: "جعبه مقوایی موج‌دار",
+      slug: "corrugated-box",
       image: "/images/products-first/image-2.png",
     },
     {
       title: "جعبه تاشو سفارشی",
+      slug: "custom-folding-box",
       image: "/images/products-first/image-3.png",
     },
     {
       title: "جعبه هارد باکس لوکس",
+      slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
     },
     {
       title: "جعبه مقوایی موج‌دار",
+      slug: "corrugated-box",
       image: "/images/products-first/image-2.png",
     },
     {
       title: "جعبه تاشو سفارشی",
+      slug: "custom-folding-box",
       image: "/images/products-first/image-3.png",
     },
   ];
@@ -47,16 +52,13 @@ export default function Products() {
               transition={{ duration: 2, delay: index * 0.3 }} // Staggered delay for each product
               viewport={{ once: true }} // Animates once when it comes into view
             >
-              <img
-                src={product.image}
-                alt={product.title}
-              />
+              <img src={product.image} alt={product.title} />
               <h2>{product.title}</h2>
               <Button
-                icon='ep:top-right'
-                title='مشاهده محصول'
-                variant='primary'
-                onClick={() => router.replace("/fa/products/" + product.title) }
+                icon="ep:top-right"
+                title="مشاهده محصول"
+                variant="primary"
+                onClick={() => router.push("/fa/products/" + product.slug)}
               />
             </motion.div>
           );

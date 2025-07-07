@@ -7,7 +7,7 @@
   row-gap: 5rem;
   justify-items: center;
   margin: 0 auto;
-  max-width: 80vw;
+  max-width: 90vw;
   
   @include breakpoint-max(md) {
     grid-template-columns: repeat(2, 1fr);
@@ -30,6 +30,7 @@
     border-radius: 1rem;
     border-bottom: 5px solid rgb(55, 55, 55);
     white-space: nowrap;
+ 
 
     img {
       object-fit: contain;
