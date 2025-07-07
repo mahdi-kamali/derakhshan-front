@@ -1,9 +1,15 @@
+
+@import "src/assets/css/mixins";
+
 .highLight {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
   font-size: 1.6rem;
   font-weight: 900;
+  @include breakpoint-max(xs) {
+    font-size: 1.3rem;
+  }
   .second {
     padding: 0 2px;
 

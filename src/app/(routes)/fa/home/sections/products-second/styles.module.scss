@@ -14,7 +14,7 @@
   background-color: var(--color-dark-background);
   direction: ltr;
 
-  height: 100dvh !important;
+  height: 100vh !important;
 
   @include breakpoint-max(md) {
     flex-direction: column;

@@ -6,9 +6,14 @@
   align-items: center;
   gap: var(--home-section-gap);
   direction: ltr;
-  height: 100dvh !important;
-
+  height: 100vh !important;
+  max-height:  100vh !important;
   background-color: var(--color-dark-background);
+  padding: 2rem;
+
+  width: 100%;
+  // height: 100%;
+  overflow: hidden;
 
   @include breakpoint-max(sm) {
     flex-direction: column;

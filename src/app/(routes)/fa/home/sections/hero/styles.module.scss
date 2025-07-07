@@ -7,30 +7,30 @@
   justify-content: center;
 
  
- 
 
-  height: 100dvh !important;
+  height: 100vh !important;
   width: 100%;
   position: relative;
   z-index: -10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
  
   .staticContent {
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
- 
-    padding: 10em 5em;
   
+    padding: 10em 5em;
+    background: url("/images/backgrounds/hero.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100dvh !important;
-  
-    width: 100%;
-    position: fixed; 
-    background: url("/images/backgrounds/hero.png");
-
 
     .logo {
       margin-top: 2rem;

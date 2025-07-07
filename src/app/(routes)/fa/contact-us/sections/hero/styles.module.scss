@@ -48,6 +48,10 @@
     padding: 2em;
     padding-top: 1em;
     margin: auto;
+
+    @include breakpoint-max(xs) {
+      width: 90%;
+    }
     h1 {
       font-size: 2.5rem;
     }

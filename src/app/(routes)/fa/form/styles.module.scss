@@ -1,30 +1,34 @@
+@import "src/assets/css/mixins";
+
 .form {
-  width: 100%;
-  min-height: 600px;
-  border: 1px solid;
-  border-radius: 30px;
-  margin: auto;
+  width: 90%;
+  height: 100%;
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  // justify-content: center;
-  margin-top: 10%;
-  margin-bottom: 50px;
-  position: relative;
-  font-size: 1rem;
-  padding: auto;
+  margin: auto;
+  margin-top: 10rem;
+  margin-bottom: 15rem !important;
 
-  .top {
-    width: 100dvw;
-    overflow: auto !important;
-    .labels {
-      margin: 3rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: nowrap;
-    }
+  font-size: 1rem;
+  border: 1px solid;
+  border-radius: 30px;
+
+  @include breakpoint-max(sm) {
+    margin-top: 5rem;
+  }
+
+  .labels {
+    margin: 3rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
   }
 
   .list {
@@ -43,20 +47,21 @@
 
   .middle {
     width: 90%;
-
     margin-bottom: 2rem;
 
     button {
       height: 3rem;
     }
+
     .Input {
       width: 80%;
       margin: 1rem;
       font-size: 18px;
-      input {
-        font-size: 18px;
+
+      @include breakpoint-max(sm) {
+        font-size: 16px;
       }
-      button {
+      input {
         font-size: 18px;
       }
     }
@@ -64,6 +69,13 @@
     .contents {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+ 
+      button {
+        height: 100%;
+        margin-top: auto;
+        margin-bottom: 1rem;
+ 
+      }
     }
 
     &.personalInfo {
@@ -71,19 +83,29 @@
       .Input {
         width: 85%;
         margin: 1rem;
+        @include breakpoint-max(sm) {
+          margin: 0.4rem 1rem;
+        }
       }
     }
+
     &.softwares {
-      display: flex;
-      align-items: center;
+      .contents {
+        display: flex;
+        align-items: center;
+      }
     }
     &.languages {
-      display: flex;
-      align-items: center;
+      .contents {
+        display: flex;
+        align-items: center;
+      }
     }
     &.skills {
-      display: flex;
-      align-items: center;
+      .contents {
+        display: flex;
+        align-items: center;
+      }
     }
     &.upload {
       grid-template-columns: repeat(2, 1fr);
@@ -95,41 +117,10 @@
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    margin-top: auto;
+    margin-top: 2rem;
     margin-bottom: 2rem;
-  }
-}
 
-@media only screen and (max-width: 1000px) {
-  .form {
-    width: 80%;
-    margin: auto !important;
-    margin-top: 5rem !important;
-    display: flex;
-    flex-direction: column !important;
-    gap: 0 !important;
-
-    .top {
-      .labels {
-        padding: 0 !important;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: start;
-        justify-content: start;
-        gap: 0.5rem;
-        padding-right: 1em !important;
-      }
-    }
-
-    .middle {
-      .contents {
-        gap: 0;
-      }
-    }
-
-    .bottom {
-      // display: none !important;
-
+    @include breakpoint-max(sm) {
       width: 80%;
     }
   }

@@ -14,7 +14,7 @@
   gap: 7rem;
   direction: ltr;
 
-  height: 100dvh !important;
+  height: 100vh !important;
 
   @include breakpoint-max(md) {
     flex-direction: column;

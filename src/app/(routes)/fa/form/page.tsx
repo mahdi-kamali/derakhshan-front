@@ -233,19 +233,17 @@ const Form = () => {
   return (
     <div className={styles.form}>
       {/* Step navigation */}
-      <div className={styles.top}>
-        <div className={styles.labels}>
-          {formSteps.map((step, index) => (
-            <Button
-              key={index}
-              title={step.name}
-              icon='none'
-              variant={currentStep === index ? "primary" : "success"}
-              fill={currentStep === index ? "fill" : "outline"}
-              onClick={() => setCurrentStep(index)}
-            />
-          ))}
-        </div>
+      <div className={styles.labels}>
+        {formSteps.map((step, index) => (
+          <Button
+            key={index}
+            title={step.name}
+            icon="none"
+            variant={currentStep === index ? "primary" : "success"}
+            fill={currentStep === index ? "fill" : "outline"}
+            onClick={() => setCurrentStep(index)}
+          />
+        ))}
       </div>
 
       {/* Main input area */}
@@ -255,9 +253,7 @@ const Form = () => {
             <>
               {/* Inputs for multi-entry */}
               {formSteps[currentStep].inputs.map((input, index) => (
-                <div
-                  key={index}
-                  className={styles.Input}>
+                <div key={index} className={styles.Input}>
                   <p>{input.title}</p>
                   <Input
                     type={input.type}
@@ -272,9 +268,9 @@ const Form = () => {
 
               {/* Add item button */}
               <Button
-                title='Add'
-                icon='ic:baseline-plus'
-                variant='primary'
+                title="Add"
+                icon="ic:baseline-plus"
+                variant="primary"
                 onClick={addTempItem}
                 disabled={!tempItem.skillType || !tempItem.level}
               />
@@ -282,9 +278,7 @@ const Form = () => {
           ) : (
             // Regular inputs
             formSteps[currentStep].inputs.map((input, index) => (
-              <div
-                key={index}
-                className={styles.Input}>
+              <div key={index} className={styles.Input}>
                 <p>{input.title}</p>
                 <Input
                   type={input.type}
@@ -309,9 +303,7 @@ const Form = () => {
       {isMultiEntryStep && (
         <div className={styles.list}>
           {currentMultiList.map((item, i) => (
-            <div
-              key={i}
-              className={styles.listItem}>
+            <div key={i} className={styles.listItem}>
               <p>
                 {item.skillType} - {item.level}
               </p>
@@ -323,8 +315,8 @@ const Form = () => {
       {/* Navigation buttons */}
       <div className={styles.bottom}>
         <Button
-          title='قبلی'
-          icon='none'
+          title="قبلی"
+          icon="none"
           variant={currentStep === 0 ? "disable" : "primary"}
           onClick={() => {
             if (isStepValid && currentStep > 0) {
@@ -336,9 +328,9 @@ const Form = () => {
 
         {currentStep < formSteps.length - 1 ? (
           <Button
-            title='بعدی'
-            icon='none'
-            variant='primary'
+            title="بعدی"
+            icon="none"
+            variant="primary"
             onClick={() => {
               if (isStepValid) {
                 setCurrentStep(currentStep + 1);
@@ -348,9 +340,9 @@ const Form = () => {
           />
         ) : (
           <Button
-            title='Submit'
-            icon='none'
-            variant='primary'
+            title="ارسال"
+            icon="none"
+            variant="primary"
             onClick={handleSubmit}
           />
         )}
