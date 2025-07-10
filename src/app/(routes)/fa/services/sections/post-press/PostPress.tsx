@@ -9,17 +9,48 @@ import Slide from "@/components/UI/Slider/Slide/Slide";
 export default function PostPress() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const handlePostPressHeight = () => {
-    if (bottomRef.current && containerRef.current) {
-      const bottomHeight = bottomRef.current.offsetHeight;
-      containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`;
-    }
-  };
-  handlePostPressHeight();
+  
   useEffect(() => {
-    handlePostPressHeight();
-    window.addEventListener("resize", handlePostPressHeight);
+    const handleHeroHeight = () => {
+      const bottom = bottomRef.current;
+      const container = containerRef.current;
+      if (bottom && container) {
+        const bottomHeight = bottom.offsetHeight;
+        container.style.height = `calc(100vh + ${bottomHeight}px)`;
+      }
+    };
+  
+    const waitForImages = () => {
+      const images = containerRef.current?.querySelectorAll("img") || [];
+      if (images.length === 0) {
+        handleHeroHeight();
+        return;
+      }
+  
+      let loaded = 0;
+      const checkDone = () => {
+        loaded++;
+        if (loaded === images.length) handleHeroHeight();
+      };
+  
+      images.forEach((img) => {
+        if (img.complete) {
+          checkDone();
+        } else {
+          img.addEventListener("load", checkDone, { once: true });
+          img.addEventListener("error", checkDone, { once: true });
+        }
+      });
+    };
+  
+    waitForImages();
+    window.addEventListener("resize", handleHeroHeight);
+  
+    return () => {
+      window.removeEventListener("resize", handleHeroHeight);
+    };
   }, []);
+  
 
   const configs = [
     "/images/services/hero/image-2.png",
