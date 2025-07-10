@@ -18,16 +18,41 @@ export default function Hero() {
       }
     };
   
-    if (document.readyState === "complete") {
-      handleHeroHeight();
+    const images = bottomRef.current?.querySelectorAll("img") || [];
+  
+    let loadedCount = 0;
+  
+    if (images.length === 0) {
+      handleHeroHeight();  
     } else {
-      window.addEventListener("load", handleHeroHeight);
+      images.forEach((img) => {
+        if (img.complete) {
+          loadedCount++;
+        } else {
+          img.addEventListener("load", () => {
+            loadedCount++;
+            if (loadedCount === images.length) {
+              handleHeroHeight();
+            }
+          });
+          img.addEventListener("error", () => {
+            loadedCount++;
+            if (loadedCount === images.length) {
+              handleHeroHeight();
+            }
+          });
+        }
+      });
+  
+      // اگر همه قبلاً لود شده بودن
+      if (loadedCount === images.length) {
+        handleHeroHeight();
+      }
     }
   
     window.addEventListener("resize", handleHeroHeight);
   
     return () => {
-      window.removeEventListener("load", handleHeroHeight);
       window.removeEventListener("resize", handleHeroHeight);
     };
   }, []);
