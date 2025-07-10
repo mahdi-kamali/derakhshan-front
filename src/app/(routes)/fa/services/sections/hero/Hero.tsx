@@ -12,50 +12,45 @@ export default function Hero() {
 
   useEffect(() => {
     const handleHeroHeight = () => {
-      if (bottomRef.current && containerRef.current) {
-        const bottomHeight = bottomRef.current.offsetHeight;
-        containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`;
+      const bottom = bottomRef.current;
+      const container = containerRef.current;
+      if (bottom && container) {
+        const bottomHeight = bottom.offsetHeight;
+        container.style.height = `calc(100vh + ${bottomHeight}px)`;
       }
     };
   
-    const images = bottomRef.current?.querySelectorAll("img") || [];
+    const waitForImages = () => {
+      const images = containerRef.current?.querySelectorAll("img") || [];
+      if (images.length === 0) {
+        handleHeroHeight();
+        return;
+      }
   
-    let loadedCount = 0;
+      let loaded = 0;
+      const checkDone = () => {
+        loaded++;
+        if (loaded === images.length) handleHeroHeight();
+      };
   
-    if (images.length === 0) {
-      handleHeroHeight();  
-    } else {
       images.forEach((img) => {
         if (img.complete) {
-          loadedCount++;
+          checkDone();
         } else {
-          img.addEventListener("load", () => {
-            loadedCount++;
-            if (loadedCount === images.length) {
-              handleHeroHeight();
-            }
-          });
-          img.addEventListener("error", () => {
-            loadedCount++;
-            if (loadedCount === images.length) {
-              handleHeroHeight();
-            }
-          });
+          img.addEventListener("load", checkDone, { once: true });
+          img.addEventListener("error", checkDone, { once: true });
         }
       });
+    };
   
-      // اگر همه قبلاً لود شده بودن
-      if (loadedCount === images.length) {
-        handleHeroHeight();
-      }
-    }
-  
+    waitForImages();
     window.addEventListener("resize", handleHeroHeight);
   
     return () => {
       window.removeEventListener("resize", handleHeroHeight);
     };
   }, []);
+  
   
 
   const configs = [
