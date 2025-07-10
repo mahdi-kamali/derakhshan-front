@@ -9,14 +9,14 @@ import Slide from "@/components/UI/Slider/Slide/Slide";
 export default function PostPress() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const handlePostPressHeight = () => {
+    if (bottomRef.current && containerRef.current) {
+      const bottomHeight = bottomRef.current.offsetHeight;
+      containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`;
+    }
+  };
+  handlePostPressHeight();
   useEffect(() => {
-    const handlePostPressHeight = () => {
-      if (bottomRef.current && containerRef.current) {
-        const bottomHeight = bottomRef.current.offsetHeight;
-        containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`;
-      }
-    };
     handlePostPressHeight();
     window.addEventListener("resize", handlePostPressHeight);
   }, []);

@@ -10,13 +10,16 @@ export default function Hero() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const handleHeroHeight = () => {
+    if (bottomRef.current && containerRef.current) {
+      const bottomHeight = bottomRef.current.offsetHeight;
+      containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`; //
+    }
+  };
+  handleHeroHeight();
+
   useEffect(() => {
-    const handleHeroHeight = () => {
-      if (bottomRef.current && containerRef.current) {
-        const bottomHeight = bottomRef.current.offsetHeight;
-        containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`; //
-      }
-    };
+ 
     handleHeroHeight();
     window.addEventListener("resize", handleHeroHeight);
   }, []);

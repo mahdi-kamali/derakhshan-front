@@ -85,7 +85,7 @@ export default function Press() {
 
       <div className={styles.drawer}>
         <div className={styles.title}>
-          <p>خدمات پس از چاپ</p>
+          <p>خدمات چاپی</p>
         </div>
       </div>
 
