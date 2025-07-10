@@ -17,14 +17,21 @@ export default function Hero() {
         containerRef.current.style.height = `calc(100vh + ${bottomHeight}px)`;
       }
     };
-
-    handleHeroHeight();
+  
+    if (document.readyState === "complete") {
+      handleHeroHeight();
+    } else {
+      window.addEventListener("load", handleHeroHeight);
+    }
+  
     window.addEventListener("resize", handleHeroHeight);
-
+  
     return () => {
+      window.removeEventListener("load", handleHeroHeight);
       window.removeEventListener("resize", handleHeroHeight);
     };
   }, []);
+  
 
   const configs = [
     "/images/services/hero/image-2.png",
