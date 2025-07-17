@@ -12,7 +12,12 @@
   height: 100vh;
 
   position: relative;
- 
+
+
+  @include breakpoint-max(sm) {
+    padding-top: 30vw;
+  }
+
 
   .drawer {
     width: 100%;
@@ -57,7 +62,7 @@
       align-items: center;
       gap: var(--services-section-gap);
       max-width: 51rem;
- 
+
       @include breakpoint-max(sm) {
         flex-direction: column;
       }
