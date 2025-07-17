@@ -18,21 +18,6 @@
     grid-template-columns: repeat(2, minmax(50%, 1fr));
     gap: 1rem;
     max-width: 800px;
-
-    img {
-      border: 1px solid white;
-      border-radius: 1rem;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      @include breakpoint-max(sm) {
-        border-radius: 0.5rem;
-      }
-      &:hover {
-        cursor: pointer;
-      }
-    }
   }
   .right {
     width: 80%;

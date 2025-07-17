@@ -2,27 +2,25 @@
 @import "src/assets/css/mixins";
 
 .aboutUs {
+  height: 100vh !important;
+  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--home-section-gap);
   align-items: center;
-  height: var(--app-section-height);
-  width: 100%;
-
-  padding: var(--home-section-padding);
-  background-color: var(--app-section-background);
-
-  height: 100vh !important;
 
   margin-top: 100vh;
+  padding: var(--home-section-padding);
+
+  overflow: hidden;
+
+  background-color: var(--app-section-background);
 
   @include breakpoint-max(md) {
     flex-direction: column;
   }
-  width: 100%;
-  // height: 100%;
-  overflow: hidden;
 
   .left {
     display: flex;
@@ -70,9 +68,15 @@
         @include breakpoint-max(md) {
           font-size: 1.3rem;
         }
+        @include breakpoint-max(sm) {
+          font-size: 1.1rem;
+        }
       }
       p {
         font-size: 1rem;
+        @include breakpoint-max(sm) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -84,7 +88,8 @@
       gap: 3rem;
       position: relative;
       @include breakpoint-max(sm) {
-        left: 2.8rem;
+        gap: 2rem;
+        left: 3.2rem;
       }
       .first {
         display: flex;
@@ -104,6 +109,7 @@
         gap: 1rem;
         flex-direction: column-reverse;
         padding-left: 1rem;
+
         @include breakpoint-max(sm) {
           padding-left: 0px;
         }

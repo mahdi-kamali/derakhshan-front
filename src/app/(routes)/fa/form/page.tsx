@@ -10,7 +10,11 @@ const formSteps = [
     name: "مشخصات فردی",
     inputs: [
       { title: "نام و نام خانوادگی", type: "text", key: "fullName" },
-      { title: "نام پدر", type: "text", key: "fatherName" },
+      { title: "کد ملی", type: "text", key: "nationalId" },
+      { title: "تاریخ تولد", type: "date", key: "birthDate" },
+
+      { title: "محل تولد", type: "text", key: "birthPlace" },
+      { title: "محل صدور", type: "text", key: "issuePlace" },
       {
         title: "وضعیت تاهل",
         type: "select",
@@ -20,9 +24,6 @@ const formSteps = [
           { value: "متاهل", name: "متاهل" },
         ],
       },
-      { title: "شماره تماس", type: "text", key: "phone" },
-      { title: "کد ملی", type: "text", key: "nationalId" },
-      { title: "محل تولد", type: "text", key: "birthPlace" },
       {
         title: "وضعیت نظام وظیفه",
         type: "select",
@@ -34,11 +35,13 @@ const formSteps = [
           { value: "در حال تحصیل", name: "در حال تحصیل" },
         ],
       },
-      { title: "محل صدور", type: "text", key: "issuePlace" },
-      { title: "تاریخ تولد", type: "date", key: "birthDate" },
-      { title: "سابقه پرداخت بیمه", type: "text", key: "insuranceHistory" },
+      { title: "نام پدر", type: "text", key: "fatherName" },
       { title: "شغل پدر", type: "text", key: "fatherJob" },
+
+      { title: "سابقه پرداخت بیمه", type: "text", key: "insuranceHistory" },
+
       { title: "آدرس", type: "text", key: "address" },
+      { title: "شماره تماس", type: "text", key: "phone" },
     ],
   },
   {
@@ -47,17 +50,23 @@ const formSteps = [
       { title: "رشته تحصیلی", type: "text", key: "eduField" },
       { title: "مقطع تحصیلی", type: "text", key: "eduLevel" },
       { title: "معدل", type: "number", key: "gpa" },
-      { title: "نام مرکزی آموزشگاه", type: "text", key: "eduCenter" },
+      { title: "نام موسسه آموزش", type: "text", key: "eduCenter" },
     ],
   },
   {
     name: " سوابق کاری و تجربی",
     inputs: [
+      { title: "سازمان", type: "text", key: "workCompany" },
       { title: "زمینه همکاری", type: "text", key: "workField" },
       { title: "مدت همکاری", type: "text", key: "workDuration" },
-      { title: "آخرین حقوق دریافتی", type: "text", key: "lastSalary" },
-      { title: "سازمان", type: "text", key: "workCompany" },
       { title: "علت قطع همکاری", type: "text", key: "workReason" },
+      { title: "آخرین حقوق دریافتی", type: "text", key: "lastSalary" },
+      { title: "مدت زمان بیمه", type: "text", key: "workReason" },
+      {
+        title: "بیمه بیکاری استفاده کرده اید؟",
+        type: "text",
+        key: "workReason",
+      },
     ],
   },
   {
@@ -268,7 +277,7 @@ const Form = () => {
 
               {/* Add item button */}
               <Button
-                title="Add"
+                title="اضافه کردن"
                 icon="ic:baseline-plus"
                 variant="primary"
                 onClick={addTempItem}

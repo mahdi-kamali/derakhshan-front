@@ -16,7 +16,7 @@ export default function page() {
       <AboutUs />
       <Solution />
       <ProductsFirst />
-      <ProductsSecond />
+      {/* <ProductsSecond /> */}
     </PageContainer>
   );
 }

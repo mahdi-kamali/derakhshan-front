@@ -3,10 +3,8 @@
 .hero {
   display: flex;
   flex-direction: column;
- 
-  justify-content: center;
 
- 
+  justify-content: center;
 
   height: 100vh !important;
   width: 100%;
@@ -18,15 +16,14 @@
   right: 0;
   bottom: 0;
 
- 
   .staticContent {
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  
+
     padding: 10em 5em;
+    height: 100%;
     background: url("/images/backgrounds/hero.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -38,7 +35,7 @@
       .image {
         width: 22rem;
         margin-left: 10%;
-  
+ 
         @include breakpoint-max(sm) {
           width: 17rem;
         }
@@ -56,7 +53,7 @@
         }
       }
     }
-  
+
     .logo {
       display: flex;
       flex-direction: column;
@@ -68,7 +65,7 @@
         width: 30rem;
       }
     }
-  
+
     .description {
       display: flex;
       align-items: center;
@@ -84,12 +81,12 @@
       .slug {
         font-size: 1.75rem;
         font-weight: bold;
-  
+
         @include breakpoint-max(xs) {
           font-size: 1.5rem;
         }
       }
-  
+
       .content {
         max-width: 40ch;
         font-size: 1.5rem;
@@ -98,7 +95,7 @@
         }
       }
     }
-  
+
     .contact {
       margin-top: 1rem;
       direction: rtl;
@@ -114,7 +111,7 @@
         align-items: center;
         justify-content: center;
         gap: 0.6rem;
-  
+
         .right {
           direction: ltr;
         }
@@ -123,12 +120,10 @@
           align-items: center;
           justify-content: end;
           gap: 0.35rem;
-  
+
           flex-direction: row-reverse;
         }
       }
     }
   }
-
-
 }

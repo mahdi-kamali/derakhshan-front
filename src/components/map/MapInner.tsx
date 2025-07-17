@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 });
 
 const MapInner = () => {
-  const position: [number, number] = [35.6892, 51.389]; 
+  const position: [number, number] = [38.037071,46.420994]; 
 
   return (
     <MapContainer
@@ -31,10 +31,11 @@ const MapInner = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={position}>
-        <Popup>مکان من</Popup>
+        <Popup></Popup>
       </Marker>
     </MapContainer>
   );
 };
 
 export default MapInner;
+ 

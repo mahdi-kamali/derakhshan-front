@@ -43,18 +43,34 @@
     display: flex;
     width: 90%;
     margin-top: 70px;
+    
   }
 
   .masonryGridColumn {
     padding-left: 16px;
     background-clip: padding-box;
-    img {
-      margin-bottom: 16px;
-      width: 100%;
-      border-radius: 12px;
-      object-fit:contain;
-      border: 1px solid white;
+ 
+ 
+
+    .frame { 
+      margin-bottom: 1rem;
+      @include gradient-border(1rem, 2px, #9c783523, #9c7835, 0deg);
+      img {
+        // border: 1px solid white;
+        border-radius: 1rem;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        @include breakpoint-max(sm) {
+          border-radius: 0.5rem;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
+    
 
     img:hover {
       cursor: pointer;

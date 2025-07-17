@@ -3,8 +3,9 @@ import styles from "./styles.module.scss";
 import Button from "@/components/UI/Button/Button";
 import { motion } from "framer-motion";
 import Description from "@/components/UI/Section/Description/Description";
-
+import { useRouter } from "next/navigation";
 export default function AboutUs() {
+  const route = useRouter();
   return (
     <motion.section className={styles.aboutUs}>
       {/* Right Section: Team Members */}
@@ -55,7 +56,7 @@ export default function AboutUs() {
           >
             <div className={styles.info}>
               <h2>فرشته غفورزاده نوبر </h2>
-              <p>مدیر عامل شرکت درخشان پاک</p>
+              <p>قائم مفام مدیر عامل شرکت درخشان پاک</p>
             </div>
             <img src="/images/about-us/image-1.png" />
           </motion.div>
@@ -110,6 +111,7 @@ export default function AboutUs() {
             title="مشاهده بیشتر"
             variant={"primary"}
             icon="none"
+            onClick={()=>{route.push("/fa/about-us")}}
           />
         </motion.div>
       </motion.div>

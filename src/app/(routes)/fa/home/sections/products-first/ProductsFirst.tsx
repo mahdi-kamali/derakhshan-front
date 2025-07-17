@@ -3,8 +3,11 @@ import styles from "./styles.module.scss";
 import Button from "@/components/UI/Button/Button";
 import { motion } from "framer-motion";
 import Description from "@/components/UI/Section/Description/Description";
+import { useRouter } from "next/navigation";
 
 export default function ProductsFirst() {
+  const route = useRouter();
+
   return (
     <motion.section className={styles.ProductsFirst}>
       {/* Right Side: Product Images (Async Pop-in Mode with Delay) */}
@@ -64,7 +67,7 @@ export default function ProductsFirst() {
         }}
         viewport={{ once: true }}
       >
-        <HighLight text="جعبه های متالایز" marked="متالایز" />
+        <HighLight text="محصولات ما" marked="محصولات ما" />
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -86,7 +89,14 @@ export default function ProductsFirst() {
           transition={{ duration: 1, delay: 1.3 }}
           viewport={{ once: true }}
         >
-          <Button title="مشاهده بیشتر" variant={"primary"} icon="none" />
+          <Button
+            title="مشاهده بیشتر"
+            variant={"primary"}
+            icon="none"
+            onClick={() => {
+              route.push("/fa/products");
+            }}
+          />
         </motion.div>
       </motion.div>
     </motion.section>

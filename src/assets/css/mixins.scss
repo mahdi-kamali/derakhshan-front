@@ -13,3 +13,33 @@
     @content;
   }
 }
+
+
+@mixin gradient-border(
+  $radius: 8px,
+  $padding: 2px,
+  $start: #ffffff00,
+  $end: #ffffffd2,
+  $angle: 45deg
+) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: $radius;
+    padding: $padding;
+
+    background: linear-gradient($angle, $start, $end);
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+
+    pointer-events: none;
+    z-index: -1;
+  }
+}

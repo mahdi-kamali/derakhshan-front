@@ -5,7 +5,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "@/components/UI/Button/Button";
 import { motion } from "framer-motion";
 
-
 export default function Hero() {
   const configs = {
     background: "/images/contact-us/background.png",
@@ -16,27 +15,27 @@ export default function Hero() {
         {
           label: "نام شرکت",
           name: "name",
-          value: "درخشان",
+          value: "درخشان پاک تبریز",
         },
         {
           label: "موقعیت",
           name: "location",
-          value: "مونیخ، آلمان",
-        },
-        {
-          label: "توضیحات",
-          name: "description",
-          value: "کارگاه چاپ افست و برجسته‌کاری",
+          value: "ایران - تبریز - کیلومتر ۶ جاده تهران کوی صنعتی ایرداک",
         },
         {
           label: "تلفن",
           name: "phone",
-          value: "+49 (0) 89 / 56 22 95",
-        }, 
+          value: " ۲ - ۴۱۳۶۳۷۳۷۵۱  ۹۸+",
+        },
+        {
+          label: "فکس",
+          name: "fax",
+          value: " ۴۱۳۶۳۷۳۷۵۳  ۹۸+",
+        },
         {
           label: "ایمیل",
           name: "email",
-          value: "استفاده از فرم تماس",
+          value: "info@dppack.com",
         },
       ],
       contact: {
@@ -160,8 +159,6 @@ export default function Hero() {
           <Button icon="ep:top-right" title="ثبت فرم تماس" variant="primary" />
         </form>
       </motion.div>
- 
- 
     </section>
   );
 }

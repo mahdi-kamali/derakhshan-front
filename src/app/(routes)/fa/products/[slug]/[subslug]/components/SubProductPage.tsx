@@ -5,18 +5,18 @@ import Masonry from "react-masonry-css";
 import styles from "./styles.module.scss";
 
 const breakpointColumnsObj = {
-  default: 4,
-  1100: 3,
+  default: 2,
+  1100: 2,
   700: 2,
   500: 2,
 };
 
-const bigItems = [1, 3];
+const bigItems = [1, 2];
 
 const masonryOptions = {
-    transitionDuration: 0,
-    gutter: 20,
-  };
+  transitionDuration: 0,
+  gutter: 20,
+};
 
 type Props = {
   product: {
@@ -43,15 +43,15 @@ export default function SubProductPage({ product, subslug }: Props) {
           className={styles.masonryGrid}
           columnClassName={styles.masonryGridColumn}
         >
-          {Array.from({ length: 8 }).map((_, i) => (
-            <img
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div
+              className={`${styles.frame} ${
+                styles[product.class as keyof typeof styles]
+              } ${bigItems.includes(i) ? styles.big : styles.small}`}
               key={i}
-              src={product.image}
-              alt={product.title}
-              className={`${styles[product.class as keyof typeof styles]} ${
-                bigItems.includes(i) ? styles.big : styles.small
-              }`}
-            />
+            >
+              <img src={product.image} alt={product.title} />
+            </div>
           ))}
         </Masonry>
       </div>

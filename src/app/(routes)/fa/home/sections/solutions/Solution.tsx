@@ -2,8 +2,9 @@ import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
 import Button from "@/components/UI/Button/Button";
 import { motion } from "framer-motion";
-
+import { useRouter } from "next/navigation";
 export default function Solution() {
+  const route = useRouter();
   return (
     <motion.section className={styles.solutions}>
       {/* Right Section: Image (Fade & Slide from Right) */}
@@ -45,7 +46,14 @@ export default function Solution() {
           transition={{ duration: 1, delay: 0.9 }}
           viewport={{ once: true }}
         >
-          <Button title="مشاهده بیشتر" variant={"primary"} icon="none" />
+          <Button
+            title="مشاهده بیشتر"
+            variant={"primary"}
+            icon="none"
+            onClick={() => {
+              route.push("/fa/services");
+            }}
+          />
         </motion.div>
       </motion.div>
     </motion.section>
