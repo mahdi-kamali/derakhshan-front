@@ -45,7 +45,7 @@ export default function Slider(props: IProps) {
         <Swiper
           className={styles.swiper}
           wrapperClass={styles.wrapper}
-          slidesPerView={5}
+          slidesPerView={3}
           spaceBetween={10}
           breakpoints={responsive as SwiperOptions["breakpoints"]}
           key={paginationRef.current ? "ready" : "not-ready"}

@@ -56,7 +56,7 @@ export default function AboutUs() {
           >
             <div className={styles.info}>
               <h2>فرشته غفورزاده نوبر </h2>
-              <p>قائم مفام مدیر عامل شرکت درخشان پاک</p>
+              <p>قائم مقام مدیر عامل شرکت درخشان پاک</p>
             </div>
             <img src="/images/about-us/image-1.png" />
           </motion.div>

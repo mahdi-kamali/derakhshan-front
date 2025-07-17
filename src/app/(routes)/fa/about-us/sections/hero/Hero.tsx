@@ -25,7 +25,7 @@ export default function Hero() {
       {
         name: "فرشته نوبر",
         image: "/images/about-us/image-1.png",
-        roles: ["قائم مفام مدیر عامل درخشان پاک"],
+        roles: ["قائم مقام مدیر عامل درخشان پاک"],
       },
     ],
     stories: [

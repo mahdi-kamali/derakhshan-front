@@ -53,11 +53,15 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 110vh;
+    height: 100vh;
     width: 100%;
  
-    overflow: hidden;
+    // overflow: hidden;
 
+    @include breakpoint-max(sm) {
+      margin-top: 35vw;
+      margin-bottom: 0rem;
+    }
     .info {
       display: flex;
       grid-template-columns: var(--services-section-right-width) 25rem;
@@ -89,7 +93,8 @@
     .slider {
       margin-top: 1rem;
       max-width: 50rem;
-      margin-bottom: 15rem;
+      margin-bottom: 7rem;
+     
       width: 80%;
       .slide {
         img {
