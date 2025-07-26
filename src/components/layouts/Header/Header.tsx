@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { useState, useEffect } from "react";
 
@@ -16,7 +16,7 @@ import styles from "./styles.module.scss";
 
 export default function Header() {
   const pathName = usePathname();
-
+  const route = useRouter();
   const { language } = useSettings();
   const [menuOpen, setMenuOpen] = useState(false);
   const handleMenuToggle = () => setMenuOpen((prev) => !prev);
@@ -29,43 +29,56 @@ export default function Header() {
 
   const isMobile = useMediaQuery({ maxWidth: 991 });
 
+  const switchLang = () => {
+    const segments = pathName.split("/");
+    segments[1] = language == "fa" ? "en" : "fa";
+    const newPath = segments.join("/");
+    route.push(newPath);
+  };
+
   if (!hasMounted) return null;
 
   const navMenu = [
     {
-      title: "صفحه اصلی",
+      title: "HOME",
+      titleFa: "صفحه اصلی",
       icon: "material-symbols:home",
       path: "/home",
     },
     {
-      title: "محصولات",
+      title: "PRODUCTS",
+      titleFa: "محصولات",
       icon: "ph:shopping-bag",
       path: "/products",
     },
     {
-      title: "خدمات",
+      title: "SERVICES",
+      titleFa: "خدمات",
       icon: "tabler:settings",
       path: "/services",
     },
     {
-      title: "فرصت های شغلی",
+      title: "CAREERS",
+      titleFa: "فرصت های شغلی",
       icon: "mdi:briefcase-outline",
       path: "/careers",
     },
     {
-      title: "درباره ی ما",
+      title: "ABOUT US",
+      titleFa: "درباره ی ما",
       icon: "mdi:information-outline",
       path: "/about-us",
     },
     {
-      title: "تماس با ما",
+      title: "CONTACT US",
+      titleFa: "تماس با ما",
       icon: "ic:baseline-contact-mail",
       path: "/contact-us",
     },
   ];
 
   return (
-    <header className={styles.header}>
+    <header className={` ${styles.header} ${language == "en" && styles.en}`}>
       <div className={styles.left}>
         <div className={styles.logo}>
           <img src={"/images/logo.png"} alt="" />
@@ -96,10 +109,10 @@ export default function Header() {
                 exit={{ opacity: 0, scale: 0.95, y: -10 }}
                 transition={{ duration: isMobile ? 0.3 : 0, ease: "easeInOut" }}
               >
-                <div className={styles.language}>
-                  <span>فارسی</span>
+                <button className={styles.language} onClick={switchLang}>
+                  <span>{language == "en" ? "ENGLISH" : "فارسی"}</span>
                   <Icon icon="clarity:language-solid" />
-                </div>
+                </button>
                 {navMenu.map((item) => {
                   const isActive = pathName.includes(item.path);
                   return (
@@ -109,7 +122,9 @@ export default function Header() {
                       className={isActive ? styles.active : ""}
                       onClick={() => setMenuOpen(false)}
                     >
-                      <span>{item.title}</span>
+                      <span>
+                        {language == "en" ? item.title : item.titleFa}
+                      </span>
                       <Icon icon={item.icon} />
                     </Link>
                   );

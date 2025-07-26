@@ -1,0 +1,42 @@
+@import "src/assets/css/mixins";
+
+.solutions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--home-section-gap);
+  direction: ltr;
+  height: 100vh !important;
+  max-height:  100vh !important;
+  background-color: var(--color-dark-background);
+  padding: 2rem;
+
+  width: 100%;
+  // height: 100%;
+  overflow: hidden;
+
+  @include breakpoint-max(sm) {
+    flex-direction: column;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    direction: rtl;
+    font-size: 1.2rem;
+    p {
+      max-width: 53ch;
+      line-height: 2;
+      text-align: justify;
+
+      @include breakpoint-max(xs) {
+        max-width: 45ch;
+      }
+    }
+  }
+
+  .right {
+    width: var(--home-section-right-width);
+  }
+}

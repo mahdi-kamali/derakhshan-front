@@ -19,6 +19,10 @@
   z-index: 1000;
   max-width: var(--app-max-width);
 
+  &.en {
+    font-family: syne;
+  }
+
   @include breakpoint-max(md) {
     align-items: start;
   }
@@ -96,9 +100,12 @@
         cursor: pointer;
         font-size: 0.8rem;
         background-color: white;
-        padding: 0.25em 1em;
+        padding: 0.3em 1em;
         border-radius: 0.25rem;
-
+        border: none;
+        span{
+          font-weight: 500;
+        }
         * {
           color: black !important;
         }

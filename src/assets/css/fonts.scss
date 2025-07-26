@@ -1,9 +1,29 @@
 @font-face {
-    font-family: iran-sans;
-    src: url("/fonts/iran-sans.ttf");
+  font-family: iran-sans;
+  src: url("/fonts/iran-sans.ttf");
+}
+
+@font-face {
+  font-family: smooch-sans;
+  src: url("/fonts/Smooch_Sans/SmoochSans-VariableFont_wght.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: roboto-flex;
+  src: url("/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: syne;
+  src: url("/fonts/Syne/Syne-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
 }
 
 html {
-    --font-fa-primary: iran-sans;
-    --font-en-priamry: tahoma;
+  --font-fa-primary: iran-sans;
+  --font-en-priamry: tahoma;
 }
