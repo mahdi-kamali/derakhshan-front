@@ -38,9 +38,9 @@ export default function AboutUs() {
             }}
             transition={{ duration: 1 }}
           >
-            <div className={styles.info} >
-              <h2>حسن غفورزاده نوبر</h2>
-              <p>موسس شرکت درخشان پاک</p>
+            <div className={styles.info}>
+              <h2>HASSAN GHAFOURZADEH NOBAR</h2>
+              <p>Founder of Derakhshan Pack Co.</p>
             </div>
             <img src="/images/about-us/image-2.png" />
           </motion.div>
@@ -55,8 +55,8 @@ export default function AboutUs() {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <div className={styles.info}>
-              <h2>فرشته غفورزاده نوبر </h2>
-              <p>قائم مقام مدیر عامل شرکت درخشان پاک</p>
+              <h2>FERESHTEH NOBAR</h2>
+              <p>Derakhshan Pack Consultant</p>
             </div>
             <img src="/images/about-us/image-1.png" />
           </motion.div>
@@ -70,9 +70,9 @@ export default function AboutUs() {
           transition={{ duration: 1, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className={styles.info}  >
-            <h2>رحیم غفورزاده نوبر </h2>
-            <p>مدیر عامل شرکت درخشان پاک</p>
+          <div className={styles.info}>
+            <h2>RAHIM GHAFOURZADEH NOBAR</h2>
+            <p>CEO and General Manager Of Derakhshan Pack Co.</p>
           </div>
           <img src="/images/about-us/image-3.png" />
         </motion.div>
@@ -86,7 +86,7 @@ export default function AboutUs() {
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
         viewport={{ once: true }}
       >
-        <HighLight text={"درباره ی ما"} marked="درباره ی ما" />
+        <HighLight text={"ABOUT US"} marked="ABOUT US" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -95,9 +95,9 @@ export default function AboutUs() {
           viewport={{ once: true }}
         >
           <Description>
-            ما یک شرکت چاپ افست با تجربه از سال 1972 هستیم و در بسته بندی لوکس
-            تخصص داریم. این افتخار ماست که بسته بندی های سفارشی و منحصر به فرد
-            را مطابق با نیاز شما به شما ارائه دهیم.
+            we are an experienced Offset Printing Company since 1972 and we are
+            specialized in Luxury Packaging.It is our honour to offer you
+            customized and unique packaging according to your requirements.
           </Description>
         </motion.div>
 
@@ -108,10 +108,12 @@ export default function AboutUs() {
           viewport={{ once: true }}
         >
           <Button
-            title="مشاهده بیشتر"
+            title="EXPLORE MORE"
             variant={"primary"}
             icon="none"
-            onClick={()=>{route.push("/fa/about-us")}}
+            onClick={() => {
+              route.push("/en/about-us");
+            }}
           />
         </motion.div>
       </motion.div>

@@ -8,9 +8,9 @@
   background-color: rgb(228, 228, 228);
 
   @include breakpoint-max(md) {
-    height:40vh;
+    height: 40vh;
   }
-
+  direction: ltr;
   .background {
     display: flex;
     justify-content: center;
@@ -41,24 +41,45 @@
     bottom: 0;
     top: 0;
     position: absolute;
-    max-width: 100ch;
+    max-width: 90ch;
     padding: 0px 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
 
+    font-family: smooch-sans;
+    font-size: 1.6rem;
+    letter-spacing: 0.05rem;
+
     @include breakpoint-max(md) {
-      max-width: 85ch;
+      padding: 0px 1em;
     }
-    @include breakpoint-max(sm) {
-      scale: 0.8;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1rem;
     }
+
     p {
-      line-height: 2;
+      line-height: 1.5;
     }
     * {
       color: black;
+    }
+
+    @include breakpoint-max(md) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+    @include breakpoint-max(sm) {
     }
   }
 }

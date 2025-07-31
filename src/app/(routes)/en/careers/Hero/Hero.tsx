@@ -8,12 +8,12 @@ export default function Hero() {
     hero: {
       background: "/images/careers/background.png",
       title: {
-        text: `فرصت‌های شغلی ما، 
-جایی برای رشد و خلاقیت شما.`,
-        marked: "رشد و خلاقیت",
+        text: `Our Career Opportunities, 
+      A Place for Your Growth and Creativity.`,
+        marked: "Growth and Creativity",
       },
       description:
-        "شرکت درخشان به دنبال افرادی خلاق، باانگیزه و متعهد هستیم که به ما در ساخت آینده‌ای بهتر کمک کنند. اگر به دنبال محیطی پویا، دوستانه و با فرصت‌های یادگیری و پیشرفت هستید، جای شما در تیم ما خالی است! فرصت‌های شغلی ما را بررسی کنید و به جمع ما بپیوندید.",
+        "At Derakhshan Company, we are looking for creative, motivated, and committed individuals to help us build a better future. If you're seeking a dynamic, friendly environment with opportunities for learning and advancement, there's a place for you on our team! Explore our career openings and join us.",
     },
   };
 

@@ -13,7 +13,6 @@ export default function HighLight({
   firstColor = "white",
   secondColor = "white",
 }: IProps) {
-
   const start = text.indexOf(marked);
 
   const firstString = text.substring(0, start);
@@ -24,13 +23,22 @@ export default function HighLight({
 
   return (
     <h1 className={styles.highLight}>
-      <span className={styles.first} style={{ color: firstColor }}>
+      <span
+        className={styles.first}
+        style={{ color: firstColor, display: firstString ? "bolck" : "none" }}
+      >
         {firstString}
       </span>
-      <span className={styles.second} style={{ color: secondColor }}>
+      <span
+        className={styles.second}
+        style={{ color: secondColor, display: secondString ? "bolck" : "none" }}
+      >
         {secondString}
       </span>
-      <span className={styles.third} style={{ color: firstColor }}>
+      <span
+        className={styles.third}
+        style={{ color: firstColor, display: thirdString ? "bolck" : "none" }}
+      >
         {thirdString}
       </span>
     </h1>

@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 
 export default function page() {
   return (
-    <PageContainer title='تماس با ما'>
+    <PageContainer title="CONTACT US">
       <div className={styles.page}>
         <Hero />
         <OfficeMap />

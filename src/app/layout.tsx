@@ -8,9 +8,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-export const metadata = {
-  title: "Product Page",
-};
+export const metadata = {};
 
 export const viewport = {
   width: "device-width",

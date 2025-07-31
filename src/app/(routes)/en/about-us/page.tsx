@@ -5,7 +5,7 @@ import Hero from "./sections/hero/Hero";
 
 export default function AboutUs() {
   return (
-    <PageContainer title='درباره ی ما'>
+    <PageContainer title='ABOUT US'>
       <div className={styles.page}>
         <Hero/>
       </div>

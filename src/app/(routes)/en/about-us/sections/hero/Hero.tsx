@@ -12,53 +12,52 @@ export default function Hero() {
     },
     agents: [
       {
-        name: "حسن غفورزاده نوبر",
+        name: "Hassan Ghafoorzadeh Nobar",
         image: "/images/about-us/image-2.png",
-        roles: ["بنیان‌گذار شرکت درخشان پاک"],
+        roles: ["Founder of Derakhshan Pak Company"],
       },
       {
-        name: "رحیم غفورزاده نوبر",
+        name: "Rahim Ghafoorzadeh Nobar",
         image: "/images/about-us/image-3.png",
-        roles: ["مدیرعامل شرکت درخشان پاک"],
+        roles: ["CEO of Derakhshan Pak Company"],
         email: "ceo@dppack.com",
       },
       {
-        name: "فرشته نوبر",
+        name: "Fereshteh Nobar",
         image: "/images/about-us/image-1.png",
-        roles: ["قائم مقام مدیر عامل درخشان پاک"],
+        roles: ["Deputy CEO of Derakhshan Pak"],
       },
     ],
     stories: [
       {
         title: {
-          text: "1945 - تأسیس شرکت",
-          marked: "تأسیس",
+          text: "1945 - Company Establishment",
+          marked: "Establishment",
         },
         image: "/images/about-us/stories/image-1.png",
         description:
-          "در سال 1945، پدربزرگ ما، حسن غفورزاده نوبر، پایه های شرکت بسته بندی مدرن و کاملاً مجهز ما را در تبریز گذاشت. ما با لذت و افتخار به تاریخ 71 ساله شرکت خود نگاه می کنیم. به سفری در زمان خوش آمدید که نشان می دهد با اراده قوی و قدرت نوآوری می توان به چه چیزی دست یافت.",
+          "In 1945, our grandfather, Hassan Ghafoorzadeh Nobar, laid the foundations of our modern and fully equipped packaging company in Tabriz. We take pride and joy in looking back at our 71-year company history. Welcome to a journey through time that shows what can be achieved through strong will and innovation.",
       },
       {
         title: {
-          text: "1979 - نسل دوم",
-          marked: "دوم",
+          text: "1979 - Second Generation",
+          marked: "Second",
         },
         image: "/images/about-us/stories/image-2.png",
         description:
-          "رحیم غفورزاده نوبر به عنوان یک شرکت خانوادگی در نسل دوم خود درک کرد که حفظ کیفیت در عین برآورده کردن خواسته‌های مشتری چقدر مهم است. او در سال 1979 شرکت را به 12000 متر مربع گسترش داد.",
+          "As a family-owned business, Rahim Ghafoorzadeh Nobar, representing the second generation, understood the importance of maintaining quality while meeting customer demands. In 1979, he expanded the company to 12,000 square meters.",
       },
       {
         title: {
-          text: "2014 - جهانی و دیجیتالی شدن",
-          marked: "دیجیتالی",
+          text: "2014 - Globalization and Digitalization",
+          marked: "Digitalization",
         },
         image: "/images/about-us/stories/image-3.png",
         description:
-          "جهانی شدن و دیجیتالی شدن، جهان را کوچک‌تر و قلمرو کسب و کار درخشان پک را گسترش می‌دهد. فرشته غفورزاده نوبر، نسل سوم خانواده، با شروع تحصیلات دانشگاهی از دانشگاه‌های آلمان و ایران به این شرکت پیوست که این امر برای مشتریان ما سودمند خواهد بود.",
+          "Globalization and digitalization have made the world smaller and expanded Derakhshan Pack's business reach. Fereshteh Ghafoorzadeh Nobar, the third generation of the family, joined the company after beginning her academic studies in Germany and Iran—bringing new value to our customers.",
       },
     ],
   };
-
   return (
     <section className={styles.hero}>
       {/* Background Image */}
@@ -128,11 +127,11 @@ export default function Hero() {
           transition={{ duration: 1.5, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <HighLight text="فهرست نمایندگی" marked="فهرست" />
+          <HighLight text="AGENT LIST" marked="LIST" />
           <p>
-            ما یک شرکت چاپ افست با تجربه از سال 1972 هستیم و در بسته بندی لوکس
-            تخصص داریم. این افتخار ماست که بسته بندی های سفارشی و منحصر به فرد
-            را مطابق با نیاز شما به شما ارائه دهیم.
+            We are an offset printing company with experience since 1972,
+            specializing in luxury packaging. It is our honor to offer you
+            custom and unique packaging tailored to your needs.
           </p>
         </motion.div>
       </motion.div>
@@ -153,7 +152,7 @@ export default function Hero() {
               <HighLight text={story.title.text} marked={story.title.marked} />
               <p>{story.description}</p>
               <Button
-                title="ادامه مطلب"
+               title="Read More"
                 icon={"ep:top-right"}
                 variant="primary"
               />

@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import { motion } from "framer-motion";
+import DerakhshanLogo from "@/components/icons/DerakhshanLogo/DerakhshanLogo";
 
 export default function Hero() {
   return (
@@ -16,7 +17,7 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <img src="/images/logo.png" alt="" className={styles.image} />
+          <DerakhshanLogo />
           <div className={styles.text}>
             <h1>DERAKHSHAN PACK CO.</h1>
           </div>

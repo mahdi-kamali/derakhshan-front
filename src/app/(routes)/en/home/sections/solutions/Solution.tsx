@@ -26,7 +26,10 @@ export default function Solution() {
         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <HighLight text="راه حل های بسته بندی پیشرفته" marked="بسته بندی" />
+        <HighLight
+          text="Advanced Packaging Solutions"
+          marked="Advanced Packaging Solutions"
+        />
 
         <motion.p
           initial={{ opacity: 0, y: -20 }}
@@ -34,9 +37,9 @@ export default function Solution() {
           transition={{ duration: 1, delay: 0.7 }}
           viewport={{ once: true }}
         >
-          ما با تکنولوژی روز و امکانات مدرن، ظریف ترین و حرفه ای ترین بسته بندی
-          را برای محصولات شما ارائه می دهیم. خدمات ما را کاوش کنید تا برند خود
-          را ارتقا دهید.
+          With state-of-the-art technology and modern facilities, we deliver the
+          most elegant and professional packaging for your products. Explore our
+          services to elevate your brand.
         </motion.p>
 
         <motion.div
@@ -47,11 +50,11 @@ export default function Solution() {
           viewport={{ once: true }}
         >
           <Button
-            title="مشاهده بیشتر"
+           title="EXPLORE MORE"
             variant={"primary"}
             icon="none"
             onClick={() => {
-              route.push("/fa/services");
+              route.push("/en/services");
             }}
           />
         </motion.div>

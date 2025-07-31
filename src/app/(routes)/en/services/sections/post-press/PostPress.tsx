@@ -9,7 +9,7 @@ import Slide from "@/components/UI/Slider/Slide/Slide";
 export default function PostPress() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const handleHeroHeight = () => {
       const bottom = bottomRef.current;
@@ -19,20 +19,20 @@ export default function PostPress() {
         container.style.height = `calc(100vh + ${bottomHeight}px)`;
       }
     };
-  
+
     const waitForImages = () => {
       const images = containerRef.current?.querySelectorAll("img") || [];
       if (images.length === 0) {
         handleHeroHeight();
         return;
       }
-  
+
       let loaded = 0;
       const checkDone = () => {
         loaded++;
         if (loaded === images.length) handleHeroHeight();
       };
-  
+
       images.forEach((img) => {
         if (img.complete) {
           checkDone();
@@ -42,15 +42,14 @@ export default function PostPress() {
         }
       });
     };
-  
+
     waitForImages();
     window.addEventListener("resize", handleHeroHeight);
-  
+
     return () => {
       window.removeEventListener("resize", handleHeroHeight);
     };
   }, []);
-  
 
   const configs = [
     "/images/services/hero/image-2.png",
@@ -88,11 +87,14 @@ export default function PostPress() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: false }}
           >
-            <HighLight text="خدمات پس از چاپ" marked="پس از چاپ" />
+            <HighLight text="POST-PRESS" marked="POST-PRESS" />
             <p>
-              در بخش پس از چاپ، ما از مهرزنی فویل داغ، برجسته‌سازی، برش قالبی،
-              وصله پنجره، چسب‌زنی، لمینت و خط تولید کامل بسته‌بندی‌های جعبه سخت
-              با جدیدترین ماشین‌آلات اروپایی پشتیبانی می‌کنیم.
+              Consultation with Customer Our main aim is to offer our customers
+              the best solutions and suggestions according to their needs and
+              products. It is our honor to be recognized as one of the best
+              companies in Iran to provide innovative packaging designs to our
+              customers. The ability to enhance the marketing brand and
+              capture.......
             </p>
           </motion.div>
         </motion.div>
@@ -133,7 +135,7 @@ export default function PostPress() {
       {/* drawer title section */}
       <div className={styles.drawer}>
         <div className={styles.title}>
-          <p>خدمات پس از چاپ</p>
+          <p>POST PRESS</p>
         </div>
       </div>
 
@@ -143,33 +145,33 @@ export default function PostPress() {
           {[
             {
               img: "/images/services/hero/image-7.png",
-              text: "طلاکوبی",
-              marked: "طلاکوبی",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              text: "FOIL STAMPING",
+              marked: "FOIL STAMPING",
+              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
             },
             {
               img: "/images/services/hero/image-8.png",
-              text: "برجسته زنی",
-              marked: "برجسته زنی",
-              desc: "ما با الهام از جدیدترین خلاقیت، تصاویری با وضوح بالا از محصول خود را به شما پیشنهاد می کنیم تا برند خود را در بازار به نمایش بگذارید.",
+              text: "EMBOSSING",
+              marked: "EMBOSSING",
+              desc: "Inspired by the latest creativity, we offer high-resolution visuals of your product to showcase your brand in the market.",
             },
             {
               img: "/images/services/hero/image-7.png",
-              text: "پنجره چسبانی",
-              marked: "پنجره چسبانی",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              text: "WINDOW PASTING",
+              marked: "WINDOW PASTING",
+              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
             },
             {
               img: "/images/services/hero/image-7.png",
-              text: "لمینت",
-              marked: "لمینت",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              text: "LAMINATION",
+              marked: "LAMINATION",
+              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
             },
             {
               img: "/images/services/hero/image-7.png",
-              text: "جعبه های هادر باکس",
-              marked: "جعبه های هادر باکس",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              text: "HARD BOXES",
+              marked: "HARD BOXES",
+              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
             },
           ].map((service, index) => (
             <motion.div

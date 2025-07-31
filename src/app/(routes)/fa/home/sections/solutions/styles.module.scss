@@ -15,7 +15,7 @@
   // height: 100%;
   overflow: hidden;
 
-  @include breakpoint-max(sm) {
+  @include breakpoint-max(md) {
     flex-direction: column;
   }
 

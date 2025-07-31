@@ -8,43 +8,43 @@ import { motion } from "framer-motion";
 export default function Hero() {
   const configs = {
     background: "/images/contact-us/background.png",
-    title: "تماس با ما",
+    title: "Contact Us",
     company: {
       image: "/images/contact-us/avatar.png",
       info: [
         {
-          label: "نام شرکت",
+          label: "Company Name",
           name: "name",
-          value: "درخشان پاک تبریز",
+          value: "Derakhshan Pak Tabriz",
         },
         {
-          label: "موقعیت",
+          label: "Location",
           name: "location",
-          value: "ایران - تبریز - کیلومتر ۶ جاده تهران کوی صنعتی ایرداک",
+          value: "Iran – Tabriz – Km 6 Tehran Road, Irdak Industrial Zone",
         },
         {
-          label: "تلفن",
+          label: "Phone",
           name: "phone",
-          value: " ۲ - ۴۱۳۶۳۷۳۷۵۱  ۹۸+",
+          value: "+98 41 6373751-2",
         },
         {
-          label: "فکس",
+          label: "Fax",
           name: "fax",
-          value: " ۴۱۳۶۳۷۳۷۵۳  ۹۸+",
+          value: "+98 41 6373753",
         },
         {
-          label: "ایمیل",
+          label: "Email",
           name: "email",
           value: "info@dppack.com",
         },
       ],
       contact: {
         phone: "+49 (0) 89 / 56 22 95",
-        email: "استفاده از فرم تماس",
+        email: "Use Contact Form",
         contact_form: true,
-        name: "درخشان",
-        location: "مونیخ، آلمان",
-        description: "کارگاه چاپ افست و برجسته‌کاری",
+        name: "Derakhshan",
+        location: "Munich, Germany",
+        description: "Offset Printing & Embossing Workshop",
       },
     },
   };
@@ -85,7 +85,7 @@ export default function Hero() {
           <Field.Text
             icon={<Icon icon="mdi:account" />}
             name="firstName"
-            title="نام"
+            title="First Name"
             required
             onChange={(value) => console.log(value)}
             rtl
@@ -94,7 +94,7 @@ export default function Hero() {
           <Field.Text
             icon={<Icon icon="mdi:account-box" />}
             name="lastName"
-            title="نام خانوادگی"
+            title="Last Name"
             required
             onChange={(value) => console.log(value)}
             rtl
@@ -103,7 +103,7 @@ export default function Hero() {
           <Field.Text
             icon={<Icon icon="mdi:email" />}
             name="email"
-            title="ایمیل"
+            title="Email"
             type="email"
             required
             onChange={(value) => console.log(value)}
@@ -113,7 +113,7 @@ export default function Hero() {
           <Field.Text
             icon={<Icon icon="mdi:web" />}
             name="website"
-            title="وب سایت"
+            title="Website"
             type="url"
             onChange={(value) => console.log(value)}
             rtl
@@ -122,7 +122,7 @@ export default function Hero() {
           <Field.Text
             icon={<Icon icon="mdi:phone" />}
             name="phone"
-            title="شماره تماس"
+            title="Phone Number"
             type="tel"
             onChange={(value) => console.log(value)}
             rtl
@@ -132,7 +132,7 @@ export default function Hero() {
           <Field.Text
             icon={<Icon icon="mdi:map-marker" />}
             name="address"
-            title="آدرس"
+            title="Address"
             onChange={(value) => console.log(value)}
             rtl
             gridColumn={"-1/1"}
@@ -145,7 +145,7 @@ export default function Hero() {
           <Field.Text
             icon={<Icon icon="mdi:message-text" />}
             name="message"
-            title="پیام"
+            title="Message"
             required
             onChange={(value) => console.log(value)}
             rtl
@@ -156,7 +156,11 @@ export default function Hero() {
             }}
           />
 
-          <Button icon="ep:top-right" title="ثبت فرم تماس" variant="primary" />
+          <Button
+            icon="ep:top-right"
+            title="Submit Contact Form"
+            variant="primary"
+          />
         </form>
       </motion.div>
     </section>

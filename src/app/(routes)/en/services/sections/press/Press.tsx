@@ -41,11 +41,12 @@ export default function Press() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: false }}
           >
-            <HighLight text="خدمات چاپی" marked="چاپی" />
+            <HighLight text="PRESS" marked="PRESS" />
             <p>
-              با دستگاه‌های چاپ افست ما شما می‌توانید به بهترین کیفیت مطابق با
-              آخرین فناوری دست یابید. ما هم چاپ افست سنتی و هم چاپ UV را به شما
-              ارائه می‌دهیم.
+              with our offset printing machine, you can reach the best quality
+              according to the latest technology.Conventional offset printing
+              and UV offset printing combine with wide range of UV varnishes
+              like matt, glossy, effect and irodion.
             </p>
           </motion.div>
         </motion.div>
@@ -85,7 +86,7 @@ export default function Press() {
 
       <div className={styles.drawer}>
         <div className={styles.title}>
-          <p>خدمات چاپی</p>
+          <p>PRESS</p>
         </div>
       </div>
 
@@ -95,16 +96,10 @@ export default function Press() {
           {[
             {
               img: "/images/services/hero/image-8.png",
-              text: "UV خدمات چاپ انواع افست نرمال و",
-              marked: "خدمات چاپ انواع افست نرمال و UV",
-              desc: "لمس چاپ را می‌توان با لاک UV موضعی یا طیف وسیعی از پوشش‌های ویژه دیگر مانند مات، براق، جلوه‌دار و غیره طراحی کرد.",
+              text: "NORMAL OFFSET AND UV PRINTING SERVICES",
+              marked: "NORMAL OFFSET AND UV PRINTING SERVICES",
+              desc: "The feel of the print can be enhanced using spot UV coating or a wide range of other special finishes such as matte, glossy, textured effects, and more.",
             },
-            // {
-            //   img: "/images/services/hero/image-7.png",
-            //   text: "استودیو طراحی",
-            //   marked: "استودیو طراحی",
-            //   desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
-            // },
           ].map((service, index) => (
             <motion.div
               key={index}

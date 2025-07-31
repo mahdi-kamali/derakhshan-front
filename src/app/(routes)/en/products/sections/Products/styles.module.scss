@@ -30,6 +30,8 @@
     border-radius: 1rem;
     border-bottom: 5px solid rgb(55, 55, 55);
     white-space: nowrap;
+
+    max-width: 18rem;
  
 
     img {
@@ -45,8 +47,22 @@
     }
 
     h2 {
-      font-size: 1rem;
-      padding-top: 7.5em;
+      font-family: smooch-sans;
+      letter-spacing: 0.08rem;
+      font-weight: 600;
+      font-size: 1.9rem;
+      padding-top: 3.8em;
+      
+    }
+
+    button {
+    
+      font-family: syne;
+      font-weight: 700;
+      padding: 0.8rem  ;
+      span {
+        font-size: 0.77rem;
+      }
     }
   }
 }

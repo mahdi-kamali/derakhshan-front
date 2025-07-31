@@ -21,6 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
 
     padding: 10em 5em;
     // padding-top: 0;
@@ -33,45 +34,33 @@
     direction: ltr;
     .logo {
       height: max-content;
-      .image {
-        width: 22rem;
-        margin-left: 10%;
+      width: 22rem;
 
-        @include breakpoint-max(sm) {
-          width: 17rem;
-        }
-        @include breakpoint-max(xs) {
-          width: 12rem;
-        }
+      @include breakpoint-max(sm) {
+        width: 17rem;
       }
+      @include breakpoint-max(xs) {
+        width: 12rem;
+      }
+
       .text {
         text-align: center;
-        font-family: smooch-sans;
+        display: flex;
+        justify-content: center;
         white-space: nowrap;
+
+        font-family: smooch-sans;
+
         h1 {
           font-size: 4rem;
           font-weight: 500;
+          @include breakpoint-max(sm) {
+            font-size: 3rem;
+          }
+          @include breakpoint-max(xs) {
+            font-size: 2rem;
+          }
         }
-        width: 25rem;
-
-        @include breakpoint-max(sm) {
-          width: 20rem;
-        }
-        @include breakpoint-max(xs) {
-          width: 16rem;
-        }
-      }
-    }
-
-    .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      // direction: rtl;
-      img {
-        width: 30rem;
       }
     }
 

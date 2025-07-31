@@ -28,7 +28,7 @@ export default function Button(props: IProps) {
 
   return (
     <button className={classs} type="button" style={style} onClick={onClick}>
-      <Icon icon={icon} />
+      {icon !== "none" && <Icon icon={icon} />}
       {title && <span>{title}</span>}
     </button>
   );

@@ -30,6 +30,7 @@ export default function Header() {
   const isMobile = useMediaQuery({ maxWidth: 991 });
 
   const switchLang = () => {
+    setMenuOpen(false);
     const segments = pathName.split("/");
     segments[1] = language == "fa" ? "en" : "fa";
     const newPath = segments.join("/");

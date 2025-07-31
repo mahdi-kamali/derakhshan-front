@@ -15,7 +15,9 @@
   // height: 100%;
   overflow: hidden;
 
-  @include breakpoint-max(sm) {
+  font-family: smooch-sans;
+
+  @include breakpoint-max(md) {
     flex-direction: column;
   }
 
@@ -23,15 +25,24 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    direction: rtl;
+    direction: ltr;
     font-size: 1.2rem;
+    h1 {
+      font-weight: 500;
+      font-size: 2rem;
+    }
     p {
       max-width: 53ch;
-      line-height: 2;
+      line-height: 2rem;
       text-align: justify;
+      direction: ltr;
+      font-size: 1.5rem;
+    }
 
-      @include breakpoint-max(xs) {
-        max-width: 45ch;
+    button {
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
       }
     }
   }

@@ -67,7 +67,7 @@ export default function ProductsFirst() {
         }}
         viewport={{ once: true }}
       >
-        <HighLight text="محصولات ما" marked="محصولات ما" />
+        <HighLight text="Exclusive Gift Boxes" marked="Exclusive Gift Boxes" />
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -76,9 +76,9 @@ export default function ProductsFirst() {
           viewport={{ once: true }}
         >
           <Description>
-            با طیف وسیعی از فیلم‌های متالایز، سایه‌ها و رنگ‌های مختلف، می‌توانید
-            بسته‌بندی متالایز خیره‌کننده داشته باشید که برای افزایش جذابیت برند
-            شما طراحی شده است.
+            Our specialty is crafting luxurious and unique gift boxes using a
+            variety of materials, designed to cater to customers with refined
+            tastes.
           </Description>
         </motion.div>
 
@@ -90,11 +90,11 @@ export default function ProductsFirst() {
           viewport={{ once: true }}
         >
           <Button
-            title="مشاهده بیشتر"
+            title="EXPLORE MORE"
             variant={"primary"}
             icon="none"
             onClick={() => {
-              route.push("/fa/products");
+              route.push("/en/products");
             }}
           />
         </motion.div>

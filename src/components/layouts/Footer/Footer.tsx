@@ -1,7 +1,11 @@
+"use client";
+
 import { Icon } from "@iconify/react";
 import styles from "./styles.module.scss";
-
+import useSettings from "@/hooks/useSettings";
 export default function Footer() {
+  const { language } = useSettings();
+
   const configs = {
     logo: "/images/logo.png",
     slug: "/images/slug.png",
@@ -12,38 +16,46 @@ export default function Footer() {
     ],
     menu: [
       {
-        title: "ارتباط با ما",
+        title: "CONTACT",
+        titleFa: "ارتباط با ما",
         groups: [
           {
-            header: "تماس اینترنتی",
+            header: "Internet Contact",
+            headerFa: "تماس اینترنتی",
             links: [
               {
-                label: "تلفن",
+                label: "Phone",
+                labelFa: "تلفن",
                 icon: "line-md:phone-filled",
                 value: "09374905487",
               },
               {
-                label: "ایمیل",
+                label: "Email",
+                labelFa: "ایمیل",
                 icon: "line-md:email-alt-filled",
                 value: "example@gmail.com",
               },
             ],
           },
           {
-            header: "آدرس ما",
+            header: "Our Address",
+            headerFa: "آدرس ما",
             links: [
               {
-                label: "مکان ما",
+                label: "Our Location",
+                labelFa: "مکان ما",
                 icon: "mdi:location",
                 value: "تهران، خیابان مثال",
               },
             ],
           },
           {
-            header: "ساعات کاری",
+            header: "Working Hours",
+            headerFa: "ساعات کاری",
             links: [
               {
-                label: "شنبه - پنجشنبه",
+                label: "Saturday - Thursday",
+                labelFa: "شنبه - پنجشنبه",
                 icon: "line-md:clock",
                 value: "9 صبح - 6 عصر",
               },
@@ -52,41 +64,64 @@ export default function Footer() {
         ],
       },
       {
-        title: "لینک‌های مفید",
+        title: "Useful Links",
+        titleFa: "لینک‌های مفید",
         groups: [
           {
-            header: "دسترسی سریع",
+            header: "Quick Access",
+            headerFa: "دسترسی سریع",
             links: [
-              { label: "صفحه اصلی", icon: "line-md:home-md", url: "/" },
-              { label: "درباره ما", icon: "mdi:about", url: "/about" },
-              { label: "خدمات", icon: "line-md:briefcase", url: "services" },
               {
-                label: "تماس با ما",
+                label: "Home",
+                labelFa: "صفحه اصلی",
+                icon: "line-md:home-md",
+                url: "/",
+              },
+              {
+                label: "About Us",
+                labelFa: "درباره ما",
+                icon: "mdi:about",
+                url: "/about",
+              },
+              {
+                label: "Services",
+                labelFa: "خدمات",
+                icon: "line-md:briefcase",
+                url: "services",
+              },
+              {
+                label: "Contact Us",
+                labelFa: "تماس با ما",
                 icon: "line-md:phone-call",
                 url: "contact",
               },
             ],
           },
           {
-            header: "راهنما",
+            header: "Guide",
+            headerFa: "راهنما",
             links: [
               {
-                label: "سوالات متداول",
+                label: "FAQ",
+                labelFa: "سوالات متداول",
                 icon: "line-md:question-circle",
                 url: "/faq",
               },
               {
-                label: "شرایط استفاده",
+                label: "Terms of Use",
+                labelFa: "شرایط استفاده",
                 icon: "line-md:document",
                 url: "/terms",
               },
             ],
           },
           {
-            header: "پشتیبانی",
+            header: "Support",
+            headerFa: "پشتیبانی",
             links: [
               {
-                label: "مرکز پشتیبانی",
+                label: "Support Center",
+                labelFa: "مرکز پشتیبانی",
                 icon: "material-symbols:contact-support",
                 url: "/support",
               },
@@ -95,47 +130,61 @@ export default function Footer() {
         ],
       },
       {
-        title: "شبکه‌های اجتماعی",
+        title: "Social Media",
+        titleFa: "شبکه‌های اجتماعی",
         groups: [
           {
-            header: "ما را دنبال کنید",
+            header: "Follow Us",
+            headerFa: "ما را دنبال کنید",
             links: [
               {
-                label: "تلگرام",
+                label: "Telegram",
+                labelFa: "تلگرام",
                 icon: "line-md:telegram",
                 url: "https://t.me/example",
               },
               {
-                label: "اینستاگرام",
+                label: "Instagram",
+                labelFa: "اینستاگرام",
                 icon: "line-md:instagram",
                 url: "https://instagram.com/example",
               },
               {
-                label: "لینکدین",
+                label: "LinkedIn",
+                labelFa: "لینکدین",
                 icon: "line-md:linkedin",
                 url: "https://linkedin.com/in/example",
               },
               {
-                label: "توییتر",
+                label: "Twitter",
+                labelFa: "توییتر",
                 icon: "line-md:twitter",
                 url: "https://twitter.com/example",
               },
             ],
           },
           {
-            header: "اشتراک در خبرنامه",
+            header: "Newsletter Subscription",
+            headerFa: "اشتراک در خبرنامه",
             links: [
               {
-                label: "ایمیل خود را وارد کنید",
+                label: "Enter your email",
+                labelFa: "ایمیل خود را وارد کنید",
                 icon: "line-md:email",
                 value: "newsletter@example.com",
               },
             ],
           },
           {
-            header: "ارتباط مستقیم",
+            header: "Direct Contact",
+            headerFa: "ارتباط مستقیم",
             links: [
-              { label: "فرم تماس", icon: "mdi:form", url: "/contact-form" },
+              {
+                label: "Contact Form",
+                labelFa: "فرم تماس",
+                icon: "mdi:form",
+                url: "/contact-form",
+              },
             ],
           },
         ],
@@ -147,49 +196,36 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.right}>
         <div className={styles.logo}>
-          <img
-            src={configs.logo}
-            alt='Logo'
-          />
+          <img src={configs.logo} alt="Logo" />
         </div>
         <div className={styles.slug}>
-          <img
-            src={configs.slug}
-            alt='Slug'
-          />
+          {language == "fa" && <img src={configs.slug} alt="Slug" />}
         </div>
-        <div className={styles.items}>
-          {configs.nomads.map((nomad, index) => (
-            <div
-              className={styles.item}
-              key={index}>
-              <img
-                src={nomad}
-                alt={`Nomad ${index + 1}`}
-              />
-            </div>
-          ))}
-        </div>
+        {language == "fa" && (
+          <div className={styles.items}>
+            {configs.nomads.map((nomad, index) => (
+              <div className={styles.item} key={index}>
+                <img src={nomad} alt={`Nomad ${index + 1}`} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div className={styles.left}>
         {configs.menu.map((col, colIndex) => (
-          <div
-            className={styles.col}
-            key={colIndex}>
-            <h2>{col.title}</h2>
+          <div className={styles.col} key={colIndex}>
+            <h2>{language == "en" ? col.title : col.titleFa}</h2>
             {col.groups.map((group, groupIndex) => (
-              <ul
-                className={styles.group}
-                key={groupIndex}>
-                <h3>{group.header}</h3>
+              <ul className={styles.group} key={groupIndex}>
+                <h3>{language == "en" ? group.header : group.headerFa}</h3>
                 <div className={styles.links}>
                   {group.links.map((link, linkIndex) => (
-                    <li
-                      className={styles.item}
-                      key={linkIndex}>
+                    <li className={styles.item} key={linkIndex}>
                       <label>
                         <Icon icon={link.icon} />
-                        <span>{link.label}</span>
+                        <span>
+                          {language == "en" ? link.label : link.labelFa}
+                        </span>
                       </label>
                     </li>
                   ))}

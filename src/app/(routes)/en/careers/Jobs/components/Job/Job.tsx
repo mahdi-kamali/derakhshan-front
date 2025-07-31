@@ -53,7 +53,7 @@ export default function Job(props: IProps) {
         <div className={styles.description}>{job.description}</div>
 
         <Button
-          title="ارسال فرم استخدامی"
+          title="Submit Application"
           icon="ep:top-right"
           variant="primary"
           fill={isLast ? "fill" : "outline"}

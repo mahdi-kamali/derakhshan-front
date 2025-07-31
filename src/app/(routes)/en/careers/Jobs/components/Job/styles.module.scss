@@ -27,6 +27,26 @@
       font-size: 0.8rem;
       margin: 0.5rem;
     }
+
+    h1 {
+      font-family: smooch-sans;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-family: syne;
+    }
+
+    button {
+    
+      font-family: syne;
+      font-weight: 700;
+      padding: 0.8rem  ;
+      span {
+        font-size: 1rem;
+      }
+    }
     .requirements {
       list-style: disc;
       display: flex;

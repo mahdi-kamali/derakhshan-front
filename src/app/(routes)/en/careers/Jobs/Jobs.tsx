@@ -11,52 +11,52 @@ export default function Jobs() {
     {
       type: "special",
       title: {
-        text: "کارشناس فروش خدمات چاپ",
-        marked: "فروش خدمات چاپ",
+        text: "Printing Services Sales Specialist",
+        marked: "Printing Services Sales",
       },
       requirements: [
-        "آشنایی با صنعت چاپ و محصولات تکمیلی چاپ",
-        "توانایی برقراری ارتباط موثر با مشتریان",
-        "مهارت در مذاکره و ارائه خدمات",
-        "حداقل 2 سال سابقه کار مرتبط",
+        "Familiarity with the printing industry and complementary print products",
+        "Ability to communicate effectively with customers",
+        "Skills in negotiation and service presentation",
+        "At least 2 years of relevant work experience",
       ],
       description:
-        "ما به دنبال فردی هستیم که با آگاهی از خدمات چاپ و تکمیلی (مانند لمینت، طلاکوب، برجسته‌سازی و غیره) بتواند به مشتریان در انتخاب بهترین راهکارها کمک کند و فروش خدمات را افزایش دهد.",
-      apply: "ارسال فرم استخدامی",
+        "We are looking for someone knowledgeable about printing and complementary services (such as lamination, foil stamping, embossing, etc.) who can assist customers in choosing the best solutions and increase service sales.",
+      apply: "Submit Application Form",
       image: "/images/careers/image-1.png",
     },
     {
       type: "normal",
       title: {
-        text: "طراح گرافیک متخصص در صنعت چاپ",
-        marked: "طراح گرافیک",
+        text: "Graphic Designer Specialized in Printing Industry",
+        marked: "Graphic Designer",
       },
       requirements: [
-        "تسلط به نرم‌افزارهای طراحی مانند Adobe Illustrator و CorelDRAW",
-        "آشنایی با اصول طراحی برای چاپ (رزولوشن، رنگ‌ها و ابعاد)",
-        "خلاقیت در طراحی بسته‌بندی و محصولات چاپی",
-        "حداقل 2 سال تجربه طراحی مرتبط",
+        "Proficiency in design software such as Adobe Illustrator and CorelDRAW",
+        "Familiarity with design principles for printing (resolution, colors, and dimensions)",
+        "Creativity in packaging and print product design",
+        "At least 2 years of relevant design experience",
       ],
       description:
-        "ما به یک طراح گرافیک خلاق نیاز داریم که بتواند طراحی‌های حرفه‌ای و مناسب برای چاپ ایجاد کند، از جمله بسته‌بندی، بروشور، و محصولات خاص چاپی.",
-      apply: "ارسال فرم استخدامی",
+        "We need a creative graphic designer who can create professional and print-ready designs, including packaging, brochures, and specialized print products.",
+      apply: "Submit Application Form",
       image: "/images/careers/image-2.png",
     },
     {
       type: "normal",
       title: {
-        text: "طراح گرافیک متخصص در صنعت چاپ",
-        marked: "طراح گرافیک",
+        text: "Graphic Designer Specialized in Printing Industry",
+        marked: "Graphic Designer",
       },
       requirements: [
-        "تسلط به نرم‌افزارهای طراحی مانند Adobe Illustrator و CorelDRAW",
-        "آشنایی با اصول طراحی برای چاپ (رزولوشن، رنگ‌ها و ابعاد)",
-        "خلاقیت در طراحی بسته‌بندی و محصولات چاپی",
-        "حداقل 2 سال تجربه طراحی مرتبط",
+        "Proficiency in design software such as Adobe Illustrator and CorelDRAW",
+        "Familiarity with design principles for printing (resolution, colors, and dimensions)",
+        "Creativity in packaging and print product design",
+        "At least 2 years of relevant design experience",
       ],
       description:
-        "ما به یک طراح گرافیک خلاق نیاز داریم که بتواند طراحی‌های حرفه‌ای و مناسب برای چاپ ایجاد کند، از جمله بسته‌بندی، بروشور، و محصولات خاص چاپی.",
-      apply: "ارسال فرم استخدامی",
+        "We need a creative graphic designer who can create professional and print-ready designs, including packaging, brochures, and specialized print products.",
+      apply: "Submit Application Form",
       image: "/images/careers/image-3.png",
     },
   ];
@@ -83,9 +83,9 @@ export default function Jobs() {
         viewport={{ once: true }}
         className={styles.bottom}
       >
-        <p> برای ارسال فرم برای استخدام به این صفحه مراجعه فرمایید</p>
+        <p>Please visit this page to submit your job application form</p>
         <Button
-          title="ارسال فرم"
+          title="Submit Form"
           variant="primary"
           icon="ep:top-right"
           onClick={() => router.push("/fa/form")}

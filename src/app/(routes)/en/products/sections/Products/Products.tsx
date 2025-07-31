@@ -8,36 +8,37 @@ export default function Products() {
   const router = useRouter();
   const configs = [
     {
-      title: "جعبه هارد باکس لوکس",
+      title: "LUXURY HARD BOX",
       slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "جعبه مقوایی موج‌دار",
+      title: "CORRUGATED CARDBOARD",
       slug: "corrugated-box",
       image: "/images/products-first/image-2.png",
     },
     {
-      title: "جعبه تاشو سفارشی",
+      title: "CUSTOM FOLDING BOX",
       slug: "custom-folding-box",
       image: "/images/products-first/image-3.png",
     },
     {
-      title: "جعبه هارد باکس لوکس",
+      title: "LUXURY HARD BOX",
       slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "جعبه مقوایی موج‌دار",
+      title: "CORRUGATED CARDBOARD",
       slug: "corrugated-box",
       image: "/images/products-first/image-2.png",
     },
     {
-      title: "جعبه تاشو سفارشی",
+      title: "CUSTOM FOLDING BOX",
       slug: "custom-folding-box",
       image: "/images/products-first/image-3.png",
     },
   ];
+  
 
   return (
     <section>
@@ -56,7 +57,7 @@ export default function Products() {
               <h2>{product.title}</h2>
               <Button
                 icon="ep:top-right"
-                title="مشاهده محصول"
+                title="VIEW PRODUCT"
                 variant="primary"
                 onClick={() => router.push("/fa/products/" + product.slug)}
               />

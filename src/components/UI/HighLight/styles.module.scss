@@ -1,4 +1,3 @@
-
 @import "src/assets/css/mixins";
 
 .highLight {
@@ -10,10 +9,9 @@
   @include breakpoint-max(xs) {
     font-size: 1.3rem;
   }
+ 
   .second {
-    padding: 0 2px;
-
+    // padding: 0 2px;
     // color: var(--color-dark-font-secondary) !important;
-  
   }
 }

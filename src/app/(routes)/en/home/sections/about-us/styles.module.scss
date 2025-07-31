@@ -6,6 +6,7 @@
   width: 100%;
 
   display: flex;
+  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   gap: var(--home-section-gap);
@@ -18,6 +19,8 @@
 
   background-color: var(--app-section-background);
 
+  font-family: smooch-sans;
+
   @include breakpoint-max(md) {
     flex-direction: column;
   }
@@ -25,30 +28,39 @@
   .left {
     display: flex;
     flex-direction: column;
+    align-items: end;
+    text-align: end;
+
     gap: 0.5rem;
 
     h1 {
-      font-size: 1.8rem;
+      // direction: ltr;
+      font-size: 2.2rem;
+      font-weight: 500;
     }
 
     p {
       max-width: 53ch;
-      line-height: 2;
+      line-height: 2rem;
       text-align: justify;
-      @include breakpoint-max(sm) {
-        font-size: 1.1rem;
-      }
-      @include breakpoint-max(xs) {
-        max-width: 45ch;
-        font-size: 1rem;
+      direction: ltr;
+      font-size: 1.5rem;
+    }
+
+    button {
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
       }
     }
   }
 
   .right {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     position: relative;
+    width: max-content;
+
     @include breakpoint-max(xs) {
       scale: 0.8;
     }
@@ -64,19 +76,17 @@
 
     .info {
       h2 {
-        font-size: 1.5rem;
-        @include breakpoint-max(md) {
-          font-size: 1.3rem;
-        }
-        @include breakpoint-max(sm) {
-          font-size: 1.1rem;
-        }
+        direction: ltr;
+        white-space: nowrap;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 0.03rem;
       }
       p {
-        font-size: 1rem;
-        @include breakpoint-max(sm) {
-          font-size: 0.8rem;
-        }
+        direction: ltr;
+        white-space: nowrap;
+        font-size: 1.2rem;
+        font-weight: 400;
       }
     }
 
@@ -85,27 +95,33 @@
       flex-direction: column;
       justify-content: end;
       align-items: end;
-      gap: 3rem;
+      gap: 2rem;
       position: relative;
+
       @include breakpoint-max(sm) {
         gap: 2rem;
         left: 3.2rem;
       }
+
       .first {
+        position: relative;
         display: flex;
         justify-content: end;
         gap: 1rem;
-        width: 30rem;
+        width: max-content;
+
         .info {
-          text-align: end;
+          position: absolute;
+          right: 0;
+          transform: translateX(calc(100% + 1rem));
           padding-top: 1em;
         }
       }
       .second {
         display: flex;
         justify-content: center;
-        align-items: center;
-        text-align: center;
+        align-items: end;
+        text-align: start;
         gap: 1rem;
         flex-direction: column-reverse;
         padding-left: 1rem;
@@ -117,25 +133,20 @@
     }
 
     .third {
-      position: absolute;
-      top: 5.2rem;
-      right: -3.5rem;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      justify-content: start;
+      align-items: end;
+      text-align: end;
       gap: 1rem;
       flex-direction: column-reverse;
-      margin-top: 2rem;
-      @include breakpoint-max(sm) {
-        right: 3.2rem;
-      }
+      margin-top: 6rem;
+      margin-left: 2rem;
 
       .info {
         text-align: end;
 
         display: flex;
-        align-items: center;
+        align-items: end;
         flex-direction: column;
       }
     }

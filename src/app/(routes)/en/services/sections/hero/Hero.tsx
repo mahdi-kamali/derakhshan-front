@@ -19,20 +19,20 @@ export default function Hero() {
         container.style.height = `calc(100vh + ${bottomHeight}px)`;
       }
     };
-  
+
     const waitForImages = () => {
       const images = containerRef.current?.querySelectorAll("img") || [];
       if (images.length === 0) {
         handleHeroHeight();
         return;
       }
-  
+
       let loaded = 0;
       const checkDone = () => {
         loaded++;
         if (loaded === images.length) handleHeroHeight();
       };
-  
+
       images.forEach((img) => {
         if (img.complete) {
           checkDone();
@@ -42,16 +42,14 @@ export default function Hero() {
         }
       });
     };
-  
+
     waitForImages();
     window.addEventListener("resize", handleHeroHeight);
-  
+
     return () => {
       window.removeEventListener("resize", handleHeroHeight);
     };
   }, []);
-  
-  
 
   const configs = [
     "/images/services/hero/image-2.png",
@@ -85,14 +83,14 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <HighLight text="خدمات پیش از چاپ" marked="پیش از چاپ" />
+            <HighLight text="PREE-PRESS" marked="PREE-PRESS" />
             <p>
-              مشاوره با مشتری مهمترین گام در یافتن بهترین راه حل برای دستیابی به
-              بهترین نتایج بی‌نقص است، بنابراین ما ترجیح می‌دهیم بیشتر وقت و
-              انرژی خود را در این بخش به دستیابی به طراحی و بسته‌بندی نوآورانه و
-              مناسب برای هر مشتری اختصاص دهیم. <br />
-              در مرکز ما می‌توانیم به مشتریان خود نمونه‌سازی با مواد مختلف ارائه
-              دهیم تا بتوانند ابعاد نهایی را برای نمایش محصولات خود درک کنند.
+              Consultation with Customer Our main aim is to offer our customers
+              the best solutions and suggestions according to their needs and
+              products. It is our honor to be recognized as one of the best
+              companies in Iran to provide innovative packaging designs to our
+              customers. The ability to enhance the marketing brand and
+              capture.......
             </p>
           </motion.div>
         </motion.div>
@@ -132,7 +130,7 @@ export default function Hero() {
 
       <div className={styles.drawer}>
         <div className={styles.title}>
-          <p>خدمات پیش از چاپ</p>
+          <p>PREE PRESS</p>
         </div>
       </div>
 
@@ -159,10 +157,13 @@ export default function Hero() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <HighLight text="آتلیه عکاسی" marked="آتلیه عکاسی" />
+              <HighLight
+                text="PHOTOGRAPHY STUDIO"
+                marked="PHOTOGRAPHY STUDIO"
+              />
               <p>
-                استودیوی عکاسی ما نیز برای گرفتن عکس‌های با وضوح بالا و هنری از
-                محصولات شما در دسترس است.
+                Our photography studio is also available for capturing
+                high-resolution and artistic photos of your products.
               </p>
             </motion.div>
           </motion.div>
@@ -187,11 +188,12 @@ export default function Hero() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <HighLight text="استودیو طراحی" marked="استودیو طراحی" />
+              <HighLight text="DESIGN STUDIO" marked="DESIGN STUDIO" />
               <p>
-                در استودیوی طراحی ما امکان تهیه فایل‌ها با وضوح بالا وجود دارد و
-                با کمک مدیریت رنگ و اسپکتروفتومتر می‌توانیم رنگ‌های چاپ را با
-                تنظیمات بسیار دقیق و دقیقاً مشابه خروجی نهایی تنظیم کنیم.
+                In our design studio, it is possible to prepare high-resolution
+                files, and with the help of color management and a
+                spectrophotometer, we can precisely calibrate print colors to
+                closely match the final output.
               </p>
             </motion.div>
           </motion.div>
@@ -216,10 +218,14 @@ export default function Hero() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <HighLight text="خدمات لیتوگرافی" marked="خدمات لیتوگرافی" />
+              <HighLight
+                text="LITHOGRAPHY SERVICES"
+                marked="LITHOGRAPHY SERVICES"
+              />
               <p>
-                پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با
-                توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.
+                After selecting the best design and packaging materials, it's
+                time to shine with our ability to create unique and creative
+                design ideas.
               </p>
             </motion.div>
           </motion.div>
