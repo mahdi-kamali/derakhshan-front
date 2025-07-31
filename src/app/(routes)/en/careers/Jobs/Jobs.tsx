@@ -88,7 +88,7 @@ export default function Jobs() {
           title="Submit Form"
           variant="primary"
           icon="ep:top-right"
-          onClick={() => router.push("/fa/form")}
+          onClick={() => router.push("/en/job-form")}
         />
       </motion.div>
     </section>

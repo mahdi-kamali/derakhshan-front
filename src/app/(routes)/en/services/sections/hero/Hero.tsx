@@ -85,12 +85,11 @@ export default function Hero() {
           >
             <HighLight text="PREE-PRESS" marked="PREE-PRESS" />
             <p>
-              Consultation with Customer Our main aim is to offer our customers
-              the best solutions and suggestions according to their needs and
-              products. It is our honor to be recognized as one of the best
-              companies in Iran to provide innovative packaging designs to our
-              customers. The ability to enhance the marketing brand and
-              capture.......
+              Consulting with customer is the most important step in finding the
+              best solution to get the best perfect results, therefore we prefer
+              to dedicate most of our time and energy in this part to achieve
+              innovative design and packaging most suitable for each customers
+              demands.
             </p>
           </motion.div>
         </motion.div>

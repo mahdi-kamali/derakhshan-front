@@ -30,7 +30,7 @@ export default function page() {
   ];
 
   return (
-    <PageContainer title="گالری">
+    <PageContainer title="GALLERY">
       <div className={styles.page}>
         <div className={styles.right}>
           <h1>جعبه هارد باکس لوکس</h1>

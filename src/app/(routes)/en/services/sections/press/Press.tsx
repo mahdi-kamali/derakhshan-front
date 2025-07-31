@@ -43,10 +43,11 @@ export default function Press() {
           >
             <HighLight text="PRESS" marked="PRESS" />
             <p>
-              with our offset printing machine, you can reach the best quality
-              according to the latest technology.Conventional offset printing
-              and UV offset printing combine with wide range of UV varnishes
-              like matt, glossy, effect and irodion.
+              With our offset printing machines you can reach the best quality
+              according to latest technology.We offer you both traditional
+              offset as well as UV printing. the touch of the printing can be
+              designed with spot UV varnish or high range of other special
+              coatings like matt,glossy,effect and etc.
             </p>
           </motion.div>
         </motion.div>

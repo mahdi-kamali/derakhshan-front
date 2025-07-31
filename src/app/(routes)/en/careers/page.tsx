@@ -8,7 +8,7 @@ import Jobs from "./Jobs/Jobs";
 
 export default function page() {
   return (
-    <PageContainer title="فرصت های شغلی">
+    <PageContainer title="CAREERS">
       <div className={styles.page}>
         <Hero />
         <Jobs />

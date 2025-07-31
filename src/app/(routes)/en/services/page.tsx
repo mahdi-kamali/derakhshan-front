@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 
 export default function page() {
   return (
-    <PageContainer title="سرویس ها">
+    <PageContainer title="SERVICES">
       <div className={styles.page}>
         <Hero />
         <Press />

@@ -5,7 +5,7 @@ import Products from "./sections/Products/Products";
 
 export default function page() {
   return (
-    <PageContainer title='محصولات'>
+    <PageContainer title='PRODUCTS'>
       <div className={styles.page}>
         <Products />
         <div className={styles.background}></div>

@@ -10,7 +10,7 @@ import ProductsSecond from "./sections/products-second/ProductsSecond";
 export default function page() {
   return (
     <PageContainer
-      title='صفحه اصلی'
+      title='HOME'
       className='HomePage'>
       <Hero />
       <AboutUs />

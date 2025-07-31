@@ -89,12 +89,10 @@ export default function PostPress() {
           >
             <HighLight text="POST-PRESS" marked="POST-PRESS" />
             <p>
-              Consultation with Customer Our main aim is to offer our customers
-              the best solutions and suggestions according to their needs and
-              products. It is our honor to be recognized as one of the best
-              companies in Iran to provide innovative packaging designs to our
-              customers. The ability to enhance the marketing brand and
-              capture.......
+              In the post-press section we support hot foil
+              stamping,embossing,die cutting,window patching, glueing,
+              laminating and full production line of Hard box packages with the
+              latest European machinery.
             </p>
           </motion.div>
         </motion.div>
