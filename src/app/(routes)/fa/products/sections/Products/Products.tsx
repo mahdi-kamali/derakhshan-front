@@ -8,32 +8,32 @@ export default function Products() {
   const router = useRouter();
   const configs = [
     {
-      title: "جعبه هارد باکس لوکس",
+      title: "جعبه های کادویی درب و بدنه",
       slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "جعبه مقوایی موج‌دار",
+      title: "جعبه های کادوئی لپ تاپی",
       slug: "corrugated-box",
       image: "/images/products-first/image-2.png",
     },
     {
-      title: "جعبه تاشو سفارشی",
+      title: "جعبه های هاردباکس",
       slug: "custom-folding-box",
       image: "/images/products-first/image-3.png",
     },
     {
-      title: "جعبه هارد باکس لوکس",
+      title:"جعبه های دستگاه های بسته بندی اتومات",
       slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "جعبه مقوایی موج‌دار",
+      title: "جعبه های کیلویی نرمال و ایستاده",
       slug: "corrugated-box",
       image: "/images/products-first/image-2.png",
     },
     {
-      title: "جعبه تاشو سفارشی",
+      title: "استند محصولات",
       slug: "custom-folding-box",
       image: "/images/products-first/image-3.png",
     },

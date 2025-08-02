@@ -9,7 +9,7 @@ import Slide from "@/components/UI/Slider/Slide/Slide";
 export default function PostPress() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const handleHeroHeight = () => {
       const bottom = bottomRef.current;
@@ -19,20 +19,20 @@ export default function PostPress() {
         container.style.height = `calc(100vh + ${bottomHeight}px)`;
       }
     };
-  
+
     const waitForImages = () => {
       const images = containerRef.current?.querySelectorAll("img") || [];
       if (images.length === 0) {
         handleHeroHeight();
         return;
       }
-  
+
       let loaded = 0;
       const checkDone = () => {
         loaded++;
         if (loaded === images.length) handleHeroHeight();
       };
-  
+
       images.forEach((img) => {
         if (img.complete) {
           checkDone();
@@ -42,15 +42,14 @@ export default function PostPress() {
         }
       });
     };
-  
+
     waitForImages();
     window.addEventListener("resize", handleHeroHeight);
-  
+
     return () => {
       window.removeEventListener("resize", handleHeroHeight);
     };
   }, []);
-  
 
   const configs = [
     "/images/services/hero/image-2.png",
@@ -145,31 +144,31 @@ export default function PostPress() {
               img: "/images/services/hero/image-7.png",
               text: "طلاکوبی",
               marked: "طلاکوبی",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              desc: "یکی از ویژگی ها و نقاط برجسته شرکت درخشان پاک تبریز، استفاده از جدیدترین و کامل ترین دستگاه ها برای خدمات طلاکوبی و برجسته زنی میباشد. طلاکوبی و برجسته زنی توسط کلیشه های  نرمال و سه بعدی و با جنس های مختلف اجرا میشود. حتی ظریف ترین طرح ها و نوشته ها قابل طراحی و اجرا میباشد . علاوه بر این شما میتوانید با انتخاب از بین مجموعه  بی نظیر فویل های ما با رنگ ها ، افکت ها و شیدهای متنوع ، تجربه ای متمایز و بی نظیر  داشته باشید",
             },
             {
               img: "/images/services/hero/image-8.png",
-              text: "برجسته زنی",
-              marked: "برجسته زنی",
-              desc: "ما با الهام از جدیدترین خلاقیت، تصاویری با وضوح بالا از محصول خود را به شما پیشنهاد می کنیم تا برند خود را در بازار به نمایش بگذارید.",
+              text: "لترپرس",
+              marked: "لترپرس",
+              desc: "یکی از مراحل بسیار حائز اهمیت در استحکام و ایستایی نهایی جعبه ، طراحی اصولی تیغ قالب جعبه بسته بندی یا همان دایکات میباشد. با توجه به سابقه طولانی و درخشان شرکت ما در ارائه بهترین مدل های دایکات و تکنیک های لترپرس، جعبه نهایی کاملا بی نقص و با استحکام و دوام بالا به شما ارائه میگردد.",
             },
             {
               img: "/images/services/hero/image-7.png",
               text: "پنجره چسبانی",
               marked: "پنجره چسبانی",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              desc: "با استفاده از تکنیک پنجره چسبانی قادر هستیم به تناسب نیاز مشتریان و نوع محصول، امکان دیده شدن محتویات داخل جعبه بسته بندی شده را فراهم آوریم.این امر ضمن خلق جلوه ای خاص به بسته بندی انتخاب محصول توسط مصرف کننده نهایی را آسانتر خواهد کرد.",
             },
             {
               img: "/images/services/hero/image-7.png",
               text: "لمینت",
               marked: "لمینت",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              desc: "یکی دیگر از امکانات ویژه شرکت ما استفاده از ماشین آلات تمام اتوماتیک لمینیت با استفاده از انواع فویل های متالایز، شفاف، مات مخملی و یک سری فویل های منحصربفرد برای ایجاد جلوه بصری خاص و همچنین افزایش مقاومت بسته بندی در مقابل عوامل محیطی میباشد.",
             },
             {
               img: "/images/services/hero/image-7.png",
               text: "جعبه های هادر باکس",
               marked: "جعبه های هادر باکس",
-              desc: "پس از انتخاب بهترین طرح و مواد بسته بندی، وقت آن است که با توانایی خود در طراحی ایده های منحصر به فرد و خلاقانه بدرخشیم.",
+              desc: "امروزه یکی از لوکس ترین و خاص ترین بسته بندی های دنیا جعبه های هاردباکس با طراحی های منحصربفرد و ممتاز میباشد. این شرکت دارای مجهزترین و پیشرفته ترین لاین دستگاه های تمام اتوماتیک تولید جعبه های سخت یا همان هاردباکس در انواع مدل ها و ابعاد میباشد.",
             },
           ].map((service, index) => (
             <motion.div

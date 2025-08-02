@@ -19,6 +19,7 @@
   background-color: var(--app-section-background);
 
   @include breakpoint-max(md) {
+    gap: 1rem;
     flex-direction: column;
   }
 

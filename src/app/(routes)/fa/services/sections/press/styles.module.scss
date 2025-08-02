@@ -82,6 +82,9 @@
         flex-direction: column;
         gap: 0.5rem;
         line-height: 2rem;
+        p {
+          text-align: justify;
+        }
       }
     }
 

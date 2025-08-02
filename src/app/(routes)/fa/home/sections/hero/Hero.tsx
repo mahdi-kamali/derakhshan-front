@@ -29,7 +29,7 @@ export default function Hero() {
         >
           <div className={styles.slug}>«خواسته شما اولویت ماست»</div>
           <div className={styles.content}>
-            با بیش از 72 سال سابقه درخشان
+            با بیش از 80 سال سابقه درخشان
             <br /> در صنعت چاپ و بسته بندی
           </div>
         </motion.div>

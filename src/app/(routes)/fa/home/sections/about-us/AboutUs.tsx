@@ -38,7 +38,7 @@ export default function AboutUs() {
             }}
             transition={{ duration: 1 }}
           >
-            <div className={styles.info} >
+            <div className={styles.info}>
               <h2>حسن غفورزاده نوبر</h2>
               <p>موسس شرکت درخشان پاک</p>
             </div>
@@ -70,7 +70,7 @@ export default function AboutUs() {
           transition={{ duration: 1, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className={styles.info}  >
+          <div className={styles.info}>
             <h2>رحیم غفورزاده نوبر </h2>
             <p>مدیر عامل شرکت درخشان پاک</p>
           </div>
@@ -95,9 +95,12 @@ export default function AboutUs() {
           viewport={{ once: true }}
         >
           <Description>
-            ما یک شرکت چاپ افست با تجربه از سال 1972 هستیم و در بسته بندی لوکس
-            تخصص داریم. این افتخار ماست که بسته بندی های سفارشی و منحصر به فرد
-            را مطابق با نیاز شما به شما ارائه دهیم.
+            شرکت درخشان پاک تبریز، پیشرو در صنعت چاپ و بسته بندی با تجربه ای
+            بیشتر از ۸۰ سال آماده ارائه بسته بندی های لوکس و منحصر بفرد مطابق با
+            نیاز و سلیقه مشتریان عزیز میباشد. این افتخار ماست که با بهره گیری از
+            به روز ترین تکنولوژی ها و امکانات این صنعت، بتوانیم در کنار مشتریان
+            خود به عنوان یک شریک تجاری و یک مشاور با تجربه و متخصص در خلق
+            بینظیرترین محصولات ، در جهت ارتقای برند آن شرکت محترم گام برداریم.
           </Description>
         </motion.div>
 
@@ -111,7 +114,9 @@ export default function AboutUs() {
             title="مشاهده بیشتر"
             variant={"primary"}
             icon="none"
-            onClick={()=>{route.push("/fa/about-us")}}
+            onClick={() => {
+              route.push("/fa/about-us");
+            }}
           />
         </motion.div>
       </motion.div>
