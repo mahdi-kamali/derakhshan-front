@@ -39,7 +39,7 @@ export default function AboutUs() {
             transition={{ duration: 1 }}
           >
             <div className={styles.info}>
-              <h2>HASSAN GHAFOURZADEH NOBAR</h2>
+              <h2>HASSAN GHAFOURZADEH<br /> NOBAR</h2>
               <p>Founder of Derakhshan Pack Co.</p>
             </div>
             <img src="/images/about-us/image-2.png" />
@@ -71,7 +71,7 @@ export default function AboutUs() {
           viewport={{ once: true }}
         >
           <div className={styles.info}>
-            <h2>RAHIM GHAFOURZADEH NOBAR</h2>
+            <h2>RAHIM GHAFOURZADEH<br /> NOBAR</h2>
             <p>CEO and General Manager Of Derakhshan Pack Co.</p>
           </div>
           <img src="/images/about-us/image-3.png" />

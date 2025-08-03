@@ -24,7 +24,7 @@
   .left {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.7rem;
     direction: ltr;
     font-size: 1.2rem;
     h1 {
@@ -36,7 +36,8 @@
       line-height: 2rem;
       text-align: justify;
       direction: ltr;
-      font-size: 1.5rem;
+      font-family: syne;
+      font-size: 1.2rem;
     }
 
     button {
