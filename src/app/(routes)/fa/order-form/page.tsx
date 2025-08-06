@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CubeCanvas from "@/components/UI/Cube/CubeCanvas";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
@@ -22,9 +23,9 @@ const OrderForm = () => {
     itemWeight: "",
     itemCount: "",
     dimensions: {
-      x: "",
-      y: "",
-      z: "",
+      x: 100,
+      y: 20,
+      z: 70,
     },
   });
 
@@ -35,7 +36,10 @@ const OrderForm = () => {
     }));
   };
 
-  const handleDimensionChange = (axis: "x" | "y" | "z", value: string) => {
+  const handleDimensionChange = (
+    axis: "x" | "y" | "z",
+    value: number | null
+  ) => {
     setForm((prev) => ({
       ...prev,
       dimensions: {
@@ -184,32 +188,61 @@ const OrderForm = () => {
         </div>
       </div>
 
-      <div className={styles.size}>
-        <p>ابعاد محصول:</p>
-        <div className={styles.dimensionRow}>
-          <label>طول (X)</label>
-          <Input
-            type="text"
-            value={form.dimensions.x}
-            onChange={(val) => handleDimensionChange("x", val)}
-          />
+      <div className={styles.sizes}>
+        <div className={styles.Inputs}>
+          <p>ابعاد محصول:</p>
+          <div className={styles.Input}>
+            <label>طول (X)</label>
+            <Input
+              type="text"
+              value={
+                Number.isNaN(form.dimensions.x)
+                  ? ""
+                  : form.dimensions.x.toString()
+              }
+              onChange={(val) => {
+                const num = parseInt(val);
+                handleDimensionChange("x", num);
+              }}
+            />
+          </div>
+          <div className={styles.Input}>
+            <label>عرض (Y)</label>
+            <Input
+              type="text"
+              value={
+                Number.isNaN(form.dimensions.y)
+                  ? ""
+                  : form.dimensions.y.toString()
+              }
+              onChange={(val) => {
+                const num = parseInt(val);
+                handleDimensionChange("y", num);
+              }}
+            />
+          </div>
+          <div className={styles.Input}>
+            <label>ارتفاع (Z)</label>
+            <Input
+              type="text"
+              value={
+                Number.isNaN(form.dimensions.z)
+                  ? ""
+                  : form.dimensions.z.toString()
+              }
+              onChange={(val) => {
+                const num = parseInt(val);
+                handleDimensionChange("z", num);
+              }}
+            />
+          </div>
         </div>
-        <div className={styles.dimensionRow}>
-          <label>عرض (Y)</label>
-          <Input
-            type="text"
-            value={form.dimensions.y}
-            onChange={(val) => handleDimensionChange("y", val)}
-          />
-        </div>
-        <div className={styles.dimensionRow}>
-          <label>ارتفاع (Z)</label>
-          <Input
-            type="text"
-            value={form.dimensions.z}
-            onChange={(val) => handleDimensionChange("z", val)}
-          />
-        </div>
+
+        <CubeCanvas
+          width={form.dimensions.x}
+          height={form.dimensions.y}
+          depth={form.dimensions.z}
+        />
       </div>
 
       <Button
