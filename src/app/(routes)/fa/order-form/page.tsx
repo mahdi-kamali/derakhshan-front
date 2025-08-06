@@ -240,8 +240,8 @@ const OrderForm = () => {
 
         <CubeCanvas
           width={form.dimensions.x}
-          height={form.dimensions.y}
-          depth={form.dimensions.z}
+          height={form.dimensions.z}
+          depth={form.dimensions.y}
         />
       </div>
 
