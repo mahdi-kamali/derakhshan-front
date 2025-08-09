@@ -13,8 +13,10 @@
   gap: 2rem;
   align-items: center;
   background-color: var(--color-dark-background);
-  height: 100vh;
-  
+
+  height: max-content;
+  min-height: 100vh;
+
   .right {
     display: flex;
     flex-direction: column;

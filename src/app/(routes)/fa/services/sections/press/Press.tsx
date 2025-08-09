@@ -100,7 +100,7 @@ export default function Press() {
               img: "/images/services/hero/image-8.png",
               text: "UV خدمات چاپ انواع افست نرمال و",
               marked: "خدمات چاپ انواع افست نرمال و UV",
-              desc: "لمس چاپ را می‌توان با لاک UV موضعی یا طیف وسیعی از پوشش‌های ویژه دیگر مانند مات، براق، جلوه‌دار و غیره طراحی کرد.",
+              desc: "",
             },
             // {
             //   img: "/images/services/hero/image-7.png",
