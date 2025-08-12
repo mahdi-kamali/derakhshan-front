@@ -151,11 +151,6 @@ export default function Hero() {
             <div className={styles.left}>
               <HighLight text={story.title.text} marked={story.title.marked} />
               <p>{story.description}</p>
-              <Button
-               title="Read More"
-                icon={"ep:top-right"}
-                variant="primary"
-              />
             </div>
           </motion.div>
         ))}

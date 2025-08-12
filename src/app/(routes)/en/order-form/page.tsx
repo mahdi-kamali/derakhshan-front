@@ -1,363 +1,264 @@
 "use client";
 
 import { useState } from "react";
+import PageContainer from "@/components/containers/PageContainer/PageContainer";
+import CubeCanvas from "@/components/UI/Cube/CubeCanvas";
+import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
-import Input from "@/components/UI/Input/Input";
 
-const formSteps = [
-  {
-    name: "مشخصات فردی",
-    inputs: [
-      { title: "نام و نام خانوادگی", type: "text", key: "fullName" },
-      { title: "کد ملی", type: "text", key: "nationalId" },
-      { title: "تاریخ تولد", type: "date", key: "birthDate" },
+const OrderForm = () => {
+  const [form, setForm] = useState({
+    orderNumber: "",
+    orderDate: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    companyName: "",
+    industry: "",
+    sendType: {
+      upload: false,
+      browser: false,
+    },
+    itemType: "",
+    itemWeight: "",
+    itemCount: "",
+    dimensions: {
+      x: 100,
+      y: 20,
+      z: 70,
+    },
+  });
 
-      { title: "محل تولد", type: "text", key: "birthPlace" },
-      { title: "محل صدور", type: "text", key: "issuePlace" },
-      {
-        title: "وضعیت تاهل",
-        type: "select",
-        key: "maritalStatus",
-        options: [
-          { value: "مجرد", name: "مجرد" },
-          { value: "متاهل", name: "متاهل" },
-        ],
-      },
-      {
-        title: "وضعیت نظام وظیفه",
-        type: "select",
-        key: "militaryStatus",
-        options: [
-          { value: "دارای معافیت دائم", name: "دارای معافیت دائم" },
-          { value: "دارای معافیت موقت", name: "دارای معافیت موقت" },
-          { value: "پایان خدمت", name: "پایان خدمت" },
-          { value: "در حال تحصیل", name: "در حال تحصیل" },
-        ],
-      },
-      { title: "نام پدر", type: "text", key: "fatherName" },
-      { title: "شغل پدر", type: "text", key: "fatherJob" },
-
-      { title: "سابقه پرداخت بیمه", type: "text", key: "insuranceHistory" },
-
-      { title: "آدرس", type: "text", key: "address" },
-      { title: "شماره تماس", type: "text", key: "phone" },
-    ],
-  },
-  {
-    name: "سوابق تحصیلی",
-    inputs: [
-      { title: "رشته تحصیلی", type: "text", key: "eduField" },
-      { title: "مقطع تحصیلی", type: "text", key: "eduLevel" },
-      { title: "معدل", type: "number", key: "gpa" },
-      { title: "نام موسسه آموزش", type: "text", key: "eduCenter" },
-    ],
-  },
-  {
-    name: " سوابق کاری و تجربی",
-    inputs: [
-      { title: "سازمان", type: "text", key: "workCompany" },
-      { title: "زمینه همکاری", type: "text", key: "workField" },
-      { title: "مدت همکاری", type: "text", key: "workDuration" },
-      { title: "علت قطع همکاری", type: "text", key: "workReason" },
-      { title: "آخرین حقوق دریافتی", type: "text", key: "lastSalary" },
-      { title: "مدت زمان بیمه", type: "text", key: "workReason" },
-      {
-        title: "بیمه بیکاری استفاده کرده اید؟",
-        type: "text",
-        key: "workReason",
-      },
-    ],
-  },
-  {
-    name: "مهارت ها",
-    inputs: [
-      {
-        title: "مهارت",
-        type: "select-type",
-        options: [
-          { value: "حسابداری", name: "حسابداری" },
-          { value: "گرافیست", name: "گرافیست" },
-        ],
-
-        key: "skillType",
-      },
-      {
-        title: "میزان تسلط",
-        type: "select",
-        options: [
-          { value: "مبتدی", name: "مبتدی" },
-          { value: "متوسط", name: "متوسط" },
-          { value: "خوب", name: "خوب" },
-          { value: "حرفه‌ای", name: "حرفه‌ای" },
-        ],
-        key: "level",
-      },
-    ],
-  },
-  {
-    name: "نرم افزار",
-    inputs: [
-      {
-        title: "نرم افزار",
-        type: "select-type",
-        options: [
-          { value: "حسابداری", name: "حسابداری" },
-          { value: "گرافیست", name: "گرافیست" },
-        ],
-
-        key: "skillType",
-      },
-      {
-        title: "میزان تسلط",
-        type: "select",
-        options: [
-          { value: "مبتدی", name: "مبتدی" },
-          { value: "متوسط", name: "متوسط" },
-          { value: "خوب", name: "خوب" },
-          { value: "حرفه‌ای", name: "حرفه‌ای" },
-        ],
-        key: "level",
-      },
-    ],
-  },
-  {
-    name: "زبان های خارجی",
-    inputs: [
-      {
-        title: "زبان",
-        type: "select-type",
-        options: [
-          { value: "حسابداری", name: "حسابداری" },
-          { value: "گرافیست", name: "گرافیست" },
-        ],
-
-        key: "skillType",
-      },
-      {
-        title: "میزان تسلط",
-        type: "select",
-        options: [
-          { value: "مبتدی", name: "مبتدی" },
-          { value: "متوسط", name: "متوسط" },
-          { value: "خوب", name: "خوب" },
-          { value: "حرفه‌ای", name: "حرفه‌ای" },
-        ],
-        key: "level",
-      },
-    ],
-  },
-  {
-    name: "آپلود کردن رزومه",
-    inputs: [
-      { title: "آپلود رزومه", type: "file", key: "resumeFile" },
-      { title: "آپلود عکس سازمانی", type: "file", key: "orgPhoto" },
-      { title: "توضیحات", type: "text", key: "resumeDescription" },
-      { title: "حقوق درخواستی", type: "text", key: "expectedSalary" },
-    ],
-  },
-];
-
-const formStepsStyles = [
-  styles.personalInfo,
-  styles.historyEducat,
-  styles.historyJob,
-  styles.skills,
-  styles.softwares,
-  styles.languages,
-  styles.upload,
-];
-
-// Define types
-type FormData = {
-  [key: string]: string | number | File | undefined;
-};
-
-type SkillItem = {
-  skillType: string;
-  level: string;
-};
-const Form = () => {
-  const [formData, setFormData] = useState<FormData>({});
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isStepValid, setIsStepValid] = useState(true);
-
-  // Multi-entry step data
-  const [tempItem, setTempItem] = useState<Partial<SkillItem>>({});
-  const [skills, setSkills] = useState<SkillItem[]>([]);
-  const [softwares, setSoftwares] = useState<SkillItem[]>([]);
-  const [languages, setLanguages] = useState<SkillItem[]>([]);
-
-  // Handle regular input change
-  const handleChange = (key: string, value: string | number | File) => {
-    setFormData((prev) => ({
+  const handleChange = (key: string, value: string | boolean) => {
+    setForm((prev) => ({
       ...prev,
       [key]: value,
     }));
   };
 
-  // Handle multi-entry input change
-  const handleTempChange = (key: keyof SkillItem, value: string) => {
-    setTempItem((prev) => ({
+  const handleDimensionChange = (
+    axis: "x" | "y" | "z",
+    value: number | null
+  ) => {
+    setForm((prev) => ({
       ...prev,
-      [key]: value,
+      dimensions: {
+        ...prev.dimensions,
+        [axis]: value,
+      },
     }));
   };
 
-  // Add tempItem to the correct list
-  const addTempItem = () => {
-    const item: SkillItem = {
-      skillType: tempItem.skillType || "",
-      level: tempItem.level || "",
-    };
-
-    if (!item.skillType || !item.level) return;
-
-    if (currentStep === 3) setSkills((prev) => [...prev, item]);
-    else if (currentStep === 4) setSoftwares((prev) => [...prev, item]);
-    else if (currentStep === 5) setLanguages((prev) => [...prev, item]);
-
-    setTempItem({});
+  const handleSendTypeChange = (key: "upload" | "browser") => {
+    setForm((prev) => ({
+      ...prev,
+      sendType: {
+        ...prev.sendType,
+        [key]: !prev.sendType[key],
+      },
+    }));
   };
 
-  // Final submission
   const handleSubmit = () => {
-    const finalData = {
-      ...formData,
-      skills,
-      softwares,
-      languages,
-    };
-
-    console.log("Sending to backend:", finalData);
+    console.log("فرم ثبت شد:", form);
   };
-
-  // Determine if current step is one of the multi-entry ones
-  const isMultiEntryStep =
-    currentStep === 3 || currentStep === 4 || currentStep === 5;
-
-  const currentMultiList =
-    currentStep === 3 ? skills : currentStep === 4 ? softwares : languages;
 
   return (
-    <div className={styles.form}>
-      {/* Step navigation */}
-      <div className={styles.labels}>
-        {formSteps.map((step, index) => (
-          <Button
-            key={index}
-            title={step.name}
-            icon="none"
-            variant={currentStep === index ? "primary" : "success"}
-            fill={currentStep === index ? "fill" : "outline"}
-            onClick={() => setCurrentStep(index)}
-          />
-        ))}
-      </div>
+    <PageContainer title="Order Form">
+      <div className={styles.form}>
+        <h2>Order Form</h2>
 
-      {/* Main input area */}
-      <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
-        <div className={styles.contents}>
-          {isMultiEntryStep ? (
-            <>
-              {/* Inputs for multi-entry */}
-              {formSteps[currentStep].inputs.map((input, index) => (
-                <div key={index} className={styles.Input}>
-                  <p>{input.title}</p>
-                  <Input
-                    type={input.type}
-                    value={tempItem[input.key as keyof SkillItem] || ""}
-                    onChange={(val: string) =>
-                      handleTempChange(input.key as keyof SkillItem, val)
-                    }
-                    options={input.options}
-                  />
-                </div>
-              ))}
+        <div className={styles.top}>
+          <div className={styles.Input}>
+            <label>Order Number</label>
+            <Input
+              type="text"
+              value={form.orderNumber}
+              onChange={(val) => handleChange("orderNumber", val)}
+            />
+          </div>
 
-              {/* Add item button */}
-              <Button
-                title="اضافه کردن"
-                icon="ic:baseline-plus"
-                variant="primary"
-                onClick={addTempItem}
-                disabled={!tempItem.skillType || !tempItem.level}
+          <div className={styles.Input}>
+            <label>Order Date & Time</label>
+            <Input
+              type="text"
+              value={form.orderDate}
+              onChange={(val) => handleChange("orderDate", val)}
+            />
+          </div>
+        </div>
+
+        <div className={styles.names}>
+          <div className={styles.Input}>
+            <label>First Name</label>
+            <Input
+              type="text"
+              value={form.firstName}
+              onChange={(val) => handleChange("firstName", val)}
+            />
+          </div>
+
+          <div className={styles.Input}>
+            <label>Last Name</label>
+            <Input
+              type="text"
+              value={form.lastName}
+              onChange={(val) => handleChange("lastName", val)}
+            />
+          </div>
+
+          <div className={styles.Input}>
+            <label>Phone Number</label>
+            <Input
+              type="text"
+              value={form.phone}
+              onChange={(val) => handleChange("phone", val)}
+            />
+          </div>
+
+          <div className={styles.Input}>
+            <label>Company Name</label>
+            <Input
+              type="text"
+              value={form.companyName}
+              onChange={(val) => handleChange("companyName", val)}
+            />
+          </div>
+
+          <div className={styles.Input}>
+            <label>Industry</label>
+            <Input
+              type="select"
+              value={form.industry}
+              onChange={(val) => handleChange("industry", val)}
+              options={[
+                { value: "Food", name: "Food Industry" },
+                { value: "Cosmetics", name: "Cosmetics Industry" },
+                {
+                  value: "Healthcare",
+                  name: "Healthcare / Pharmaceutical Industry",
+                },
+                { value: "Other", name: "Other" },
+              ]}
+            />
+          </div>
+        </div>
+
+        <div className={styles.checkboxGroup}>
+          <label>
+            <input
+              type="checkbox"
+              checked={form.sendType.upload}
+              onChange={() => handleSendTypeChange("upload")}
+            />
+            Send Type: Upload Image
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={form.sendType.browser}
+              onChange={() => handleSendTypeChange("browser")}
+            />
+            Show in Browser
+          </label>
+        </div>
+
+        <div className={styles.product}>
+          <div className={styles.Input}>
+            <label>Product Type</label>
+            <Input
+              type="text"
+              value={form.itemType}
+              onChange={(val) => handleChange("itemType", val)}
+            />
+          </div>
+
+          <div className={styles.Input}>
+            <label>Product Weight (grams)</label>
+            <Input
+              type="text"
+              value={form.itemWeight}
+              onChange={(val) => handleChange("itemWeight", val)}
+            />
+          </div>
+
+          <div className={styles.Input}>
+            <label>Order Quantity</label>
+            <Input
+              type="text"
+              value={form.itemCount}
+              onChange={(val) => handleChange("itemCount", val)}
+            />
+          </div>
+        </div>
+
+        <div className={styles.sizes}>
+          <div className={styles.Inputs}>
+            <p>Product Dimensions:</p>
+            <div className={styles.Input}>
+              <label>Length (X)</label>
+              <Input
+                type="text"
+                value={
+                  Number.isNaN(form.dimensions.x)
+                    ? ""
+                    : form.dimensions.x.toString()
+                }
+                onChange={(val) => {
+                  const num = parseInt(val);
+                  handleDimensionChange("x", num);
+                }}
               />
-            </>
-          ) : (
-            // Regular inputs
-            formSteps[currentStep].inputs.map((input, index) => (
-              <div key={index} className={styles.Input}>
-                <p>{input.title}</p>
-                <Input
-                  type={input.type}
-                  value={
-                    formData[input.key] !== undefined &&
-                    formData[input.key] !== null
-                      ? String(formData[input.key])
-                      : ""
-                  }
-                  onChange={(val: string | number | File) =>
-                    handleChange(input.key, val)
-                  }
-                  options={input.options}
-                />
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-
-      {/* List of added items */}
-      {isMultiEntryStep && (
-        <div className={styles.list}>
-          {currentMultiList.map((item, i) => (
-            <div key={i} className={styles.listItem}>
-              <p>
-                {item.skillType} - {item.level}
-              </p>
             </div>
-          ))}
+            <div className={styles.Input}>
+              <label>Width (Y)</label>
+              <Input
+                type="text"
+                value={
+                  Number.isNaN(form.dimensions.y)
+                    ? ""
+                    : form.dimensions.y.toString()
+                }
+                onChange={(val) => {
+                  const num = parseInt(val);
+                  handleDimensionChange("y", num);
+                }}
+              />
+            </div>
+            <div className={styles.Input}>
+              <label>Height (Z)</label>
+              <Input
+                type="text"
+                value={
+                  Number.isNaN(form.dimensions.z)
+                    ? ""
+                    : form.dimensions.z.toString()
+                }
+                onChange={(val) => {
+                  const num = parseInt(val);
+                  handleDimensionChange("z", num);
+                }}
+              />
+            </div>
+          </div>
+
+          <CubeCanvas
+            width={form.dimensions.x}
+            height={form.dimensions.z}
+            depth={form.dimensions.y}
+          />
         </div>
-      )}
 
-      {/* Navigation buttons */}
-      <div className={styles.bottom}>
         <Button
-          title="قبلی"
           icon="none"
-          variant={currentStep === 0 ? "disable" : "primary"}
-          onClick={() => {
-            if (isStepValid && currentStep > 0) {
-              setCurrentStep(currentStep - 1);
-            }
-          }}
-          disabled={!isStepValid}
+          title="Submit Order"
+          variant="primary"
+          onClick={handleSubmit}
         />
-
-        {currentStep < formSteps.length - 1 ? (
-          <Button
-            title="بعدی"
-            icon="none"
-            variant="primary"
-            onClick={() => {
-              if (isStepValid) {
-                setCurrentStep(currentStep + 1);
-              }
-            }}
-            disabled={!isStepValid}
-          />
-        ) : (
-          <Button
-            title="ارسال"
-            icon="none"
-            variant="primary"
-            onClick={handleSubmit}
-          />
-        )}
       </div>
-    </div>
+    </PageContainer>
   );
 };
 
-export default Form;
+export default OrderForm;

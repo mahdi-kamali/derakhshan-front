@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import PageContainer from "@/components/containers/PageContainer/PageContainer";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
 import Input from "@/components/UI/Input/Input";
@@ -240,123 +241,125 @@ const Form = () => {
     currentStep === 3 ? skills : currentStep === 4 ? softwares : languages;
 
   return (
-    <div className={styles.form}>
-      {/* Step navigation */}
-      <div className={styles.labels}>
-        {formSteps.map((step, index) => (
-          <Button
-            key={index}
-            title={step.name}
-            icon="none"
-            variant={currentStep === index ? "primary" : "success"}
-            fill={currentStep === index ? "fill" : "outline"}
-            onClick={() => setCurrentStep(index)}
-          />
-        ))}
-      </div>
+    <PageContainer title="فرم استخدام">
+      <div className={styles.form}>
+        {/* Step navigation */}
+        <div className={styles.labels}>
+          {formSteps.map((step, index) => (
+            <Button
+              key={index}
+              title={step.name}
+              icon="none"
+              variant={currentStep === index ? "primary" : "success"}
+              fill={currentStep === index ? "fill" : "outline"}
+              onClick={() => setCurrentStep(index)}
+            />
+          ))}
+        </div>
 
-      {/* Main input area */}
-      <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
-        <div className={styles.contents}>
-          {isMultiEntryStep ? (
-            <>
-              {/* Inputs for multi-entry */}
-              {formSteps[currentStep].inputs.map((input, index) => (
+        {/* Main input area */}
+        <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
+          <div className={styles.contents}>
+            {isMultiEntryStep ? (
+              <>
+                {/* Inputs for multi-entry */}
+                {formSteps[currentStep].inputs.map((input, index) => (
+                  <div key={index} className={styles.Input}>
+                    <p>{input.title}</p>
+                    <Input
+                      type={input.type}
+                      value={tempItem[input.key as keyof SkillItem] || ""}
+                      onChange={(val: string) =>
+                        handleTempChange(input.key as keyof SkillItem, val)
+                      }
+                      options={input.options}
+                    />
+                  </div>
+                ))}
+
+                {/* Add item button */}
+                <Button
+                  title="اضافه کردن"
+                  icon="ic:baseline-plus"
+                  variant="primary"
+                  onClick={addTempItem}
+                  disabled={!tempItem.skillType || !tempItem.level}
+                />
+              </>
+            ) : (
+              // Regular inputs
+              formSteps[currentStep].inputs.map((input, index) => (
                 <div key={index} className={styles.Input}>
                   <p>{input.title}</p>
                   <Input
                     type={input.type}
-                    value={tempItem[input.key as keyof SkillItem] || ""}
-                    onChange={(val: string) =>
-                      handleTempChange(input.key as keyof SkillItem, val)
+                    value={
+                      formData[input.key] !== undefined &&
+                      formData[input.key] !== null
+                        ? String(formData[input.key])
+                        : ""
+                    }
+                    onChange={(val: string | number | File) =>
+                      handleChange(input.key, val)
                     }
                     options={input.options}
                   />
                 </div>
-              ))}
+              ))
+            )}
+          </div>
+        </div>
 
-              {/* Add item button */}
-              <Button
-                title="اضافه کردن"
-                icon="ic:baseline-plus"
-                variant="primary"
-                onClick={addTempItem}
-                disabled={!tempItem.skillType || !tempItem.level}
-              />
-            </>
-          ) : (
-            // Regular inputs
-            formSteps[currentStep].inputs.map((input, index) => (
-              <div key={index} className={styles.Input}>
-                <p>{input.title}</p>
-                <Input
-                  type={input.type}
-                  value={
-                    formData[input.key] !== undefined &&
-                    formData[input.key] !== null
-                      ? String(formData[input.key])
-                      : ""
-                  }
-                  onChange={(val: string | number | File) =>
-                    handleChange(input.key, val)
-                  }
-                  options={input.options}
-                />
+        {/* List of added items */}
+        {isMultiEntryStep && (
+          <div className={styles.list}>
+            {currentMultiList.map((item, i) => (
+              <div key={i} className={styles.listItem}>
+                <p>
+                  {item.skillType} - {item.level}
+                </p>
               </div>
-            ))
-          )}
-        </div>
-      </div>
+            ))}
+          </div>
+        )}
 
-      {/* List of added items */}
-      {isMultiEntryStep && (
-        <div className={styles.list}>
-          {currentMultiList.map((item, i) => (
-            <div key={i} className={styles.listItem}>
-              <p>
-                {item.skillType} - {item.level}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Navigation buttons */}
-      <div className={styles.bottom}>
-        <Button
-          title="قبلی"
-          icon="none"
-          variant={currentStep === 0 ? "disable" : "primary"}
-          onClick={() => {
-            if (isStepValid && currentStep > 0) {
-              setCurrentStep(currentStep - 1);
-            }
-          }}
-          disabled={!isStepValid}
-        />
-
-        {currentStep < formSteps.length - 1 ? (
+        {/* Navigation buttons */}
+        <div className={styles.bottom}>
           <Button
-            title="بعدی"
+            title="قبلی"
             icon="none"
-            variant="primary"
+            variant={currentStep === 0 ? "disable" : "primary"}
             onClick={() => {
-              if (isStepValid) {
-                setCurrentStep(currentStep + 1);
+              if (isStepValid && currentStep > 0) {
+                setCurrentStep(currentStep - 1);
               }
             }}
             disabled={!isStepValid}
           />
-        ) : (
-          <Button
-            title="ارسال"
-            icon="none"
-            variant="primary"
-            onClick={handleSubmit}
-          />
-        )}
+
+          {currentStep < formSteps.length - 1 ? (
+            <Button
+              title="بعدی"
+              icon="none"
+              variant="primary"
+              onClick={() => {
+                if (isStepValid) {
+                  setCurrentStep(currentStep + 1);
+                }
+              }}
+              disabled={!isStepValid}
+            />
+          ) : (
+            <Button
+              title="ارسال"
+              icon="none"
+              variant="primary"
+              onClick={handleSubmit}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

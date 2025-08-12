@@ -6,16 +6,18 @@
   align-items: center;
   gap: var(--home-section-gap);
   direction: ltr;
-  height: 100vh !important;
-  max-height:  100vh !important;
+
   background-color: var(--color-dark-background);
   padding: 2rem;
 
   width: 100%;
-  // height: 100%;
+
   overflow: hidden;
 
   font-family: smooch-sans;
+
+  height: max-content;
+  min-height: 100vh;
 
   @include breakpoint-max(md) {
     flex-direction: column;
@@ -27,10 +29,13 @@
     gap: 0.7rem;
     direction: ltr;
     font-size: 1.2rem;
+    margin-bottom: 2rem;
+
     h1 {
       font-weight: 500;
       font-size: 2rem;
     }
+
     p {
       max-width: 53ch;
       line-height: 2rem;
@@ -49,6 +54,7 @@
   }
 
   .right {
+    margin-top: 2rem;
     width: var(--home-section-right-width);
   }
 }

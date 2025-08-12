@@ -14,9 +14,10 @@
   gap: 7rem;
   direction: ltr;
 
-  height: 100vh !important;
-
   font-family: smooch-sans;
+
+  height: max-content;
+  min-height: 100vh;
 
   @include breakpoint-max(md) {
     flex-direction: column;
@@ -27,6 +28,7 @@
     flex-direction: column;
     gap: 0.7rem;
     direction: ltr;
+    margin-bottom: 2rem;
 
     @include breakpoint-max(xs) {
       width: 90%;
@@ -57,6 +59,7 @@
     width: var(--home-section-right-width);
     display: flex;
     height: 30rem;
+    margin-top: 2rem;
 
     @include breakpoint-max(md) {
       margin-bottom: 20rem;

@@ -1,159 +1,158 @@
 "use client";
 
 import { useState } from "react";
+import PageContainer from "@/components/containers/PageContainer/PageContainer";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
 import Input from "@/components/UI/Input/Input";
 
 const formSteps = [
   {
-    name: "مشخصات فردی",
+    name: "Personal Information",
     inputs: [
-      { title: "نام و نام خانوادگی", type: "text", key: "fullName" },
-      { title: "کد ملی", type: "text", key: "nationalId" },
-      { title: "تاریخ تولد", type: "date", key: "birthDate" },
-
-      { title: "محل تولد", type: "text", key: "birthPlace" },
-      { title: "محل صدور", type: "text", key: "issuePlace" },
+      { title: "Full Name", type: "text", key: "fullName" },
+      { title: "National ID", type: "text", key: "nationalId" },
+      { title: "Date of Birth", type: "date", key: "birthDate" },
+      { title: "Place of Birth", type: "text", key: "birthPlace" },
+      { title: "Place of Issue", type: "text", key: "issuePlace" },
       {
-        title: "وضعیت تاهل",
+        title: "Marital Status",
         type: "select",
         key: "maritalStatus",
         options: [
-          { value: "مجرد", name: "مجرد" },
-          { value: "متاهل", name: "متاهل" },
+          { value: "Single", name: "Single" },
+          { value: "Married", name: "Married" },
         ],
       },
       {
-        title: "وضعیت نظام وظیفه",
+        title: "Military Service Status",
         type: "select",
         key: "militaryStatus",
         options: [
-          { value: "دارای معافیت دائم", name: "دارای معافیت دائم" },
-          { value: "دارای معافیت موقت", name: "دارای معافیت موقت" },
-          { value: "پایان خدمت", name: "پایان خدمت" },
-          { value: "در حال تحصیل", name: "در حال تحصیل" },
+          { value: "Permanent Exemption", name: "Permanent Exemption" },
+          { value: "Temporary Exemption", name: "Temporary Exemption" },
+          { value: "Completed Service", name: "Completed Service" },
+          { value: "Currently Studying", name: "Currently Studying" },
         ],
       },
-      { title: "نام پدر", type: "text", key: "fatherName" },
-      { title: "شغل پدر", type: "text", key: "fatherJob" },
-
-      { title: "سابقه پرداخت بیمه", type: "text", key: "insuranceHistory" },
-
-      { title: "آدرس", type: "text", key: "address" },
-      { title: "شماره تماس", type: "text", key: "phone" },
-    ],
-  },
-  {
-    name: "سوابق تحصیلی",
-    inputs: [
-      { title: "رشته تحصیلی", type: "text", key: "eduField" },
-      { title: "مقطع تحصیلی", type: "text", key: "eduLevel" },
-      { title: "معدل", type: "number", key: "gpa" },
-      { title: "نام موسسه آموزش", type: "text", key: "eduCenter" },
-    ],
-  },
-  {
-    name: " سوابق کاری و تجربی",
-    inputs: [
-      { title: "سازمان", type: "text", key: "workCompany" },
-      { title: "زمینه همکاری", type: "text", key: "workField" },
-      { title: "مدت همکاری", type: "text", key: "workDuration" },
-      { title: "علت قطع همکاری", type: "text", key: "workReason" },
-      { title: "آخرین حقوق دریافتی", type: "text", key: "lastSalary" },
-      { title: "مدت زمان بیمه", type: "text", key: "workReason" },
+      { title: "Father's Name", type: "text", key: "fatherName" },
+      { title: "Father's Job", type: "text", key: "fatherJob" },
       {
-        title: "بیمه بیکاری استفاده کرده اید؟",
+        title: "Insurance Payment History",
         type: "text",
-        key: "workReason",
+        key: "insuranceHistory",
+      },
+      { title: "Address", type: "text", key: "address" },
+      { title: "Phone Number", type: "text", key: "phone" },
+    ],
+  },
+  {
+    name: "Educational Background",
+    inputs: [
+      { title: "Field of Study", type: "text", key: "eduField" },
+      { title: "Education Level", type: "text", key: "eduLevel" },
+      { title: "GPA", type: "number", key: "gpa" },
+      { title: "Educational Institution Name", type: "text", key: "eduCenter" },
+    ],
+  },
+  {
+    name: "Work and Experience History",
+    inputs: [
+      { title: "Organization", type: "text", key: "workCompany" },
+      { title: "Field of Work", type: "text", key: "workField" },
+      { title: "Duration of Employment", type: "text", key: "workDuration" },
+      { title: "Reason for Leaving", type: "text", key: "workReason" },
+      { title: "Last Received Salary", type: "text", key: "lastSalary" },
+      { title: "Insurance Duration", type: "text", key: "insuranceDuration" },
+      {
+        title: "Have you used Unemployment Insurance?",
+        type: "text",
+        key: "unemploymentInsurance",
       },
     ],
   },
   {
-    name: "مهارت ها",
+    name: "Skills",
     inputs: [
       {
-        title: "مهارت",
+        title: "Skill",
         type: "select-type",
         options: [
-          { value: "حسابداری", name: "حسابداری" },
-          { value: "گرافیست", name: "گرافیست" },
+          { value: "Accounting", name: "Accounting" },
+          { value: "Graphic Designer", name: "Graphic Designer" },
         ],
-
         key: "skillType",
       },
       {
-        title: "میزان تسلط",
+        title: "Proficiency Level",
         type: "select",
         options: [
-          { value: "مبتدی", name: "مبتدی" },
-          { value: "متوسط", name: "متوسط" },
-          { value: "خوب", name: "خوب" },
-          { value: "حرفه‌ای", name: "حرفه‌ای" },
+          { value: "Beginner", name: "Beginner" },
+          { value: "Intermediate", name: "Intermediate" },
+          { value: "Good", name: "Good" },
+          { value: "Professional", name: "Professional" },
         ],
         key: "level",
       },
     ],
   },
   {
-    name: "نرم افزار",
+    name: "Software",
     inputs: [
       {
-        title: "نرم افزار",
+        title: "Software",
         type: "select-type",
         options: [
-          { value: "حسابداری", name: "حسابداری" },
-          { value: "گرافیست", name: "گرافیست" },
+          { value: "Accounting", name: "Accounting" },
+          { value: "Graphic Designer", name: "Graphic Designer" },
         ],
-
         key: "skillType",
       },
       {
-        title: "میزان تسلط",
+        title: "Proficiency Level",
         type: "select",
         options: [
-          { value: "مبتدی", name: "مبتدی" },
-          { value: "متوسط", name: "متوسط" },
-          { value: "خوب", name: "خوب" },
-          { value: "حرفه‌ای", name: "حرفه‌ای" },
+          { value: "Beginner", name: "Beginner" },
+          { value: "Intermediate", name: "Intermediate" },
+          { value: "Good", name: "Good" },
+          { value: "Professional", name: "Professional" },
         ],
         key: "level",
       },
     ],
   },
   {
-    name: "زبان های خارجی",
+    name: "Foreign Languages",
     inputs: [
       {
-        title: "زبان",
+        title: "Language",
         type: "select-type",
         options: [
-          { value: "حسابداری", name: "حسابداری" },
-          { value: "گرافیست", name: "گرافیست" },
+          { value: "English", name: "English" },
+          { value: "French", name: "French" },
         ],
-
         key: "skillType",
       },
       {
-        title: "میزان تسلط",
+        title: "Proficiency Level",
         type: "select",
         options: [
-          { value: "مبتدی", name: "مبتدی" },
-          { value: "متوسط", name: "متوسط" },
-          { value: "خوب", name: "خوب" },
-          { value: "حرفه‌ای", name: "حرفه‌ای" },
+          { value: "Beginner", name: "Beginner" },
+          { value: "Intermediate", name: "Intermediate" },
+          { value: "Good", name: "Good" },
+          { value: "Professional", name: "Professional" },
         ],
         key: "level",
       },
     ],
   },
   {
-    name: "آپلود کردن رزومه",
+    name: "Upload Resume",
     inputs: [
-      { title: "آپلود رزومه", type: "file", key: "resumeFile" },
-      { title: "آپلود عکس سازمانی", type: "file", key: "orgPhoto" },
-      { title: "توضیحات", type: "text", key: "resumeDescription" },
-      { title: "حقوق درخواستی", type: "text", key: "expectedSalary" },
+      { title: "Upload Resume", type: "file", key: "resumeFile" },
+      { title: "Upload Organizational Photo", type: "file", key: "orgPhoto" },
+      { title: "Description", type: "text", key: "resumeDescription" },
+      { title: "Expected Salary", type: "text", key: "expectedSalary" },
     ],
   },
 ];
@@ -240,123 +239,125 @@ const Form = () => {
     currentStep === 3 ? skills : currentStep === 4 ? softwares : languages;
 
   return (
-    <div className={styles.form}>
-      {/* Step navigation */}
-      <div className={styles.labels}>
-        {formSteps.map((step, index) => (
-          <Button
-            key={index}
-            title={step.name}
-            icon="none"
-            variant={currentStep === index ? "primary" : "success"}
-            fill={currentStep === index ? "fill" : "outline"}
-            onClick={() => setCurrentStep(index)}
-          />
-        ))}
-      </div>
+    <PageContainer title="Job Form">
+      <div className={styles.form}>
+        {/* Step navigation */}
+        <div className={styles.labels}>
+          {formSteps.map((step, index) => (
+            <Button
+              key={index}
+              title={step.name}
+              icon="none"
+              variant={currentStep === index ? "primary" : "success"}
+              fill={currentStep === index ? "fill" : "outline"}
+              onClick={() => setCurrentStep(index)}
+            />
+          ))}
+        </div>
 
-      {/* Main input area */}
-      <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
-        <div className={styles.contents}>
-          {isMultiEntryStep ? (
-            <>
-              {/* Inputs for multi-entry */}
-              {formSteps[currentStep].inputs.map((input, index) => (
+        {/* Main input area */}
+        <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
+          <div className={styles.contents}>
+            {isMultiEntryStep ? (
+              <>
+                {/* Inputs for multi-entry */}
+                {formSteps[currentStep].inputs.map((input, index) => (
+                  <div key={index} className={styles.Input}>
+                    <p>{input.title}</p>
+                    <Input
+                      type={input.type}
+                      value={tempItem[input.key as keyof SkillItem] || ""}
+                      onChange={(val: string) =>
+                        handleTempChange(input.key as keyof SkillItem, val)
+                      }
+                      options={input.options}
+                    />
+                  </div>
+                ))}
+
+                {/* Add item button */}
+                <Button
+                  title="اضافه کردن"
+                  icon="ic:baseline-plus"
+                  variant="primary"
+                  onClick={addTempItem}
+                  disabled={!tempItem.skillType || !tempItem.level}
+                />
+              </>
+            ) : (
+              // Regular inputs
+              formSteps[currentStep].inputs.map((input, index) => (
                 <div key={index} className={styles.Input}>
                   <p>{input.title}</p>
                   <Input
                     type={input.type}
-                    value={tempItem[input.key as keyof SkillItem] || ""}
-                    onChange={(val: string) =>
-                      handleTempChange(input.key as keyof SkillItem, val)
+                    value={
+                      formData[input.key] !== undefined &&
+                      formData[input.key] !== null
+                        ? String(formData[input.key])
+                        : ""
+                    }
+                    onChange={(val: string | number | File) =>
+                      handleChange(input.key, val)
                     }
                     options={input.options}
                   />
                 </div>
-              ))}
+              ))
+            )}
+          </div>
+        </div>
 
-              {/* Add item button */}
-              <Button
-                title="اضافه کردن"
-                icon="ic:baseline-plus"
-                variant="primary"
-                onClick={addTempItem}
-                disabled={!tempItem.skillType || !tempItem.level}
-              />
-            </>
-          ) : (
-            // Regular inputs
-            formSteps[currentStep].inputs.map((input, index) => (
-              <div key={index} className={styles.Input}>
-                <p>{input.title}</p>
-                <Input
-                  type={input.type}
-                  value={
-                    formData[input.key] !== undefined &&
-                    formData[input.key] !== null
-                      ? String(formData[input.key])
-                      : ""
-                  }
-                  onChange={(val: string | number | File) =>
-                    handleChange(input.key, val)
-                  }
-                  options={input.options}
-                />
+        {/* List of added items */}
+        {isMultiEntryStep && (
+          <div className={styles.list}>
+            {currentMultiList.map((item, i) => (
+              <div key={i} className={styles.listItem}>
+                <p>
+                  {item.skillType} - {item.level}
+                </p>
               </div>
-            ))
-          )}
-        </div>
-      </div>
+            ))}
+          </div>
+        )}
 
-      {/* List of added items */}
-      {isMultiEntryStep && (
-        <div className={styles.list}>
-          {currentMultiList.map((item, i) => (
-            <div key={i} className={styles.listItem}>
-              <p>
-                {item.skillType} - {item.level}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Navigation buttons */}
-      <div className={styles.bottom}>
-        <Button
-          title="قبلی"
-          icon="none"
-          variant={currentStep === 0 ? "disable" : "primary"}
-          onClick={() => {
-            if (isStepValid && currentStep > 0) {
-              setCurrentStep(currentStep - 1);
-            }
-          }}
-          disabled={!isStepValid}
-        />
-
-        {currentStep < formSteps.length - 1 ? (
+        {/* Navigation buttons */}
+        <div className={styles.bottom}>
           <Button
-            title="بعدی"
+            title="Previous"
             icon="none"
-            variant="primary"
+            variant={currentStep === 0 ? "disable" : "primary"}
             onClick={() => {
-              if (isStepValid) {
-                setCurrentStep(currentStep + 1);
+              if (isStepValid && currentStep > 0) {
+                setCurrentStep(currentStep - 1);
               }
             }}
             disabled={!isStepValid}
           />
-        ) : (
-          <Button
-            title="ارسال"
-            icon="none"
-            variant="primary"
-            onClick={handleSubmit}
-          />
-        )}
+
+          {currentStep < formSteps.length - 1 ? (
+            <Button
+              title="Next"
+              icon="none"
+              variant="primary"
+              onClick={() => {
+                if (isStepValid) {
+                  setCurrentStep(currentStep + 1);
+                }
+              }}
+              disabled={!isStepValid}
+            />
+          ) : (
+            <Button
+              title="Submit"
+              icon="none"
+              variant="primary"
+              onClick={handleSubmit}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

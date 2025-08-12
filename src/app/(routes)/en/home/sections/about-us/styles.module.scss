@@ -2,7 +2,6 @@
 @import "src/assets/css/mixins";
 
 .aboutUs {
-  height: 100vh !important;
   width: 100%;
 
   display: flex;
@@ -21,6 +20,9 @@
 
   font-family: smooch-sans;
 
+  height: max-content;
+  min-height: 100vh;
+
   @include breakpoint-max(md) {
     flex-direction: column;
   }
@@ -32,6 +34,10 @@
     text-align: end;
 
     gap: 0.7rem;
+
+    button {
+      margin-bottom: 2rem;
+    }
 
     h1 {
       // direction: ltr;
@@ -61,6 +67,7 @@
     flex-direction: row-reverse;
     position: relative;
     width: max-content;
+    margin-top: 2rem;
 
     @include breakpoint-max(xs) {
       scale: 0.8;
