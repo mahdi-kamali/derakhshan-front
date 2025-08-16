@@ -11,11 +11,10 @@
   background-size: cover;
   background-position: right;
   flex-direction: row-reverse;
-  gap: 7rem;
+ 
   direction: ltr;
 
   font-family: smooch-sans;
-
 
   height: max-content !important;
   min-height: 100vh !important;
@@ -58,31 +57,23 @@
   .right {
     position: relative;
     width: var(--home-section-right-width);
-    display: flex;
-   
-    margin-top: 2rem;
 
     @include breakpoint-max(md) {
-      margin-bottom: 20rem;
       scale: 0.9;
     }
 
     @include breakpoint-max(sm) {
-      scale: 0.7;
+      scale: 0.8;
     }
 
-    @include breakpoint-max(xs) {
-      margin-bottom: 16rem;
-    }
-
-    margin-right: 10%;
-
+    margin-right: 5%;
+    margin-left: 4vw;
     .first {
       background: url("/images/products-first/box.png");
       height: 13rem;
       width: 13rem;
       background-size: cover;
-      position: absolute;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -99,12 +90,12 @@
       height: 13rem;
       width: 13rem;
       background-size: cover;
-      position: absolute;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      top: 14rem;
-      left: 0;
+      top: 1rem;
+      left: 2rem;
       z-index: 1;
       img {
         object-fit: contain;
@@ -119,8 +110,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      top: 10rem;
-      right: -5rem;
+      top: 6rem;
+      right: -4rem;
       img {
         object-fit: contain;
       }
