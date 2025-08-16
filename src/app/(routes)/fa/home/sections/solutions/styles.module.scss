@@ -8,14 +8,13 @@
   direction: ltr;
 
   background-color: var(--color-dark-background);
-  padding: 2rem;
-
+  padding: 3rem;
   width: 100%;
 
   overflow: hidden;
 
-  height: max-content;
-  min-height: 100vh;
+  height: max-content !important;
+  min-height: 100vh !important;
 
   @include breakpoint-max(md) {
     flex-direction: column;

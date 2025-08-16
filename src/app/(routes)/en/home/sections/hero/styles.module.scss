@@ -8,7 +8,7 @@
 
   height: 100vh !important;
   width: 100%;
-  position: relative;
+
   z-index: -10;
   position: fixed;
   top: 0;
@@ -23,7 +23,7 @@
     justify-content: center;
     gap: 0.5rem;
 
-    padding: 10em 5em;
+    padding: 3em;
     // padding-top: 0;
     height: 100%;
     background: url("/images/backgrounds/hero.png");
@@ -32,6 +32,7 @@
     background-size: cover;
 
     direction: ltr;
+
     .logo {
       height: max-content;
       width: 22rem;
@@ -72,13 +73,14 @@
       text-align: center;
 
       height: 50%;
-      white-space: nowrap;
+      // white-space: nowrap;
       margin-top: 5rem;
       gap: 3rem;
       height: max-content;
       @include breakpoint-max(xs) {
         gap: 3.5rem;
       }
+
       .slug {
         font-size: 1.75rem;
         font-weight: bold;
@@ -90,11 +92,16 @@
       }
 
       .content {
-        max-width: 40ch;
         font-size: 1.5rem;
         font-family: syne;
         @include breakpoint-max(xs) {
           font-size: 1.2rem;
+        }
+
+        @include breakpoint-max(sm) {
+          br {
+            display: none;
+          }
         }
       }
     }
@@ -105,6 +112,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.25rem;
+
       @include breakpoint-max(xs) {
         font-size: 1.1rem;
       }

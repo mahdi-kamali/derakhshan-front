@@ -8,6 +8,11 @@ export default function Products() {
   const router = useRouter();
   const configs = [
     {
+      title: "چاپ و طلاکوبی PVC و PET",
+      slug: "luxury-hardbox",
+      image: "/images/products-first/image-1.png",
+    },
+    {
       title: "جعبه های کادویی درب و بدنه",
       slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
@@ -23,7 +28,7 @@ export default function Products() {
       image: "/images/products-first/image-3.png",
     },
     {
-      title:"جعبه های دستگاه های بسته بندی اتومات",
+      title: "جعبه های دستگاه های بسته بندی اتومات",
       slug: "luxury-hardbox",
       image: "/images/products-first/image-1.png",
     },

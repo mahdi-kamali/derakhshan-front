@@ -4,23 +4,23 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 import Button from "../../Button/Button";
 
-interface InputSelectProps {
-  name?: string;
-  value?: string;
-  options?: { value: string; name: string }[];
-  type?: boolean;
-  className?: string;
-  onChange?: (value: string) => void;
-}
-
 const InputSelect = ({
   name,
   value,
   options,
   type,
   className,
+  placeholder,
   onChange,
-}: InputSelectProps) => {
+}: {
+  name?: string;
+  value?: string;
+  options?: { value: string; name: string }[];
+  type?: boolean;
+  className?: string;
+  placeholder?: { input: string; select: string };
+  onChange?: (value: string) => void;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (val: string) => {
@@ -28,13 +28,15 @@ const InputSelect = ({
     if (onChange) onChange(val);
   };
 
-  const inputPlaceHolder = `${type ? `بنویسید یا` : ""} انتخاب کنید`;
+  const inputPlaceHolder = type
+    ? placeholder?.input || "بنویسید یا انتخاب کنید"
+    : placeholder?.select || "انتخاب کنید";
 
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.type}>
         <div
-        className={styles.Input}
+          className={styles.Input}
           onClick={() => {
             if (!type) {
               setIsOpen((prev) => !prev);

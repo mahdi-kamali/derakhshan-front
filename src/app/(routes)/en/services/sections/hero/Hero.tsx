@@ -89,7 +89,10 @@ export default function Hero() {
               best solution to get the best perfect results, therefore we prefer
               to dedicate most of our time and energy in this part to achieve
               innovative design and packaging most suitable for each customers
-              demands.
+              demands. In this regard, sample making and providing a prototype
+              of the box using different materials in real dimensions and sizes
+              can help customers to observe more accurately and make better
+              decisions.
             </p>
           </motion.div>
         </motion.div>
@@ -189,10 +192,13 @@ export default function Hero() {
             >
               <HighLight text="DESIGN STUDIO" marked="DESIGN STUDIO" />
               <p>
-                In our design studio, it is possible to prepare high-resolution
-                files, and with the help of color management and a
-                spectrophotometer, we can precisely calibrate print colors to
-                closely match the final output.
+                Certainly one of the most important parts of any company is its
+                ideation, creativity and design. Our design studio strives to
+                provide the best suggestions to enhance your brand and thus
+                differentiate your packaging. In this unit, print files are
+                color-separated with the help of color management technology and
+                we provide you with completely consistent and uniform print
+                samples that comply with printing standards.
               </p>
             </motion.div>
           </motion.div>
@@ -222,9 +228,10 @@ export default function Hero() {
                 marked="LITHOGRAPHY SERVICES"
               />
               <p>
-                After selecting the best design and packaging materials, it's
-                time to shine with our ability to create unique and creative
-                design ideas.
+                One of the important and sensitive parts of this lithography
+                industry is the use of the most up-to-date machinery and the
+                best materials, which plays a significant role in the final
+                quality of the print.
               </p>
             </motion.div>
           </motion.div>

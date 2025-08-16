@@ -93,16 +93,14 @@
           flex-direction: column;
           gap: 0.25rem;
           text-align: left;
-          @include breakpoint-max(md) {
+          @include breakpoint-max(sm) {
             text-align: center;
           }
           .name {
             font-size: 2rem;
             letter-spacing: 0.08rem;
             font-weight: 600;
-            @include breakpoint-max(md) {
-              white-space: nowrap;
-            }
+          
           }
           .roles {
             font-size: 1.3rem;

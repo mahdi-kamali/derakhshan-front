@@ -89,10 +89,13 @@ export default function PostPress() {
           >
             <HighLight text="POST-PRESS" marked="POST-PRESS" />
             <p>
-              In the post-press section we support hot foil
-              stamping,embossing,die cutting,window patching, glueing,
-              laminating and full production line of Hard box packages with the
-              latest European machinery.
+              To provide luxurious and unique packaging, the services that are
+              performed in the post-printing stage are very important. The
+              smallest details create the most beautiful effects and results, so
+              even at this stage, the most special and creative idea must be
+              implemented. Our company, with state-of-the-art technology, offers
+              you packaging that is the best and most unique, both visually and
+              in terms of strength and durability.
             </p>
           </motion.div>
         </motion.div>
@@ -143,33 +146,35 @@ export default function PostPress() {
           {[
             {
               img: "/images/services/hero/image-7.png",
-              text: "FOIL STAMPING",
-              marked: "FOIL STAMPING",
-              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
+              text: "HOT FOIL STAMPING AND EMBOSSING",
+              marked: "HOT FOIL STAMPING AND EMBOSSING",
+              desc: "One of the features and highlights of Derakhshan Pack Co. Tabriz Company is the use of the latest and most complete machines for hot foil stamping and embossing services. Hot foil stamping and embossing is performed using normal and three-dimensional clichés and with different materials. Even the most delicate designs can be executed. In addition, you can have a distinctive and unique experience by choosing from our unique collection of foils with various colors, effects and shades.",
             },
             {
               img: "/images/services/hero/image-8.png",
-              text: "EMBOSSING",
-              marked: "EMBOSSING",
-              desc: "Inspired by the latest creativity, we offer high-resolution visuals of your product to showcase your brand in the market.",
+
+              text: "LETTERPRESS",
+              marked: "LETTERPRESS",
+              desc: "One of the most important steps in the final strength and stability of the box is the fundamental design of the packaging box die-cut. Given our company's long and illustrious history in providing the best die-cut models and letterpress techniques, the final box is presented to you completely flawless and with high strength and durability.",
             },
             {
               img: "/images/services/hero/image-7.png",
-              text: "WINDOW PASTING",
-              marked: "WINDOW PASTING",
-              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
+
+              text: "WINDOW PATCHING",
+              marked: "WINDOW PATCHING",
+              desc: "By using the window patching technique, we are able to provide visibility of the contents inside the packaged box, according to the needs of customers and the type of product. This will create a special effect for the packaging and make it easier for the end consumer to select the product.",
             },
             {
               img: "/images/services/hero/image-7.png",
-              text: "LAMINATION",
-              marked: "LAMINATION",
-              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
+              text: "LAMINATE",
+              marked: "LAMINATE",
+              desc: "Another special feature of our company is the use of fully automatic laminating machines using a variety of metallized, transparent, velvet matte foils and a series of unique foils to create a special visual effect and also increase the resistance of the packaging to environmental factors.",
             },
             {
               img: "/images/services/hero/image-7.png",
-              text: "HARD BOXES",
-              marked: "HARD BOXES",
-              desc: "After selecting the best design and packaging materials, it's time to shine with our ability to craft unique and creative ideas.",
+              text: "RIGID BOXES",
+              marked: "RIGID BOXES",
+              desc: "Today, one of the most luxurious and special packaging in the world is hard boxes with unique and premium designs. This company has the most equipped and advanced line of fully automatic machines for producing hard boxes or rigid boxes in a variety of models and dimensions.",
             },
           ].map((service, index) => (
             <motion.div

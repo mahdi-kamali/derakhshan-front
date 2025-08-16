@@ -43,11 +43,12 @@ export default function Press() {
           >
             <HighLight text="PRESS" marked="PRESS" />
             <p>
-              With our offset printing machines you can reach the best quality
-              according to latest technology.We offer you both traditional
-              offset as well as UV printing. the touch of the printing can be
-              designed with spot UV varnish or high range of other special
-              coatings like matt,glossy,effect and etc.
+              Using the most up-to-date offset printing machines including
+              normal offset and UV offset, we bring you the best printing
+              quality. You are able to choose from a variety of coatings such as
+              glossy, matte, effect, iriodin, UV in full or spot places. These
+              coatings, in addition to increasing the protection of the printed
+              material, give the packaging a special look and appeal.
             </p>
           </motion.div>
         </motion.div>
@@ -117,10 +118,10 @@ export default function Press() {
               <div className={styles.left}>
                 <img src={service.img} alt="" />
               </div>
-              <div className={styles.right}>
+              {/* <div className={styles.right}>
                 <HighLight text={service.text} marked={service.marked} />
                 <p>{service.desc}</p>
-              </div>
+              </div> */}
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import useSettings from "@/hooks/useSettings";
 import PageContainer from "@/components/containers/PageContainer/PageContainer";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
@@ -177,6 +178,8 @@ type SkillItem = {
   level: string;
 };
 const Form = () => {
+  const { language } = useSettings();
+
   const [formData, setFormData] = useState<FormData>({});
   const [currentStep, setCurrentStep] = useState(0);
   const [isStepValid, setIsStepValid] = useState(true);
@@ -277,7 +280,7 @@ const Form = () => {
 
                 {/* Add item button */}
                 <Button
-                  title="اضافه کردن"
+                  title={language == "en" ? "add" : "اضافه کردن"}
                   icon="ic:baseline-plus"
                   variant="primary"
                   onClick={addTempItem}

@@ -14,47 +14,47 @@ export default function Hero() {
       {
         name: "Hassan Ghafoorzadeh Nobar",
         image: "/images/about-us/image-2.png",
-        roles: ["Founder of Derakhshan Pak Company"],
+        roles: ["Founder of Derakhshan Pack Company"],
       },
       {
         name: "Rahim Ghafoorzadeh Nobar",
         image: "/images/about-us/image-3.png",
-        roles: ["CEO of Derakhshan Pak Company"],
+        roles: ["CEO of Derakhshan Pack Company"],
         email: "ceo@dppack.com",
       },
       {
-        name: "Fereshteh Nobar",
+        name: "Fereshteh Ghafoorzadeh Nobar",
         image: "/images/about-us/image-1.png",
-        roles: ["Deputy CEO of Derakhshan Pak"],
+        roles: ["Deputy CEO of Derakhshan Pack"],
       },
     ],
     stories: [
       {
         title: {
-          text: "1945 - Company Establishment",
-          marked: "Establishment",
+          text: "First Generation",
+          marked: "First Generation",
         },
         image: "/images/about-us/stories/image-1.png",
         description:
-          "In 1945, our grandfather, Hassan Ghafoorzadeh Nobar, laid the foundations of our modern and fully equipped packaging company in Tabriz. We take pride and joy in looking back at our 71-year company history. Welcome to a journey through time that shows what can be achieved through strong will and innovation.",
+          "Establishment of the CompanyMr. Hassan Ghafurzadeh Nobar, as the founder of the Derakhshan Printing brand, established a fully equipped printing and packaging facility in Tabriz in 1945. With his continuous efforts, he was able to become one of the most successful in this industry and become a familiar and popular name in the city of Tabriz and the country. We look back with pride on our 80-year history.",
       },
       {
         title: {
-          text: "1979 - Second Generation",
-          marked: "Second",
+          text: "Second Generation",
+          marked: "Second Generation",
         },
         image: "/images/about-us/stories/image-2.png",
         description:
-          "As a family-owned business, Rahim Ghafoorzadeh Nobar, representing the second generation, understood the importance of maintaining quality while meeting customer demands. In 1979, he expanded the company to 12,000 square meters.",
+          "Mr. Rahim Ghafurzadeh Nobar, in 1979, after completing his studies in business administration from Tehran Tabatabayi University and backed by several years of experience in this industry, with his father's guidance, creative thinking, and passion and perseverance, decided to continue his father's career. Considering his understanding of the importance and high status of printing and packaging, and considering the industrialization of Iran, especially Tabriz as one of the main industrial hubs of the country and also the capital of sweets and chocolate, he started importing advanced and automatic European printing and packaging machines so that they could deliver orders to customers with the best quality and at the same time in the fastest time. The quality of the final product and accurate consultation, in addition to providing the most unique packaging in the world, made this company known as the best in the field of printing and packaging. In this regard, after several years of study, he started to expand the company with an infrastructure of 12,000 square meters and import new machinery. At the same time, advanced and automatic hard box boxes machines entered the company extensively and completely.",
       },
       {
         title: {
-          text: "2014 - Globalization and Digitalization",
-          marked: "Digitalization",
+          text: "Third Generation",
+          marked: "Third Generation",
         },
         image: "/images/about-us/stories/image-3.png",
         description:
-          "Globalization and digitalization have made the world smaller and expanded Derakhshan Pack's business reach. Fereshteh Ghafoorzadeh Nobar, the third generation of the family, joined the company after beginning her academic studies in Germany and Iran—bringing new value to our customers.",
+          "Ms. Fereshteh Ghafurzadeh Nobar, after completing her undergraduate studies in Industrial Engineering and her master's degree in Business Management from Tabriz University, joined the company in 2014 alongside her father to continue the activities of the Derakhshan Printing brand, while benefiting from experienced professors in the printing industry in Germany and obtaining academic degrees from prestigious universities in the industry, and began her activity in order to advance the company's goals.",
       },
     ],
   };

@@ -40,7 +40,7 @@ export default function AboutUs() {
           >
             <div className={styles.info}>
               <h2>حسن غفورزاده نوبر</h2>
-              <p>موسس شرکت درخشان پاک</p>
+              <p>موسس و بنیان گذار برند چاپ درخشان</p>
             </div>
             <img src="/images/about-us/image-2.png" />
           </motion.div>

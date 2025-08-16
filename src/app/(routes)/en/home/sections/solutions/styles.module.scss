@@ -16,8 +16,8 @@
 
   font-family: smooch-sans;
 
-  height: max-content;
-  min-height: 100vh;
+  height: max-content !important;
+  min-height: 100vh !important;
 
   @include breakpoint-max(md) {
     flex-direction: column;

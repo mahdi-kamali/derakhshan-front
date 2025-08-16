@@ -15,6 +15,7 @@
   height: 200vh;
   width: 100%;
   position: relative;
+ 
 
   .drawer {
     width: 100%;
@@ -37,7 +38,6 @@
       backdrop-filter: blur(0.5rem);
       background-color: rgb(228, 0, 57);
       color: black;
-
 
       font-family: smooch-sans;
       font-size: 2rem;
@@ -126,7 +126,7 @@
     top: 100vh;
 
     @include breakpoint-max(md) {
-      top: 120vh;
+      top: 100vh;
     }
 
     .services {

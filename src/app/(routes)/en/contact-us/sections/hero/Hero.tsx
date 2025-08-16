@@ -15,7 +15,7 @@ export default function Hero() {
         {
           label: "Company Name",
           name: "name",
-          value: "Derakhshan Pak Tabriz",
+          value: "Derakhshan Pack Tabriz",
         },
         {
           label: "Location",
@@ -25,12 +25,12 @@ export default function Hero() {
         {
           label: "Phone",
           name: "phone",
-          value: "+98 41 6373751-2",
+          value: "+98 41 36373751-2",
         },
         {
           label: "Fax",
           name: "fax",
-          value: "+98 41 6373753",
+          value: "+98 41 36373753",
         },
         {
           label: "Email",

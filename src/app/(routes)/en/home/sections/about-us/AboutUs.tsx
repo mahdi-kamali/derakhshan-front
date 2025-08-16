@@ -39,7 +39,10 @@ export default function AboutUs() {
             transition={{ duration: 1 }}
           >
             <div className={styles.info}>
-              <h2>HASSAN GHAFOURZADEH<br /> NOBAR</h2>
+              <h2>
+                HASSAN GHAFOURZADEH
+                <br /> NOBAR
+              </h2>
               <p>Founder of Derakhshan Pack Co.</p>
             </div>
             <img src="/images/about-us/image-2.png" />
@@ -55,8 +58,8 @@ export default function AboutUs() {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <div className={styles.info}>
-              <h2>FERESHTEH NOBAR</h2>
-              <p>Derakhshan Pack Consultant</p>
+              <h2>FERESHTEH GHAFOURZADEH NOBAR</h2>
+              <p>Deputy CEO</p>
             </div>
             <img src="/images/about-us/image-1.png" />
           </motion.div>
@@ -71,8 +74,11 @@ export default function AboutUs() {
           viewport={{ once: true }}
         >
           <div className={styles.info}>
-            <h2>RAHIM GHAFOURZADEH<br /> NOBAR</h2>
-            <p>CEO and General Manager Of Derakhshan Pack Co.</p>
+            <h2>
+              RAHIM GHAFOURZADEH
+              <br /> NOBAR
+            </h2>
+            <p>CEO and General Manager Of <br /> Derakhshan Pack Co.</p>
           </div>
           <img src="/images/about-us/image-3.png" />
         </motion.div>
@@ -95,9 +101,14 @@ export default function AboutUs() {
           viewport={{ once: true }}
         >
           <Description>
-            we are an experienced Offset Printing Company since 1972 and we are
-            specialized in Luxury Packaging.It is our honour to offer you
-            customized and unique packaging according to your requirements.
+            Derakhshan Pack Co., a leader in the printing and packaging industry
+            with more than 80 years of experience, is ready to provide luxurious
+            and unique packaging according to the needs of our dear customers.
+            It is our honor to be able to take steps to promote the brand of
+            that esteemed company by utilizing the most up-to-date technologies
+            and facilities of this industry, alongside our customers as a
+            business partner and an experienced consultant and expert in
+            creating the most unique products to upgrade your brand.
           </Description>
         </motion.div>
 

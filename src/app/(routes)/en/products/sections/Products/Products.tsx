@@ -8,37 +8,42 @@ export default function Products() {
   const router = useRouter();
   const configs = [
     {
-      title: "LUXURY HARD BOX",
-      slug: "luxury-hardbox",
+      title: "PRINTING AND HOT FOIL STAMPING OF PVC AND PET MATERIALS",
+      slug: "printing-and-hot-foil-stamping-of-pvc-and-pet-materials",
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "CORRUGATED CARDBOARD",
-      slug: "corrugated-box",
+      title: "GIFT BOXES WITH LID AND BASE",
+      slug: "gift-boxes-with-lid-and-base",
+      image: "/images/products-first/image-1.png",
+    },
+    {
+      title: "FLIP LID GIFT BOXES",
+      slug: "flip-lid-gift-boxes",
       image: "/images/products-first/image-2.png",
     },
     {
-      title: "CUSTOM FOLDING BOX",
-      slug: "custom-folding-box",
+      title: "LUXURY HARD BOXES",
+      slug: "luxury-hard-boxes",
       image: "/images/products-first/image-3.png",
     },
     {
-      title: "LUXURY HARD BOX",
-      slug: "luxury-hardbox",
+      title:
+        "PACKAGING FOR AUTOMATIC MACHINERY( CHOCOLATE BAR PACKAGING- CHEWING GUM)",
+      slug: "packaging-for-automatic-machinery-chocolate-bar-packaging-chewing-gum",
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "CORRUGATED CARDBOARD",
-      slug: "corrugated-box",
+      title: "COLLAPSABLE AND WINDOW-PATCHED BOXES",
+      slug: "collapsable-and-window-patched-boxes",
       image: "/images/products-first/image-2.png",
     },
     {
-      title: "CUSTOM FOLDING BOX",
-      slug: "custom-folding-box",
+      title: "CUSTOMIZED STANDS",
+      slug: "customized-stands",
       image: "/images/products-first/image-3.png",
     },
   ];
-  
 
   return (
     <section>
@@ -53,8 +58,10 @@ export default function Products() {
               transition={{ duration: 2, delay: index * 0.3 }} // Staggered delay for each product
               viewport={{ once: true }} // Animates once when it comes into view
             >
-              <img src={product.image} alt={product.title} />
-              <h2>{product.title}</h2>
+              <div className={styles.content}>
+                <img src={product.image} alt={product.title} />
+                <h2>{product.title}</h2>
+              </div>
               <Button
                 icon="ep:top-right"
                 title="VIEW PRODUCT"

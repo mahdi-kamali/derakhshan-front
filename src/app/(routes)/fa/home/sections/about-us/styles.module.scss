@@ -11,14 +11,14 @@
   align-items: center;
 
   margin-top: 100vh;
-  padding: var(--home-section-padding);
+  padding: 3rem;
 
   overflow: hidden;
 
   background-color: var(--app-section-background);
 
-  height: max-content;
-  min-height: 100vh;
+  height: max-content !important;
+  min-height: 100vh !important;
 
   @include breakpoint-max(md) {
     gap: 1rem;
@@ -56,6 +56,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+
     @include breakpoint-max(xs) {
       scale: 0.8;
     }
@@ -80,6 +81,7 @@
         }
       }
       p {
+        white-space: nowrap;
         font-size: 1rem;
         @include breakpoint-max(sm) {
           font-size: 0.8rem;

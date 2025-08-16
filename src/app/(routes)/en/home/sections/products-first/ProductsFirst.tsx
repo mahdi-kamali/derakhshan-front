@@ -76,9 +76,11 @@ export default function ProductsFirst() {
           viewport={{ once: true }}
         >
           <Description>
-            Our specialty is crafting luxurious and unique gift boxes using a
-            variety of materials, designed to cater to customers with refined
-            tastes.
+            The main concern of the company is always to be able to offer the
+            most diverse and extensive collection of luxury boxes to our valued
+            customers in various fields. Food, cosmetics, pharmaceuticals and
+            even handcrafts industries. So that they can choose from our unique
+            collection of products to suit their needs.
           </Description>
         </motion.div>
 

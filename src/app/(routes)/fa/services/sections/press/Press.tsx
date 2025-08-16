@@ -124,10 +124,10 @@ export default function Press() {
               <div className={styles.left}>
                 <img src={service.img} alt="" />
               </div>
-              <div className={styles.right}>
+              {/* <div className={styles.right}>
                 <HighLight text={service.text} marked={service.marked} />
                 <p>{service.desc}</p>
-              </div>
+              </div> */}
             </motion.div>
           ))}
         </div>

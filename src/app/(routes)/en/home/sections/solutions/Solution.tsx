@@ -37,9 +37,13 @@ export default function Solution() {
           transition={{ duration: 1, delay: 0.7 }}
           viewport={{ once: true }}
         >
-          With state-of-the-art technology and modern facilities, we deliver the
-          most elegant and professional packaging for your products. Explore our
-          services to elevate your brand.
+          Our pride is that all printing and packaging services from A to Z
+          which is provided in 3 parts: pre-printing, printing and
+          post-printing, are all in one place, and this assurance is given to
+          our dear customers that orders will be delivered with excellent
+          quality and on time. With the latest technology and modern facilities,
+          we provide the most luxurious and professional packaging for your
+          products. Explore our services to enhance your brand
         </motion.p>
 
         <motion.div
@@ -50,7 +54,7 @@ export default function Solution() {
           viewport={{ once: true }}
         >
           <Button
-           title="EXPLORE MORE"
+            title="EXPLORE MORE"
             variant={"primary"}
             icon="none"
             onClick={() => {

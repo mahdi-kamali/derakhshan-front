@@ -53,6 +53,12 @@ export default function Header() {
       path: "/products",
     },
     {
+      title: "ORDER",
+      titleFa: "ثبت سفارش",
+      icon: "mdi:cart-arrow-right",
+      path: "/order",
+    },
+    {
       title: "SERVICES",
       titleFa: "خدمات",
       icon: "tabler:settings",
