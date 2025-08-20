@@ -63,14 +63,13 @@ const OrderForm = () => {
   const handleSubmit = () => {
     console.log("فرم ثبت شد:", form);
   };
-
   return (
     <PageContainer title="Order Form">
       <div className={styles.form}>
         <h2>Order Form</h2>
 
         <div className={styles.top}>
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Order Number</label>
             <Input
               type="text"
@@ -79,7 +78,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Order Date & Time</label>
             <Input
               type="text"
@@ -90,7 +89,7 @@ const OrderForm = () => {
         </div>
 
         <div className={styles.names}>
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>First Name</label>
             <Input
               type="text"
@@ -99,7 +98,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Last Name</label>
             <Input
               type="text"
@@ -108,7 +107,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Phone Number</label>
             <Input
               type="text"
@@ -117,7 +116,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Company Name</label>
             <Input
               type="text"
@@ -126,7 +125,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Industry</label>
             <Input
               type="select"
@@ -135,10 +134,7 @@ const OrderForm = () => {
               options={[
                 { value: "Food", name: "Food Industry" },
                 { value: "Cosmetics", name: "Cosmetics Industry" },
-                {
-                  value: "Healthcare",
-                  name: "Healthcare / Pharmaceutical Industry",
-                },
+                { value: "Healthcare", name: "Healthcare / Pharmaceutical" },
                 { value: "Other", name: "Other" },
               ]}
             />
@@ -147,25 +143,16 @@ const OrderForm = () => {
 
         <div className={styles.checkboxGroup}>
           <label>
-            <input
-              type="checkbox"
-              checked={form.sendType.upload}
+            <Input
+              type="file"
               onChange={() => handleSendTypeChange("upload")}
             />
-            Send Type: Upload Image
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={form.sendType.browser}
-              onChange={() => handleSendTypeChange("browser")}
-            />
-            Show in Browser
+            Upload Image
           </label>
         </div>
 
         <div className={styles.product}>
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Product Type</label>
             <Input
               type="text"
@@ -174,7 +161,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Product Weight (grams)</label>
             <Input
               type="text"
@@ -183,7 +170,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>Order Quantity</label>
             <Input
               type="text"
@@ -196,9 +183,10 @@ const OrderForm = () => {
         <div className={styles.sizes}>
           <div className={styles.Inputs}>
             <p>Product Dimensions:</p>
-            <div className={styles.Input}>
-              <label>Length (X)</label>
+            <div className={styles.field}>
+              <label>Length - mm</label>
               <Input
+                className={styles.Input}
                 type="text"
                 value={
                   Number.isNaN(form.dimensions.x)
@@ -211,9 +199,10 @@ const OrderForm = () => {
                 }}
               />
             </div>
-            <div className={styles.Input}>
-              <label>Width (Y)</label>
+            <div className={styles.field}>
+              <label>Width - mm</label>
               <Input
+                className={styles.Input}
                 type="text"
                 value={
                   Number.isNaN(form.dimensions.y)
@@ -226,9 +215,10 @@ const OrderForm = () => {
                 }}
               />
             </div>
-            <div className={styles.Input}>
-              <label>Height (Z)</label>
+            <div className={styles.field}>
+              <label>Height - mm</label>
               <Input
+                className={styles.Input}
                 type="text"
                 value={
                   Number.isNaN(form.dimensions.z)
@@ -247,6 +237,14 @@ const OrderForm = () => {
             width={form.dimensions.x}
             height={form.dimensions.z}
             depth={form.dimensions.y}
+          />
+        </div>
+
+        <div className={styles.descraption}>
+          <textarea
+            name={"descraption"}
+            onChange={(event) => {}}
+            placeholder={"Description"}
           />
         </div>
 

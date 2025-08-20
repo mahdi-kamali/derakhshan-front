@@ -47,6 +47,12 @@ export default function Header() {
       path: "/home",
     },
     {
+      title: "SERVICES",
+      titleFa: "خدمات",
+      icon: "tabler:settings",
+      path: "/services",
+    },
+    {
       title: "PRODUCTS",
       titleFa: "محصولات",
       icon: "ph:shopping-bag",
@@ -58,12 +64,7 @@ export default function Header() {
       icon: "mdi:cart-arrow-right",
       path: "/order",
     },
-    {
-      title: "SERVICES",
-      titleFa: "خدمات",
-      icon: "tabler:settings",
-      path: "/services",
-    },
+
     {
       title: "CAREERS",
       titleFa: "فرصت های شغلی",

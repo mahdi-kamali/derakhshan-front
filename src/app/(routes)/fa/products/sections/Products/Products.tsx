@@ -33,7 +33,7 @@ export default function Products() {
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "جعبه های کیلویی نرمال و ایستاده",
+      title: "جعبه های کیلویی لاک باتم و ایستاده پنجره دار",
       slug: "corrugated-box",
       image: "/images/products-first/image-2.png",
     },

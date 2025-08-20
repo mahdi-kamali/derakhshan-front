@@ -26,7 +26,7 @@ export default function Solution() {
         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <HighLight text="راهکار بسته بندی پیشرفته" marked="بسته بندی" />
+        <HighLight text="راهکارهای بسته بندی پیشرفته" marked="بسته بندی" />
 
         <motion.p
           initial={{ opacity: 0, y: -20 }}

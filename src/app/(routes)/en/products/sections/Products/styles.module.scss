@@ -19,7 +19,7 @@
 
   .product {
     width: 18rem;
-    height: 23rem;
+    height: 26rem;
     min-height: max-content;
 
     display: flex;
@@ -34,14 +34,19 @@
     border-bottom: 5px solid rgb(55, 55, 55);
 
     position: relative;
+    
 
     .content {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 1rem;
 
       margin-bottom: 3.6rem;
+      height: 100%;
+
+      
 
       img {
         object-fit: contain;
@@ -51,27 +56,31 @@
         background-repeat: no-repeat;
         aspect-ratio: 1 / 1;
         width: 12rem;
+        
       }
 
       h2 {
         font-family: smooch-sans;
         letter-spacing: 0.08rem;
         font-weight: 600;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
 
         text-align: center;
+        align-content: center;
         max-height: 7.5rem;
-      }
-    }
 
-    button {
-      position: absolute;
-      bottom: 1.5rem;
-      font-family: syne;
-      font-weight: 700;
-      padding: 0.8rem;
-      span {
-        font-size: 0.77rem;
+        flex: 1;
+      }
+
+      button {
+        position: absolute;
+        bottom: 1.5rem;
+        font-family: syne;
+        font-weight: 700;
+        padding: 0.8rem;
+        span {
+          font-size: 0.77rem;
+        }
       }
     }
   }

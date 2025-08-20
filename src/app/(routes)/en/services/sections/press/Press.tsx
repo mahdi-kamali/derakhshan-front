@@ -46,7 +46,7 @@ export default function Press() {
               Using the most up-to-date offset printing machines including
               normal offset and UV offset, we bring you the best printing
               quality. You are able to choose from a variety of coatings such as
-              glossy, matte, effect, iriodin, UV in full or spot places. These
+              glossy, matt, effect, iriodin, UV in full or spot places. These
               coatings, in addition to increasing the protection of the printed
               material, give the packaging a special look and appeal.
             </p>
@@ -95,7 +95,7 @@ export default function Press() {
       <div className={styles.bottom}>
         {/* Services Section */}
         <div className={styles.services}>
-          {[
+          {/* {[
             {
               img: "/images/services/hero/image-8.png",
               text: "NORMAL OFFSET AND UV PRINTING SERVICES",
@@ -118,12 +118,12 @@ export default function Press() {
               <div className={styles.left}>
                 <img src={service.img} alt="" />
               </div>
-              {/* <div className={styles.right}>
+              <div className={styles.right}>
                 <HighLight text={service.text} marked={service.marked} />
                 <p>{service.desc}</p>
-              </div> */}
+              </div>
             </motion.div>
-          ))}
+          ))} */}
         </div>
       </div>
     </section>

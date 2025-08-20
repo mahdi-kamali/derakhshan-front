@@ -2,18 +2,37 @@
 
 import { useState } from "react";
 import PageContainer from "@/components/containers/PageContainer/PageContainer";
+
+import Fields from "./components/Fields/Fields";
+
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
 import Input from "@/components/UI/Input/Input";
 
-const formSteps = [
+type Option = {
+  value: string;
+  name: string;
+  key?: string;
+};
+
+type FormField = {
+  title: string;
+  key: string;
+  type: "text" | "number" | "date" | "file" | "select" | "select-type";
+  options?: Option[];
+};
+
+const steps: {
+  name: string;
+  inputs?: FormField[];
+  fields?: FormField[];
+}[] = [
   {
     name: "مشخصات فردی",
     inputs: [
       { title: "نام و نام خانوادگی", type: "text", key: "fullName" },
       { title: "کد ملی", type: "text", key: "nationalId" },
       { title: "تاریخ تولد", type: "date", key: "birthDate" },
-
       { title: "محل تولد", type: "text", key: "birthPlace" },
       { title: "محل صدور", type: "text", key: "issuePlace" },
       {
@@ -38,113 +57,132 @@ const formSteps = [
       },
       { title: "نام پدر", type: "text", key: "fatherName" },
       { title: "شغل پدر", type: "text", key: "fatherJob" },
-
       { title: "سابقه پرداخت بیمه", type: "text", key: "insuranceHistory" },
-
       { title: "آدرس", type: "text", key: "address" },
       { title: "شماره تماس", type: "text", key: "phone" },
     ],
   },
   {
     name: "سوابق تحصیلی",
-    inputs: [
-      { title: "رشته تحصیلی", type: "text", key: "eduField" },
-      { title: "مقطع تحصیلی", type: "text", key: "eduLevel" },
-      { title: "معدل", type: "number", key: "gpa" },
-      { title: "نام موسسه آموزش", type: "text", key: "eduCenter" },
-    ],
-  },
-  {
-    name: " سوابق کاری و تجربی",
-    inputs: [
-      { title: "سازمان", type: "text", key: "workCompany" },
-      { title: "زمینه همکاری", type: "text", key: "workField" },
-      { title: "مدت همکاری", type: "text", key: "workDuration" },
-      { title: "علت قطع همکاری", type: "text", key: "workReason" },
-      { title: "آخرین حقوق دریافتی", type: "text", key: "lastSalary" },
-      { title: "مدت زمان بیمه", type: "text", key: "workReason" },
+    fields: [
       {
-        title: "بیمه بیکاری استفاده کرده اید؟",
-        type: "text",
-        key: "workReason",
-      },
-    ],
-  },
-  {
-    name: "مهارت ها",
-    inputs: [
-      {
-        title: "مهارت",
+        title: "رشته تحصیلی",
         type: "select-type",
+        key: "field",
         options: [
           { value: "حسابداری", name: "حسابداری" },
           { value: "گرافیست", name: "گرافیست" },
         ],
-
-        key: "skillType",
       },
       {
-        title: "میزان تسلط",
+        title: "مقطع تحصیلی",
         type: "select",
+        key: "level",
         options: [
           { value: "مبتدی", name: "مبتدی" },
           { value: "متوسط", name: "متوسط" },
           { value: "خوب", name: "خوب" },
           { value: "حرفه‌ای", name: "حرفه‌ای" },
         ],
+      },
+      {
+        title: "معدل",
+        type: "number",
+        key: "gpa",
+      },
+      { title: "نام موسسه آموزش", type: "text", key: "university" },
+    ],
+  },
+  {
+    name: "سوابق کاری و تجربی",
+    inputs: [
+      { title: "آخرین حقوق دریافتی", type: "text", key: "lastSalary" },
+      { title: "مدت زمان بیمه", type: "text", key: "insuranceDuration" },
+      {
+        title: "بیمه بیکاری استفاده کرده اید؟",
+        type: "text",
+        key: "unemploymentInsurance",
+      },
+    ],
+    fields: [
+      { title: "سازمان", type: "text", key: "workCompany" },
+      { title: "زمینه همکاری", type: "text", key: "workField" },
+      { title: "مدت همکاری", type: "text", key: "workDuration" },
+      { title: "علت قطع همکاری", type: "text", key: "workReason" },
+    ],
+  },
+  {
+    name: "مهارت ها",
+    fields: [
+      {
+        title: "مهارت",
+        type: "select-type",
+        key: "skillType",
+        options: [
+          { value: "حسابداری", name: "حسابداری" },
+          { value: "گرافیست", name: "گرافیست" },
+        ],
+      },
+      {
+        title: "میزان تسلط",
+        type: "select",
         key: "level",
+        options: [
+          { value: "مبتدی", name: "مبتدی" },
+          { value: "متوسط", name: "متوسط" },
+          { value: "خوب", name: "خوب" },
+          { value: "حرفه‌ای", name: "حرفه‌ای" },
+        ],
       },
     ],
   },
   {
     name: "نرم افزار",
-    inputs: [
+    fields: [
       {
         title: "نرم افزار",
         type: "select-type",
+        key: "software",
         options: [
           { value: "حسابداری", name: "حسابداری" },
           { value: "گرافیست", name: "گرافیست" },
         ],
-
-        key: "skillType",
       },
       {
         title: "میزان تسلط",
         type: "select",
+        key: "softwareLevel",
         options: [
           { value: "مبتدی", name: "مبتدی" },
           { value: "متوسط", name: "متوسط" },
           { value: "خوب", name: "خوب" },
           { value: "حرفه‌ای", name: "حرفه‌ای" },
         ],
-        key: "level",
       },
     ],
   },
   {
     name: "زبان های خارجی",
-    inputs: [
+    fields: [
       {
         title: "زبان",
         type: "select-type",
+        key: "language",
         options: [
-          { value: "حسابداری", name: "حسابداری" },
-          { value: "گرافیست", name: "گرافیست" },
+          { value: "انگلیسی", name: "انگلیسی" },
+          { value: "فرانسوی", name: "فرانسوی" },
         ],
-
-        key: "skillType",
       },
       {
         title: "میزان تسلط",
         type: "select",
+        key: "languageLevel",
         options: [
           { value: "مبتدی", name: "مبتدی" },
           { value: "متوسط", name: "متوسط" },
           { value: "خوب", name: "خوب" },
           { value: "حرفه‌ای", name: "حرفه‌ای" },
         ],
-        key: "level",
       },
     ],
   },
@@ -174,20 +212,20 @@ type FormData = {
   [key: string]: string | number | File | undefined;
 };
 
-type SkillItem = {
-  skillType: string;
-  level: string;
+type Values = {
+  [key: string]: string; // key => value
 };
+
 const Form = () => {
   const [formData, setFormData] = useState<FormData>({});
   const [currentStep, setCurrentStep] = useState(0);
   const [isStepValid, setIsStepValid] = useState(true);
 
-  // Multi-entry step data
-  const [tempItem, setTempItem] = useState<Partial<SkillItem>>({});
-  const [skills, setSkills] = useState<SkillItem[]>([]);
-  const [softwares, setSoftwares] = useState<SkillItem[]>([]);
-  const [languages, setLanguages] = useState<SkillItem[]>([]);
+  const [skills, setSkills] = useState<Values[]>([]);
+  const [educations, setEducations] = useState<Values[]>([]);
+  const [experiences, setExperiences] = useState<Values[]>([]);
+  const [softwares, setSoftwares] = useState<Values[]>([]);
+  const [languages, setLanguages] = useState<Values[]>([]);
 
   // Handle regular input change
   const handleChange = (key: string, value: string | number | File) => {
@@ -195,30 +233,6 @@ const Form = () => {
       ...prev,
       [key]: value,
     }));
-  };
-
-  // Handle multi-entry input change
-  const handleTempChange = (key: keyof SkillItem, value: string) => {
-    setTempItem((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  // Add tempItem to the correct list
-  const addTempItem = () => {
-    const item: SkillItem = {
-      skillType: tempItem.skillType || "",
-      level: tempItem.level || "",
-    };
-
-    if (!item.skillType || !item.level) return;
-
-    if (currentStep === 3) setSkills((prev) => [...prev, item]);
-    else if (currentStep === 4) setSoftwares((prev) => [...prev, item]);
-    else if (currentStep === 5) setLanguages((prev) => [...prev, item]);
-
-    setTempItem({});
   };
 
   // Final submission
@@ -233,19 +247,22 @@ const Form = () => {
     console.log("Sending to backend:", finalData);
   };
 
-  // Determine if current step is one of the multi-entry ones
-  const isMultiEntryStep =
-    currentStep === 3 || currentStep === 4 || currentStep === 5;
-
-  const currentMultiList =
-    currentStep === 3 ? skills : currentStep === 4 ? softwares : languages;
+  const stepFieldMap = [
+    { items: [], setItems: () => {} },
+    { items: educations, setItems: setEducations },
+    { items: experiences, setItems: setExperiences },
+    { items: skills, setItems: setSkills },
+    { items: softwares, setItems: setSoftwares },
+    { items: languages, setItems: setLanguages },
+    { items: [], setItems: () => {} },
+  ];
 
   return (
     <PageContainer title="فرم استخدام">
       <div className={styles.form}>
         {/* Step navigation */}
-        <div className={styles.labels}>
-          {formSteps.map((step, index) => (
+        <div className={styles.top}>
+          {steps.map((step, index) => (
             <Button
               key={index}
               title={step.name}
@@ -257,70 +274,42 @@ const Form = () => {
           ))}
         </div>
 
-        {/* Main input area */}
-        <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
+        {/* Inputs for normal single-entry */}
+        <div className={`${styles.inputs} ${formStepsStyles[currentStep]}`}>
           <div className={styles.contents}>
-            {isMultiEntryStep ? (
-              <>
-                {/* Inputs for multi-entry */}
-                {formSteps[currentStep].inputs.map((input, index) => (
-                  <div key={index} className={styles.Input}>
-                    <p>{input.title}</p>
-                    <Input
-                      type={input.type}
-                      value={tempItem[input.key as keyof SkillItem] || ""}
-                      onChange={(val: string) =>
-                        handleTempChange(input.key as keyof SkillItem, val)
-                      }
-                      options={input.options}
-                    />
-                  </div>
-                ))}
-
-                {/* Add item button */}
-                <Button
-                  title="اضافه کردن"
-                  icon="ic:baseline-plus"
-                  variant="primary"
-                  onClick={addTempItem}
-                  disabled={!tempItem.skillType || !tempItem.level}
+            {steps[currentStep].inputs?.map((input, index) => (
+              <div key={index} className={styles.Input}>
+                <p>{input.title}</p>
+                <Input
+                  type={input.type}
+                  value={
+                    formData[input.key] !== undefined &&
+                    formData[input.key] !== null
+                      ? String(formData[input.key])
+                      : ""
+                  }
+                  onChange={(val: string | number | File) =>
+                    handleChange(input.key, val)
+                  }
+                  options={input.options}
                 />
-              </>
-            ) : (
-              // Regular inputs
-              formSteps[currentStep].inputs.map((input, index) => (
-                <div key={index} className={styles.Input}>
-                  <p>{input.title}</p>
-                  <Input
-                    type={input.type}
-                    value={
-                      formData[input.key] !== undefined &&
-                      formData[input.key] !== null
-                        ? String(formData[input.key])
-                        : ""
-                    }
-                    onChange={(val: string | number | File) =>
-                      handleChange(input.key, val)
-                    }
-                    options={input.options}
-                  />
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-
-        {/* List of added items */}
-        {isMultiEntryStep && (
-          <div className={styles.list}>
-            {currentMultiList.map((item, i) => (
-              <div key={i} className={styles.listItem}>
-                <p>
-                  {item.skillType} - {item.level}
-                </p>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* fields inputs */}
+        {steps[currentStep].fields && stepFieldMap[currentStep] && (
+          <Fields
+            fields={steps[currentStep].fields}
+            items={stepFieldMap[currentStep].items}
+            onAddItem={(item) =>
+              stepFieldMap[currentStep].setItems((prev: Values[]) => [
+                ...prev,
+                item,
+              ])
+            }
+          />
         )}
 
         {/* Navigation buttons */}
@@ -337,7 +326,7 @@ const Form = () => {
             disabled={!isStepValid}
           />
 
-          {currentStep < formSteps.length - 1 ? (
+          {currentStep < steps.length - 1 ? (
             <Button
               title="بعدی"
               icon="none"

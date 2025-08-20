@@ -40,10 +40,10 @@ export default function AboutUs() {
           >
             <div className={styles.info}>
               <h2>
-                HASSAN GHAFOURZADEH
-                <br /> NOBAR
+               HASSAN GHAFOURZADEH  
+                <br />NOBAR
               </h2>
-              <p>Founder of Derakhshan Pack Co.</p>
+              <p>Founder of Derakhshan Brand</p>
             </div>
             <img src="/images/about-us/image-2.png" />
           </motion.div>

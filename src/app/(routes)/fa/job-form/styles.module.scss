@@ -21,7 +21,7 @@
     margin-top: 5rem;
   }
 
-  .labels {
+  .top {
     margin: 3rem;
     display: flex;
     justify-content: center;
@@ -31,21 +31,7 @@
     padding: 1rem;
   }
 
-  .list {
-    width: 90%;
-    margin-top: 1rem;
-    padding: 0.5rem;
-  }
-
-  .listItem {
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-
-    font-size: 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  }
-
-  .middle {
+  .inputs {
     width: 90%;
     margin-bottom: 2rem;
 
@@ -75,10 +61,6 @@
         height: 100%;
         margin: 1rem;
       }
-    }
-
-    &.personalInfo {
-      grid-template-columns: repeat(4, 1fr);
       .Input {
         width: 85%;
         margin: 1rem;
@@ -88,37 +70,61 @@
       }
     }
 
-    &.softwares {
-      .contents {
-        display: flex;
-        align-items: center;
-        @include breakpoint-max(sm) {
-          flex-wrap: wrap;
-        }
-      }
-    }
-    &.languages {
-      .contents {
-        display: flex;
-        align-items: center;
-        @include breakpoint-max(sm) {
-          flex-wrap: wrap;
-        }
-      }
-    }
-    &.skills {
-      .contents {
-        display: flex;
-        align-items: center;
-        @include breakpoint-max(sm) {
-          flex-wrap: wrap;
-        }
-      }
-    }
     &.upload {
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  .fields {
+    width: 90%;
+    margin-bottom: 2rem;
+
+    button {
+      height: 3rem;
+    }
+
+    .Input {
+      width: 80%;
+      margin: 1rem 0;
+      font-size: 18px;
+
+      @include breakpoint-max(sm) {
+        width: 100%;
+        font-size: 1rem;
+      }
+      input {
+        font-size: 18px;
+      }
+    }
+
+    .contents {
+      display: flex;
+      align-items: center;
+      gap:1rem;
+
+      button {
+        height: 100%;
+        margin: 1rem;
+      }
+      @include breakpoint-max(sm) {
+        flex-wrap: wrap;
+      }
+    }
+
+    .list {
+      width: 90%;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      .listItem {
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
   .bottom {
     display: flex;
     flex-direction: row;

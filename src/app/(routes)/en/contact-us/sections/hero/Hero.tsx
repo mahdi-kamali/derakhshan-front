@@ -83,15 +83,6 @@ export default function Hero() {
         <h1>{configs.title}</h1>
         <form>
           <Field.Text
-            icon={<Icon icon="mdi:account" />}
-            name="firstName"
-            title="First Name"
-            required
-            onChange={(value) => console.log(value)}
-            rtl
-          />
-
-          <Field.Text
             icon={<Icon icon="mdi:account-box" />}
             name="lastName"
             title="Last Name"
@@ -99,7 +90,14 @@ export default function Hero() {
             onChange={(value) => console.log(value)}
             rtl
           />
-
+          <Field.Text
+            icon={<Icon icon="mdi:account" />}
+            name="firstName"
+            title="First Name"
+            required
+            onChange={(value) => console.log(value)}
+            rtl
+          />
           <Field.Text
             icon={<Icon icon="mdi:email" />}
             name="email"

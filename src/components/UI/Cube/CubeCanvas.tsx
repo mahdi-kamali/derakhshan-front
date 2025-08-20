@@ -32,10 +32,10 @@ export default function CubeCanvas({
 
       const w = width;
       const h = height;
-      const d = depth;
+      const d = depth/2;
 
-      const originX = canvas.height / 2 - w;
-      const originY = canvas.height / 2 + d;
+      const originX = canvas.height / 2 - w/2 - d/2;
+      const originY = canvas.height / 2 - h/2 + d/2;
 
       const frontTopLeft: Point = { x: originX, y: originY };
       const frontTopRight: Point = { x: originX + w, y: originY };

@@ -28,13 +28,12 @@ export default function Products() {
       image: "/images/products-first/image-3.png",
     },
     {
-      title:
-        "PACKAGING FOR AUTOMATIC MACHINERY( CHOCOLATE BAR PACKAGING- CHEWING GUM)",
+      title: "PACKAGING FOR AUTOMATIC MACHINERY( CHOCOLATE BAR-CHEWING GUM )",
       slug: "packaging-for-automatic-machinery-chocolate-bar-packaging-chewing-gum",
       image: "/images/products-first/image-1.png",
     },
     {
-      title: "COLLAPSABLE AND WINDOW-PATCHED BOXES",
+      title: "COLLAPSABLE-CRASH LUCK BOTTOM-WINDOW PATCHED BOXES",
       slug: "collapsable-and-window-patched-boxes",
       image: "/images/products-first/image-2.png",
     },
@@ -61,13 +60,13 @@ export default function Products() {
               <div className={styles.content}>
                 <img src={product.image} alt={product.title} />
                 <h2>{product.title}</h2>
+                <Button
+                  icon="ep:top-right"
+                  title="VIEW PRODUCT"
+                  variant="primary"
+                  onClick={() => router.push("/fa/products/" + product.slug)}
+                />
               </div>
-              <Button
-                icon="ep:top-right"
-                title="VIEW PRODUCT"
-                variant="primary"
-                onClick={() => router.push("/fa/products/" + product.slug)}
-              />
             </motion.div>
           );
         })}

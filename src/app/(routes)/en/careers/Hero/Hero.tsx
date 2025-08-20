@@ -13,7 +13,7 @@ export default function Hero() {
         marked: "Growth and Creativity",
       },
       description:
-        "At Derakhshan Company, we are looking for creative, motivated, and committed individuals to help us build a better future. If you're seeking a dynamic, friendly environment with opportunities for learning and advancement, there's a place for you on our team! Explore our career openings and join us.",
+        "At Derakhshan Pack Co, we are looking for creative, motivated, and committed individuals to help us build a better future. If you're seeking a dynamic, friendly environment with opportunities for learning and advancement, there's a place for you on our team! Explore our career openings and join us.",
     },
   };
 

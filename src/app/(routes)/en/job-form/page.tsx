@@ -1,13 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import useSettings from "@/hooks/useSettings";
 import PageContainer from "@/components/containers/PageContainer/PageContainer";
+
+import Fields from "./components/Fields/Fields";
+
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
 import Input from "@/components/UI/Input/Input";
 
-const formSteps = [
+type Option = {
+  value: string;
+  name: string;
+  key?: string;
+};
+
+type FormField = {
+  title: string;
+  key: string;
+  type: "text" | "number" | "date" | "file" | "select" | "select-type";
+  options?: Option[];
+};
+
+const steps: {
+  name: string;
+  inputs?: FormField[];
+  fields?: FormField[];
+}[] = [
   {
     name: "Personal Information",
     inputs: [
@@ -26,18 +45,18 @@ const formSteps = [
         ],
       },
       {
-        title: "Military Service Status",
+        title: "Military Status",
         type: "select",
         key: "militaryStatus",
         options: [
           { value: "Permanent Exemption", name: "Permanent Exemption" },
           { value: "Temporary Exemption", name: "Temporary Exemption" },
           { value: "Completed Service", name: "Completed Service" },
-          { value: "Currently Studying", name: "Currently Studying" },
+          { value: "Studying", name: "Studying" },
         ],
       },
       { title: "Father's Name", type: "text", key: "fatherName" },
-      { title: "Father's Job", type: "text", key: "fatherJob" },
+      { title: "Father's Occupation", type: "text", key: "fatherJob" },
       {
         title: "Insurance Payment History",
         type: "text",
@@ -49,20 +68,34 @@ const formSteps = [
   },
   {
     name: "Educational Background",
-    inputs: [
-      { title: "Field of Study", type: "text", key: "eduField" },
-      { title: "Education Level", type: "text", key: "eduLevel" },
+    fields: [
+      {
+        title: "Field of Study",
+        type: "select-type",
+        key: "field",
+        options: [
+          { value: "Accounting", name: "Accounting" },
+          { value: "Graphic Design", name: "Graphic Design" },
+        ],
+      },
+      {
+        title: "Education Level",
+        type: "select",
+        key: "level",
+        options: [
+          { value: "Beginner", name: "Beginner" },
+          { value: "Intermediate", name: "Intermediate" },
+          { value: "Good", name: "Good" },
+          { value: "Professional", name: "Professional" },
+        ],
+      },
       { title: "GPA", type: "number", key: "gpa" },
-      { title: "Educational Institution Name", type: "text", key: "eduCenter" },
+      { title: "Educational Institute Name", type: "text", key: "university" },
     ],
   },
   {
     name: "Work and Experience History",
     inputs: [
-      { title: "Organization", type: "text", key: "workCompany" },
-      { title: "Field of Work", type: "text", key: "workField" },
-      { title: "Duration of Employment", type: "text", key: "workDuration" },
-      { title: "Reason for Leaving", type: "text", key: "workReason" },
       { title: "Last Received Salary", type: "text", key: "lastSalary" },
       { title: "Insurance Duration", type: "text", key: "insuranceDuration" },
       {
@@ -71,79 +104,85 @@ const formSteps = [
         key: "unemploymentInsurance",
       },
     ],
+    fields: [
+      { title: "Organization", type: "text", key: "workCompany" },
+      { title: "Field of Cooperation", type: "text", key: "workField" },
+      { title: "Duration of Cooperation", type: "text", key: "workDuration" },
+      { title: "Reason for Termination", type: "text", key: "workReason" },
+    ],
   },
   {
     name: "Skills",
-    inputs: [
+    fields: [
       {
         title: "Skill",
         type: "select-type",
+        key: "skillType",
         options: [
           { value: "Accounting", name: "Accounting" },
-          { value: "Graphic Designer", name: "Graphic Designer" },
+          { value: "Graphic Design", name: "Graphic Design" },
         ],
-        key: "skillType",
       },
       {
         title: "Proficiency Level",
         type: "select",
+        key: "level",
         options: [
           { value: "Beginner", name: "Beginner" },
           { value: "Intermediate", name: "Intermediate" },
           { value: "Good", name: "Good" },
           { value: "Professional", name: "Professional" },
         ],
-        key: "level",
       },
     ],
   },
   {
     name: "Software",
-    inputs: [
+    fields: [
       {
         title: "Software",
         type: "select-type",
+        key: "software",
         options: [
           { value: "Accounting", name: "Accounting" },
-          { value: "Graphic Designer", name: "Graphic Designer" },
+          { value: "Graphic Design", name: "Graphic Design" },
         ],
-        key: "skillType",
       },
       {
         title: "Proficiency Level",
         type: "select",
+        key: "softwareLevel",
         options: [
           { value: "Beginner", name: "Beginner" },
           { value: "Intermediate", name: "Intermediate" },
           { value: "Good", name: "Good" },
           { value: "Professional", name: "Professional" },
         ],
-        key: "level",
       },
     ],
   },
   {
     name: "Foreign Languages",
-    inputs: [
+    fields: [
       {
         title: "Language",
         type: "select-type",
+        key: "language",
         options: [
           { value: "English", name: "English" },
           { value: "French", name: "French" },
         ],
-        key: "skillType",
       },
       {
         title: "Proficiency Level",
         type: "select",
+        key: "languageLevel",
         options: [
           { value: "Beginner", name: "Beginner" },
           { value: "Intermediate", name: "Intermediate" },
           { value: "Good", name: "Good" },
           { value: "Professional", name: "Professional" },
         ],
-        key: "level",
       },
     ],
   },
@@ -173,22 +212,20 @@ type FormData = {
   [key: string]: string | number | File | undefined;
 };
 
-type SkillItem = {
-  skillType: string;
-  level: string;
+type Values = {
+  [key: string]: string; // key => value
 };
-const Form = () => {
-  const { language } = useSettings();
 
+const Form = () => {
   const [formData, setFormData] = useState<FormData>({});
   const [currentStep, setCurrentStep] = useState(0);
   const [isStepValid, setIsStepValid] = useState(true);
 
-  // Multi-entry step data
-  const [tempItem, setTempItem] = useState<Partial<SkillItem>>({});
-  const [skills, setSkills] = useState<SkillItem[]>([]);
-  const [softwares, setSoftwares] = useState<SkillItem[]>([]);
-  const [languages, setLanguages] = useState<SkillItem[]>([]);
+  const [skills, setSkills] = useState<Values[]>([]);
+  const [educations, setEducations] = useState<Values[]>([]);
+  const [experiences, setExperiences] = useState<Values[]>([]);
+  const [softwares, setSoftwares] = useState<Values[]>([]);
+  const [languages, setLanguages] = useState<Values[]>([]);
 
   // Handle regular input change
   const handleChange = (key: string, value: string | number | File) => {
@@ -196,30 +233,6 @@ const Form = () => {
       ...prev,
       [key]: value,
     }));
-  };
-
-  // Handle multi-entry input change
-  const handleTempChange = (key: keyof SkillItem, value: string) => {
-    setTempItem((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  // Add tempItem to the correct list
-  const addTempItem = () => {
-    const item: SkillItem = {
-      skillType: tempItem.skillType || "",
-      level: tempItem.level || "",
-    };
-
-    if (!item.skillType || !item.level) return;
-
-    if (currentStep === 3) setSkills((prev) => [...prev, item]);
-    else if (currentStep === 4) setSoftwares((prev) => [...prev, item]);
-    else if (currentStep === 5) setLanguages((prev) => [...prev, item]);
-
-    setTempItem({});
   };
 
   // Final submission
@@ -234,19 +247,22 @@ const Form = () => {
     console.log("Sending to backend:", finalData);
   };
 
-  // Determine if current step is one of the multi-entry ones
-  const isMultiEntryStep =
-    currentStep === 3 || currentStep === 4 || currentStep === 5;
-
-  const currentMultiList =
-    currentStep === 3 ? skills : currentStep === 4 ? softwares : languages;
+  const stepFieldMap = [
+    { items: [], setItems: () => {} },
+    { items: educations, setItems: setEducations },
+    { items: experiences, setItems: setExperiences },
+    { items: skills, setItems: setSkills },
+    { items: softwares, setItems: setSoftwares },
+    { items: languages, setItems: setLanguages },
+    { items: [], setItems: () => {} },
+  ];
 
   return (
     <PageContainer title="Job Form">
       <div className={styles.form}>
         {/* Step navigation */}
-        <div className={styles.labels}>
-          {formSteps.map((step, index) => (
+        <div className={styles.top}>
+          {steps.map((step, index) => (
             <Button
               key={index}
               title={step.name}
@@ -258,70 +274,42 @@ const Form = () => {
           ))}
         </div>
 
-        {/* Main input area */}
-        <div className={`${styles.middle} ${formStepsStyles[currentStep]}`}>
+        {/* Inputs for normal single-entry */}
+        <div className={`${styles.inputs} ${formStepsStyles[currentStep]}`}>
           <div className={styles.contents}>
-            {isMultiEntryStep ? (
-              <>
-                {/* Inputs for multi-entry */}
-                {formSteps[currentStep].inputs.map((input, index) => (
-                  <div key={index} className={styles.Input}>
-                    <p>{input.title}</p>
-                    <Input
-                      type={input.type}
-                      value={tempItem[input.key as keyof SkillItem] || ""}
-                      onChange={(val: string) =>
-                        handleTempChange(input.key as keyof SkillItem, val)
-                      }
-                      options={input.options}
-                    />
-                  </div>
-                ))}
-
-                {/* Add item button */}
-                <Button
-                  title={language == "en" ? "add" : "اضافه کردن"}
-                  icon="ic:baseline-plus"
-                  variant="primary"
-                  onClick={addTempItem}
-                  disabled={!tempItem.skillType || !tempItem.level}
+            {steps[currentStep].inputs?.map((input, index) => (
+              <div key={index} className={styles.Input}>
+                <p>{input.title}</p>
+                <Input
+                  type={input.type}
+                  value={
+                    formData[input.key] !== undefined &&
+                    formData[input.key] !== null
+                      ? String(formData[input.key])
+                      : ""
+                  }
+                  onChange={(val: string | number | File) =>
+                    handleChange(input.key, val)
+                  }
+                  options={input.options}
                 />
-              </>
-            ) : (
-              // Regular inputs
-              formSteps[currentStep].inputs.map((input, index) => (
-                <div key={index} className={styles.Input}>
-                  <p>{input.title}</p>
-                  <Input
-                    type={input.type}
-                    value={
-                      formData[input.key] !== undefined &&
-                      formData[input.key] !== null
-                        ? String(formData[input.key])
-                        : ""
-                    }
-                    onChange={(val: string | number | File) =>
-                      handleChange(input.key, val)
-                    }
-                    options={input.options}
-                  />
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-
-        {/* List of added items */}
-        {isMultiEntryStep && (
-          <div className={styles.list}>
-            {currentMultiList.map((item, i) => (
-              <div key={i} className={styles.listItem}>
-                <p>
-                  {item.skillType} - {item.level}
-                </p>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* fields inputs */}
+        {steps[currentStep].fields && stepFieldMap[currentStep] && (
+          <Fields
+            fields={steps[currentStep].fields}
+            items={stepFieldMap[currentStep].items}
+            onAddItem={(item) =>
+              stepFieldMap[currentStep].setItems((prev: Values[]) => [
+                ...prev,
+                item,
+              ])
+            }
+          />
         )}
 
         {/* Navigation buttons */}
@@ -338,7 +326,7 @@ const Form = () => {
             disabled={!isStepValid}
           />
 
-          {currentStep < formSteps.length - 1 ? (
+          {currentStep < steps.length - 1 ? (
             <Button
               title="Next"
               icon="none"

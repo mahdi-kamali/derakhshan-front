@@ -168,7 +168,7 @@ export default function PostPress() {
               img: "/images/services/hero/image-7.png",
               text: "LAMINATE",
               marked: "LAMINATE",
-              desc: "Another special feature of our company is the use of fully automatic laminating machines using a variety of metallized, transparent, velvet matte foils and a series of unique foils to create a special visual effect and also increase the resistance of the packaging to environmental factors.",
+              desc: "Another special feature of our company is the use of fully automatic laminating machines using a variety of metallized, transparent, velvet matt foils and a series of unique foils to create a special visual effect and also increase the resistance of the packaging to environmental factors.",
             },
             {
               img: "/images/services/hero/image-7.png",

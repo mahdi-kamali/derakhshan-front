@@ -72,6 +72,7 @@
 
       .right {
         img {
+          min-width: 400px;
           border-radius: 1rem;
           aspect-ratio: 16/10;
           object-fit: cover;
@@ -114,7 +115,7 @@
     @include breakpoint-max(md) {
       top: 120vh;
     }
- 
+
     .services {
       display: flex;
       flex-direction: column;

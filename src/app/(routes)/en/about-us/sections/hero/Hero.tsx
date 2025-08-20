@@ -12,18 +12,18 @@ export default function Hero() {
     },
     agents: [
       {
-        name: "Hassan Ghafoorzadeh Nobar",
+        name: "Hassan Ghafourzadeh Nobar",
         image: "/images/about-us/image-2.png",
         roles: ["Founder of Derakhshan Pack Company"],
       },
       {
-        name: "Rahim Ghafoorzadeh Nobar",
+        name: "Rahim Ghafourzadeh Nobar",
         image: "/images/about-us/image-3.png",
         roles: ["CEO of Derakhshan Pack Company"],
         email: "ceo@dppack.com",
       },
       {
-        name: "Fereshteh Ghafoorzadeh Nobar",
+        name: "Fereshteh Ghafourzadeh Nobar",
         image: "/images/about-us/image-1.png",
         roles: ["Deputy CEO of Derakhshan Pack"],
       },
@@ -36,7 +36,7 @@ export default function Hero() {
         },
         image: "/images/about-us/stories/image-1.png",
         description:
-          "Establishment of the CompanyMr. Hassan Ghafurzadeh Nobar, as the founder of the Derakhshan Printing brand, established a fully equipped printing and packaging facility in Tabriz in 1945. With his continuous efforts, he was able to become one of the most successful in this industry and become a familiar and popular name in the city of Tabriz and the country. We look back with pride on our 80-year history.",
+          "Establishment of the Company Mr. Hassan Ghafourzadeh Nobar, as the founder of the Derakhshan Printing brand, established a fully equipped printing and packaging facility in Tabriz in 1945. With his continuous efforts, he was able to become one of the most successful in this industry and become a familiar and popular name in the city of Tabriz and the country. We look back with pride on our 80-year history.",
       },
       {
         title: {
@@ -45,7 +45,7 @@ export default function Hero() {
         },
         image: "/images/about-us/stories/image-2.png",
         description:
-          "Mr. Rahim Ghafurzadeh Nobar, in 1979, after completing his studies in business administration from Tehran Tabatabayi University and backed by several years of experience in this industry, with his father's guidance, creative thinking, and passion and perseverance, decided to continue his father's career. Considering his understanding of the importance and high status of printing and packaging, and considering the industrialization of Iran, especially Tabriz as one of the main industrial hubs of the country and also the capital of sweets and chocolate, he started importing advanced and automatic European printing and packaging machines so that they could deliver orders to customers with the best quality and at the same time in the fastest time. The quality of the final product and accurate consultation, in addition to providing the most unique packaging in the world, made this company known as the best in the field of printing and packaging. In this regard, after several years of study, he started to expand the company with an infrastructure of 12,000 square meters and import new machinery. At the same time, advanced and automatic hard box boxes machines entered the company extensively and completely.",
+          "Mr. Rahim Ghafourzadeh Nobar, in 1979, after completing his studies in business administration from Tehran Tabatabayi University and backed by several years of experience in this industry, with his father's guidance, creative thinking, and passion and perseverance, decided to continue his father's career. Considering his understanding of the importance and high status of printing and packaging, and considering the industrialization of Iran, especially Tabriz as one of the main industrial hubs of the country and also the capital of sweets and chocolate, he started importing advanced and automatic European printing and packaging machines so that they could deliver orders to customers with the best quality and at the same time in the fastest time. The quality of the final product and accurate consultation, in addition to providing the most unique packaging in the world, made this company known as the best in the field of printing and packaging. In this regard, after several years of study, he started to expand the company with an infrastructure of 12,000 square meters and import new machinery. At the same time, advanced and automatic hard box boxes machines entered the company extensively and completely.",
       },
       {
         title: {
@@ -54,7 +54,7 @@ export default function Hero() {
         },
         image: "/images/about-us/stories/image-3.png",
         description:
-          "Ms. Fereshteh Ghafurzadeh Nobar, after completing her undergraduate studies in Industrial Engineering and her master's degree in Business Management from Tabriz University, joined the company in 2014 alongside her father to continue the activities of the Derakhshan Printing brand, while benefiting from experienced professors in the printing industry in Germany and obtaining academic degrees from prestigious universities in the industry, and began her activity in order to advance the company's goals.",
+          "Ms. Fereshteh Ghafourzadeh Nobar, after completing her Bachelor studies in Industrial Engineering and her master's degree in Business Management from Tabriz University, joined the company in 2014 alongside her father to continue the activities of the Derakhshan Printing brand, while benefiting from experienced professors in the printing industry in Germany and obtaining academic degrees from prestigious universities in the industry, and began her activity in order to advance the company's goals.",
       },
     ],
   };

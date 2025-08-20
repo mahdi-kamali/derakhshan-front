@@ -70,7 +70,7 @@ const OrderForm = () => {
         <h2>فرم سفارش</h2>
 
         <div className={styles.top}>
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>شماره سفارش</label>
             <Input
               type="text"
@@ -79,7 +79,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>تاریخ و ساعت ثبت سفارش</label>
             <Input
               type="text"
@@ -90,7 +90,7 @@ const OrderForm = () => {
         </div>
 
         <div className={styles.names}>
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>نام</label>
             <Input
               type="text"
@@ -99,7 +99,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>نام خانوادگی</label>
             <Input
               type="text"
@@ -108,7 +108,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>شماره تماس</label>
             <Input
               type="text"
@@ -117,7 +117,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>نام شرکت</label>
             <Input
               type="text"
@@ -126,7 +126,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>زمینه فعالیت</label>
             <Input
               type="select"
@@ -144,25 +144,16 @@ const OrderForm = () => {
 
         <div className={styles.checkboxGroup}>
           <label>
-            <input
-              type="checkbox"
-              checked={form.sendType.upload}
+            <Input
+              type="file"
               onChange={() => handleSendTypeChange("upload")}
             />
-            نوع ارسال: آپلود عکس
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={form.sendType.browser}
-              onChange={() => handleSendTypeChange("browser")}
-            />
-            نمایش در مرورگر (Browser)
+            آپلود عکس
           </label>
         </div>
 
         <div className={styles.product}>
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>نوع محصول</label>
             <Input
               type="text"
@@ -171,7 +162,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>وزن محصول (گرم)</label>
             <Input
               type="text"
@@ -180,7 +171,7 @@ const OrderForm = () => {
             />
           </div>
 
-          <div className={styles.Input}>
+          <div className={styles.field}>
             <label>تعداد سفارش</label>
             <Input
               type="text"
@@ -193,9 +184,10 @@ const OrderForm = () => {
         <div className={styles.sizes}>
           <div className={styles.Inputs}>
             <p>ابعاد محصول:</p>
-            <div className={styles.Input}>
-              <label>طول (X)</label>
+            <div className={styles.field}>
+              <label>طول - میلی متر</label>
               <Input
+                className={styles.Input}
                 type="text"
                 value={
                   Number.isNaN(form.dimensions.x)
@@ -208,9 +200,10 @@ const OrderForm = () => {
                 }}
               />
             </div>
-            <div className={styles.Input}>
-              <label>عرض (Y)</label>
+            <div className={styles.field}>
+              <label>عرض - میلی متر </label>
               <Input
+                className={styles.Input}
                 type="text"
                 value={
                   Number.isNaN(form.dimensions.y)
@@ -223,9 +216,10 @@ const OrderForm = () => {
                 }}
               />
             </div>
-            <div className={styles.Input}>
-              <label>ارتفاع (Z)</label>
+            <div className={styles.field}>
+              <label>ارتفاع - میلی متر </label>
               <Input
+                className={styles.Input}
                 type="text"
                 value={
                   Number.isNaN(form.dimensions.z)
@@ -244,6 +238,14 @@ const OrderForm = () => {
             width={form.dimensions.x}
             height={form.dimensions.z}
             depth={form.dimensions.y}
+          />
+        </div>
+
+        <div className={styles.descraption}>
+          <textarea
+            name={"descraption"}
+            onChange={(event) => {}}
+            placeholder={"توضیحات"}
           />
         </div>
 
