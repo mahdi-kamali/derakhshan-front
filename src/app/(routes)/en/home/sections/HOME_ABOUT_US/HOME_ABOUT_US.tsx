@@ -1,25 +1,39 @@
+"use client";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
 import Button from "@/components/UI/Button/Button";
 import { motion } from "framer-motion";
 import Description from "@/components/UI/Section/Description/Description";
 import { useRouter } from "next/navigation";
-export default function AboutUs() {
+import { ISection } from "@/types/sections.types";
+import { urls } from "@/common/urls";
+
+interface IProps {
+  section: Extract<ISection, { type: "HOME_ABOUT_US" }>;
+}
+
+export default function HOME_ABOUT_US(props: IProps) {
+  const { section } = props;
+
+  const EN = section.components.EN;
+
   const route = useRouter();
-  return (
-    <motion.section className={styles.aboutUs}>
-      {/* Right Section: Team Members */}
+
+  const RenderAgents = () => {
+    const first = EN.agents[0];
+    const second = EN.agents[1];
+    const third = EN.agents[2];
+    return (
       <motion.div
         className={styles.right}
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
+        viewport={{ once: true }}>
         <motion.div
           className={styles.col}
-          initial="hidden"
-          whileInView="visible"
+          initial='hidden'
+          whileInView='visible'
           viewport={{ once: true }}
           variants={{
             hidden: { opacity: 0 },
@@ -27,101 +41,87 @@ export default function AboutUs() {
               opacity: 1,
               transition: { staggerChildren: 0.3 },
             },
-          }}
-        >
-          {/* Founder */}
+          }}>
+          {/* first */}
           <motion.div
             className={styles.first}
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 1 }}
-          >
+            transition={{ duration: 1 }}>
             <div className={styles.info}>
-              <h2>
-               HASSAN GHAFOURZADEH  
-                <br />NOBAR
-              </h2>
-              <p>Founder of Derakhshan Brand</p>
+              <h2>{first.name}</h2>
+              <p>{first.role}</p>
             </div>
-            <img src="/images/about-us/image-2.png" />
+            <img src={urls.STORAGE(first.image.path)} />
           </motion.div>
 
-          {/* Second Member */}
+          {/* Second  */}
           <motion.div
             className={styles.second}
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
+            transition={{ duration: 1, delay: 0.2 }}>
             <div className={styles.info}>
-              <h2>FERESHTEH GHAFOURZADEH NOBAR</h2>
-              <p>Deputy CEO</p>
+              <h2>{second.name}</h2>
+              <p>{second.role}</p>
             </div>
-            <img src="/images/about-us/image-1.png" />
+            <img src={urls.STORAGE(second.image.path)} />
           </motion.div>
         </motion.div>
 
-        {/* Third Member */}
+        {/* Third  */}
         <motion.div
           className={styles.third}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
+          viewport={{ once: true }}>
           <div className={styles.info}>
-            <h2>
-              RAHIM GHAFOURZADEH
-              <br /> NOBAR
-            </h2>
-            <p>CEO and General Manager Of <br /> Derakhshan Pack Co.</p>
+            <h2>{third.name}</h2>
+            <p>{third.role}</p>
           </div>
-          <img src="/images/about-us/image-3.png" />
+          <img src={urls.STORAGE(third.image.path)} />
         </motion.div>
       </motion.div>
+    );
+  };
 
+  return (
+    <motion.section className={styles.aboutUs}>
       {/* Left Section: About Us Text */}
+      <RenderAgents />
       <motion.div
         className={styles.left}
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        viewport={{ once: true }}
-      >
-        <HighLight text={"ABOUT US"} marked="ABOUT US" />
+        viewport={{ once: true }}>
+        <HighLight
+          text={EN.title}
+          marked={EN.title}
+        />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <Description>
-            Derakhshan Pack Co., a leader in the printing and packaging industry
-            with more than 80 years of experience, is ready to provide luxurious
-            and unique packaging according to the needs of our dear customers.
-            It is our honor to be able to take steps to promote the brand of
-            that esteemed company by utilizing the most up-to-date technologies
-            and facilities of this industry, alongside our customers as a
-            business partner and an experienced consultant and expert in
-            creating the most unique products to upgrade your brand.
-          </Description>
+          viewport={{ once: true }}>
+          <Description>{EN.description}</Description>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
+          viewport={{ once: true }}>
           <Button
-            title="EXPLORE MORE"
+            title='EXPLORE MORE'
             variant={"primary"}
-            icon="none"
+            icon='none'
             onClick={() => {
               route.push("/en/about-us");
             }}

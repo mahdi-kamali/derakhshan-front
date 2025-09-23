@@ -1,21 +1,53 @@
-"use client";
 import PageContainer from "@/components/containers/PageContainer/PageContainer";
-import React from "react";
-import Hero from "./sections/hero/Hero";
-import AboutUs from "./sections/about-us/AboutUs";
-import Solution from "./sections/solutions/Solution";
-import ProductsFirst from "./sections/products-first/ProductsFirst";
-import ProductsSecond from "./sections/products-second/ProductsSecond";
+import HOME_HERO from "./sections/HOME_HERO/HOME_HERO";
+import HOME_ABOUT_US from "./sections/HOME_ABOUT_US/HOME_ABOUT_US";
+import HOME_ADVANCED_PACKAGING from "./sections/HOME_ADVANCED_PACKAGING/HOME_ADVANCED_PACKAGING";
+import ProductsFirst from "./sections/HOME_EXCLUSIVE_GIFT_BOXES/HOME_EXCLUSIVE_GIFT_BOXES";
+import { GetPageAPI, GetPagesAPI } from "@/services/Pages/pages.services";
 
-export default function page() {
+export default async function page() {
+  const page = await GetPageAPI("/home");
+
   return (
     <PageContainer
       title='HOME'
       className='HomePage'>
-      <Hero />
-      <AboutUs />
-      <Solution />
-      <ProductsFirst />
+      {page.sections.map((section) => {
+        const { type } = section;
+        switch (type) {
+          case "HOME_HERO":
+            return (
+              <HOME_HERO
+                section={section}
+                key={type}
+              />
+            );
+          case "HOME_ABOUT_US":
+            return (
+              <HOME_ABOUT_US
+                key={type}
+                section={section}
+              />
+            );
+
+          case "HOME_ADVANCED_PACKAGING":
+            return (
+              <HOME_ADVANCED_PACKAGING
+                section={section}
+                key={type}
+              />
+            );
+
+          case "HOME_EXCLUSIVE_GIFT_BOXES":
+            return (
+              <ProductsFirst
+                section={section}
+                key={type}
+              />
+            );
+        }
+      })}
+      {/* <ProductsFirst /> */}
       {/* <ProductsSecond /> */}
     </PageContainer>
   );

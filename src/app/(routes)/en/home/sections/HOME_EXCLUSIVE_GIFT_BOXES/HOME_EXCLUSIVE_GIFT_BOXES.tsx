@@ -1,12 +1,22 @@
+"use client";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
 import Button from "@/components/UI/Button/Button";
 import { motion } from "framer-motion";
 import Description from "@/components/UI/Section/Description/Description";
 import { useRouter } from "next/navigation";
+import { ISection } from "@/types/sections.types";
+import { urls } from "@/common/urls";
 
-export default function ProductsFirst() {
+interface IProps {
+  section: Extract<ISection, { type: "HOME_EXCLUSIVE_GIFT_BOXES" }>;
+}
+
+export default function ProductsFirst(props: IProps) {
+  const { section } = props;
   const route = useRouter();
+
+  const EN = section.components.EN;
 
   return (
     <motion.section className={styles.ProductsFirst}>
@@ -21,9 +31,11 @@ export default function ProductsFirst() {
             ease: "easeOut",
             delay: 0, // No delay for the first image
           }}
-          viewport={{ once: true }}
-        >
-          <img src="/images/products-first/image-1.png" alt="" />
+          viewport={{ once: true }}>
+          <img
+            src={urls.STORAGE(EN.images[0].path)}
+            alt=''
+          />
         </motion.div>
 
         <motion.div
@@ -35,9 +47,11 @@ export default function ProductsFirst() {
             ease: "easeOut",
             delay: 0.3, // 0.3s delay for the second image
           }}
-          viewport={{ once: true }}
-        >
-          <img src="/images/products-first/image-2.png" alt="" />
+          viewport={{ once: true }}>
+          <img
+            src={urls.STORAGE(EN.images[1].path)}
+            alt=''
+          />
         </motion.div>
 
         <motion.div
@@ -49,9 +63,11 @@ export default function ProductsFirst() {
             ease: "easeOut",
             delay: 0.6, // 0.6s delay for the third image
           }}
-          viewport={{ once: true }}
-        >
-          <img src="/images/products-first/image-3.png" alt="" />
+          viewport={{ once: true }}>
+          <img
+            src={urls.STORAGE(EN.images[2].path)}
+            alt=''
+          />
         </motion.div>
       </motion.div>
 
@@ -65,23 +81,18 @@ export default function ProductsFirst() {
           ease: "easeOut",
           delay: 0.9, // Delay to match the images' pop-in timing
         }}
-        viewport={{ once: true }}
-      >
-        <HighLight text="Exclusive Gift Boxes" marked="Exclusive Gift Boxes" />
+        viewport={{ once: true }}>
+        <HighLight
+          text='Exclusive Gift Boxes'
+          marked='Exclusive Gift Boxes'
+        />
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.1 }}
-          viewport={{ once: true }}
-        >
-          <Description>
-            The main concern of the company is always to be able to offer the
-            most diverse and extensive collection of luxury boxes to our valued
-            customers in various fields. Food, cosmetics, pharmaceuticals and
-            even handcrafts industries. So that they can choose from our unique
-            collection of products to suit their needs.
-          </Description>
+          viewport={{ once: true }}>
+          <Description>{EN.description}</Description>
         </motion.div>
 
         <motion.div
@@ -89,12 +100,11 @@ export default function ProductsFirst() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.3 }}
-          viewport={{ once: true }}
-        >
+          viewport={{ once: true }}>
           <Button
-            title="EXPLORE MORE"
+            title='EXPLORE MORE'
             variant={"primary"}
-            icon="none"
+            icon='none'
             onClick={() => {
               route.push("/en/products");
             }}
