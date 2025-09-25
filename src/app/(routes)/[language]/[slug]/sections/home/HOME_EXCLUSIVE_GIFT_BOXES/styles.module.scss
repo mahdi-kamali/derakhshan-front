@@ -1,6 +1,6 @@
 @import "src/assets/css/mixins";
 
-.ProductsFirst {
+.HOME_EXCLUSIVE_GIFT_BOXES {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,11 +11,8 @@
   background-size: cover;
   background-position: right;
   flex-direction: row-reverse;
- 
   direction: ltr;
-
   font-family: smooch-sans;
-
   height: max-content !important;
   min-height: 100vh !important;
 
@@ -114,6 +111,16 @@
       right: -4rem;
       img {
         object-fit: contain;
+      }
+    }
+  }
+}
+
+html:lang("fa") {
+  .HOME_EXCLUSIVE_GIFT_BOXES {
+    .left {
+      * {
+        direction: rtl !important;
       }
     }
   }

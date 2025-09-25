@@ -1,4 +1,4 @@
-import { IFile } from "@/types/files.types";
+import { IFile } from "./files.types";
 
 // 1) Sections from the homepage
 export type SECTIONS_TYPES = {
@@ -147,6 +147,27 @@ export type SECTIONS_TYPES = {
           description: string;
           image: IFile;
         }[];
+      };
+    };
+  };
+  CAREERS_HERO: {
+    type: "CAREERS_HERO";
+    components: {
+      EN: {
+        background: IFile;
+        title: {
+          marked: string;
+          text: string;
+        };
+        description: string;
+      };
+      FA: {
+        background: IFile;
+        title: {
+          marked: string;
+          text: string;
+        };
+        description: string;
       };
     };
   };
@@ -315,6 +336,28 @@ export const SECTIONS_TYPES_EXAMPLES: SECTIONS_TYPES = {
             image: undefined as any,
           },
         ],
+      },
+    },
+  },
+
+  CAREERS_HERO: {
+    type: "CAREERS_HERO",
+    components: {
+      EN: {
+        background: undefined as any,
+        title: {
+          marked: "marked title",
+          text: "this is text with marked title",
+        },
+        description: "this is description.",
+      },
+      FA: {
+        background: undefined as any,
+        title: {
+          marked: "متن مارک شده",
+          text: "این یک متن است که مارک شده است",
+        },
+        description: "این یک توضیحات است.",
       },
     },
   },

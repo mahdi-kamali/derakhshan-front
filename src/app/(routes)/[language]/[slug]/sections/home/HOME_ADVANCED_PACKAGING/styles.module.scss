@@ -6,16 +6,11 @@
   align-items: center;
   gap: var(--home-section-gap);
   direction: ltr;
-
   background-color: var(--color-dark-background);
   padding: 2rem;
-
   width: 100%;
-
   overflow: hidden;
-
   font-family: smooch-sans;
-
   height: max-content !important;
   min-height: 100vh !important;
 
@@ -56,5 +51,16 @@
   .right {
     margin-top: 2rem;
     width: var(--home-section-right-width);
+  }
+}
+
+html:lang("fa") {
+  .solutions {
+    .left {
+      align-items: end;
+      * {
+        direction: rtl !important;
+      }
+    }
   }
 }

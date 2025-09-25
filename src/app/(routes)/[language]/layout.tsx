@@ -6,6 +6,7 @@ import styles from "@/app/layout.module.scss";
 
 interface IProps {
   children: React.ReactNode;
+  params: { language: string };
 }
 
 export const metadata = {};
@@ -15,9 +16,10 @@ export const viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: IProps) {
+export default async function RootLayout({ children, params }: IProps) {
+  const { language } = await params;
   return (
-    <html lang="en">
+    <html lang={language}>
       <body className={styles.layout}>
         <Header />
         {children}
