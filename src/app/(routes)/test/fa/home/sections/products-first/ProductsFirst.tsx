@@ -96,7 +96,7 @@ export default function ProductsFirst() {
             variant={"primary"}
             icon="none"
             onClick={() => {
-              route.push("/fa/products");
+              route.push("/FA/products");
             }}
           />
         </motion.div>

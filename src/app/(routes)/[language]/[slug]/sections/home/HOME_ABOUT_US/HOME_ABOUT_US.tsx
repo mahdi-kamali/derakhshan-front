@@ -7,10 +7,11 @@ import Description from "@/components/UI/Section/Description/Description";
 import { ISection } from "@/types/sections.types";
 import { urls } from "@/common/urls";
 import { redirect } from "next/navigation";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 interface IProps {
   section: Extract<ISection, { type: "HOME_ABOUT_US" }>;
-  language: "en" | "fa";
+  language: LanguagesENUM;
 }
 
 export default function HOME_ABOUT_US(props: IProps) {
@@ -18,7 +19,7 @@ export default function HOME_ABOUT_US(props: IProps) {
 
   const router = redirect;
 
-  const en = () => {
+  const EN = () => {
     const EN = section.components.EN;
     const first = EN.agents[0];
     const second = EN.agents[1];
@@ -55,7 +56,7 @@ export default function HOME_ABOUT_US(props: IProps) {
               variant={"primary"}
               icon='none'
               onClick={() => {
-                router("/en/about-us");
+                router("/EN/about-us");
               }}
             />
           </motion.div>
@@ -114,7 +115,7 @@ export default function HOME_ABOUT_US(props: IProps) {
     );
   };
 
-  const fa = () => {
+  const FA = () => {
     const FA = section.components.FA;
     const first = FA.agents[0];
     const second = FA.agents[1];
@@ -202,7 +203,7 @@ export default function HOME_ABOUT_US(props: IProps) {
               variant={"primary"}
               icon='none'
               onClick={() => {
-                router("/fa/about-us");
+                router("/FA/about-us");
               }}
             />
           </motion.div>
@@ -212,7 +213,7 @@ export default function HOME_ABOUT_US(props: IProps) {
   };
 
   const RenderSection = () => {
-    const types = { fa, en };
+    const types = { FA, EN };
     return types[language]();
   };
 

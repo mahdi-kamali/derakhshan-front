@@ -1,5 +1,4 @@
 import { IFile } from "./files.types";
-
 // 1) Sections from the homepage
 export type SECTIONS_TYPES = {
   UNSET: {
@@ -150,6 +149,7 @@ export type SECTIONS_TYPES = {
       };
     };
   };
+
   CAREERS_HERO: {
     type: "CAREERS_HERO";
     components: {
@@ -168,6 +168,44 @@ export type SECTIONS_TYPES = {
           text: string;
         };
         description: string;
+      };
+    };
+  };
+
+  CAREERS_JOBS: {
+    type: "CAREERS_JOBS";
+    components: {
+      EN: {
+        jobs: [];
+      };
+      FA: {
+        jobs: [];
+      };
+    };
+  };
+
+  CONTACT_US: {
+    type: "CONTACT_US";
+    components: {
+      EN: {
+        info: {
+          company: string;
+          location: string;
+          phone: string;
+          fax: string;
+          email: string;
+          image: IFile;
+        };
+      };
+      FA: {
+        info: {
+          company: string;
+          location: string;
+          phone: string;
+          fax: string;
+          email: string;
+          image: IFile;
+        };
       };
     };
   };
@@ -358,6 +396,44 @@ export const SECTIONS_TYPES_EXAMPLES: SECTIONS_TYPES = {
           text: "این یک متن است که مارک شده است",
         },
         description: "این یک توضیحات است.",
+      },
+    },
+  },
+
+  CAREERS_JOBS: {
+    type: "CAREERS_JOBS",
+    components: {
+      EN: {
+        jobs: [],
+      },
+      FA: {
+        jobs: [],
+      },
+    },
+  },
+
+  CONTACT_US: {
+    type: "CONTACT_US",
+    components: {
+      EN: {
+        info: {
+          company: "Derakhshan Pak Tabriz",
+          location: "Iran – Tabriz – Km 6 Tehran Road, Irdak Industrial Zone",
+          phone: "+98-413-6373751",
+          fax: "+98-413-6373753",
+          email: "info@dppack.com",
+          image: undefined as any,
+        },
+      },
+      FA: {
+        info: {
+          company: "درخشان پاک تبریز",
+          location: "ایران – تبریز – کیلومتر ۶ جاده تهران، کوی صنعتی ایرداک",
+          phone: "+۹۸-۴۱۳-۶۳۷۳۷۵۱",
+          fax: "+۹۸-۴۱۳-۶۳۷۳۷۵۳",
+          email: "info@dppack.com",
+          image: undefined as any,
+        },
       },
     },
   },

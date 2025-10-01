@@ -3,16 +3,17 @@ import styles from "./styles.module.scss";
 import { motion } from "framer-motion";
 import Logo from "@/components/icons/DerakhshanLogo/Logo";
 import { ISection } from "@/types/sections.types";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 interface IProps {
   section: Extract<ISection, { type: "HOME_HERO" }>;
-  language: "en" | "fa";
+  language: LanguagesENUM;
 }
 
 export default function HOME_HERO(props: IProps) {
   const { section, language } = props;
 
-  const fa = () => {
+  const FA = () => {
     const FA = section.components.FA;
 
     return (
@@ -40,7 +41,7 @@ export default function HOME_HERO(props: IProps) {
     );
   };
 
-  const en = () => {
+  const EN = () => {
     const EN = section.components.EN;
 
     return (
@@ -69,7 +70,7 @@ export default function HOME_HERO(props: IProps) {
   };
 
   const RenderSection = () => {
-    const types = { fa, en };
+    const types = { FA, EN };
     return types[language]();
   };
 

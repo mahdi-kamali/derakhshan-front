@@ -115,7 +115,7 @@ export default function AboutUs() {
             variant={"primary"}
             icon="none"
             onClick={() => {
-              route.push("/fa/about-us");
+              route.push("/FA/about-us");
             }}
           />
         </motion.div>

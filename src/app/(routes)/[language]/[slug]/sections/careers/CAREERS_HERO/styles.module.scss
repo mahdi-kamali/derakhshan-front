@@ -50,6 +50,7 @@
       font-weight: 700;
       line-height: 1;
       margin-bottom: 1rem;
+      direction: rtl;
     }
 
     p {
@@ -70,5 +71,17 @@
     }
     @include breakpoint-max(sm) {
     }
+  }
+}
+
+html:lang("EN") {
+  .info {
+    direction: ltr;
+  }
+}
+
+html:lang("FA") {
+  .info {
+    direction: rtl;
   }
 }

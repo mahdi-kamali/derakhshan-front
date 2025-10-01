@@ -32,7 +32,7 @@ export default function Header() {
   const switchLang = () => {
     setMenuOpen(false);
     const segments = pathName.split("/");
-    segments[1] = language == "fa" ? "en" : "fa";
+    segments[1] = language == "FA" ? "EN" : "FA";
     const newPath = segments.join("/");
     route.push(newPath);
   };
@@ -86,7 +86,7 @@ export default function Header() {
   ];
 
   return (
-    <header className={` ${styles.header} ${language == "en" && styles.en}`}>
+    <header className={` ${styles.header} ${language == "EN" && styles.en}`}>
       <div className={styles.left}>
         <div className={styles.logo}>
           <img
@@ -123,7 +123,7 @@ export default function Header() {
                 <button
                   className={styles.language}
                   onClick={switchLang}>
-                  <span>{language == "en" ? "ENGLISH" : "فارسی"}</span>
+                  <span>{language == "EN" ? "ENGLISH" : "فارسی"}</span>
                   <Icon icon='clarity:language-solid' />
                 </button>
                 {navMenu.map((item) => {
@@ -135,7 +135,7 @@ export default function Header() {
                       className={isActive ? styles.active : ""}
                       onClick={() => setMenuOpen(false)}>
                       <span>
-                        {language == "en" ? item.title : item.titleFa}
+                        {language == "EN" ? item.title : item.titleFa}
                       </span>
                       <Icon icon={item.icon} />
                     </Link>

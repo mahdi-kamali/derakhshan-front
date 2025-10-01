@@ -63,7 +63,7 @@ export default function Products() {
                 icon="ep:top-right"
                 title="مشاهده محصول"
                 variant="primary"
-                onClick={() => router.push("/fa/products/" + product.slug)}
+                onClick={() => router.push("/FA/products/" + product.slug)}
               />
             </motion.div>
           );

@@ -54,7 +54,7 @@ export default function Solution() {
             variant={"primary"}
             icon="none"
             onClick={() => {
-              route.push("/fa/services");
+              route.push("/FA/services");
             }}
           />
         </motion.div>

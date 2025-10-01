@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 export default function useSettings() {
   const pathname = usePathname();
 
-  const [language, setLanguage] = useState<"en" | "fa">("fa");
+  const [language, setLanguage] = useState<"EN" | "FA">("FA");
 
   useEffect(() => {
-    const isFarsi = pathname.includes("/fa/");
-    setLanguage(isFarsi ? "fa" : "en");
+    const isFarsi = pathname.includes("/FA/");
+    setLanguage(isFarsi ? "FA" : "EN");
   }, [pathname]);
 
   return {

@@ -6,10 +6,11 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ISection } from "@/types/sections.types";
 import { urls } from "@/common/urls";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 interface IProps {
   section: Extract<ISection, { type: "HOME_ADVANCED_PACKAGING" }>;
-  language: "en" | "fa";
+  language: LanguagesENUM;
 }
 
 export default function HOME_ADVANCED_PACKAGING(props: IProps) {
@@ -17,7 +18,7 @@ export default function HOME_ADVANCED_PACKAGING(props: IProps) {
 
   const route = useRouter();
 
-  const en = () => {
+  const EN = () => {
     const EN = section.components.EN;
 
     return (
@@ -64,7 +65,7 @@ export default function HOME_ADVANCED_PACKAGING(props: IProps) {
               variant={"primary"}
               icon='none'
               onClick={() => {
-                route.push("/en/services");
+                route.push("/EN/services");
               }}
             />
           </motion.div>
@@ -73,7 +74,7 @@ export default function HOME_ADVANCED_PACKAGING(props: IProps) {
     );
   };
 
-  const fa = () => {
+  const FA = () => {
     const FA = section.components.FA;
 
     return (
@@ -120,7 +121,7 @@ export default function HOME_ADVANCED_PACKAGING(props: IProps) {
               variant={"primary"}
               icon='none'
               onClick={() => {
-                route.push("/en/services");
+                route.push("/EN/services");
               }}
             />
           </motion.div>
@@ -130,7 +131,7 @@ export default function HOME_ADVANCED_PACKAGING(props: IProps) {
   };
 
   const RenderSection = () => {
-    const types = { en, fa };
+    const types = { FA, EN };
     return types[language]();
   };
 

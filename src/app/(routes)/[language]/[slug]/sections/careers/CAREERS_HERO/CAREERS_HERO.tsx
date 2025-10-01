@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import { motion } from "framer-motion";
 import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
+import { urls } from "@/common/urls";
 
 interface IProps {
   section: Extract<ISection, { type: "CAREERS_HERO" }>;
@@ -23,7 +24,7 @@ export default function CAREERS_HERO(props: IProps) {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}>
         <img
-          src={configs.background.path}
+          src={urls.STORAGE(configs.background.path)}
           alt=''
           className={styles.backgroundImg}
         />

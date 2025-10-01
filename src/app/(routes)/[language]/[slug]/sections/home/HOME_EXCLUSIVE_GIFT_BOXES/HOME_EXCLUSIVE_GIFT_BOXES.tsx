@@ -7,17 +7,18 @@ import Description from "@/components/UI/Section/Description/Description";
 import { useRouter } from "next/navigation";
 import { ISection } from "@/types/sections.types";
 import { urls } from "@/common/urls";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 interface IProps {
   section: Extract<ISection, { type: "HOME_EXCLUSIVE_GIFT_BOXES" }>;
-  language: "en" | "fa";
+  language: LanguagesENUM;
 }
 
 export default function HOME_EXCLUSIVE_GIFT_BOXES(props: IProps) {
   const { section, language } = props;
   const route = useRouter();
 
-  const en = () => {
+  const EN = () => {
     const EN = section.components.EN;
 
     return (
@@ -105,7 +106,7 @@ export default function HOME_EXCLUSIVE_GIFT_BOXES(props: IProps) {
               variant={"primary"}
               icon='none'
               onClick={() => {
-                route.push("/en/products");
+                route.push("/EN/products");
               }}
             />
           </motion.div>
@@ -113,7 +114,7 @@ export default function HOME_EXCLUSIVE_GIFT_BOXES(props: IProps) {
       </>
     );
   };
-  const fa = () => {
+  const FA = () => {
     const FA = section.components.FA;
 
     return (
@@ -201,7 +202,7 @@ export default function HOME_EXCLUSIVE_GIFT_BOXES(props: IProps) {
               variant={"primary"}
               icon='none'
               onClick={() => {
-                route.push("/en/products");
+                route.push("/EN/products");
               }}
             />
           </motion.div>
@@ -211,7 +212,7 @@ export default function HOME_EXCLUSIVE_GIFT_BOXES(props: IProps) {
   };
 
   const RenderSection = () => {
-    const types = { fa, en };
+    const types = { FA, EN };
     return types[language]();
   };
 

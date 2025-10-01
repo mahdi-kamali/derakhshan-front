@@ -4,16 +4,17 @@ import styles from "./styles.module.scss";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import { ISection } from "@/types/sections.types";
 import { urls } from "@/common/urls";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 interface IProps {
   section: Extract<ISection, { type: "ABOUT_US_MAIN" }>;
-  language: "en" | "fa";
+  language: LanguagesENUM;
 }
 
 export default function ABOUT_US_MAIN(props: IProps) {
   const { section, language } = props;
 
-  const en = () => {
+  const EN = () => {
     const { EN } = section.components;
 
     return (
@@ -131,7 +132,7 @@ export default function ABOUT_US_MAIN(props: IProps) {
     );
   };
 
-  const fa = () => {
+  const FA = () => {
     const { FA } = section.components;
 
     return (
@@ -250,7 +251,7 @@ export default function ABOUT_US_MAIN(props: IProps) {
   };
 
   const RenderSection = () => {
-    const types = { fa, en };
+    const types = { FA, EN };
 
     return types[language]();
   };

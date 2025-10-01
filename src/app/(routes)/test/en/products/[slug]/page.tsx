@@ -34,7 +34,7 @@ export default async function page({
               image={product.image}
               alt={product.title}
               className={styles[product.class as keyof typeof styles]}
-              routePath={`/fa/products/${slug}/sub-${i + 1}`}
+              routePath={`/FA/products/${slug}/sub-${i + 1}`}
             />
           ))}
         </div>

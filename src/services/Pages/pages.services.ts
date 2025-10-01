@@ -7,7 +7,18 @@ export const GetPagesAPI = async () => {
   return SSRget<IPage[]>(urls.PAGES.list);
 };
 
-export const GetPageAPI = (slug: string) => {
+export const GetPageAPI = async (slug: string) => {
   const url = urls.PAGES.getBySlug.replace("{slug}", slug);
-  return SSRget<IPage>(url);
+  let response = {
+    notFound: false,
+    page: {} as IPage,
+  };
+  try {
+    const page = await SSRget<IPage>(url);
+    response.page = page;
+  } catch (err) {
+    response.notFound = true;
+  }
+
+  return response;
 };

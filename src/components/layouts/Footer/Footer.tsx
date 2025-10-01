@@ -199,9 +199,9 @@ export default function Footer() {
           <img src={configs.logo} alt="Logo" />
         </div>
         <div className={styles.slug}>
-          {language == "fa" && <img src={configs.slug} alt="Slug" />}
+          {language == "FA" && <img src={configs.slug} alt="Slug" />}
         </div>
-        {language == "fa" && (
+        {language == "FA" && (
           <div className={styles.items}>
             {configs.nomads.map((nomad, index) => (
               <div className={styles.item} key={index}>

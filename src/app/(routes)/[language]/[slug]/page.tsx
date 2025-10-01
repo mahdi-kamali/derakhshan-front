@@ -7,19 +7,27 @@ import HOME_ADVANCED_PACKAGING from "./sections/home/HOME_ADVANCED_PACKAGING/HOM
 import HOME_EXCLUSIVE_GIFT_BOXES from "./sections/home/HOME_EXCLUSIVE_GIFT_BOXES/HOME_EXCLUSIVE_GIFT_BOXES";
 import ABOUT_US_MAIN from "./sections/about-us/ABOUT_US_MAIN/ABOUT_US_MAIN";
 import CAREERS_HERO from "./sections/careers/CAREERS_HERO/CAREERS_HERO";
+import { LanguagesENUM } from "@/types/Language/Language.types";
+import CAREERS_JOBS from "./sections/careers/CAREERS_JOBS/CAREERS_JOBS";
+import useRedirect from "@/hooks/useRedirect";
+import CONTACT_US from "./sections/contact-us/CONTACT_US";
 
 interface IProps {
-  params: { language: "en" | "fa"; slug: string };
+  params: { language: LanguagesENUM; slug: string };
 }
 
 export default async function page(props: IProps) {
   const { params } = props;
   const { language, slug } = await params;
+  const { GoHome } = useRedirect();
 
-  const page = await GetPageAPI(`/${slug}`);
+  const { notFound, page } = await GetPageAPI(`/${slug}`);
+
+  if (notFound) {
+    GoHome();
+  }
 
   const sections = page.sections;
-
 
   return (
     <PageContainer title={page.title}>
@@ -74,6 +82,17 @@ export default async function page(props: IProps) {
                 section={section}
                 key={type}
                 languages={language}
+              />
+            );
+
+          case "CAREERS_JOBS":
+            return <CAREERS_JOBS />;
+          case "CONTACT_US":
+            return (
+              <CONTACT_US
+                section={section}
+                key={type}
+                language={language}
               />
             );
         }
