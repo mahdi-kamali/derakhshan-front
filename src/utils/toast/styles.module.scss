@@ -1,0 +1,41 @@
+.toast {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 0.25em;
+    * {
+        color: black;
+    }
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+        button {
+            all: unset;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-family: inherit;
+            padding: 0.5em 1em;
+            border-radius: 0.25rem;
+            line-height: 1;
+            cursor: pointer;
+            * {
+                color: white !important;
+            }
+            opacity: 0.5;
+            transition: all 0.5s ease;
+            &:hover {
+                opacity: 1;
+            }
+        }
+        .confirm {
+            background-color: var(--bs-success);
+        }
+        .cancel {
+            background-color: var(--bs-danger);
+        }
+    }
+}

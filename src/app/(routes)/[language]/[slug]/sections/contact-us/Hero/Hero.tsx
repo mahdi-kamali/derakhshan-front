@@ -7,7 +7,11 @@ import { motion } from "framer-motion";
 import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { urls } from "@/common/urls";
-import {} from "reacfom"
+import { useFormik } from "formik";
+import { useMutation } from "@tanstack/react-query";
+import { CreateContactAPI } from "@/services/Contact-Us/contact_us.services";
+import { IContact } from "@/types/contact-us.types";
+import { ShowQuestion } from "@/utils/toast/Toast";
 
 interface IProps {
   section: Extract<ISection, { type: "CONTACT_US" }>;
@@ -164,9 +168,25 @@ export default function Hero(props: IProps) {
     ],
   };
 
+  const { values, setFieldValue, handleChange } = useFormik({
+    initialValues: {
+      email: "",
+      createdAt: "",
+      firstName: "",
+      lastName: "",
+      message: "",
+      phone: "",
+      updatedAt: "",
+    } as IContact,
+    onSubmit(values, formikHelpers) {},
+  });
 
-  const {} = useformik
-
+  const { mutate: CreateContact } = useMutation({
+    mutationFn: CreateContactAPI,
+    onSuccess(data, variables, onMutateResult, context) {
+      console.log(data);
+    },
+  });
 
   return (
     <section className={styles.hero}>
@@ -214,7 +234,9 @@ export default function Hero(props: IProps) {
               title={field.title}
               type={field.type}
               required={field.required}
-              onChange={(value) => console.log(value)}
+              onChange={(value) => {
+                setFieldValue(field.name, value);
+              }}
               rtl={language === "FA"}
               gridColumn={field.gridColumn}
               multiLine={field.multiLine}
@@ -225,6 +247,14 @@ export default function Hero(props: IProps) {
             icon='ep:top-right'
             title={configs[language].submit}
             variant='primary'
+            onClick={() => {
+              ShowQuestion({
+                onConfirm() {
+                  CreateContact(values);
+                },
+                onCancel() {},
+              });
+            }}
           />
         </form>
       </motion.div>
