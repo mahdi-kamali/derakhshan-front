@@ -1,0 +1,59 @@
+.controls {
+    padding: 0 1rem;
+    color: #eee;
+    border-radius: 0 0 0 0.25rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.controls h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.controls fieldset {
+    border: 1px solid white;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1em;
+    border-radius: 0.5rem;
+}
+
+.controls legend {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    padding: 0 0.5em;
+}
+
+.controls p {
+    margin: 0.5rem 0;
+}
+
+.controls label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.controls input[type="range"] {
+    width: 100%;
+}
+
+.rotationGroup {
+    height: 10rem;
+    position: relative;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    .field {
+        display: grid;
+        grid-template-columns: 1fr 10rem;
+        gap: 0.5rem;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+    }
+}

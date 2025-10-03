@@ -8,5 +8,8 @@ export const urls = {
   CONTACT_US: {
     create: BASE_URL + "/api/public/contact-us/",
   },
+  ORDERS : {
+    create : BASE_URL + "/api/public/order/"
+  },
   STORAGE: (path: string) => `${BASE_URL}/${path}`,
 };

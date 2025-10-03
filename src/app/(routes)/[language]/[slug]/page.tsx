@@ -11,6 +11,7 @@ import { LanguagesENUM } from "@/types/Language/Language.types";
 import CAREERS_JOBS from "./sections/careers/CAREERS_JOBS/CAREERS_JOBS";
 import useRedirect from "@/hooks/useRedirect";
 import CONTACT_US from "./sections/contact-us/CONTACT_US";
+import ORDER from "./sections/about-us/order/ORDER/ORDER";
 
 interface IProps {
   params: { language: LanguagesENUM; slug: string };
@@ -84,7 +85,6 @@ export default async function page(props: IProps) {
                 languages={language}
               />
             );
-
           case "CAREERS_JOBS":
             return <CAREERS_JOBS />;
           case "CONTACT_US":
@@ -95,6 +95,8 @@ export default async function page(props: IProps) {
                 language={language}
               />
             );
+          case "ORDER":
+            return <ORDER />;
         }
       })}
     </PageContainer>

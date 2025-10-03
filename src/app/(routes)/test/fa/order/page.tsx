@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PageContainer from "@/components/containers/PageContainer/PageContainer";
-import CubeCanvas from "@/components/UI/Cube/CubeCanvas";
+import CubeCanvas from "@/components/UI/CuBoid/CuBoid";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";

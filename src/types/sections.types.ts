@@ -209,6 +209,13 @@ export type SECTIONS_TYPES = {
       };
     };
   };
+  ORDER: {
+    type: "ORDER";
+    components: {
+      EN: {};
+      FA: {};
+    };
+  };
 };
 
 export const SECTIONS_TYPES_EXAMPLES: SECTIONS_TYPES = {
@@ -435,6 +442,13 @@ export const SECTIONS_TYPES_EXAMPLES: SECTIONS_TYPES = {
           image: undefined as any,
         },
       },
+    },
+  },
+  ORDER: {
+    type: "ORDER",
+    components: {
+      EN: {},
+      FA: {},
     },
   },
 };

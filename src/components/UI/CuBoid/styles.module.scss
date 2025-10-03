@@ -1,0 +1,55 @@
+.container {
+    perspective: var(--perspective, 1000px);
+}
+
+.cuboid {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform ease-out 0.5s;
+}
+
+.face {
+    position: absolute;
+    border: 2px solid hsl(var(--hue) 90% 70%);
+    box-shadow: inset 0 0 1rem hsl(var(--hue) 71% 30%);
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0.1em 0.1em #000;
+    background-color: hsl(var(--hue) 71% 10% / 0.8);
+    background-image:
+        radial-gradient(rgb(255 255 255 / 0.1) 1px, transparent 1px),
+        radial-gradient(rgb(255 255 255 / 0.1) 1px, transparent 1px);
+    background-size: calc(20 * 1px) calc(20 * 1px);
+    background-position:
+        0 0,
+        calc(10 * 1px) calc(10 * 1px);
+    text-transform: uppercase;
+}
+
+.front {
+    transform: rotateY(0deg) translateZ(var(--depth-offset, 0px));
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(var(--depth-offset, 0px));
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(var(--width-offset, 0px));
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(var(--depth-offset, 0px));
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(var(--depth-offset, 0px));
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(var(--height-offset, 0px));
+}

@@ -14,6 +14,7 @@ interface IProps extends CSSProperties {
     rows: number;
     cols: number;
   };
+  value?: any;
 }
 
 export default function Text(props: IProps) {
@@ -26,6 +27,7 @@ export default function Text(props: IProps) {
     type = "text",
     rtl = false,
     multiLine,
+    value,
   } = props;
 
   return (
@@ -47,6 +49,7 @@ export default function Text(props: IProps) {
             placeholder={title}
             rows={multiLine.rows}
             cols={multiLine.cols}
+            defaultValue={value}
           />
         )}
         {!multiLine && (
@@ -59,6 +62,7 @@ export default function Text(props: IProps) {
               onChange(value);
             }}
             required={required}
+            defaultValue={value}
           />
         )}
       </div>

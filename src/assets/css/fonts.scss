@@ -1,19 +1,19 @@
 @font-face {
   font-family: iran-sans;
-  src: url("/fonts/iran-sans.ttf");
-}
-
-@font-face {
-  font-family: smooch-sans;
-  src: url("/fonts/Smooch_Sans/SmoochSans-VariableFont_wght.ttf")
-    format("truetype");
-  font-display: swap;
+  src: url("/fonts/iran-sans.ttf") format("truetype");
+  unicode-range: U+0600-06FF, U+FB50-FDFF, U+FE70-FEFF; /* Persian + Arabic characters */
 }
 
 @font-face {
   font-family: roboto-flex;
   src: url("/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf")
     format("truetype");
+  unicode-range: U+0000-007F, U+0080-00FF; /* Basic Latin characters */
+}
+
+@font-face {
+  font-family: smooch-sans;
+  src: url("/fonts/Smooch_Sans/SmoochSans-VariableFont_wght.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -24,6 +24,10 @@
 }
 
 html {
+  font-family: iran-sans, roboto-flex, sans-serif;
+  *{
+    font-family: inherit !important;
+  }
   --font-fa-primary: iran-sans;
-  --font-en-priamry: tahoma;
+  --font-en-primary: roboto-flex;
 }

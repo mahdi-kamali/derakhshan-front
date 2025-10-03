@@ -13,7 +13,7 @@ interface InputProps {
   value?: string;
   options?: { value: string; name: string }[];
   className?: string;
-
+  name: string;
   onChange?: (value: string) => void;
 }
 
@@ -24,6 +24,7 @@ const Input = ({
   options,
   className,
   onChange,
+  name
 }: InputProps) => {
   const handleSelectChange = (value: string) => {
     if (onChange) onChange(value);
@@ -55,7 +56,10 @@ const Input = ({
           }}
         />
       ) : type === "date" ? (
-        <InputDate value={value} onChange={(e) => onChange?.(e)} />
+        <InputDate
+          value={value}
+          onChange={(e) => onChange?.(e)}
+        />
       ) : (
         <input
           type={type}
