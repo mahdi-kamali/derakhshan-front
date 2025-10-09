@@ -56,7 +56,7 @@ export default function Header() {
       title: "PRODUCTS",
       titleFa: "محصولات",
       icon: "ph:shopping-bag",
-      path: "/products",
+      path: "/categories",
     },
     {
       title: "ORDER",

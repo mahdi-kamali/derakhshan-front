@@ -214,17 +214,17 @@ export default function Footer() {
       <div className={styles.left}>
         {configs.menu.map((col, colIndex) => (
           <div className={styles.col} key={colIndex}>
-            <h2>{language == "en" ? col.title : col.titleFa}</h2>
+            <h2>{language == "EN" ? col.title : col.titleFa}</h2>
             {col.groups.map((group, groupIndex) => (
               <ul className={styles.group} key={groupIndex}>
-                <h3>{language == "en" ? group.header : group.headerFa}</h3>
+                <h3>{language == "EN" ? group.header : group.headerFa}</h3>
                 <div className={styles.links}>
                   {group.links.map((link, linkIndex) => (
                     <li className={styles.item} key={linkIndex}>
                       <label>
                         <Icon icon={link.icon} />
                         <span>
-                          {language == "en" ? link.label : link.labelFa}
+                          {language == "EN" ? link.label : link.labelFa}
                         </span>
                       </label>
                     </li>

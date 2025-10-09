@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 
 interface IProps {
   children: React.ReactNode;
-  params: { language: string };
+  params: Promise<{ language: string }>;
 }
 
 export const metadata = {};
@@ -20,7 +20,8 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children, params }: IProps) {
-  const { language } = await params;
+  const { language } =await  params;
+  
   return (
     <html lang={language}>
       <ReactQueryProvider>

@@ -24,7 +24,7 @@ const Input = ({
   options,
   className,
   onChange,
-  name
+  name,
 }: InputProps) => {
   const handleSelectChange = (value: string) => {
     if (onChange) onChange(value);
@@ -41,16 +41,16 @@ const Input = ({
           type={type === "select-type" ? true : false}
           placeholder={{
             input:
-              language == "en"
+              language == "EN"
                 ? "Write or choose an option"
                 : "بنویسید یا انتخاب کنید",
-            select: language == "en" ? "Choose an option" : "انتخاب کنید",
+            select: language == "EN" ? "Choose an option" : "انتخاب کنید",
           }}
           onChange={handleSelectChange}
         />
       ) : type === "file" ? (
         <InputFile
-          placeholder={language == "en" ? "choose your file" : "انتخاب فایل"}
+          placeholder={language == "EN" ? "choose your file" : "انتخاب فایل"}
           onChange={(file) => {
             // console.log("فایل انتخاب‌شده:", file);
           }}

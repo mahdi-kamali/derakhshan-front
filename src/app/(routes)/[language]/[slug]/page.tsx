@@ -12,14 +12,18 @@ import CAREERS_JOBS from "./sections/careers/CAREERS_JOBS/CAREERS_JOBS";
 import useRedirect from "@/hooks/useRedirect";
 import CONTACT_US from "./sections/contact-us/CONTACT_US";
 import ORDER from "./sections/about-us/order/ORDER/ORDER";
+import PRE_PRESS from "./sections/services/PREE-PRESS/PREE-PRESS";
+import PRESS from "./sections/services/PRESS/PRESS";
+import POST_PRESS from "./sections/services/POST-PRESS/POST-PRESS";
 
 interface IProps {
-  params: { language: LanguagesENUM; slug: string };
+  params: Promise<{ language: LanguagesENUM; slug: string }>;
 }
 
-export default async function page(props: IProps) {
+export default async function Page(props: IProps) {
   const { params } = props;
   const { language, slug } = await params;
+  
   const { GoHome } = useRedirect();
 
   const { notFound, page } = await GetPageAPI(`/${slug}`);
@@ -97,6 +101,28 @@ export default async function page(props: IProps) {
             );
           case "ORDER":
             return <ORDER />;
+          case "PREE_PRESS":
+            return (
+              <PRE_PRESS
+                key={type}
+                section={section}
+              />
+            );
+          case "PRESS":
+            return (
+              <PRESS
+                section={section}
+                key={type}
+              />
+            );
+
+          case "POST_PRESS":
+            return (
+              <POST_PRESS
+                key={type}
+                section={section}
+              />
+            );
         }
       })}
     </PageContainer>
