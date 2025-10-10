@@ -1,3 +1,15 @@
 deployment:
   tasks:
-    - /bin/echo "✅ Deployment is working at $(date)" > /home/dppackde/repositories/derakhshan-front/deploy.log
+    - export APP_PATH=/home/dppackde/repositories/derakhshan-front
+
+    - /bin/echo "🚀 Pulling latest code..."
+    - /usr/local/bin/git --work-tree=$APP_PATH --git-dir=$APP_PATH/.git pull origin main
+
+    - /bin/echo "📦 Installing dependencies..."
+    - /opt/cpanel/ea-nodejs24/bin/npm install --prefix $APP_PATH
+
+    - /bin/echo "🏗️ Building Next.js project..."
+    - /opt/cpanel/ea-nodejs24/bin/npm run build --prefix $APP_PATH
+
+    - /bin/echo "🔁 Restarting PM2 app..."
+    - /opt/cpanel/ea-nodejs24/bin/pm2 restart front || /opt/cpanel/ea-nodejs24/bin/pm2 start $APP_PATH/server.js --name front
