@@ -30,7 +30,7 @@ export default async function Page(props: IProps) {
   const { notFound, page } = await GetPageAPI(`/${slug}`);
 
   if (notFound) {
-    redirect("/FA/home");
+    // redirect("/FA/home");
   }
 
   const sections = page.sections;
