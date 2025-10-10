@@ -1,16 +1,15 @@
 deployment:
   tasks:
-    - export REPOPATH=/home/dppackde/repositories/derakhshan-front
-    - export DEPLOYPATH=/home/dppackde/front
+    - export APP_PATH=/home/dppackde/repositories/derakhshan-front
 
     - /bin/echo "🚀 Pulling latest changes..."
-    - /usr/local/bin/git --work-tree=$DEPLOYPATH --git-dir=$REPOPATH/.git pull origin main
+    - /usr/local/bin/git --work-tree=$APP_PATH --git-dir=$APP_PATH/.git pull origin main
 
     - /bin/echo "📦 Installing dependencies..."
-    - /usr/local/bin/npm install --prefix $DEPLOYPATH
+    - /usr/local/bin/npm install --prefix $APP_PATH
 
     - /bin/echo "🏗️ Building project..."
-    - /usr/local/bin/npm run build --prefix $DEPLOYPATH
+    - /usr/local/bin/npm run build --prefix $APP_PATH
 
-    - /bin/echo "🔁 Restarting application with PM2..."
-    - /usr/local/bin/pm2 restart front || /usr/local/bin/pm2 start $DEPLOYPATH/server.js --name front
+    - /bin/echo "🔁 Restarting application..."
+    - /usr/local/bin/pm2 restart front || /usr/local/bin/pm2 start $APP_PATH/server.js --name front
