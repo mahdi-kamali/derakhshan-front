@@ -9,13 +9,11 @@ import ABOUT_US_MAIN from "./sections/about-us/ABOUT_US_MAIN/ABOUT_US_MAIN";
 import CAREERS_HERO from "./sections/careers/CAREERS_HERO/CAREERS_HERO";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import CAREERS_JOBS from "./sections/careers/CAREERS_JOBS/CAREERS_JOBS";
-import useRedirect from "@/hooks/useRedirect";
 import CONTACT_US from "./sections/contact-us/CONTACT_US";
 import ORDER from "./sections/about-us/order/ORDER/ORDER";
 import PRE_PRESS from "./sections/services/PREE-PRESS/PREE-PRESS";
 import PRESS from "./sections/services/PRESS/PRESS";
 import POST_PRESS from "./sections/services/POST-PRESS/POST-PRESS";
-import { redirect } from "next/navigation";
 
 interface IProps {
   params: Promise<{ language: LanguagesENUM; slug: string }>;
@@ -24,8 +22,6 @@ interface IProps {
 export default async function Page(props: IProps) {
   const { params } = props;
   const { language, slug } = await params;
-
-  const { GoHome } = useRedirect();
 
   const { notFound, page } = await GetPageAPI(`/${slug}`);
 
