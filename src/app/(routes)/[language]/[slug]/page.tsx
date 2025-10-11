@@ -32,6 +32,7 @@ export default async function Page(props: IProps) {
       </PageContainer>
     );
   }
+  
 
   const sections = page.sections;
 
