@@ -25,7 +25,7 @@ export default async function Page(props: IProps) {
 
   const { notFound, page } = await GetPageAPI(`/${slug}`);
 
-  
+
   if (notFound) {
     return (
       <PageContainer title='404'>
@@ -33,6 +33,9 @@ export default async function Page(props: IProps) {
       </PageContainer>
     );
   }
+
+
+  g
 
 
   const sections = page.sections;
