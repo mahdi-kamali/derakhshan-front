@@ -12,9 +12,9 @@ export default function PageContainer(props: IProps) {
   const classs = [className, styles.container].join(" ");
 
   return (
-    <div className={classs}>
+    <main className={classs}>
       <title>{title}</title>
       {children}
-    </div>
+    </main>
   );
 }

@@ -9,6 +9,7 @@ export const GetPagesAPI = async () => {
 
 export const GetPageAPI = async (slug: string) => {
   const url = urls.PAGES.getBySlug.replace("{slug}", slug);
+  console.log(url)
   let response = {
     notFound: false,
     page: {} as IPage,

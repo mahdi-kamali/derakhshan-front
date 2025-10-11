@@ -30,28 +30,33 @@ export default async function Page(props: IProps) {
   const { notFound, page } = await GetPageAPI(`/${slug}`);
 
   if (notFound) {
-    // redirect("/FA/home");
+    return (
+      <PageContainer title='404'>
+        <></>
+      </PageContainer>
+    );
   }
 
   const sections = page.sections;
 
   return (
     <PageContainer title={page.title}>
-      {sections.map((section) => {
+      {sections.map((section, index) => {
         const { type } = section;
         switch (type) {
           case "HOME_HERO":
             return (
               <HOME_HERO
                 section={section}
-                key={type}
+                key={index}
                 language={language}
               />
             );
+
           case "HOME_ABOUT_US":
             return (
               <HOME_ABOUT_US
-                key={type}
+                key={index}
                 section={section}
                 language={language}
               />
@@ -61,7 +66,7 @@ export default async function Page(props: IProps) {
             return (
               <HOME_ADVANCED_PACKAGING
                 section={section}
-                key={type}
+                key={index}
                 language={language}
               />
             );
@@ -70,57 +75,63 @@ export default async function Page(props: IProps) {
             return (
               <HOME_EXCLUSIVE_GIFT_BOXES
                 section={section}
-                key={type}
+                key={index}
                 language={language}
               />
             );
+
           case "ABOUT_US_MAIN":
             return (
               <ABOUT_US_MAIN
                 section={section}
-                key={type}
+                key={index}
                 language={language}
               />
             );
+
           case "CAREERS_HERO":
             return (
               <CAREERS_HERO
                 section={section}
-                key={type}
+                key={index}
                 languages={language}
               />
             );
+
           case "CAREERS_JOBS":
-            return <CAREERS_JOBS />;
+            return <CAREERS_JOBS key={index} />;
           case "CONTACT_US":
             return (
               <CONTACT_US
                 section={section}
-                key={type}
+                key={index}
                 language={language}
               />
             );
+
           case "ORDER":
-            return <ORDER />;
+            return <ORDER key={index} />;
+
           case "PREE_PRESS":
             return (
               <PRE_PRESS
-                key={type}
+                key={index}
                 section={section}
               />
             );
+
           case "PRESS":
             return (
               <PRESS
                 section={section}
-                key={type}
+                key={index}
               />
             );
 
           case "POST_PRESS":
             return (
               <POST_PRESS
-                key={type}
+                key={index}
                 section={section}
               />
             );
