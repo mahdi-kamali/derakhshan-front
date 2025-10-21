@@ -1,8 +1,8 @@
 .aboutUs {
   display: flex;
+  justify-content: center;
   background-color: var(--app-section-background);
   font-family: smooch-sans;
-  width: 100% !important;
   padding: 2em;
   gap: 3rem;
 
