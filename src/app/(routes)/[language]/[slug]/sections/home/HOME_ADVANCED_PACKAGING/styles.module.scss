@@ -13,61 +13,21 @@
   font-family: smooch-sans;
   height: max-content !important;
   min-height: 100vh !important;
-
-  @include breakpoint-max(md) {
-    flex-direction: column;
-  }
-
-  .left {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    direction: ltr;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-
-    h1 {
-      font-weight: 500;
-      font-size: 2rem;
-    }
-
-    p {
-      max-width: 75ch;
-      line-height: 2rem;
-      text-align: justify;
-      direction: ltr;
-      font-family: syne;
-      line-height: 2.25;
-    }
-
-    button {
-      span {
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
-    }
-  }
-
-  .right {
-    margin-top: 2rem;
-    max-width: 30rem;
-  }
 }
 
 html:lang("FA") {
   .solutions {
+  }
+}
+
+html:lang("EN") {
+  .solutions {
     flex-direction: row-reverse;
-    .left {
-      align-items: end;
-      * {
-        direction: rtl !important;
-      }
-    }
   }
 }
 
 @media (max-width: 600px) {
   .solutions {
-    flex-direction: column !important;
+    flex-direction: column-reverse !important;
   }
 }
