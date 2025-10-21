@@ -1,7 +1,6 @@
 @font-face {
   font-family: iran-sans;
   src: url("/fonts/iran-sans.ttf") format("truetype");
-  unicode-range: U+0600-06FF, U+FB50-FDFF, U+FE70-FEFF; /* Persian + Arabic characters */
 }
 
 @font-face {
@@ -33,13 +32,10 @@ html {
 }
 
 html:lang(FA) {
-  @font-face {
-    font-family: iran-sans;
-    src: url("/fonts/iran-sans.ttf") format("truetype");
-  }
   font-family: iran-sans;
   p {
     line-height: 2.25 !important;
+    direction: rtl !important;
   }
 }
 

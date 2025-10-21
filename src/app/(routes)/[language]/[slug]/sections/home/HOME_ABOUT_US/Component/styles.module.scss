@@ -46,7 +46,7 @@
     position: relative;
     height: 30rem;
     img {
-      width: 12rem;
+      width: 10rem;
       object-fit: cover;
       aspect-ratio: 1/1;
       border-radius: 0.75rem;
@@ -71,6 +71,7 @@
           font-weight: 400;
           opacity: 0.7;
           font-size: 0.8rem;
+          text-align: center;
         }
       }
 
@@ -84,14 +85,16 @@
       &:nth-child(2) {
         position: absolute;
         right: 0;
-        top: 4rem;
+        top: 4.5rem;
         z-index: 2;
+        text-align: center;
       }
 
       &:nth-child(3) {
         position: absolute;
         margin-top: 1rem;
         margin-left: 2rem;
+        text-align: center;
       }
     }
   }

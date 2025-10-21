@@ -23,7 +23,9 @@ export default async function RootLayout({ children, params }: IProps) {
   const { language } = await params;
 
   return (
-    <html lang={language.toUpperCase()}>
+    <html
+      lang={language.toUpperCase()}
+      dir='rtl'>
       <ReactQueryProvider>
         <body className={styles.layout}>
           <Header />
