@@ -23,13 +23,15 @@ export default async function RootLayout({ children, params }: IProps) {
   const { language } = await params;
 
   return (
-    <ReactQueryProvider>
-      <body className={styles.layout}>
-        <Header />
-        {children}
-        <Footer />
-        <ToastContainer limit={2000} />
-      </body>
-    </ReactQueryProvider>
+    <html lang={language.toUpperCase()}>
+      <ReactQueryProvider>
+        <body className={styles.layout}>
+          <Header />
+          {children}
+          <Footer />
+          <ToastContainer limit={2000} />
+        </body>
+      </ReactQueryProvider>
+    </html>
   );
 }

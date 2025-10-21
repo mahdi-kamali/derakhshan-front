@@ -1,3 +1,4 @@
+"use client";
 import PageContainer from "@/components/containers/PageContainer/PageContainer";
 import { GetPageAPI } from "@/services/Pages/pages.services";
 import React from "react";
@@ -10,33 +11,46 @@ import CAREERS_HERO from "./sections/careers/CAREERS_HERO/CAREERS_HERO";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import CAREERS_JOBS from "./sections/careers/CAREERS_JOBS/CAREERS_JOBS";
 import CONTACT_US from "./sections/contact-us/CONTACT_US";
-import ORDER from "./sections/about-us/order/ORDER/ORDER";
-import PRE_PRESS from "./sections/services/PREE-PRESS/PREE-PRESS";
-import PRESS from "./sections/services/PRESS/PRESS";
-import POST_PRESS from "./sections/services/POST-PRESS/POST-PRESS";
+import ORDER from "./sections/order/ORDER/ORDER";
+import SERVICE from "./sections/services/POST-PRESS/POST-PRESS";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
+import PRESS_SERVICE from "./sections/services/PRESS_SERVICE/PRESS_SERVICE";
 
-interface IProps {
-  params: Promise<{ language: LanguagesENUM; slug: string }>;
-}
+export default function Page() {
+  const params = useParams();
+  const { language, slug }: { language: LanguagesENUM; slug: string } =
+    params as any;
 
-export default async function Page(props: IProps) {
-  const { params } = props;
-  const { language, slug } = await params;
+  const { data } = useQuery({
+    queryFn: () => GetPageAPI(`/${slug}`),
+    initialData: {
+      data: {
+        nav: {
+          icon: "",
+          show: true,
+        },
+        title_en: "",
+        __v: 1,
+        _id: "",
+        createdAt: "",
+        sections: [],
+        slug: "",
+        status: "active",
+        title: "",
+        updatedAt: "",
+      },
+      message: "",
+      status: 200,
+    },
+    queryKey: [GetPageAPI.name],
+  });
 
-  const { notFound, page } = await GetPageAPI(`/${slug}`);
-
-  if (notFound) {
-    return (
-      <PageContainer title='404'>
-        <></>
-      </PageContainer>
-    );
-  }
-
-  const sections = page.sections;
-
+  const page = data.data;
+  if (page === undefined) return;
+  const { sections, title } = page;
   return (
-    <PageContainer title={page.title}>
+    <PageContainer title={title}>
       {sections.map((section, index) => {
         const { type } = section;
         switch (type) {
@@ -45,7 +59,7 @@ export default async function Page(props: IProps) {
               <HOME_HERO
                 section={section}
                 key={index}
-                language={language}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
@@ -54,7 +68,7 @@ export default async function Page(props: IProps) {
               <HOME_ABOUT_US
                 key={index}
                 section={section}
-                language={language}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
@@ -63,7 +77,7 @@ export default async function Page(props: IProps) {
               <HOME_ADVANCED_PACKAGING
                 section={section}
                 key={index}
-                language={language}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
@@ -72,7 +86,7 @@ export default async function Page(props: IProps) {
               <HOME_EXCLUSIVE_GIFT_BOXES
                 section={section}
                 key={index}
-                language={language}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
@@ -81,7 +95,7 @@ export default async function Page(props: IProps) {
               <ABOUT_US_MAIN
                 section={section}
                 key={index}
-                language={language}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
@@ -90,7 +104,7 @@ export default async function Page(props: IProps) {
               <CAREERS_HERO
                 section={section}
                 key={index}
-                languages={language}
+                languages={language.toUpperCase() as LanguagesENUM}
               />
             );
 
@@ -101,34 +115,38 @@ export default async function Page(props: IProps) {
               <CONTACT_US
                 section={section}
                 key={index}
-                language={language}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
           case "ORDER":
-            return <ORDER key={index} />;
+            if (language === LanguagesENUM.FA) return <ORDER key={index} />;
+            else return <></>;
 
           case "PREE_PRESS":
             return (
-              <PRE_PRESS
+              <PRESS_SERVICE
                 key={index}
                 section={section}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
           case "PRESS":
             return (
-              <PRESS
+              <PRESS_SERVICE
                 section={section}
                 key={index}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
 
           case "POST_PRESS":
             return (
-              <POST_PRESS
+              <PRESS_SERVICE
                 key={index}
                 section={section}
+                language={language.toUpperCase() as LanguagesENUM}
               />
             );
         }

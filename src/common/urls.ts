@@ -24,5 +24,11 @@ export const urls = {
         BASE_URL + `/api/public/products/categories/${_id}`,
     },
   },
+  NAVS: {
+    list: BASE_URL + "/api/public/navs/",
+  },
+  CAREERS: {
+    list: BASE_URL + "/api/public/careers",
+  },
   STORAGE: (path: string) => `${BASE_URL}/${path}`,
 };

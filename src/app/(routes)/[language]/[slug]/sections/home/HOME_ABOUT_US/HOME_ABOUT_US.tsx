@@ -8,6 +8,7 @@ import { ISection } from "@/types/sections.types";
 import { urls } from "@/common/urls";
 import { redirect } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
+import Component from "./Component/Component";
 
 interface IProps {
   section: Extract<ISection, { type: "HOME_ABOUT_US" }>;
@@ -129,6 +130,7 @@ export default function HOME_ABOUT_US(props: IProps) {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}>
+          {/* First */}
           <motion.div
             className={styles.first}
             variants={{
@@ -213,8 +215,8 @@ export default function HOME_ABOUT_US(props: IProps) {
   };
 
   const RenderSection = () => {
-    const types = { FA, EN };
-    return types[language]();
+    const types = { FA: Component(props), EN: Component(props) };
+    return types[language];
   };
 
   return (

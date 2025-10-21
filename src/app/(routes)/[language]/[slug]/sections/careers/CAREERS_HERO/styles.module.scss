@@ -30,7 +30,7 @@
     bottom: 0;
     top: 0;
     position: absolute;
-    max-width: 90ch;
+    max-width: 150ch;
     padding: 0px 2em;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,6 @@
     align-items: start;
 
     font-family: smooch-sans;
-    font-size: 1.6rem;
     letter-spacing: 0.05rem;
 
     @include breakpoint-max(md) {
@@ -46,7 +45,7 @@
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: 700;
       line-height: 1;
       margin-bottom: 1rem;
@@ -55,33 +54,42 @@
 
     p {
       line-height: 1.5;
+      max-width: 100ch;
     }
     * {
       color: black;
-    }
-
-    @include breakpoint-max(md) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-    }
-    @include breakpoint-max(sm) {
     }
   }
 }
 
 html:lang("EN") {
-  .info {
-    direction: ltr;
+  .hero {
+    * {
+      text-align: start !important;
+      direction: ltr;
+      h1 {
+      }
+    }
   }
 }
 
 html:lang("FA") {
   .info {
     direction: rtl;
+  }
+}
+
+@media (max-width: 500px) {
+  .info {
+    h1 {
+      font-size: 1.25rem !important;
+      line-height: 1.25 !important;
+    }
+    p {
+      font-size: 0.9rem !important;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1em;
+      backdrop-filter: blur(2px);
+    }
   }
 }

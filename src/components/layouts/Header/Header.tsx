@@ -13,6 +13,8 @@ import useSettings from "@/hooks/useSettings";
 import Button from "@/components/UI/Button/Button";
 
 import styles from "./styles.module.scss";
+import { useQuery } from "@tanstack/react-query";
+import { GetNavsAPI } from "@/services/Navs/Navs.services";
 
 export default function Header() {
   const pathName = usePathname();
@@ -21,11 +23,15 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleMenuToggle = () => setMenuOpen((prev) => !prev);
 
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
+  const { data } = useQuery({
+    queryFn: GetNavsAPI,
+    initialData: {
+      data: [],
+      message: "",
+      status: 200,
+    },
+    queryKey: [GetNavsAPI.name],
+  });
 
   const isMobile = useMediaQuery({ maxWidth: 991 });
 
@@ -37,53 +43,7 @@ export default function Header() {
     route.push(newPath);
   };
 
-  if (!hasMounted) return null;
-
-  const navMenu = [
-    {
-      title: "HOME",
-      titleFa: "صفحه اصلی",
-      icon: "material-symbols:home",
-      path: "/home",
-    },
-    {
-      title: "SERVICES",
-      titleFa: "خدمات",
-      icon: "tabler:settings",
-      path: "/services",
-    },
-    {
-      title: "PRODUCTS",
-      titleFa: "محصولات",
-      icon: "ph:shopping-bag",
-      path: "/categories",
-    },
-    {
-      title: "ORDER",
-      titleFa: "ثبت سفارش",
-      icon: "mdi:cart-arrow-right",
-      path: "/order",
-    },
-
-    {
-      title: "CAREERS",
-      titleFa: "فرصت های شغلی",
-      icon: "mdi:briefcase-outline",
-      path: "/careers",
-    },
-    {
-      title: "ABOUT US",
-      titleFa: "درباره ی ما",
-      icon: "mdi:information-outline",
-      path: "/about-us",
-    },
-    {
-      title: "CONTACT US",
-      titleFa: "تماس با ما",
-      icon: "ic:baseline-contact-mail",
-      path: "/contact-us",
-    },
-  ];
+  const { data: pages } = data;
 
   return (
     <header className={` ${styles.header} ${language == "EN" && styles.en}`}>
@@ -126,18 +86,19 @@ export default function Header() {
                   <span>{language == "EN" ? "ENGLISH" : "فارسی"}</span>
                   <Icon icon='clarity:language-solid' />
                 </button>
-                {navMenu.map((item) => {
-                  const isActive = pathName.includes(item.path);
+                {pages.map((page) => {
+                  const { nav } = page;
+                  const isActive = pathName.includes(page.slug);
                   return (
                     <Link
-                      href={`/${language}${item.path}`}
-                      key={item.path}
+                      href={`/${language}${page.slug}`}
+                      key={page._id}
                       className={isActive ? styles.active : ""}
                       onClick={() => setMenuOpen(false)}>
                       <span>
-                        {language == "EN" ? item.title : item.titleFa}
+                        {language == "EN" ? page.title_en : page.title}
                       </span>
-                      <Icon icon={item.icon} />
+                      <Icon icon={nav.icon} />
                     </Link>
                   );
                 })}

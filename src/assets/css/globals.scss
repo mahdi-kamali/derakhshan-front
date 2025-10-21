@@ -13,6 +13,13 @@ html {
   -ms-overflow-style: none; /* IE and Edge */
 }
 
+html:lang(FA) {
+  
+  * {
+    text-align: right !important;
+  }
+}
+
 html::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }

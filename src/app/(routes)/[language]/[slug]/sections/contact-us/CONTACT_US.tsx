@@ -12,12 +12,10 @@ interface IProps {
 }
 
 export default function CONTACT_US(props: IProps) {
-  const { section, language } = props;
-
   return (
     <PageContainer title='تماس با ما'>
       <div className={styles.page}>
-        <Hero  {...props}/>
+        <Hero {...props} />
         <OfficeMap />
       </div>
     </PageContainer>

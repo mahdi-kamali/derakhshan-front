@@ -13,6 +13,7 @@
   font-family: smooch-sans;
   height: max-content !important;
   min-height: 100vh !important;
+  flex-wrap: wrap;
 
   @include breakpoint-max(md) {
     flex-direction: column;
@@ -32,12 +33,12 @@
     }
 
     p {
-      max-width: 53ch;
+      max-width: 75ch;
       line-height: 2rem;
       text-align: justify;
       direction: ltr;
       font-family: syne;
-      font-size: 1.2rem;
+      line-height: 2.25;
     }
 
     button {
@@ -50,17 +51,24 @@
 
   .right {
     margin-top: 2rem;
-    width: var(--home-section-right-width);
+    max-width: 30rem;
   }
 }
 
 html:lang("FA") {
   .solutions {
+    flex-direction: row-reverse;
     .left {
       align-items: end;
       * {
         direction: rtl !important;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .solutions {
+    flex-direction: column !important;
   }
 }

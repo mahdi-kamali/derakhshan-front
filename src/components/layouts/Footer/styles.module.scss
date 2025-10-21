@@ -105,3 +105,31 @@
     }
   }
 }
+
+html:lang(FA) {
+  .footer {
+    direction: rtl;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer {
+    .left {
+      width: 100%;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      .col {
+        h2 {
+          width: max-content !important;
+        }
+        h3 {
+          opacity: 0.8;
+        }
+      }
+      .group {
+        h2 {
+        }
+      }
+    }
+  }
+}

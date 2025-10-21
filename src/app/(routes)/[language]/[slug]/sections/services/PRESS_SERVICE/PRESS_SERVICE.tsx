@@ -6,17 +6,25 @@ import Slider from "@/components/UI/Slider/Slider";
 import Slide from "@/components/UI/Slider/Slide/Slide";
 import { motion } from "framer-motion";
 import { ISection } from "@/types/sections.types";
-import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { urls } from "@/common/urls";
 
-interface IProps {
-  section: Extract<ISection, { type: "PREE_PRESS" }>;
-}
+type IProps = {
+  language: LanguagesENUM;
+} & (
+  | {
+      section: Extract<ISection, { type: "POST_PRESS" }>;
+    }
+  | {
+      section: Extract<ISection, { type: "PRESS" }>;
+    }
+  | {
+      section: Extract<ISection, { type: "PREE_PRESS" }>;
+    }
+);
 
-export default function PRE_PRESS(props: IProps) {
-  const { section } = props;
-  const { language }: { language: LanguagesENUM } = useParams();
+export default function SERVICE(props: IProps) {
+  const { section, language } = props;
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);

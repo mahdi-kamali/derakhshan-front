@@ -36,7 +36,7 @@ axios.interceptors.response.use(
     } else {
       ShowError(errors);
     }
-    return error;
+    throw error;
   },
 );
 

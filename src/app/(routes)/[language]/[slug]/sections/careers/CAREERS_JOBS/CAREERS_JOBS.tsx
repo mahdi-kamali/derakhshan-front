@@ -3,80 +3,40 @@ import styles from "./styles.module.scss";
 import { motion } from "framer-motion";
 import Button from "@/components/UI/Button/Button";
 import { useRouter } from "next/navigation";
-import JOB, { IJob } from "./components/JOB/JOB";
+import Career from "./components/Career/Career";
+import { useQuery } from "@tanstack/react-query";
+import { GetCareeersAPI } from "@/services/Careers/careers.services";
 
 export default function CAREERS_JOBS() {
   const router = useRouter();
-  const configs: IJob[] = [
-    {
-      type: "special",
-      title: {
-        text: "کارشناس فروش خدمات چاپ",
-        marked: "فروش خدمات چاپ",
-      },
-      requirements: [
-        "آشنایی با صنعت چاپ و محصولات تکمیلی چاپ",
-        "توانایی برقراری ارتباط موثر با مشتریان",
-        "مهارت در مذاکره و ارائه خدمات",
-        "حداقل 2 سال سابقه کار مرتبط",
-      ],
-      description:
-        "ما به دنبال فردی هستیم که با آگاهی از خدمات چاپ و تکمیلی (مانند لمینت، طلاکوب، برجسته‌سازی و غیره) بتواند به مشتریان در انتخاب بهترین راهکارها کمک کند و فروش خدمات را افزایش دهد.",
-      apply: "ارسال فرم استخدامی",
-      image: "/images/careers/image-1.png",
+
+  const { data } = useQuery({
+    queryFn: GetCareeersAPI,
+    initialData: {
+      data: [],
+      message: "",
+      status: 200,
     },
-    {
-      type: "normal",
-      title: {
-        text: "طراح گرافیک متخصص در صنعت چاپ",
-        marked: "طراح گرافیک",
-      },
-      requirements: [
-        "تسلط به نرم‌افزارهای طراحی مانند Adobe Illustrator و CorelDRAW",
-        "آشنایی با اصول طراحی برای چاپ (رزولوشن، رنگ‌ها و ابعاد)",
-        "خلاقیت در طراحی بسته‌بندی و محصولات چاپی",
-        "حداقل 2 سال تجربه طراحی مرتبط",
-      ],
-      description:
-        "ما به یک طراح گرافیک خلاق نیاز داریم که بتواند طراحی‌های حرفه‌ای و مناسب برای چاپ ایجاد کند، از جمله بسته‌بندی، بروشور، و محصولات خاص چاپی.",
-      apply: "ارسال فرم استخدامی",
-      image: "/images/careers/image-2.png",
-    },
-    {
-      type: "normal",
-      title: {
-        text: "طراح گرافیک متخصص در صنعت چاپ",
-        marked: "طراح گرافیک",
-      },
-      requirements: [
-        "تسلط به نرم‌افزارهای طراحی مانند Adobe Illustrator و CorelDRAW",
-        "آشنایی با اصول طراحی برای چاپ (رزولوشن، رنگ‌ها و ابعاد)",
-        "خلاقیت در طراحی بسته‌بندی و محصولات چاپی",
-        "حداقل 2 سال تجربه طراحی مرتبط",
-      ],
-      description:
-        "ما به یک طراح گرافیک خلاق نیاز داریم که بتواند طراحی‌های حرفه‌ای و مناسب برای چاپ ایجاد کند، از جمله بسته‌بندی، بروشور، و محصولات خاص چاپی.",
-      apply: "ارسال فرم استخدامی",
-      image: "/images/careers/image-3.png",
-    },
-  ];
+    queryKey: [GetCareeersAPI.name],
+  });
+
+  const { data: careers } = data;
 
   return (
     <section className={styles.careers}>
-      {configs.length > 0 &&
-        configs.map((job, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: index * 0.2 }}
-            viewport={{ once: true }}>
-            <JOB
-              job={job}
-              isLast={index == 0 ? true : false}
-            />
-          </motion.div>
-        ))}
+      {careers.map((job, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: index * 0.2 }}
+          viewport={{ once: true }}>
+          <Career
+            career={job}
+            isLast={index == 0 ? true : false}
+          />
+        </motion.div>
+      ))}
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}

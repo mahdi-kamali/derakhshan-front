@@ -1,29 +1,16 @@
 import Button from "@/components/UI/Button/Button";
 import HighLight from "@/components/UI/HighLight/HighLight";
-
 import styles from "./styles.module.scss";
-
-interface JobTitle {
-  text: string;
-  marked: string;
-}
-
-export interface IJob {
-  type: string;
-  title: JobTitle;
-  requirements: string[];
-  description: string;
-  apply: string;
-  image: string;
-}
+import { ICareer } from "@/types/careers.types";
+import { urls } from "@/common/urls";
 
 interface IProps {
-  job: IJob;
+  career: ICareer;
   isLast: boolean;
 }
 
-export default function JOB(props: IProps) {
-  const { job, isLast } = props;
+export default function Career(props: IProps) {
+  const { career, isLast } = props;
   return (
     <div
       style={
@@ -37,25 +24,30 @@ export default function JOB(props: IProps) {
           : {}
       }
       className={styles.job}
-      key={job.image}
-    >
+      key={career._id}>
       <div className={styles.right}>
-        <img src={job.image} alt="" />
+        <img
+          src={urls.STORAGE(career.image.path)}
+          alt=''
+        />
       </div>
       <div className={styles.left}>
-        <HighLight text={job.title.text} marked={job.title.marked} />
+        <HighLight
+          text={career.title}
+          marked={""}
+        />
         <ul className={styles.requirements}>
-          {job.requirements.map((req) => {
+          {career.skills.map((req) => {
             return <li key={req}>{req}</li>;
           })}
         </ul>
 
-        <div className={styles.description}>{job.description}</div>
+        <div className={styles.description}>{career.description}</div>
 
         <Button
-          title="ارسال فرم استخدامی"
-          icon="ep:top-right"
-          variant="primary"
+          title='ارسال فرم استخدامی'
+          icon='ep:top-right'
+          variant='primary'
           fill={isLast ? "fill" : "outline"}
         />
       </div>

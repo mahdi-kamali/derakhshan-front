@@ -83,3 +83,17 @@ html:lang("FA") {
     text-align: right !important;
   }
 }
+
+@media (max-width: 500px) {
+  .hero {
+    max-width: 100%;
+    gap: 1rem;
+
+    .right {
+      padding: 2em;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

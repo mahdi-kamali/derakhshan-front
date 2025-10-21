@@ -1,5 +1,4 @@
 .aboutUs {
-  width: 100% !important;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
@@ -11,13 +10,13 @@
   font-family: smooch-sans;
   height: max-content !important;
   min-height: 100vh !important;
-
+  width: 100% !important;
+  padding: 2em;
   .left {
     display: flex;
     flex-direction: column;
     align-items: end;
     text-align: end;
-    max-width: 20rem;
     gap: 0.7rem;
 
     button {
@@ -32,8 +31,8 @@
 
     p {
       font-family: syne;
-      font-size: 1.2rem;
-      max-width: 53ch;
+      font-size: 1rem;
+      max-width: 70ch;
       line-height: 2rem;
       text-align: justify;
       direction: ltr;
@@ -52,28 +51,31 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    width: 27rem;
 
     img {
-      width: 13rem;
+      width: 10rem;
+      object-fit: cover;
       aspect-ratio: 1/1;
       border-radius: 0.75rem;
       border: 2px solid rgba(255, 255, 255, 0.5);
     }
 
     .info {
+      padding-left: 1em;
       h2 {
         direction: ltr;
         white-space: nowrap;
-        font-size: 2rem;
+        font-size: 1rem;
         font-weight: 600;
         letter-spacing: 0.03rem;
       }
       p {
         direction: ltr;
-        // white-space: nowrap;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 400;
+        opacity: 0.7;
+        font-size: 0.8rem;
+        background-color: rgba(255, 255, 255, 0.1);
       }
     }
 
@@ -81,50 +83,57 @@
       display: flex;
       gap: 1rem;
     }
+
     .second {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      margin-left: 1rem;
       margin-top: 1rem;
+      width: max-content;
     }
 
     .third {
       display: flex;
       position: absolute;
       flex-direction: column;
-      left: 15rem;
+      left: 10rem;
       top: 5rem;
       gap: 1rem;
     }
   }
 }
 
-.aboutUs:lang(en) {
-  flex-direction: olumn-reverse;
-  .left {
-    align-items: start !important;
-  }
+html:lang(FA) {
 }
 
-.aboutUs:lang(fa) {
-  .left {
-    * {
-      align-items: end !important;
-      text-align: right !important;
-      direction: rtl;
-    }
-  }
+html:lang(EN) {
 }
 
 @media screen and (max-width: 600px) {
-  .aboutUs:lang(en) {
-    flex-direction: column-reverse;
+  html:lang(EN) {
+    .aboutUs {
+      flex-direction: column-reverse;
+      .right {
+        img {
+          width: 7rem;
+        }
+        .info {
+          font-size: 1rem;
+          padding: 0;
+          h2 {
+            font-size: 22px;
+            max-width: 15ch !important;
+            text-wrap: wrap;
+          }
+        }
+      }
+    }
   }
 
   /* … */
   .aboutUs {
     flex-direction: column;
+    padding-top: 2em;
     .right {
       width: 17rem;
       img {
@@ -133,7 +142,10 @@
 
       .info {
         h2 {
-          font-size: 1.25rem;
+          font-size: 1rem;
+        }
+        p {
+          font-size: 0.7rem;
         }
       }
 
@@ -142,7 +154,4 @@
       }
     }
   }
-}
-
-html:lang(fa) {
 }

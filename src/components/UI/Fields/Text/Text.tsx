@@ -49,7 +49,7 @@ export default function Text(props: IProps) {
             placeholder={title}
             rows={multiLine.rows}
             cols={multiLine.cols}
-            defaultValue={value}
+            value={value}
           />
         )}
         {!multiLine && (
@@ -62,7 +62,7 @@ export default function Text(props: IProps) {
               onChange(value);
             }}
             required={required}
-            defaultValue={value}
+            value={value}
           />
         )}
       </div>

@@ -24,9 +24,10 @@ export default function HOME_HERO(props: IProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}>
           <Logo src={FA.logo.path} />
-          <div className={styles.text}>
-            <h1>DERAKHSHAN PACK CO.</h1>
-          </div>
+          <img
+            src='/images/slug.png'
+            className={styles.persian_logo}
+          />
         </motion.div>
 
         <motion.div
@@ -34,7 +35,7 @@ export default function HOME_HERO(props: IProps) {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}>
-          <div className={styles.slug}>YOUR WISH IS OUR COMMAND.</div>
+          <div className={styles.slug}>{FA.tagline}</div>
           <div className={styles.content}>{FA.experience}</div>
         </motion.div>
       </div>
@@ -62,7 +63,7 @@ export default function HOME_HERO(props: IProps) {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}>
-          <div className={styles.slug}>YOUR WISH IS OUR COMMAND.</div>
+          <div className={styles.slug}>{EN.tagline}</div>
           <div className={styles.content}>{EN.experience}</div>
         </motion.div>
       </div>

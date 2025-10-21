@@ -19,10 +19,6 @@
   z-index: 1000;
   max-width: var(--app-max-width);
 
-  &.en {
-    font-family: syne;
-  }
-
   @include breakpoint-max(md) {
     align-items: start;
   }
@@ -66,6 +62,7 @@
         font-size: 0.8rem;
         cursor: pointer;
         position: relative;
+        text-transform: uppercase;
         svg {
           font-size: 1rem;
         }
@@ -103,7 +100,7 @@
         padding: 0.3em 1em;
         border-radius: 0.25rem;
         border: none;
-        span{
+        span {
           font-weight: 500;
         }
         * {
@@ -125,5 +122,11 @@
         // display: none;
       }
     }
+  }
+}
+
+html:lang("EN") {
+  .right {
+    font-family: syne !important;
   }
 }

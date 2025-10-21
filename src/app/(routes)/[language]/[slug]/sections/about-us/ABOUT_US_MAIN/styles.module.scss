@@ -6,12 +6,9 @@
   align-items: center;
   position: relative;
   padding-top: 0em;
-
   margin: auto;
   position: relative;
-
   width: 100%;
-
   font-family: smooch-sans;
 
   .background {
@@ -21,6 +18,7 @@
     object-fit: cover;
     display: none;
   }
+
   .company {
     img {
       width: 100vw;
@@ -70,9 +68,6 @@
         justify-content: start;
         gap: 1rem;
         flex-direction: row-reverse;
-
-        text-align: center;
-
         @include breakpoint-max(lg) {
           flex-direction: column;
         }
@@ -92,17 +87,18 @@
           display: flex;
           flex-direction: column;
           gap: 0.25rem;
-          text-align: left;
+          text-align: center;
           @include breakpoint-max(sm) {
             text-align: center;
           }
           .name {
-            font-size: 2rem;
+            font-size: 1.5rem;
             letter-spacing: 0.08rem;
             font-weight: 600;
+            text-align: center !important;
           }
           .roles {
-            font-size: 1.3rem;
+            font-size: 1rem;
             letter-spacing: 0.08rem;
             line-height: 1.5;
           }
@@ -153,9 +149,8 @@
 
         h1 {
           font-weight: 600;
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
-        font-size: 1.5rem;
         button {
           margin-top: 0.5rem;
           font-size: 1rem;
@@ -185,7 +180,7 @@
   }
 }
 
-html:lang(fa) {
+html:lang(FA) {
   .stories {
     .item {
       direction: rtl;

@@ -19,14 +19,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 3em;
+    padding: 10em 3em;
     // padding-top: 0;
-    height: 100%;
     background: url("/images/backgrounds/hero.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     direction: ltr;
 
     .logo {
@@ -65,9 +63,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
-
       text-align: center;
-
       height: 50%;
       // white-space: nowrap;
       margin-top: 5rem;
@@ -81,7 +77,6 @@
         font-size: 1.75rem;
         font-weight: bold;
         font-family: roboto-flex;
-        font-style: italic;
         @include breakpoint-max(xs) {
           font-size: 1.5rem;
         }
@@ -90,6 +85,8 @@
       .content {
         font-size: 1.5rem;
         font-family: syne;
+        max-width: 30rem;
+        text-align: center !important;
         @include breakpoint-max(xs) {
           font-size: 1.2rem;
         }
@@ -131,6 +128,19 @@
           flex-direction: row-reverse;
         }
       }
+    }
+
+    .persian_logo {
+      margin: 1rem 0;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .hero {
+    height: max-content !important;
+    .slug {
+      text-align: center !important;
     }
   }
 }

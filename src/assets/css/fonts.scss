@@ -14,7 +14,7 @@
 @font-face {
   font-family: smooch-sans;
   src: url("/fonts/Smooch_Sans/SmoochSans-VariableFont_wght.ttf") format("truetype");
-  font-display: swap;
+  unicode-range: U+0000-007F, U+0080-00FF; /* Basic Latin characters */
 }
 
 @font-face {
@@ -24,10 +24,25 @@
 }
 
 html {
-  font-family: iran-sans, roboto-flex, sans-serif;
-  *{
+  font-family: iran-sans, smooch-sans, roboto-flex, tahoma;
+  * {
     font-family: inherit !important;
   }
   --font-fa-primary: iran-sans;
   --font-en-primary: roboto-flex;
+}
+
+html:lang(FA) {
+  @font-face {
+    font-family: iran-sans;
+    src: url("/fonts/iran-sans.ttf") format("truetype");
+  }
+  font-family: iran-sans;
+  p {
+    line-height: 2.25 !important;
+  }
+}
+
+html:lang(EN) {
+  font-family: smooch-sans, syne, iran-sans !important;
 }
