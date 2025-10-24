@@ -1,6 +1,4 @@
 "use client";
-import styles from "./styles.module.scss";
-import { motion } from "framer-motion";
 import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import Component from "./Component/Component";
@@ -18,11 +16,5 @@ export default function HOME_ABOUT_US(props: IProps) {
     return types[language];
   };
 
-  return (
-    <motion.section
-      className={styles.aboutUs}
-      lang={language}>
-      <RenderSection />
-    </motion.section>
-  );
+  return <RenderSection />;
 }

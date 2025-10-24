@@ -1,5 +1,25 @@
 @import "src/assets/css/mixins";
 
+@import "src/assets/css/mixins";
+
+.solutions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--home-section-gap);
+  direction: ltr;
+  background-color: var(--color-dark-background);
+  padding: 2rem;
+  width: 100%;
+  overflow: hidden;
+  font-family: smooch-sans;
+  height: max-content !important;
+  min-height: 100vh !important;
+}
+
+@media (max-width: 600px) {
+}
+
 .left {
   max-width: 35rem;
   display: flex;
@@ -26,6 +46,7 @@
 html:lang("FA") {
   .left {
     text-align: right;
+    background-color: rebeccapurple !important;
     * {
       direction: rtl !important;
       text-align: right;
@@ -34,4 +55,7 @@ html:lang("FA") {
 }
 
 @media (max-width: 600px) {
+  .solutions {
+    flex-direction: column-reverse !important;
+  }
 }

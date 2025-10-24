@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import Button from "@/components/UI/Button/Button";
@@ -15,7 +16,7 @@ export default function Component(props: IProps) {
   const component = section.components[props.language];
 
   return (
-    <>
+    <motion.section className={styles.solutions}>
       <motion.div
         className={styles.left}
         initial={{ opacity: 0, y: -20 }}
@@ -63,6 +64,6 @@ export default function Component(props: IProps) {
           alt=''
         />
       </motion.div>
-    </>
+    </motion.section>
   );
 }

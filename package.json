@@ -8,7 +8,8 @@
     "start": "npm run deploy && next start",
     "lint": "next lint",
     "pull": "git pull origin main",
-    "deploy": "npm run pull && npm install --force && npm run build"
+    "deploy": "npm run pull && npm install --force && npm run build",
+    "start_local": "next start"
   },
   "dependencies": {
     "@iconify/react": "^5.2.0",

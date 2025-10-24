@@ -51,7 +51,9 @@ export default function Component(props: IProps) {
           transition={{ duration: 1, delay: 0.6 }}
           viewport={{ once: true }}>
           <Button
-            title={language === LanguagesENUM.FA ? "مشاهده بیشتر" : "Explore More"}
+            title={
+              language === LanguagesENUM.FA ? "مشاهده بیشتر" : "Explore More"
+            }
             variant={"primary"}
             icon='none'
             onClick={() => {

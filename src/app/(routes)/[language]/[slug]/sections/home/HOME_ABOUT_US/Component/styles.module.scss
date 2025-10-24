@@ -1,11 +1,15 @@
 .aboutUs {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: var(--app-section-background);
   font-family: smooch-sans;
   padding: 2em;
   gap: 3rem;
   direction: ltr;
+  min-height: 100dvh;
+  width: 100% !important;
+  overflow: hidden;
 
   .left {
     display: flex;
@@ -108,8 +112,11 @@ html:lang(FA) {
 
 @media screen and (max-width: 500px) {
   .aboutUs {
-    padding: 0;
-    display: grid;
+    flex-direction: column-reverse;
+    height: max-content !important;
+    gap: 10rem;
+    padding: 0 2em;
+
     .right {
       display: flex;
       flex-direction: column;
@@ -117,6 +124,7 @@ html:lang(FA) {
       gap: 1rem !important;
       margin: auto !important;
       width: 100%;
+      height: max-content;
       .agent {
         &:nth-child(1) {
           align-items: start;
