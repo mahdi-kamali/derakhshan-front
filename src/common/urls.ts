@@ -30,5 +30,8 @@ export const urls = {
   CAREERS: {
     list: BASE_URL + "/api/public/careers",
   },
+  SITE_SETTINGS: {
+    list: BASE_URL + "/api/public/site-settings/",
+  },
   STORAGE: (path: string) => `${BASE_URL}/${path}`,
 };

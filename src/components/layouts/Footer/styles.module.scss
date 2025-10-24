@@ -17,6 +17,9 @@
   height: max-content;
   min-height: 100vh;
 
+  * {
+    font-family: iran-sans !important;
+  }
   .right {
     display: flex;
     flex-direction: column;
@@ -94,10 +97,33 @@
             opacity: 0.5;
             gap: 0.5rem;
             text-transform: capitalize;
+            border-bottom: 1px solid transparent;
+            transition: all 0.5s ease;
+            width: max-content;
+            max-width: 100%;
+            cursor: pointer !important;
+
+            * {
+              cursor: pointer !important;
+            }
+
+            &:hover {
+              opacity: 1 !important;
+              border-bottom: 1px solid white;
+            }
             label {
               display: flex;
               align-items: center;
               gap: 0.25rem;
+              flex-wrap: wrap;
+              width: 100%;
+              .rtl {
+                direction: ltr !important;
+              }
+
+              p {
+                width: max-content;
+              }
             }
           }
         }
