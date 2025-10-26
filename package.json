@@ -9,7 +9,7 @@
     "lint": "next lint",
     "pull": "git pull origin main",
     "deploy": "npm run pull && npm install --force && npm run build",
-    "start_local": "next start"
+    "serve": "npm run build && next start"
   },
   "dependencies": {
     "@iconify/react": "^5.2.0",

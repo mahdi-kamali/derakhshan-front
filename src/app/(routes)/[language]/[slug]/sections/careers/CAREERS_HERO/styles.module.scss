@@ -62,7 +62,7 @@
   }
 }
 
-html:lang("EN") {
+body:lang("EN") {
   .hero {
     * {
       text-align: start !important;
@@ -73,7 +73,7 @@ html:lang("EN") {
   }
 }
 
-html:lang("FA") {
+body:lang("FA") {
   .info {
     direction: rtl;
   }

@@ -169,7 +169,7 @@
   }
 }
 
-html:lang("FA") {
+body:lang("FA") {
   .top {
     .info {
       flex-direction: row-reverse;
@@ -198,7 +198,7 @@ html:lang("FA") {
     }
   }
 }
-html:lang("EN") {
+body:lang("EN") {
   .services {
     .row {
       direction: rtl;

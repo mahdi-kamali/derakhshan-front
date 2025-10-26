@@ -7,23 +7,20 @@
   font-family: roboto-flex;
   src: url("/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf")
     format("truetype");
-  unicode-range: U+0000-007F, U+0080-00FF; /* Basic Latin characters */
 }
 
 @font-face {
   font-family: smooch-sans;
   src: url("/fonts/Smooch_Sans/SmoochSans-VariableFont_wght.ttf") format("truetype");
-  unicode-range: U+0000-007F, U+0080-00FF; /* Basic Latin characters */
 }
 
 @font-face {
   font-family: syne;
   src: url("/fonts/Syne/Syne-VariableFont_wght.ttf") format("truetype");
-  font-display: swap;
 }
 
 html {
-  font-family: iran-sans, smooch-sans, roboto-flex, tahoma;
+  font-family: iran-sans, roboto-flex, smooch-sans, roboto-flex, tahoma;
   * {
     font-family: inherit !important;
   }
@@ -31,7 +28,7 @@ html {
   --font-en-primary: roboto-flex;
 }
 
-html:lang(FA) {
+body:lang(FA) {
   font-family: iran-sans;
   p {
     line-height: 2.25 !important;
@@ -39,6 +36,6 @@ html:lang(FA) {
   }
 }
 
-html:lang(EN) {
+body:lang(EN) {
   font-family: smooch-sans, syne, iran-sans !important;
 }

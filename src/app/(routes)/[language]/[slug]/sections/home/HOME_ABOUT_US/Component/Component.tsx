@@ -24,7 +24,9 @@ export default function Component(props: IProps) {
   const third = component.agents[2];
 
   return (
-    <section className={styles.aboutUs}>
+    <section
+      className={styles.aboutUs}
+      lang={props.language}>
       {/* Descriptions */}
       <motion.div
         className={styles.left}
