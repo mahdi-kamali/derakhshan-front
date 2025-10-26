@@ -8,12 +8,5 @@ interface IProps {
 }
 
 export default function HOME_ADVANCED_PACKAGING(props: IProps) {
-  const RenderSection = () => {
-    const FA = Component(props);
-    const EN = Component(props);
-    const types = { FA, EN };
-    return types[props.language];
-  };
-
-  return <RenderSection />;
+  return <Component {...props} />;
 }

@@ -107,6 +107,18 @@
 
 .aboutUs:lang(FA) {
   flex-direction: row !important;
+  @media screen and (max-width: 500px) {
+    border-radius: 1rem;
+    gap: 0 !important;
+    flex-direction: column-reverse !important;
+    .left {
+    }
+    .right {
+      img {
+        width: 8rem;
+      }
+    }
+  }
 }
 
 .aboutUs:lang(EN) {

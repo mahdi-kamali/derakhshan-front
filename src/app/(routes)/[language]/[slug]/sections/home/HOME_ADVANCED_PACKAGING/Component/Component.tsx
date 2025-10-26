@@ -16,7 +16,9 @@ export default function Component(props: IProps) {
   const component = section.components[props.language];
 
   return (
-    <motion.section className={styles.solutions}>
+    <motion.section
+      className={styles.solutions}
+      lang={language}>
       <motion.div
         className={styles.left}
         initial={{ opacity: 0, y: -20 }}
