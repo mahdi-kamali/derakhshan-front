@@ -15,9 +15,14 @@
   font-family: smooch-sans;
   height: max-content !important;
   min-height: 100vh !important;
-}
-
-@media (max-width: 600px) {
+  @media (max-width: 600px) {
+    flex-direction: column-reverse !important;
+    gap: 2rem;
+    min-height: max-content !important;
+    .left {
+      width: 100%;
+    }
+  }
 }
 
 .left {
@@ -30,10 +35,11 @@
     font-weight: 500;
   }
   p {
+    font-size: 1.5rem;
+    font-size: 19px;
     line-height: 2;
-    font-size: 1rem;
+    font-family: syne;
     font-weight: 400;
-    letter-spacing: 1px;
   }
 }
 
@@ -43,19 +49,15 @@
   }
 }
 
-body:lang("FA") {
+.solutions:lang(FA) {
   .left {
-    text-align: right;
-    background-color: rebeccapurple !important;
-    * {
-      direction: rtl !important;
-      text-align: right;
-    }
+    align-items: end;
   }
 }
 
-@media (max-width: 600px) {
-  .solutions {
-    flex-direction: column-reverse !important;
+.solutions:lang(EN) {
+  flex-direction: row-reverse;
+  .left {
+    align-items: start;
   }
 }
