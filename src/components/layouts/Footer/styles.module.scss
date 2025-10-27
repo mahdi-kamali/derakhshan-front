@@ -12,11 +12,10 @@
   justify-content: center;
   gap: 2rem;
   align-items: center;
-background-color: var(--color-dark-background);
+  background-color: var(--color-dark-background);
 
   height: max-content;
   min-height: 100vh;
-  display: none;
 
   * {
     font-family: iran-sans !important;

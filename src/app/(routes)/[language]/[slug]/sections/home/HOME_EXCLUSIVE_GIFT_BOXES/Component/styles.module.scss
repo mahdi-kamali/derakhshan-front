@@ -1,0 +1,127 @@
+@import "src/assets/css/mixins";
+
+.HOME_EXCLUSIVE_GIFT_BOXES {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--home-section-gap);
+  padding: var(--home-section-padding);
+  background-color: black;
+  background-size: cover;
+  background-position: right;
+  flex-direction: row-reverse;
+  direction: ltr;
+  font-family: smooch-sans;
+  height: max-content !important;
+  min-height: 100vh !important;
+  direction: ltr;
+
+  @include breakpoint-max(md) {
+    flex-direction: column;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    direction: ltr;
+    margin-bottom: 2rem;
+
+    @include breakpoint-max(xs) {
+      width: 90%;
+    }
+    h1 {
+      font-weight: 500;
+      font-size: 2rem;
+    }
+    p {
+      max-width: 53ch;
+      line-height: 2rem;
+      text-align: justify;
+      direction: ltr;
+      font-family: syne;
+      font-size: 1.2rem;
+    }
+
+    button {
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    width: var(--home-section-right-width);
+
+    @include breakpoint-max(md) {
+      scale: 0.9;
+    }
+
+    @include breakpoint-max(sm) {
+      scale: 0.8;
+    }
+
+    margin-right: 5%;
+    margin-left: 4vw;
+    .first {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      img {
+        width: 170%;
+        height: 170%;
+        object-fit: contain;
+      }
+    }
+
+    .second {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 1rem;
+      left: 2rem;
+      z-index: 1;
+      img {
+        object-fit: contain;
+      }
+    }
+    .third {
+      background: url("/images/products-first/box.png");
+      height: 13rem;
+      width: 13rem;
+      background-size: cover;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 6rem;
+      right: -4rem;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+body:lang("FA") {
+  .HOME_EXCLUSIVE_GIFT_BOXES {
+    .left {
+      * {
+        direction: rtl !important;
+      }
+    }
+  }
+}
