@@ -7,6 +7,7 @@ import { LanguagesENUM } from "@/types/Language/Language.types";
 import { urls } from "@/common/urls";
 import styles from "./styles.module.scss";
 import { redirect } from "next/navigation";
+import Description from "@/components/UI/Section/Description/Description";
 interface IProps {
   section: Extract<ISection, { type: "HOME_ADVANCED_PACKAGING" }>;
   language: LanguagesENUM;
@@ -35,7 +36,7 @@ export default function Component(props: IProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
           viewport={{ once: true }}>
-          {component.description}
+          <Description>{component.description}</Description>
         </motion.p>
 
         <motion.div

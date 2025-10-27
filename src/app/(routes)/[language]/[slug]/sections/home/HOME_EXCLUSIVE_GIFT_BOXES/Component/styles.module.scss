@@ -114,13 +114,17 @@
       }
     }
   }
-}
 
-body:lang("FA") {
-  .HOME_EXCLUSIVE_GIFT_BOXES {
+  &:lang(FA) {
     .left {
+      align-items: end;
+    }
+  }
+  &:lang(EN) {
+    .left {
+      align-items: end;
       * {
-        direction: rtl !important;
+        text-align: end !important;
       }
     }
   }

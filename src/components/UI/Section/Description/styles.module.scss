@@ -1,3 +1,12 @@
 .text {
     font-size: var(--app-section-description-font-size);
+    opacity: 0.75;
+
+    &:lang(EN) {
+        font-family: syne !important;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 1.1rem !important;
+    }
 }
