@@ -4,14 +4,21 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  font-size: 1.6rem;
-  font-weight: 900;
+  font-size: 2.2rem !important;
+  font-weight: 500 !important;
+
+  &:lang(FA) {
+    font-size: 1.75rem !important;
+    font-family: iran-sans;
+  }
+
+  &:lang(EN) {
+    font-size: 2.75rem !important;
+    font-family: smooch-sans !important;
+    text-transform: uppercase;
+  }
+
   @include breakpoint-max(xs) {
     font-size: 1.3rem;
-  }
- 
-  .second {
-    // padding: 0 2px;
-    // color: var(--color-dark-font-secondary) !important;
   }
 }

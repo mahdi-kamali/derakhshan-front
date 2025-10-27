@@ -12,7 +12,6 @@ import { LanguagesENUM } from "@/types/Language/Language.types";
 import CAREERS_JOBS from "./sections/careers/CAREERS_JOBS/CAREERS_JOBS";
 import CONTACT_US from "./sections/contact-us/CONTACT_US";
 import ORDER from "./sections/order/ORDER/ORDER";
-import SERVICE from "./sections/services/POST-PRESS/POST-PRESS";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import PRESS_SERVICE from "./sections/services/PRESS_SERVICE/PRESS_SERVICE";

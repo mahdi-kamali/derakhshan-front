@@ -1,24 +1,35 @@
-"use client";
-import { useEffect, useRef } from "react";
+import { urls } from "@/common/urls";
 import HighLight from "@/components/UI/HighLight/HighLight";
-import styles from "./styles.module.scss";
-import Slider from "@/components/UI/Slider/Slider";
+import Description from "@/components/UI/Section/Description/Description";
 import Slide from "@/components/UI/Slider/Slide/Slide";
+import Slider from "@/components/UI/Slider/Slider";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import styles from "./styles.module.scss";
 import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
-import { urls } from "@/common/urls";
 
-interface IProps {
-  section: Extract<ISection, { type: "POST_PRESS" }>;
+type IProps = {
   language: LanguagesENUM;
-}
+} & (
+  | {
+      section: Extract<ISection, { type: "POST_PRESS" }>;
+    }
+  | {
+      section: Extract<ISection, { type: "PRESS" }>;
+    }
+  | {
+      section: Extract<ISection, { type: "PREE_PRESS" }>;
+    }
+);
 
-export default function SERVICE(props: IProps) {
-  const { section,language } = props;
+export default function Component(props: IProps) {
+  const { language, section } = props;
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const component = section.components[language];
 
   useEffect(() => {
     const handleHeroHeight = () => {
@@ -61,12 +72,11 @@ export default function SERVICE(props: IProps) {
     };
   }, []);
 
-  const component = section.components[language];
-
   return (
     <motion.section
       ref={containerRef}
-      className={styles.hero}>
+      className={styles.hero}
+      lang={language}>
       <div className={styles.top}>
         {/* Hero Info Section */}
         <motion.div className={styles.info}>
@@ -91,7 +101,7 @@ export default function SERVICE(props: IProps) {
               text={component.title}
               marked={component.title}
             />
-            <p>{component.description}</p>
+            <Description>{component.description}</Description>
           </motion.div>
         </motion.div>
 
@@ -141,23 +151,6 @@ export default function SERVICE(props: IProps) {
               <motion.div
                 className={styles.row}
                 key={service.title}>
-                {/* Left Image */}
-                <motion.div
-                  className={styles.left}
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeOut",
-                    delay: index * 0.5,
-                  }}
-                  viewport={{ once: false }}>
-                  <img
-                    src={urls.STORAGE(service.image.path)}
-                    alt=''
-                  />
-                </motion.div>
-
                 {/* Right Text */}
                 <motion.div
                   className={styles.right}
@@ -173,7 +166,24 @@ export default function SERVICE(props: IProps) {
                     text={service.title}
                     marked={service.title}
                   />
-                  <p>{service.description}</p>
+                  <Description>{service.description}</Description>
+                </motion.div>
+
+                {/* Left Image */}
+                <motion.div
+                  className={styles.left}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                    delay: index * 0.5,
+                  }}
+                  viewport={{ once: false }}>
+                  <img
+                    src={urls.STORAGE(service.image.path)}
+                    alt=''
+                  />
                 </motion.div>
               </motion.div>
             );

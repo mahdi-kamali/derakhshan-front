@@ -130,11 +130,25 @@
       }
     }
   }
-}
 
-body:lang(FA) {
-  .footer {
-    direction: rtl;
+  &:lang(FA) {
+    .footer {
+      direction: rtl;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 3em 0em;
+    width: 100%;
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 0 !important;
+      .col {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 1em 2em;
+      }
+    }
   }
 }
 

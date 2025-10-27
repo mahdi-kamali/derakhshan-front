@@ -123,10 +123,11 @@
       }
     }
   }
-}
 
-body:lang("EN") {
-  .right {
-    font-family: syne !important;
+  &:lang(EN) {
+    .right {
+      font-family: syne !important;
+    }
   }
 }
+

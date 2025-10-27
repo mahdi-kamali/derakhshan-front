@@ -8,9 +8,7 @@
   background-color: black;
   width: 100%;
   height: 100vh;
-
   position: relative;
-
   .drawer {
     width: 100%;
     height: 100%;
@@ -49,7 +47,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
     margin-top: 8vh;
 
     @include breakpoint-max(sm) {
@@ -63,8 +60,6 @@
       justify-content: center;
       align-items: center;
       gap: var(--services-section-gap);
-      max-width: 51rem;
-      width: 100%;
 
       @include breakpoint-max(sm) {
         flex-direction: column;
@@ -80,26 +75,11 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        line-height: 2rem;
-        // font-size: 0.8rem;
-        direction: ltr;
-
-        h1 {
-          font-family: smooch-sans;
-          font-size: 26px;
-          font-weight: 600;
-        }
-
-        font-family: syne;
-        p {
-          text-align: justify;
-        }
       }
     }
 
     .slider {
-      max-width: 50rem;
-      margin: 5rem 0;
+      margin-top: 3rem;
       @include breakpoint-max(sm) {
         margin: 3rem 0;
       }
@@ -149,11 +129,12 @@
             max-width: 26rem;
             aspect-ratio: 16/10;
             border-radius: 1rem;
+            object-fit: cover;
+            object-position: center;
           }
         }
         .right {
           width: 100%;
-          direction: ltr;
           h1 {
             font-family: smooch-sans;
             font-size: 26px;
@@ -167,42 +148,16 @@
       }
     }
   }
-}
 
-body:lang("FA") {
-  .top {
-    .info {
-      flex-direction: row-reverse;
-      align-items: center;
-      .left {
-        align-items: end;
+  &:lang(EN) {
+    .top {
+      .info {
+        flex-direction: row-reverse;
         * {
-          text-align: right !important;
+          text-align: end;
+          align-items: end;
         }
       }
-      img {
-        max-width: 30rem;
-      }
-    }
-  }
-  .services {
-    text-align: right !important;
-    .row {
-      .left {
-      }
-      .right {
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-      }
-    }
-  }
-}
-body:lang("EN") {
-  .services {
-    .row {
-      direction: rtl;
-      flex-direction: row;
     }
   }
 }

@@ -105,7 +105,9 @@ export default function Footer() {
   const texts = footerTexts[language].columns;
 
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={styles.footer}
+      lang={language}>
       <div className={styles.right}>
         <div className={styles.logo}>
           <img

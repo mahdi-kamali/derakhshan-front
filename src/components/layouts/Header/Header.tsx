@@ -46,7 +46,7 @@ export default function Header() {
   const { data: pages } = data;
 
   return (
-    <header className={` ${styles.header} ${language == "EN" && styles.en}`}>
+    <header className={styles.header} lang={language}>
       <div className={styles.left}>
         <div className={styles.logo}>
           <img
