@@ -144,6 +144,20 @@
         }
       }
     }
+
+    @media (max-width: 600px) {
+      .row {
+        .right {
+          display: flex !important;
+          flex-direction: column;
+          align-items: end;
+          justify-content: end;
+          * {
+            text-align: end !important;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -159,6 +173,10 @@
   .services {
     .row {
       grid-template-columns: 1fr !important;
+      .left {
+      }
+      .right {
+      }
     }
   }
 }
