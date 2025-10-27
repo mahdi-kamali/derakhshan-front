@@ -151,6 +151,23 @@ export default function Component(props: IProps) {
               <motion.div
                 className={styles.row}
                 key={service.title}>
+                {/* Left Image */}
+                <motion.div
+                  className={styles.left}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                    delay: index * 0.5,
+                  }}
+                  viewport={{ once: false }}>
+                  <img
+                    src={urls.STORAGE(service.image.path)}
+                    alt=''
+                  />
+                </motion.div>
+
                 {/* Right Text */}
                 <motion.div
                   className={styles.right}
@@ -167,23 +184,6 @@ export default function Component(props: IProps) {
                     marked={service.title}
                   />
                   <Description>{service.description}</Description>
-                </motion.div>
-
-                {/* Left Image */}
-                <motion.div
-                  className={styles.left}
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeOut",
-                    delay: index * 0.5,
-                  }}
-                  viewport={{ once: false }}>
-                  <img
-                    src={urls.STORAGE(service.image.path)}
-                    alt=''
-                  />
                 </motion.div>
               </motion.div>
             );
