@@ -34,7 +34,7 @@ export default function CAREERS_HERO(props: IProps) {
         className={styles.info}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
         <HighLight
           text={configs.title.text}
           marked={configs.title.marked}

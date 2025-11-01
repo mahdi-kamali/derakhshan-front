@@ -10,6 +10,8 @@ import { useQuery } from "@tanstack/react-query";
 import { ICategory } from "@/types/category.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import ImageProduct from "./ImageProduct/ImageProduct";
+import Description from "@/components/UI/Section/Description/Description";
+import HighLight from "@/components/UI/HighLight/HighLight";
 
 interface IParams {
   _id: ICategory["_id"];
@@ -42,14 +44,19 @@ export default function Page() {
     <PageContainer title={category.title}>
       <div className={styles.page}>
         <div className={styles.right}>
-          <h1>
-            {language === LanguagesENUM.FA ? category.title : category.en_title}
-          </h1>
-          <p>
+          <HighLight
+            marked={
+              language === LanguagesENUM.FA ? category.title : category.en_title
+            }
+            text={
+              language === LanguagesENUM.FA ? category.title : category.en_title
+            }
+          />
+          <Description>
             {language === LanguagesENUM.FA
               ? category.description
               : category.en_description}
-          </p>
+          </Description>
         </div>
         <div className={styles.left}>
           {category.products.map((pro) => {

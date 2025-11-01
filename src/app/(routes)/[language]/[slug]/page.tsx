@@ -119,8 +119,7 @@ export default function Page() {
             );
 
           case "ORDER":
-            if (language === LanguagesENUM.FA) return <ORDER key={index} />;
-            else return <></>;
+            return <ORDER key={index} />;
 
           case "PREE_PRESS":
             return (

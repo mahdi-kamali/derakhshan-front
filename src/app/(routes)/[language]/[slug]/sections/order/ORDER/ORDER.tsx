@@ -9,7 +9,8 @@ import { useFormik } from "formik";
 import {
   INDUSTRY_ENUM,
   IOrder,
-  ORDERS_INDUSTRY_OPTIONS,
+  ORDERS_INDUSTRY_OPTIONS_EN,
+  ORDERS_INDUSTRY_OPTIONS_FA,
 } from "@/types/order.types";
 import Field from "@/components/UI/Fields/Field";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -19,6 +20,7 @@ import { ShowQuestion } from "@/utils/toast/Toast";
 import { useMutation } from "@tanstack/react-query";
 import { CreateOrderAPI } from "@/services/Orders/orders.services";
 import useRedirect from "@/hooks/useRedirect";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 const ORDER = () => {
   const { GoHome } = useRedirect();
@@ -56,25 +58,73 @@ const ORDER = () => {
     },
   });
 
-  const { language } = useParams();
+  const { language }: { language: LanguagesENUM } = useParams();
 
   const [gap, setGap] = useState(0);
   const [rotation, setRotation] = useState({ x: -33, y: 33 });
   const [perspective, setPerspective] = useState(1000);
 
+  const t = {
+    FA: {
+      pageTitle: "فرم سفارش",
+      userInfo: "اطلاعات کاربر",
+      firstName: "نام",
+      lastName: "نام خانوادگی",
+      phone: "شماره همراه",
+      email: "ایمیل",
+      company: "شرکت",
+      industry: "زمینه فعالیت",
+      productInfo: "اطلاعات محصول",
+      productType: "نوع محصول",
+      weight: "وزن محصول (گرم)",
+      quantity: "تعداد سفارش",
+      uploadImage: "عکس محصول",
+      measurement: "واحد اندازه گیری : میلی متر",
+      length: "طول (میلی متر)",
+      width: "عرض (میلی متر)",
+      height: "ارتفاع (میلی متر)",
+      description: "توضیحات",
+      submit: "ثبت سفارش",
+      confirmMsg: "آیا از ثبت سفارش اطمینان دارید؟",
+    },
+    EN: {
+      pageTitle: "Order Form",
+      userInfo: "User Information",
+      firstName: "First Name",
+      lastName: "Last Name",
+      phone: "Phone Number",
+      email: "Email",
+      company: "Company",
+      industry: "Industry",
+      productInfo: "Product Information",
+      productType: "Product Type",
+      weight: "Product Weight (g)",
+      quantity: "Order Quantity",
+      uploadImage: "Product Image",
+      measurement: "Measurement Unit: Millimeters",
+      length: "Length (mm)",
+      width: "Width (mm)",
+      height: "Height (mm)",
+      description: "Description",
+      submit: "Submit Order",
+      confirmMsg: "Are you sure you want to submit the order?",
+    },
+  }[language === LanguagesENUM.EN ? "EN" : "FA"];
+
   return (
-    <PageContainer title='Order Form'>
+    <PageContainer title={t.pageTitle}>
       <div className={styles.container}>
         <div className={styles.form}>
           <div className={styles.body}>
+            {/* USER INFO */}
             <div className={styles.user}>
-              <h1>اطلاعات کاربر</h1>
+              <h1>{t.userInfo}</h1>
               <Field.Text
                 name='user.name'
                 icon={<Icon icon='icon-park-outline:edit-name' />}
                 type='text'
                 onChange={(value) => setFieldValue("user.name", value)}
-                title='نام'
+                title={t.firstName}
                 value={values.user.name}
               />
               <Field.Text
@@ -82,7 +132,7 @@ const ORDER = () => {
                 icon={<Icon icon='icon-park-solid:family' />}
                 type='text'
                 onChange={(value) => setFieldValue("user.family", value)}
-                title='نام خانوادگی'
+                title={t.lastName}
                 value={values.user.family}
               />
               <Field.Text
@@ -90,46 +140,49 @@ const ORDER = () => {
                 icon={<Icon icon='line-md:phone-filled' />}
                 type='number'
                 onChange={(value) => setFieldValue("user.phone", value)}
-                title='شماره همراه'
+                title={t.phone}
                 value={values.user.phone}
               />
-
               <Field.Text
                 name='user.email'
                 icon={<Icon icon='line-md:email-alt-twotone' />}
                 type='email'
                 onChange={(value) => setFieldValue("user.email", value)}
-                title='ایمیل'
+                title={t.email}
                 value={values.user.email}
               />
-
               <Field.Text
                 name='companyName'
                 icon={<Icon icon='mdi:company' />}
                 type='text'
                 onChange={(value) => setFieldValue("companyName", value)}
-                title='شرکت'
+                title={t.company}
                 value={values.companyName}
               />
               <Field.Select
-                options={ORDERS_INDUSTRY_OPTIONS}
+                options={
+                  language === LanguagesENUM.FA
+                    ? ORDERS_INDUSTRY_OPTIONS_FA
+                    : ORDERS_INDUSTRY_OPTIONS_EN
+                }
                 name='industry'
                 icon={<Icon icon='mdi:company' />}
                 type='text'
                 onChange={(value) => setFieldValue("industry", value)}
-                title='زمینه فعالیت'
+                title={t.industry}
                 value={values.industry}
               />
             </div>
 
+            {/* PRODUCT INFO */}
             <div className={styles.product}>
-              <h1>اطلاعات محصول</h1>
+              <h1>{t.productInfo}</h1>
               <Field.Text
                 name='product.type'
                 icon={<Icon icon='icon-park-outline:ad-product' />}
                 type='text'
                 onChange={(value) => setFieldValue("product.type", value)}
-                title='نوع محصول'
+                title={t.productType}
                 value={values.product.type}
               />
               <Field.Text
@@ -137,7 +190,7 @@ const ORDER = () => {
                 icon={<Icon icon='fa-solid:weight' />}
                 type='number'
                 onChange={(value) => setFieldValue("product.weight", value)}
-                title='وزن محصول (گرم) '
+                title={t.weight}
                 value={values.product.weight}
               />
               <Field.Text
@@ -145,16 +198,17 @@ const ORDER = () => {
                 icon={<Icon icon='fluent:text-word-count-24-filled' />}
                 type='number'
                 onChange={(value) => setFieldValue("product.quantity", value)}
-                title='تعداد سفارش'
+                title={t.quantity}
                 value={values.product.quantity}
               />
+
               <div style={{ gridColumn: "-1/1" }}>
                 <Field.Image
                   name='product.image'
                   icon={<Icon icon='line-md:image-twotone' />}
                   type='text'
                   onChange={(file) => setFieldValue("product.image", file)}
-                  title='عکس محصول'
+                  title={t.uploadImage}
                   value={values.product.image}
                 />
               </div>
@@ -181,7 +235,7 @@ const ORDER = () => {
 
                 <div className={styles.controls}>
                   <div className={styles.fiels}>
-                    <h2>واحد اندازه گیری : میلی متر</h2>
+                    <h2>{t.measurement}</h2>
                     <Field.Text
                       name='product.dimensions.length'
                       icon={<Icon icon='iconoir:truck-length' />}
@@ -189,7 +243,7 @@ const ORDER = () => {
                       onChange={(value) =>
                         setFieldValue("product.dimensions.length", value)
                       }
-                      title='طول ( میلی متر )'
+                      title={t.length}
                       value={values.product.dimensions.length}
                     />
                     <Field.Text
@@ -199,7 +253,7 @@ const ORDER = () => {
                       onChange={(value) =>
                         setFieldValue("product.dimensions.width", value)
                       }
-                      title='عرض ( میلی متر )'
+                      title={t.width}
                       value={values.product.dimensions.width}
                     />
                     <Field.Text
@@ -209,7 +263,7 @@ const ORDER = () => {
                       onChange={(value) =>
                         setFieldValue("product.dimensions.height", value)
                       }
-                      title='ارتفاع ( میلی متر )'
+                      title={t.height}
                       value={values.product.dimensions.height}
                     />
                   </div>
@@ -235,13 +289,14 @@ const ORDER = () => {
               </div>
             </div>
 
+            {/* DESCRIPTION */}
             <div className={styles.descraption}>
               <Field.Text
                 name='description'
                 icon={<Icon icon='ic:twotone-height' />}
                 type='text'
                 onChange={(value) => setFieldValue("description", value)}
-                title='توضیحات'
+                title={t.description}
                 multiLine={{
                   cols: 10,
                   rows: 5,
@@ -250,14 +305,16 @@ const ORDER = () => {
               />
             </div>
           </div>
+
+          {/* ACTION BUTTON */}
           <div className={styles.actions}>
             <Button
               icon='none'
-              title='ثبت سفارش'
+              title={t.submit}
               variant='primary'
               onClick={() => {
                 ShowQuestion({
-                  message: "آیا از ثبت سفارش اطمینان دارید ؟",
+                  message: t.confirmMsg,
                   onConfirm() {
                     CreateOrder(values);
                   },

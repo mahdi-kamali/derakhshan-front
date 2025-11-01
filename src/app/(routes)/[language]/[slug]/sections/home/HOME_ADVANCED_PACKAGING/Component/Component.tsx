@@ -31,13 +31,13 @@ export default function Component(props: IProps) {
           marked={component.title}
         />
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
           viewport={{ once: true }}>
           <Description>{component.description}</Description>
-        </motion.p>
+        </motion.div>
 
         <motion.div
           className={styles.actions}

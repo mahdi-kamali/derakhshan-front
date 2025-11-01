@@ -2,13 +2,15 @@
 import styles from "./styles.module.scss";
 import { motion } from "framer-motion";
 import Button from "@/components/UI/Button/Button";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Career from "./components/Career/Career";
 import { useQuery } from "@tanstack/react-query";
 import { GetCareeersAPI } from "@/services/Careers/careers.services";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 export default function CAREERS_JOBS() {
   const router = useRouter();
+  const { language }: { language: LanguagesENUM } = useParams();
 
   const { data } = useQuery({
     queryFn: GetCareeersAPI,
@@ -34,6 +36,7 @@ export default function CAREERS_JOBS() {
           <Career
             career={job}
             isLast={index == 0 ? true : false}
+            language={language}
           />
         </motion.div>
       ))}

@@ -9,6 +9,8 @@ import {
 
 import styles from "./styles.module.scss";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useParams } from "next/navigation";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 interface IProps extends CSSProperties {
   icon: ReactElement;
@@ -33,6 +35,8 @@ export default function Image(props: IProps) {
   } = props;
 
   const [file, setFile] = useState<File | null>();
+
+  const { language }: { language: LanguagesENUM } = useParams();
 
   return (
     <div
@@ -66,7 +70,7 @@ export default function Image(props: IProps) {
         />
 
         <div className={styles.action}>
-          <span>انتخاب عکس</span>
+          <span>{language === LanguagesENUM.FA ? "انتخاب" : "Select"}</span>
         </div>
       </label>
       <span className={styles.icon}>{icon}</span>

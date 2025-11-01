@@ -8,7 +8,7 @@ export enum INDUSTRY_ENUM {
   OTHER = "OTHER",
 }
 
-export const ORDERS_INDUSTRY_OPTIONS: Ioption[] = [
+export const ORDERS_INDUSTRY_OPTIONS_FA: Ioption[] = [
   {
     label: "صنایع بهداشتی",
     value: INDUSTRY_ENUM.HELTHCARE,
@@ -23,6 +23,24 @@ export const ORDERS_INDUSTRY_OPTIONS: Ioption[] = [
   },
   {
     label: "سایر",
+    value: INDUSTRY_ENUM.OTHER,
+  },
+];
+export const ORDERS_INDUSTRY_OPTIONS_EN: Ioption[] = [
+  {
+    label: "Healthcare Industry",
+    value: INDUSTRY_ENUM.HELTHCARE,
+  },
+  {
+    value: INDUSTRY_ENUM.FOOD,
+    label: "Food Industry",
+  },
+  {
+    label: "Cosmetics Industry",
+    value: INDUSTRY_ENUM.COSMETICS,
+  },
+  {
+    label: "Other",
     value: INDUSTRY_ENUM.OTHER,
   },
 ];

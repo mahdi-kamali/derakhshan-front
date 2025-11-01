@@ -30,13 +30,12 @@
     bottom: 0;
     top: 0;
     position: absolute;
-    max-width: 150ch;
     padding: 0px 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-
+    max-width: 50rem;
     font-family: smooch-sans;
     letter-spacing: 0.05rem;
 
@@ -59,23 +58,22 @@
     * {
       color: black;
     }
-  }
-}
 
-body:lang("EN") {
-  .hero {
-    * {
-      text-align: start !important;
-      direction: ltr;
-      h1 {
+    &:lang(EN) {
+      * {
+        direction: ltr;
+      }
+      p {
+        font-size: 1.5rem;
       }
     }
-  }
-}
-
-body:lang("FA") {
-  .info {
-    direction: rtl;
+    &:lang(FA) {
+      align-items: end !important;
+      * {
+        direction: rtl;
+        text-align: right !important;
+      }
+    }
   }
 }
 

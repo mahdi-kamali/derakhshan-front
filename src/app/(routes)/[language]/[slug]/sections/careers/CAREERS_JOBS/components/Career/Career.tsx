@@ -3,49 +3,49 @@ import HighLight from "@/components/UI/HighLight/HighLight";
 import styles from "./styles.module.scss";
 import { ICareer } from "@/types/careers.types";
 import { urls } from "@/common/urls";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 interface IProps {
   career: ICareer;
   isLast: boolean;
+  language: LanguagesENUM;
 }
 
 export default function Career(props: IProps) {
-  const { career, isLast } = props;
+  const { isLast, language, career } = props;
+
+  const values = career[language];
+
   return (
     <div
-      style={
-        isLast
-          ? {
-              backgroundColor: "rgba(255, 242, 101,0.5)",
-              borderRadius: "15px",
-              padding: "20px",
-              border: "1px solid white",
-            }
-          : {}
-      }
-      className={styles.job}
-      key={career._id}>
+      className={styles.career}
+      key={values._id}
+      lang={language}>
       <div className={styles.right}>
         <img
-          src={urls.STORAGE(career.image.path)}
+          src={urls.STORAGE(values.image.path)}
           alt=''
         />
       </div>
       <div className={styles.left}>
         <HighLight
-          text={career.title}
+          text={values.title}
           marked={""}
         />
         <ul className={styles.requirements}>
-          {career.skills.map((req) => {
+          {values.skills.map((req) => {
             return <li key={req}>{req}</li>;
           })}
         </ul>
 
-        <div className={styles.description}>{career.description}</div>
+        <div className={styles.description}>{values.description}</div>
 
         <Button
-          title='ارسال فرم استخدامی'
+          title={
+            language === LanguagesENUM.FA
+              ? "ارسال فرم استخدامی"
+              : "Send Applying"
+          }
           icon='ep:top-right'
           variant='primary'
           fill={isLast ? "fill" : "outline"}

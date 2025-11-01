@@ -1,5 +1,7 @@
 import React, { ChangeEvent } from "react";
 import styles from "./styles.module.scss";
+import { useParams } from "next/navigation";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 type Rotation = {
   x: number;
@@ -51,17 +53,39 @@ export default function Controls({
     }
   };
 
+  const { language }: { language: LanguagesENUM } = useParams();
+
   return (
     <div className={styles.controls}>
       <fieldset>
-        <legend>ابعاد</legend>
+        <legend>{language === LanguagesENUM.FA ? "ابعاد" : "Sizes"}</legend>
         <div className={styles.fields}>
           {[
-            { label: "ارتفاع", id: "height", value: height, min: 1, max: 500 },
-            { label: "عرض", id: "width", value: width, min: 1, max: 500 },
-            { label: "عمق", id: "depth", value: depth, min: 1, max: 500 },
+            {
+              label: language === LanguagesENUM.FA ? "ارتفاع" : "height",
+              id: "height",
+              value: height,
+              min: 1,
+              max: 500,
+            },
+            {
+              label: language === LanguagesENUM.FA ? "عرض" : "width",
+              id: "width",
+              value: width,
+              min: 1,
+              max: 500,
+            },
+            {
+              label: language === LanguagesENUM.FA ? "عمق" : "depth",
+              id: "depth",
+              value: depth,
+              min: 1,
+              max: 500,
+            },
           ].map((item) => (
-            <div className={styles.field} key={item.id}>
+            <div
+              className={styles.field}
+              key={item.id}>
               <label>{item.label}</label>
               <input
                 type='range'

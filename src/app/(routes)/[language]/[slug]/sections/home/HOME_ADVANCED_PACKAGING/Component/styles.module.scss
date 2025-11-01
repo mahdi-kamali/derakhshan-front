@@ -22,6 +22,16 @@
     .left {
       width: 100%;
     }
+
+    &:lang(FA) {
+      align-items: center;
+      .left {
+        * {
+          text-align: start !important;
+          direction: rtl;
+        }
+      }
+    }
   }
 }
 
