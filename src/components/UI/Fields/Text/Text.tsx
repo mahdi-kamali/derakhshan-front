@@ -2,7 +2,7 @@ import { CSSProperties, HTMLInputTypeAttribute, ReactElement } from "react";
 
 import styles from "./styles.module.scss";
 
-interface IProps extends CSSProperties {
+export interface IField extends CSSProperties {
   icon: ReactElement;
   title: string;
   required?: boolean;
@@ -17,7 +17,7 @@ interface IProps extends CSSProperties {
   value?: any;
 }
 
-export default function Text(props: IProps) {
+export default function Text(props: IField) {
   const {
     icon,
     name,

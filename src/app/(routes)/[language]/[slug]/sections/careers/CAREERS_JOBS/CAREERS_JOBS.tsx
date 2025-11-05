@@ -35,7 +35,6 @@ export default function CAREERS_JOBS() {
           viewport={{ once: true }}>
           <Career
             career={job}
-            isLast={index == 0 ? true : false}
             language={language}
           />
         </motion.div>

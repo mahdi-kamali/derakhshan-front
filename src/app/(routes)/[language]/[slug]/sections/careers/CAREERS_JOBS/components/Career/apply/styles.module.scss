@@ -1,0 +1,13 @@
+.form {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1em;
+    display: flex;
+    gap: 1rem;
+    .left {
+        display: flex;
+    }
+    .right {
+        background-color: rebeccapurple;
+    }
+}

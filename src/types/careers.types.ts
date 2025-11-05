@@ -12,6 +12,19 @@ interface IData {
   description: string;
   isActive: boolean;
   image: IFile;
-  type: string;
+  type: "SPECIAL" | "NORMAL";
   _id: string;
+}
+
+export interface IcareerApply {
+  career_id: string;
+  address: string;
+  description: string;
+  family: string;
+  name: string;
+  phone: string;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
