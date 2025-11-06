@@ -24,7 +24,8 @@ export default [
       "import/no-anonymous-default-export": "off", // disables Field.tsx export warning
       "prefer-const": "off", // disables prefer-const warning
       "@typescript-eslint/no-empty-object-type": "off", // disables '{}' warning
-      "@typescript-eslint/no-unused-expressions": "off", // disables expression-only errors
+      "@typescript-eslint/no-unused-expressions": "off", // disables expression-only errors,
+      "@typescript-eslint/ban-ts-comment": "off",
     },
   },
 ];

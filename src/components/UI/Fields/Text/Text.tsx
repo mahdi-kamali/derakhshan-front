@@ -1,6 +1,8 @@
 import { CSSProperties, HTMLInputTypeAttribute, ReactElement } from "react";
 
 import styles from "./styles.module.scss";
+import { useParams } from "next/navigation";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 export interface IField extends CSSProperties {
   icon: ReactElement;
@@ -18,6 +20,8 @@ export interface IField extends CSSProperties {
 }
 
 export default function Text(props: IField) {
+  const { language }: { language: LanguagesENUM } = useParams();
+
   const {
     icon,
     name,
@@ -36,7 +40,8 @@ export default function Text(props: IField) {
       dir={rtl ? "rtl" : "ltr"}
       style={{
         ...props,
-      }}>
+      }}
+      lang={language}>
       <span className={styles.icon}>{icon}</span>
       <div className={styles.field}>
         {multiLine && (

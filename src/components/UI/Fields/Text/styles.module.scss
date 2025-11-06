@@ -34,6 +34,14 @@
             width: 100%;
         }
     }
+
+    &:lang(FA) {
+        input,
+        textarea {
+            direction: rtl;
+            font-size: 0.75rem;
+        }
+    }
 }
 
 body:lang("FA") {

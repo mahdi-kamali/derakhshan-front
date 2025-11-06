@@ -29,6 +29,7 @@ export const urls = {
   },
   CAREERS: {
     list: BASE_URL + "/api/public/careers",
+    apply: BASE_URL + "/api/public/careers/apply/{career_id}",
   },
   SITE_SETTINGS: {
     list: BASE_URL + "/api/public/site-settings/",

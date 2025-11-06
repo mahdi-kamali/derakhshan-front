@@ -1,7 +1,8 @@
 @import "src/assets/css/mixins";
 
 .career {
-  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .front {
@@ -11,8 +12,8 @@
   width: 100%;
   gap: 2rem;
   padding: 2em;
-
   border-radius: 1rem;
+  animation: fade 1s ease forwards;
 
   @include breakpoint-max(md) {
     padding: 1.5rem !important;
@@ -84,9 +85,7 @@
 }
 
 .back {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+  animation: fade 2s ease forwards;
 }
 
 .special {
@@ -99,5 +98,16 @@
     rotate: 0;
   }
   to {
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    scale: 0.5;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
   }
 }
