@@ -19,7 +19,7 @@ export default function Career(props: IProps) {
 
   const values = career[language];
 
-  const [isApplying, setIsApplying] = useState(false);
+  const [isApplying, setIsApplying] = useState(true);
 
   return (
     <div
