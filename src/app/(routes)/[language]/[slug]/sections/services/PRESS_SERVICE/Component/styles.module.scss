@@ -162,6 +162,9 @@
 }
 
 @media (max-width: 600px) {
+  .hero {
+    margin-top: 3rem;
+  }
   .top {
     display: flex;
     flex-direction: column !important;

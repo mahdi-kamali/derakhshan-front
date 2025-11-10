@@ -21,6 +21,35 @@ export default function Career(props: IProps) {
 
   const [isApplying, setIsApplying] = useState(false);
 
+  const accordion = [styles.accordion, isApplying && styles.expanded].join(" ");
+
+  const RenderApplyButton = () => {
+    if (isApplying) {
+      return (
+        <Button
+          title={
+            language === LanguagesENUM.FA ? "لغو و بستن" : "Cancel & Close"
+          }
+          icon='line-md:close'
+          variant='primary'
+          fill={values.type === "SPECIAL" ? "fill" : "outline"}
+          onClick={() => setIsApplying((prev) => !prev)}
+        />
+      );
+    }
+    return (
+      <Button
+        title={
+          language === LanguagesENUM.FA ? "ارسال فرم استخدامی" : "Send Applying"
+        }
+        icon='ep:top-right'
+        variant='primary'
+        fill={values.type === "SPECIAL" ? "fill" : "outline"}
+        onClick={() => setIsApplying((prev) => !prev)}
+      />
+    );
+  };
+
   return (
     <div
       className={[
@@ -29,9 +58,7 @@ export default function Career(props: IProps) {
       ].join(" ")}
       key={values._id}
       lang={language}>
-      <div
-        className={styles.front}
-        key={isApplying ? 0 : 1}>
+      <div className={styles.front}>
         <div className={styles.right}>
           <img
             src={urls.STORAGE(values.image.path)}
@@ -50,28 +77,17 @@ export default function Career(props: IProps) {
           </ul>
 
           <div className={styles.description}>{values.description}</div>
-
-          <Button
-            title={
-              language === LanguagesENUM.FA
-                ? "ارسال فرم استخدامی"
-                : "Send Applying"
-            }
-            icon='ep:top-right'
-            variant='primary'
-            fill={values.type === "SPECIAL" ? "fill" : "outline"}
-            onClick={() => setIsApplying((prev) => !prev)}
-          />
+          <RenderApplyButton />
         </div>
       </div>
 
-      <div
-        className={styles.back}
-        key={isApplying ? 1 : 0}>
-        <ApplyForm
-          career_id={career._id}
-          onFlip={() => setIsApplying((prev) => !prev)}
-        />
+      <div className={accordion}>
+        <div className={styles.back}>
+          <ApplyForm
+            career_id={career._id}
+            onFlip={() => setIsApplying((prev) => !prev)}
+          />
+        </div>
       </div>
     </div>
   );

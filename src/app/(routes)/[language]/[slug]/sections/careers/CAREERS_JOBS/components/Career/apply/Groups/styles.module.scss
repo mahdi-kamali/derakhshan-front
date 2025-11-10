@@ -33,9 +33,15 @@
     gap: 1rem;
     align-items: start;
     .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         background-color: rgb(228, 228, 228);
         padding: 2em;
         border-radius: 1rem;
+        *{
+            text-align: center;
+        }
         * {
             color: black;
         }
@@ -57,10 +63,25 @@
     }
 }
 
-
-@media (max-width : 600px) {
+@media (max-width: 600px) {
     .content {
         display: flex;
         flex-direction: column;
+        margin-left: 0.5rem;
+        .left {
+            padding: 1em;
+            h2 {
+                font-size: 1rem;
+            }
+        }
+        .right {
+            width: 100%;
+            h2 {
+                font-size: 1rem;
+            }
+            .group {
+                padding: 1em 0;
+            }
+        }
     }
 }

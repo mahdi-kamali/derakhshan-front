@@ -41,7 +41,13 @@ export default function ApplyForm(props: IProps) {
     <form className={styles.form}>
       <Groups />
       <div className={styles.actions}>
-       
+        <Button
+          variant='success'
+          title='ثبت و ارسال'
+          icon=''
+          fill='fill'
+          onClick={() => {}}
+        />
       </div>
     </form>
   );

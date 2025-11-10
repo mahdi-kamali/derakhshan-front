@@ -14,6 +14,8 @@ import { useParams } from "next/navigation";
 import AplyAnimation from "@/assets/animations/apply";
 import LeaningAnimation from "@/assets/animations/learning/LeaningAnimation";
 import { IField } from "@/components/UI/Fields/Field.types";
+import WorkAnimation from "@/assets/animations/works/WorkAnimation";
+import SkillsAnimation from "@/assets/animations/Skills/SkillsAnimation";
 
 export default function Groups() {
   const { language }: { language: LanguagesENUM } = useParams();
@@ -443,7 +445,7 @@ export default function Groups() {
         language === LanguagesENUM.FA
           ? "تجربیات شغلی و سابقه کاری خود را وارد کنید."
           : "Provide your professional and work experience details.",
-      animation: <></>,
+      animation: <WorkAnimation />,
     },
   };
 
@@ -516,7 +518,7 @@ export default function Groups() {
         language === LanguagesENUM.FA
           ? "مهارت‌های فردی یا فنی خود را اضافه کنید."
           : "List your personal or technical skills.",
-      animation: <></>,
+      animation:<SkillsAnimation/>,
     },
   };
 
