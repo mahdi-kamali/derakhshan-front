@@ -1,23 +1,8 @@
-import { CSSProperties, HTMLInputTypeAttribute, ReactElement } from "react";
 
 import styles from "./styles.module.scss";
 import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
-
-export interface IField extends CSSProperties {
-  icon: ReactElement;
-  title: string;
-  required?: boolean;
-  name: string;
-  type?: HTMLInputTypeAttribute;
-  onChange: (value: string) => void;
-  rtl?: boolean;
-  multiLine?: {
-    rows: number;
-    cols: number;
-  };
-  value?: any;
-}
+import { IField } from "../Field.types";
 
 export default function Text(props: IField) {
   const { language }: { language: LanguagesENUM } = useParams();
@@ -25,7 +10,7 @@ export default function Text(props: IField) {
   const {
     icon,
     name,
-    onChange,
+    onChange = () => {},
     required = true,
     title,
     type = "text",

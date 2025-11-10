@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PageContainer from "@/components/containers/PageContainer/PageContainer";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
@@ -167,10 +167,10 @@ const ORDER = () => {
                 }
                 name='industry'
                 icon={<Icon icon='mdi:company' />}
-                type='text'
+                type='select'
                 onChange={(value) => setFieldValue("industry", value)}
                 title={t.industry}
-                value={values.industry}
+                value={values.industry as any}
               />
             </div>
 

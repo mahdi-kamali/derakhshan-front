@@ -26,6 +26,7 @@ export default [
       "@typescript-eslint/no-empty-object-type": "off", // disables '{}' warning
       "@typescript-eslint/no-unused-expressions": "off", // disables expression-only errors,
       "@typescript-eslint/ban-ts-comment": "off",
+      "react/jsx-key": "off",
     },
   },
 ];

@@ -1,25 +1,13 @@
-import { CSSProperties, HTMLInputTypeAttribute, ReactElement } from "react";
-
 import styles from "./styles.module.scss";
+import { IField, ISelect } from "../Field.types";
+
 
 export interface Ioption {
   label: string;
   value: any;
 }
 
-interface IProps extends CSSProperties {
-  icon: ReactElement;
-  title: string;
-  required?: boolean;
-  name: string;
-  type?: HTMLInputTypeAttribute;
-  onChange: (value: string) => void;
-  rtl?: boolean;
-  options: Ioption[];
-  value?: any;
-}
-
-export default function Select(props: IProps) {
+export default function Select(props: Extract<IField, ISelect>) {
   const {
     icon,
     name,
@@ -47,10 +35,15 @@ export default function Select(props: IProps) {
             onChange(value);
           }}
           name={name}
-          required={required}
-          defaultValue={value}>
+          required={required}>
           {options.map((opt) => {
-            return <option key={opt.value} value={opt.value}>{opt.label}</option>;
+            return (
+              <option
+                key={opt.value}
+                value={opt.value}>
+                {opt.label}
+              </option>
+            );
           })}
         </select>
       </div>

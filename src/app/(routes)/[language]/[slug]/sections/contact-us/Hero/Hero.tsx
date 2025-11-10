@@ -232,7 +232,7 @@ export default function Hero(props: IProps) {
               icon={<Icon icon={field.icon} />}
               name={field.name}
               title={field.title}
-              type={field.type}
+              type={"text"}
               required={field.required}
               onChange={(value) => {
                 setFieldValue(field.name, value);
@@ -240,6 +240,7 @@ export default function Hero(props: IProps) {
               rtl={language === "FA"}
               gridColumn={field.gridColumn}
               multiLine={field.multiLine}
+              value={values[field.name as keyof typeof values]}
             />
           ))}
 

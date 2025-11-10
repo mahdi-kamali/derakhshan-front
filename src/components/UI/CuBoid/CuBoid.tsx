@@ -32,6 +32,7 @@ export default function Cuboid({
       width: px(width),
       height: px(height),
       perspective: px(perspective),
+      direction: "ltr",
     } as React.CSSProperties,
 
     cuboid: {

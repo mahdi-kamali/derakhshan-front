@@ -1,0 +1,51 @@
+.array {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.row {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem;
+    animation: fade 1s ease;
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+    padding-bottom: 2em;
+    .fields {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .remove {
+        font-size: 1.5rem;
+        background-color: rgba(255, 0, 0, 0.257);
+        border-radius: 0.25rem;
+        height: 100%;
+        cursor: pointer;
+        &:hover {
+            background-color: red;
+        }
+        * {
+            color: white !important;
+        }
+    }
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        scale: 0;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}

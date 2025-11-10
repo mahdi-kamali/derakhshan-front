@@ -16,7 +16,7 @@
   border: 1px solid white;
   padding: 1.5em;
   border-radius: 1rem;
-  width: 33rem;
+  width: 50rem;
   margin-top: 4rem;
   margin-bottom: 4rem;
   .body {
@@ -30,13 +30,13 @@
   }
   .actions {
     display: flex;
-    justify-content: end;
+    justify-content: center;
   }
 }
 
 .user {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   h1 {
     grid-column: -1/1;
@@ -46,7 +46,7 @@
 
 .product {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   h1 {
     grid-column: -1/1;
