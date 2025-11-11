@@ -44,8 +44,46 @@
     }
 }
 
+.hasError {
+    border-color: red;
+    * {
+        color: red;
+    }
+    * {
+        &::placeholder {
+            color: red;
+        }
+    }
+}
+
+.error {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem !important;
+    background-color: rgba(255, 0, 0, 0.422);
+    left: 0.5rem;
+    animation: 1s ease fade forwards;
+    p {
+        color: white;
+        padding: 0.25rem 1rem;
+        font-size: 0.5rem !important;
+        margin: 0;
+    }
+}
+
 body:lang("FA") {
     .text {
         direction: rtl;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

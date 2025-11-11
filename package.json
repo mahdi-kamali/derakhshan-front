@@ -36,7 +36,8 @@
     "react-toastify": "^11.0.5",
     "react-vertical-timeline-component": "^3.5.3",
     "sass": "^1.86.0",
-    "swiper": "^11.2.6"
+    "swiper": "^11.2.6",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

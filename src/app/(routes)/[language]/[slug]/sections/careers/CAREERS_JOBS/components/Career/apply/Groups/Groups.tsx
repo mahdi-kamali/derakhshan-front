@@ -7,7 +7,7 @@ import Field from "@/components/UI/Fields/Field";
 import styles from "./styles.module.scss";
 import { IGroupField } from "../ApplyForm";
 import { ICareerApply } from "@/types/careers.types";
-import { useFormik } from "formik";
+import { FormikContextType, useFormik } from "formik";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useParams } from "next/navigation";
@@ -17,49 +17,15 @@ import { IField } from "@/components/UI/Fields/Field.types";
 import WorkAnimation from "@/assets/animations/works/WorkAnimation";
 import SkillsAnimation from "@/assets/animations/Skills/SkillsAnimation";
 
-export default function Groups() {
+interface IProps {
+  formik: FormikContextType<ICareerApply>;
+}
+
+export default function Groups(props: IProps) {
+  const { formik } = props;
+  const { values, setFieldValue, handleChange, errors } = formik;
+
   const { language }: { language: LanguagesENUM } = useParams();
-
-  const formik = useFormik<ICareerApply>({
-    initialValues: {
-      career_id: "",
-      personalInfo: {
-        fullName: "",
-        nationalId: "",
-        birthDate: "",
-        birthPlace: "",
-        issuePlace: "",
-        maritalStatus: "",
-        militaryStatus: "",
-        fatherName: "",
-        fatherJob: "",
-        insuranceHistory: "",
-        phoneNumber: "",
-      },
-      education: [],
-      workExperience: {
-        lastSalary: "",
-        insuranceDuration: "",
-        usedUnemploymentInsurance: "",
-        works: [
-          {
-            duration: "",
-            organization: "",
-            role: "",
-            terminationReason: "",
-          },
-        ],
-      },
-      skills: [],
-      software: [],
-      languages: [],
-      description: "",
-      expectedSalary: "",
-    },
-    onSubmit(values, formikHelpers) {},
-  });
-
-  const { values, setFieldValue } = formik;
 
   // مشخصات فردی / Personal Information
   const personalInfoGroup: IGroupField = {
@@ -77,6 +43,7 @@ export default function Groups() {
         onChange: (value) => console.log("Full Name:", value),
         rtl: true,
         color: "black",
+        error: errors.personalInfo?.fullName,
       },
       {
         icon: <Icon icon='mdi:card-account-details' />,
@@ -87,6 +54,7 @@ export default function Groups() {
         onChange: (value) => console.log("National ID:", value),
         rtl: true,
         color: "black",
+        error: errors.personalInfo?.nationalId,
       },
       {
         icon: <Icon icon='mdi:cake-variant' />,
@@ -518,7 +486,7 @@ export default function Groups() {
         language === LanguagesENUM.FA
           ? "مهارت‌های فردی یا فنی خود را اضافه کنید."
           : "List your personal or technical skills.",
-      animation:<SkillsAnimation/>,
+      animation: <SkillsAnimation />,
     },
   };
 

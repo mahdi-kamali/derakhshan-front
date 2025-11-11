@@ -1,4 +1,3 @@
-
 import styles from "./styles.module.scss";
 import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
@@ -17,11 +16,14 @@ export default function Text(props: IField) {
     rtl = false,
     multiLine,
     value,
+    error,
   } = props;
+
+  const textClass = [styles.text, error && styles.hasError].join(" ");
 
   return (
     <div
-      className={styles.text}
+      className={textClass}
       dir={rtl ? "rtl" : "ltr"}
       style={{
         ...props,
@@ -56,6 +58,11 @@ export default function Text(props: IField) {
           />
         )}
       </div>
+      {error && (
+        <div className={styles.error}>
+          <p>{error}</p>
+        </div>
+      )}
     </div>
   );
 }

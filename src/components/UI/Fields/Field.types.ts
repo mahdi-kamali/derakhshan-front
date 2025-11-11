@@ -49,5 +49,6 @@ export type IField = {
   multiLine?: { cols: number; rows: number };
   value?: any;
   onChange?: (value: any) => void;
+  error?: string;
 } & CSSProperties &
   IBase;
