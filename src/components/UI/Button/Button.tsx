@@ -24,11 +24,17 @@ export default function Button(props: IProps) {
     variant,
     fill = "fill",
     style,
-    disabled,
+    disabled = false,
     onClick,
   } = props;
 
-  const classs = [styles.button, styles[variant], styles[fill]].join(" ");
+  const classs = [
+    styles.button,
+    styles[variant],
+    styles[fill],
+    disabled && styles.disabled,
+  ].join(" ");
+
 
   return (
     <button
@@ -36,7 +42,8 @@ export default function Button(props: IProps) {
       lang={language}
       type='button'
       style={style}
-      onClick={onClick}>
+      onClick={onClick}
+      disabled={disabled}>
       {icon !== "none" && <Icon icon={icon} />}
       {title && <span>{title}</span>}
     </button>

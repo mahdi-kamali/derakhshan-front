@@ -26,6 +26,10 @@ export interface ICareerApply {
   languages: Skill[];
   description: string;
   expectedSalary: string;
+  uploads: {
+    resume: IFile;
+    organization: IFile;
+  };
 }
 
 interface Skill {

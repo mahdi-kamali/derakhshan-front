@@ -20,6 +20,7 @@
     "iconify": "^1.4.0",
     "imagesloaded": "^5.0.0",
     "leaflet": "^1.9.4",
+    "lodash": "^4.17.21",
     "masonry-layout": "^4.2.2",
     "moment-jalaali": "^0.10.4",
     "next": "15.2.4",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/leaflet": "^1.9.17",
+    "@types/lodash": "^4.17.20",
     "@types/moment-jalaali": "^0.7.9",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -18,6 +18,17 @@
     h2 {
         text-align: center;
     }
+    .error {
+        background-color: #e68787;
+        color: white;
+        text-align: center;
+        border-radius: 100rem;
+        font-size: 0.86rem;
+        width: max-content;
+        margin: auto;
+        padding: 0.25 1em;
+        margin-top: 1rem;
+    }
 }
 
 .container {
@@ -39,7 +50,7 @@
         background-color: rgb(228, 228, 228);
         padding: 2em;
         border-radius: 1rem;
-        *{
+        * {
             text-align: center;
         }
         * {

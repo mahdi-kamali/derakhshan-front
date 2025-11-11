@@ -28,7 +28,8 @@ export default function Groups(props: IProps) {
   const { language }: { language: LanguagesENUM } = useParams();
 
   // مشخصات فردی / Personal Information
-  const personalInfoGroup: IGroupField = {
+  const personalInfoGroup: IGroupField<ICareerApply> = {
+    name: "personalInfo",
     title:
       language === LanguagesENUM.FA ? "مشخصات فردی" : "Personal Information",
     icon: <Icon icon='material-symbols:info' />,
@@ -43,7 +44,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Full Name:", value),
         rtl: true,
         color: "black",
-        error: errors.personalInfo?.fullName,
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:card-account-details' />,
@@ -54,7 +55,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("National ID:", value),
         rtl: true,
         color: "black",
-        error: errors.personalInfo?.nationalId,
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:cake-variant' />,
@@ -65,6 +66,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Birth Date:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:map-marker' />,
@@ -75,6 +77,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Birth Place:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:map-marker-outline' />,
@@ -85,6 +88,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Issue Place:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:heart' />,
@@ -95,6 +99,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Marital Status:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:shield-account' />,
@@ -108,6 +113,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Military Status:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:account-tie' />,
@@ -118,6 +124,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Father Name:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:briefcase' />,
@@ -129,6 +136,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Father Job:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:shield-check' />,
@@ -142,6 +150,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Insurance History:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:phone' />,
@@ -152,6 +161,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Phone:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
     ],
     info: {
@@ -170,7 +180,8 @@ export default function Groups(props: IProps) {
   // -------------------------
   // سوابق تحصیلی / Educational Background
   // -------------------------
-  const educationGroup: IGroupField = {
+  const educationGroup: IGroupField<ICareerApply> = {
+    name: "education",
     title:
       language === LanguagesENUM.FA ? "سوابق تحصیلی" : "Educational Background",
     icon: <Icon icon='tdesign:education-filled' />,
@@ -198,6 +209,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`education[${index}].fieldOfStudy`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:school' />,
@@ -212,6 +224,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`education[${index}].level`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:calculator-variant' />,
@@ -223,6 +236,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`education[${index}].gpa`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:office-building' />,
@@ -237,6 +251,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`education[${index}].institute`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
           ];
 
@@ -278,7 +293,8 @@ export default function Groups(props: IProps) {
   // -------------------------
   // سوابق کاری / Work Experience
   // -------------------------
-  const workExperienceGroup: IGroupField = {
+  const workExperienceGroup: IGroupField<ICareerApply> = {
+    name: "workExperience",
     title: language === LanguagesENUM.FA ? "سوابق کاری" : "Work Experience",
     icon: <Icon icon='mdi:briefcase-outline' />,
     fields: [
@@ -288,11 +304,12 @@ export default function Groups(props: IProps) {
           language === LanguagesENUM.FA
             ? "آخرین حقوق دریافتی"
             : "Last Received Salary",
-        name: "lastSalary",
+        name: "workExperience.lastSalary",
         type: "number",
         onChange: (value) => console.log("Last Salary:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:clock-time-four-outline' />,
@@ -300,11 +317,12 @@ export default function Groups(props: IProps) {
           language === LanguagesENUM.FA
             ? "مدت زمان بیمه"
             : "Insurance Duration",
-        name: "insuranceDuration",
+        name: "workExperience.insuranceDuration",
         type: "text",
         onChange: (value) => console.log("Insurance Duration:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:account-question' />,
@@ -312,11 +330,12 @@ export default function Groups(props: IProps) {
           language === LanguagesENUM.FA
             ? "بیمه بیکاری استفاده کرده اید؟"
             : "Used Unemployment Insurance?",
-        name: "usedUnemploymentInsurance",
+        name: "workExperience.usedUnemploymentInsurance",
         type: "text",
         onChange: (value) => console.log("Used Unemployment Insurance:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         type: "array",
@@ -325,12 +344,14 @@ export default function Groups(props: IProps) {
         icon: <Icon icon='material-symbols:work-sharp' />,
         values: values.workExperience.works,
         color: "black",
+        errors: errors,
+
         onRednerRow(value, index) {
           const fields: IField[] = [
             {
               icon: <Icon icon='mdi:domain' />,
               title: language === LanguagesENUM.FA ? "سازمان" : "Organization",
-              name: `workExperience.works[${index}]`,
+              name: `workExperience.works[${index}].organization`,
               type: "text",
               onChange: (value) =>
                 setFieldValue(
@@ -339,6 +360,7 @@ export default function Groups(props: IProps) {
                 ),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:handshake-outline' />,
@@ -352,6 +374,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`workExperience.works[${index}].role`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:calendar-clock' />,
@@ -365,6 +388,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`workExperience.works[${index}].duration`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:close-circle-outline' />,
@@ -381,6 +405,7 @@ export default function Groups(props: IProps) {
                 ),
               rtl: true,
               color: "black",
+              errors: errors,
             },
           ];
           return fields.map((field) => {
@@ -420,7 +445,8 @@ export default function Groups(props: IProps) {
   // -------------------------
   // مهارت‌ها / Skills
   // -------------------------
-  const skillsGroup: IGroupField = {
+  const skillsGroup: IGroupField<ICareerApply> = {
+    name: "skills",
     title: language === LanguagesENUM.FA ? "مهارت‌ها" : "Skills",
     icon: <Icon icon='mdi:star-outline' />,
     fields: [
@@ -444,6 +470,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`skills[${index}].name`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:school-outline' />,
@@ -456,6 +483,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`skills[${index}].level`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
           ];
 
@@ -478,6 +506,7 @@ export default function Groups(props: IProps) {
         },
         values: values.skills,
         color: "black",
+        errors: errors,
       },
     ],
     info: {
@@ -496,7 +525,8 @@ export default function Groups(props: IProps) {
   // -------------------------
   // نرم‌افزار / Software
   // -------------------------
-  const softwareGroup: IGroupField = {
+  const softwareGroup: IGroupField<ICareerApply> = {
+    name: "software",
     title: language === LanguagesENUM.FA ? "نرم‌افزار" : "Software Knowledge",
     icon: <Icon icon='mdi:laptop' />,
     fields: [
@@ -524,6 +554,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`software[${index}].name`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:star' />,
@@ -538,6 +569,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`software[${index}].level`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
           ];
 
@@ -576,7 +608,8 @@ export default function Groups(props: IProps) {
   // -------------------------
   // تسلط به زبان‌های خارجی / Language Skills
   // -------------------------
-  const languageGroup: IGroupField = {
+  const languageGroup: IGroupField<ICareerApply> = {
+    name: "languages",
     title:
       language === LanguagesENUM.FA
         ? "تسلط به زبان‌های خارجی"
@@ -604,6 +637,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`languages[${index}].name`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
             {
               icon: <Icon icon='mdi:star-circle-outline' />,
@@ -637,6 +671,7 @@ export default function Groups(props: IProps) {
                 setFieldValue(`languages[${index}].level`, value),
               rtl: true,
               color: "black",
+              errors: errors,
             },
           ];
 
@@ -675,7 +710,8 @@ export default function Groups(props: IProps) {
   // -------------------------
   // آپلود رزومه / Resume Upload
   // -------------------------
-  const resumeUploadGroup: IGroupField = {
+  const resumeUploadGroup: IGroupField<ICareerApply> = {
+    name: "uploads",
     title: language === LanguagesENUM.FA ? "آپلود رزومه" : "Upload Resume",
     icon: <Icon icon='mdi:file-upload-outline' />,
     fields: [
@@ -688,6 +724,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => setFieldValue("uplodas.resume", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:image-outline' />,
@@ -700,6 +737,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => setFieldValue("uplodas.organization", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:text' />,
@@ -709,6 +747,7 @@ export default function Groups(props: IProps) {
         rtl: true,
         multiLine: { rows: 3, cols: 30 },
         color: "black",
+        errors: errors,
       },
       {
         icon: <Icon icon='mdi:cash-multiple' />,
@@ -719,6 +758,7 @@ export default function Groups(props: IProps) {
         onChange: (value) => console.log("Expected Salary:", value),
         rtl: true,
         color: "black",
+        errors: errors,
       },
     ],
     info: {
@@ -737,7 +777,7 @@ export default function Groups(props: IProps) {
   // -------------------------
   // Combine all groups (optional)
   // -------------------------
-  const groups: IGroupField[] = [
+  const groups: IGroupField<ICareerApply>[] = [
     personalInfoGroup,
     educationGroup,
     workExperienceGroup,
@@ -752,6 +792,8 @@ export default function Groups(props: IProps) {
       lineColor='red'
       layout='1-column-right'>
       {groups.map((group) => {
+        const groupError = errors[group.name];
+
         return (
           <VerticalTimelineElement
             className={styles.container}
@@ -764,6 +806,13 @@ export default function Groups(props: IProps) {
               <div className={styles.right}>
                 <div className={styles.group}>
                   <h2 className={styles.groupTitle}>{group.title}</h2>
+                  {groupError && (
+                    <p className={styles.error}>
+                      {typeof groupError === "string"
+                        ? groupError
+                        : "خطایی وجود دارد"}
+                    </p>
+                  )}
                   <div className={styles.fields}>
                     {group.fields.map((base) => {
                       if (base.type === "file") {

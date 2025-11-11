@@ -44,9 +44,10 @@
   background-color: transparent;
 }
 
-.disable {
+.disabled {
   border: 1px solid var(--color-dark-font-secondary);
-  opacity: 0.3;
+  opacity: 0.3 !important;
+  cursor: no-drop !important;
 }
 
 .button:lang(FA) {
