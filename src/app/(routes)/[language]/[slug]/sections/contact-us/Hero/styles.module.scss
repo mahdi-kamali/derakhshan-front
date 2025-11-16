@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 1000px;
   display: flex;
-  gap: 3rem;
+  gap: 0rem;
   align-items: start;
   justify-content: center;
   position: relative;
@@ -72,15 +72,23 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-      max-width: 22rem;
+      width: 25rem;
+
+      .actions {
+        grid-column: -1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
-}
 
-body:lang("FA") {
-  .hero {
+  &:lang(FA) {
     direction: rtl;
     text-align: right !important;
+  }
+
+  &:lang(EN) {
   }
 }
 
@@ -88,11 +96,23 @@ body:lang("FA") {
   .hero {
     max-width: 100%;
     gap: 1rem;
+    overflow: hidden;
 
     .right {
       padding: 2em;
       img {
         width: 100%;
+      }
+    }
+    .left {
+      margin: unset !important;
+      display: flex;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100%;
+      padding: 2em;
+      form {
+        width: 100% !important;
       }
     }
   }

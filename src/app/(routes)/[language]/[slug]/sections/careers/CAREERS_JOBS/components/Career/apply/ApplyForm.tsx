@@ -6,91 +6,12 @@ import Groups from "./Groups/Groups";
 import { IField } from "@/components/UI/Fields/Field.types";
 import Button from "@/components/UI/Button/Button";
 import { ICareerApply } from "@/types/careers.types";
-import { useFormik } from "formik";
+import { FormikProvider, useFormik } from "formik";
 import { ShowQuestion } from "@/utils/toast/Toast";
 import * as Yup from "yup";
-
-export const CareerApplySchema = Yup.object({
-  career_id: Yup.string().required("الزامی است"),
-
-  personalInfo: Yup.object({
-    fullName: Yup.string().required("الزامی است"),
-    nationalId: Yup.string()
-      .matches(/^\d{10}$/, "معتبر نیست")
-      .required("الزامی است"),
-    birthDate: Yup.string().required("الزامی است"),
-    birthPlace: Yup.string().required("الزامی است"),
-    issuePlace: Yup.string().required("الزامی است"),
-    maritalStatus: Yup.string().required("الزامی است"),
-    militaryStatus: Yup.string().required("الزامی است"),
-    fatherName: Yup.string().required("الزامی است"),
-    fatherJob: Yup.string().required("الزامی است"),
-    insuranceHistory: Yup.string().required("الزامی است"),
-    phoneNumber: Yup.string()
-      .matches(/^09\d{9}$/, "معتبر نیست")
-      .required("الزامی است"),
-  }),
-
-  education: Yup.array()
-    .of(
-      Yup.object({
-        fieldOfStudy: Yup.string().required("الزامی است"),
-        level: Yup.string().required("الزامی است"),
-        gpa: Yup.string().required("الزامی است"),
-        institute: Yup.string().required("الزامی است"),
-      }),
-    )
-    .min(1, "حداقل یک مدرک تحصیلی باید وارد شود"), // group-level info
-
-  workExperience: Yup.object({
-    lastSalary: Yup.string().required("الزامی است"),
-    insuranceDuration: Yup.string().required("الزامی است"),
-    usedUnemploymentInsurance: Yup.string().required("الزامی است"),
-    works: Yup.array()
-      .of(
-        Yup.object({
-          organization: Yup.string().required("الزامی است"),
-          role: Yup.string().required("الزامی است"),
-          duration: Yup.string().required("الزامی است"),
-          terminationReason: Yup.string().required("الزامی است"),
-        }),
-      )
-      .min(1, "حداقل یک سابقه کاری باید وارد شود"), // group-level info
-  }).required("اطلاعات سوابق کاری الزامی است"), // object group required
-
-  skills: Yup.array()
-    .of(
-      Yup.object({
-        name: Yup.string().required("الزامی است"),
-        level: Yup.string().required("الزامی است"),
-      }),
-    )
-    .min(1, "حداقل یک مهارت باید وارد شود"),
-
-  software: Yup.array()
-    .of(
-      Yup.object({
-        name: Yup.string().required("الزامی است"),
-        level: Yup.string().required("الزامی است"),
-      }),
-    )
-    .min(1, "حداقل یک نرم‌افزار باید وارد شود"),
-
-  languages: Yup.array()
-    .of(
-      Yup.object({
-        name: Yup.string().required("الزامی است"),
-        level: Yup.string().required("الزامی است"),
-      }),
-    )
-    .min(1, "حداقل یک زبان باید وارد شود"),
-
-  description: Yup.string()
-    .max(1000, "توضیحات نباید بیش از 1000 کاراکتر باشد")
-    .required("الزامی است"),
-
-  expectedSalary: Yup.string().required("الزامی است"),
-});
+import { CareerApplySchema } from "@/utils/validations/validations";
+import { useParams } from "next/navigation";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 export interface IGroupField<T> {
   title: string;
@@ -110,6 +31,8 @@ interface IProps {
 }
 
 export default function ApplyForm(props: IProps) {
+  const { language }: { language: LanguagesENUM } = useParams();
+
   const { onFlip, career_id } = props;
 
   const { mutate: ApplyCareer } = useMutation({
@@ -135,7 +58,14 @@ export default function ApplyForm(props: IProps) {
         insuranceHistory: "",
         phoneNumber: "",
       },
-      education: [],
+      education: [
+        {
+          fieldOfStudy: "",
+          gpa: "",
+          institute: "",
+          level: "",
+        },
+      ],
       workExperience: {
         lastSalary: "",
         insuranceDuration: "",
@@ -167,26 +97,29 @@ export default function ApplyForm(props: IProps) {
         onCancel() {},
       });
     },
-    validationSchema: CareerApplySchema,
+    validationSchema: CareerApplySchema[language],
+    validateOnChange: false,
+    validateOnBlur: true,
   });
 
   const { values, errors, submitForm } = formik;
 
   return (
     <form className={styles.form}>
-      <Groups formik={formik} />
-      <div className={styles.actions}>
-        <Button
-          variant='success'
-          title='ثبت و ارسال'
-          icon=''
-          fill='fill'
-          disabled={Object.entries(errors).length > 0}
-          onClick={() => {
-            submitForm();
-          }}
-        />
-      </div>
+      <FormikProvider value={formik}>
+        <Groups formik={formik} />
+        <div className={styles.actions}>
+          <Button
+            variant='success'
+            title='ثبت و ارسال'
+            icon=''
+            fill='fill'
+            onClick={() => {
+              submitForm();
+            }}
+          />
+        </div>
+      </FormikProvider>
     </form>
   );
 }

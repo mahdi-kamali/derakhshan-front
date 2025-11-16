@@ -6,21 +6,18 @@ interface IOption {
 }
 
 type INormalField = {
-  type?:
-    | "text"
-    | "password"
-    | "url"
-    | "email"
-    | "number"
-    | "date"
-    | "tel"
-    | "file";
+  type?: "text" | "password" | "url" | "email" | "number" | "date" | "tel";
   onChange?: (value: any) => void;
   multiLine?: {
     rows: number;
     cols: number;
   };
   value?: any;
+};
+
+type IImageField = {
+  type: "image";
+  onChange: (value: any) => void;
 };
 
 export type ArrayField = {
@@ -38,7 +35,7 @@ export type ISelect = {
   value?: IOption;
 };
 
-type IBase = INormalField | ArrayField | ISelect;
+type IBase = INormalField | ArrayField | ISelect | IImageField;
 
 export type IField = {
   name: string;

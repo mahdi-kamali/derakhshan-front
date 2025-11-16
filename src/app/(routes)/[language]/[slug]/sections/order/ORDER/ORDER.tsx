@@ -5,14 +5,13 @@ import PageContainer from "@/components/containers/PageContainer/PageContainer";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
 import { useParams } from "next/navigation";
-import { useFormik } from "formik";
+import { FormikContext, useFormik } from "formik";
 import {
   INDUSTRY_ENUM,
   IOrder,
   ORDERS_INDUSTRY_OPTIONS_EN,
   ORDERS_INDUSTRY_OPTIONS_FA,
 } from "@/types/order.types";
-import Field from "@/components/UI/Fields/Field";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Cuboid from "@/components/UI/CuBoid/CuBoid";
 import Controls from "@/components/UI/CuBoid/Controls/Controls";
@@ -21,11 +20,15 @@ import { useMutation } from "@tanstack/react-query";
 import { CreateOrderAPI } from "@/services/Orders/orders.services";
 import useRedirect from "@/hooks/useRedirect";
 import { LanguagesENUM } from "@/types/Language/Language.types";
+import { OrderValidationSchema } from "@/utils/validations/validations";
+import Field from "@/components/UI/Fields/Field";
 
 const ORDER = () => {
+  const { language }: { language: LanguagesENUM } = useParams();
+
   const { GoHome } = useRedirect();
 
-  const { values, setFieldValue } = useFormik<IOrder>({
+  const formik = useFormik<IOrder>({
     initialValues: {
       user: {
         name: "",
@@ -48,7 +51,12 @@ const ORDER = () => {
       },
       description: "",
     },
-    onSubmit(values, formikHelpers) {},
+    onSubmit(values, formikHelpers) {
+      CreateOrder(values);
+    },
+    validationSchema: OrderValidationSchema[language],
+    validateOnBlur: true,
+    validateOnChange: false,
   });
 
   const { mutate: CreateOrder } = useMutation({
@@ -58,7 +66,7 @@ const ORDER = () => {
     },
   });
 
-  const { language }: { language: LanguagesENUM } = useParams();
+  const { values, setFieldValue, errors, submitForm } = formik;
 
   const [gap, setGap] = useState(0);
   const [rotation, setRotation] = useState({ x: -33, y: 33 });
@@ -113,218 +121,233 @@ const ORDER = () => {
 
   return (
     <PageContainer title={t.pageTitle}>
-      <div className={styles.container}>
-        <div className={styles.form}>
-          <div className={styles.body}>
-            {/* USER INFO */}
-            <div className={styles.user}>
-              <h1>{t.userInfo}</h1>
-              <Field.Text
-                name='user.name'
-                icon={<Icon icon='icon-park-outline:edit-name' />}
-                type='text'
-                onChange={(value) => setFieldValue("user.name", value)}
-                title={t.firstName}
-                value={values.user.name}
-              />
-              <Field.Text
-                name='user.family'
-                icon={<Icon icon='icon-park-solid:family' />}
-                type='text'
-                onChange={(value) => setFieldValue("user.family", value)}
-                title={t.lastName}
-                value={values.user.family}
-              />
-              <Field.Text
-                name='user.phone'
-                icon={<Icon icon='line-md:phone-filled' />}
-                type='number'
-                onChange={(value) => setFieldValue("user.phone", value)}
-                title={t.phone}
-                value={values.user.phone}
-              />
-              <Field.Text
-                name='user.email'
-                icon={<Icon icon='line-md:email-alt-twotone' />}
-                type='email'
-                onChange={(value) => setFieldValue("user.email", value)}
-                title={t.email}
-                value={values.user.email}
-              />
-              <Field.Text
-                name='companyName'
-                icon={<Icon icon='mdi:company' />}
-                type='text'
-                onChange={(value) => setFieldValue("companyName", value)}
-                title={t.company}
-                value={values.companyName}
-              />
-              <Field.Select
-                options={
-                  language === LanguagesENUM.FA
-                    ? ORDERS_INDUSTRY_OPTIONS_FA
-                    : ORDERS_INDUSTRY_OPTIONS_EN
-                }
-                name='industry'
-                icon={<Icon icon='mdi:company' />}
-                type='select'
-                onChange={(value) => setFieldValue("industry", value)}
-                title={t.industry}
-                value={values.industry as any}
-              />
-            </div>
-
-            {/* PRODUCT INFO */}
-            <div className={styles.product}>
-              <h1>{t.productInfo}</h1>
-              <Field.Text
-                name='product.type'
-                icon={<Icon icon='icon-park-outline:ad-product' />}
-                type='text'
-                onChange={(value) => setFieldValue("product.type", value)}
-                title={t.productType}
-                value={values.product.type}
-              />
-              <Field.Text
-                name='product.weight'
-                icon={<Icon icon='fa-solid:weight' />}
-                type='number'
-                onChange={(value) => setFieldValue("product.weight", value)}
-                title={t.weight}
-                value={values.product.weight}
-              />
-              <Field.Text
-                name='product.quantity'
-                icon={<Icon icon='fluent:text-word-count-24-filled' />}
-                type='number'
-                onChange={(value) => setFieldValue("product.quantity", value)}
-                title={t.quantity}
-                value={values.product.quantity}
-              />
-
-              <div style={{ gridColumn: "-1/1" }}>
-                <Field.Image
-                  name='product.image'
-                  icon={<Icon icon='line-md:image-twotone' />}
+      <FormikContext value={formik}>
+        <div className={styles.container}>
+          <div className={styles.form}>
+            <div className={styles.body}>
+              {/* USER INFO */}
+              <div className={styles.user}>
+                <h1>{t.userInfo}</h1>
+                <Field
+                  name='user.name'
+                  icon={<Icon icon='icon-park-outline:edit-name' />}
                   type='text'
-                  onChange={(file) => setFieldValue("product.image", file)}
-                  title={t.uploadImage}
-                  value={values.product.image}
+                  onChange={(value) => setFieldValue("user.name", value)}
+                  title={t.firstName}
+                  value={values.user.name}
+                  errors={errors}
+                />
+                <Field
+                  name='user.family'
+                  icon={<Icon icon='icon-park-solid:family' />}
+                  type='text'
+                  onChange={(value) => setFieldValue("user.family", value)}
+                  title={t.lastName}
+                  value={values.user.family}
+                  errors={errors}
+                />
+                <Field
+                  name='user.phone'
+                  icon={<Icon icon='line-md:phone-filled' />}
+                  type='number'
+                  onChange={(value) => setFieldValue("user.phone", value)}
+                  title={t.phone}
+                  value={values.user.phone}
+                  errors={errors}
+                />
+                <Field
+                  name='user.email'
+                  icon={<Icon icon='line-md:email-alt-twotone' />}
+                  type='email'
+                  onChange={(value) => setFieldValue("user.email", value)}
+                  title={t.email}
+                  value={values.user.email}
+                  errors={errors}
+                />
+                <Field
+                  name='companyName'
+                  icon={<Icon icon='mdi:company' />}
+                  type='text'
+                  onChange={(value) => setFieldValue("companyName", value)}
+                  title={t.company}
+                  value={values.companyName}
+                  errors={errors}
+                />
+                <Field
+                  options={
+                    language === LanguagesENUM.FA
+                      ? ORDERS_INDUSTRY_OPTIONS_FA
+                      : ORDERS_INDUSTRY_OPTIONS_EN
+                  }
+                  name='industry'
+                  icon={<Icon icon='mdi:company' />}
+                  type='select'
+                  onChange={(value) => setFieldValue("industry", value)}
+                  title={t.industry}
+                  value={values.industry as any}
+                  errors={errors}
                 />
               </div>
 
-              <div className={styles.sizes}>
-                <div
-                  className={styles.cube}
-                  style={{
-                    width: "100%",
-                    height:
-                      values.product.dimensions.height > 200
-                        ? "32rem"
-                        : "20rem",
-                  }}>
-                  <Cuboid
-                    depth={values.product.dimensions.length}
-                    height={values.product.dimensions.height}
-                    width={values.product.dimensions.width}
-                    rotation={rotation}
-                    gap={gap}
-                    perspective={perspective}
+              {/* PRODUCT INFO */}
+              <div className={styles.product}>
+                <h1>{t.productInfo}</h1>
+                <Field
+                  name='product.type'
+                  icon={<Icon icon='icon-park-outline:ad-product' />}
+                  type='text'
+                  onChange={(value) => setFieldValue("product.type", value)}
+                  title={t.productType}
+                  value={values.product.type}
+                  errors={errors}
+                />
+                <Field
+                  name='product.weight'
+                  icon={<Icon icon='fa-solid:weight' />}
+                  type='number'
+                  onChange={(value) => setFieldValue("product.weight", value)}
+                  title={t.weight}
+                  value={values.product.weight}
+                  errors={errors}
+                />
+                <Field
+                  name='product.quantity'
+                  icon={<Icon icon='fluent:text-word-count-24-filled' />}
+                  type='number'
+                  onChange={(value) => setFieldValue("product.quantity", value)}
+                  title={t.quantity}
+                  value={values.product.quantity}
+                  errors={errors}
+                />
+
+                <div style={{ gridColumn: "-1/1" }}>
+                  <Field
+                    name='product.image'
+                    icon={<Icon icon='line-md:image-twotone' />}
+                    type='image'
+                    onChange={(file) => setFieldValue("product.image", file)}
+                    title={t.uploadImage}
+                    value={values.product.image}
+                    errors={errors}
                   />
                 </div>
 
-                <div className={styles.controls}>
-                  <div className={styles.fiels}>
-                    <h2>{t.measurement}</h2>
-                    <Field.Text
-                      name='product.dimensions.length'
-                      icon={<Icon icon='iconoir:truck-length' />}
-                      type='number'
-                      onChange={(value) =>
-                        setFieldValue("product.dimensions.length", value)
-                      }
-                      title={t.length}
-                      value={values.product.dimensions.length}
-                    />
-                    <Field.Text
-                      name='product.dimensions.width'
-                      icon={<Icon icon='radix-icons:width' />}
-                      type='number'
-                      onChange={(value) =>
-                        setFieldValue("product.dimensions.width", value)
-                      }
-                      title={t.width}
-                      value={values.product.dimensions.width}
-                    />
-                    <Field.Text
-                      name='product.dimensions.height'
-                      icon={<Icon icon='ic:twotone-height' />}
-                      type='number'
-                      onChange={(value) =>
-                        setFieldValue("product.dimensions.height", value)
-                      }
-                      title={t.height}
-                      value={values.product.dimensions.height}
+                <div className={styles.sizes}>
+                  <div
+                    className={styles.cube}
+                    style={{
+                      width: "100%",
+                      height:
+                        values.product.dimensions.height > 200
+                          ? "32rem"
+                          : "20rem",
+                    }}>
+                    <Cuboid
+                      depth={values.product.dimensions.length}
+                      height={values.product.dimensions.height}
+                      width={values.product.dimensions.width}
+                      rotation={rotation}
+                      gap={gap}
+                      perspective={perspective}
                     />
                   </div>
 
-                  <Controls
-                    debug
-                    width={values.product.dimensions.width}
-                    height={values.product.dimensions.height}
-                    depth={values.product.dimensions.length}
-                    rotation={rotation}
-                    setWidth={(value) =>
-                      setFieldValue("product.dimensions.width", value)
-                    }
-                    setHeight={(value) =>
-                      setFieldValue("product.dimensions.height", value)
-                    }
-                    setDepth={(value) =>
-                      setFieldValue("product.dimensions.length", value)
-                    }
-                    setRotation={setRotation}
-                  />
+                  <div className={styles.controls}>
+                    <div className={styles.fiels}>
+                      <h2>{t.measurement}</h2>
+                      <Field
+                        name='product.dimensions.length'
+                        icon={<Icon icon='iconoir:truck-length' />}
+                        type='number'
+                        onChange={(value) =>
+                          setFieldValue("product.dimensions.length", value)
+                        }
+                        title={t.length}
+                        value={values.product.dimensions.length}
+                        errors={errors}
+                      />
+                      <Field
+                        name='product.dimensions.width'
+                        icon={<Icon icon='radix-icons:width' />}
+                        type='number'
+                        onChange={(value) =>
+                          setFieldValue("product.dimensions.width", value)
+                        }
+                        title={t.width}
+                        value={values.product.dimensions.width}
+                        errors={errors}
+                      />
+                      <Field
+                        name='product.dimensions.height'
+                        icon={<Icon icon='ic:twotone-height' />}
+                        type='number'
+                        onChange={(value) =>
+                          setFieldValue("product.dimensions.height", value)
+                        }
+                        title={t.height}
+                        value={values.product.dimensions.height}
+                        errors={errors}
+                      />
+                    </div>
+                    <Controls
+                      debug
+                      width={values.product.dimensions.width}
+                      height={values.product.dimensions.height}
+                      depth={values.product.dimensions.length}
+                      rotation={rotation}
+                      setWidth={(value) =>
+                        setFieldValue("product.dimensions.width", value)
+                      }
+                      setHeight={(value) =>
+                        setFieldValue("product.dimensions.height", value)
+                      }
+                      setDepth={(value) =>
+                        setFieldValue("product.dimensions.length", value)
+                      }
+                      setRotation={setRotation}
+                    />
+                  </div>
                 </div>
+              </div>
+
+              {/* DESCRIPTION */}
+              <div className={styles.descraption}>
+                <Field
+                  name='description'
+                  icon={<Icon icon='ic:twotone-height' />}
+                  type='text'
+                  onChange={(value) => setFieldValue("description", value)}
+                  title={t.description}
+                  multiLine={{
+                    cols: 10,
+                    rows: 5,
+                  }}
+                  value={values.description}
+                  errors={errors}
+                />
               </div>
             </div>
 
-            {/* DESCRIPTION */}
-            <div className={styles.descraption}>
-              <Field.Text
-                name='description'
-                icon={<Icon icon='ic:twotone-height' />}
-                type='text'
-                onChange={(value) => setFieldValue("description", value)}
-                title={t.description}
-                multiLine={{
-                  cols: 10,
-                  rows: 5,
+            {/* ACTION BUTTON */}
+            <div className={styles.actions}>
+              <Button
+                icon='none'
+                title={t.submit}
+                variant='primary'
+                onClick={() => {
+                  ShowQuestion({
+                    message: t.confirmMsg,
+                    onConfirm() {
+                      submitForm();
+                    },
+                    onCancel() {},
+                  });
                 }}
-                value={values.description}
               />
             </div>
           </div>
-
-          {/* ACTION BUTTON */}
-          <div className={styles.actions}>
-            <Button
-              icon='none'
-              title={t.submit}
-              variant='primary'
-              onClick={() => {
-                ShowQuestion({
-                  message: t.confirmMsg,
-                  onConfirm() {
-                    CreateOrder(values);
-                  },
-                  onCancel() {},
-                });
-              }}
-            />
-          </div>
         </div>
-      </div>
+      </FormikContext>
     </PageContainer>
   );
 };

@@ -85,7 +85,7 @@ export default function Header() {
                 <button
                   className={styles.language}
                   onClick={switchLang}>
-                  <span>{language == "EN" ? "ENGLISH" : "فارسی"}</span>
+                  <span>{language == "EN" ? "PERSIAN" : "ENGLISH"}</span>
                   <Icon icon='clarity:language-solid' />
                 </button>
                 {pages.map((page) => {

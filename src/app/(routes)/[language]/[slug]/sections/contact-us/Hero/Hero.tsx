@@ -7,11 +7,12 @@ import { motion } from "framer-motion";
 import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { urls } from "@/common/urls";
-import { useFormik } from "formik";
+import { FormikProvider, useFormik } from "formik";
 import { useMutation } from "@tanstack/react-query";
 import { CreateContactAPI } from "@/services/Contact-Us/contact_us.services";
 import { IContact } from "@/types/contact-us.types";
 import { ShowQuestion } from "@/utils/toast/Toast";
+import { ContactUsSchema } from "@/utils/validations/validations";
 
 interface IProps {
   section: Extract<ISection, { type: "CONTACT_US" }>;
@@ -168,7 +169,7 @@ export default function Hero(props: IProps) {
     ],
   };
 
-  const { values, setFieldValue, handleChange } = useFormik({
+  const formik = useFormik({
     initialValues: {
       email: "",
       createdAt: "",
@@ -178,87 +179,99 @@ export default function Hero(props: IProps) {
       phone: "",
       updatedAt: "",
     } as IContact,
-    onSubmit(values, formikHelpers) {},
+    onSubmit(values, formikHelpers) {
+      ShowQuestion({
+        onConfirm() {
+          CreateContact(values);
+        },
+        onCancel() {},
+      });
+    },
+    validationSchema: ContactUsSchema[language],
+    validateOnChange: false,
+    validateOnBlur: true,
   });
+
+  const { values, setFieldValue, handleChange, submitForm,errors } = formik;
 
   const { mutate: CreateContact } = useMutation({
     mutationFn: CreateContactAPI,
-    onSuccess(data, variables, onMutateResult, context) {
-      console.log(data);
-    },
+    onSuccess(data, variables, onMutateResult, context) {},
   });
 
+  console.log(errors)
+
   return (
-    <section className={styles.hero}>
-      <div className={styles.background}>
-        <img src={configs.background} />
-      </div>
-
-      <motion.div
-        className={styles.right}
-        initial={{ opacity: 0, x: 80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
-        <img
-          className={styles.avatar}
-          src={urls.STORAGE(components.image.path)}
-        />
-        <div className={styles.info}>
-          {infosHeader[language].map((row) => {
-            const { key, label } = row;
-            const value = components[row.key];
-            return (
-              <div
-                className={styles.row}
-                key={key}>
-                <label>{label} : </label>
-                <span>{value as any}</span>
-              </div>
-            );
-          })}
+    <FormikProvider value={formik}>
+      <section
+        className={styles.hero}
+        lang={language}>
+        <div className={styles.background}>
+          <img src={configs.background} />
         </div>
-      </motion.div>
 
-      <motion.div
-        className={styles.left}
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}>
-        <h1>{configs[language].title}</h1>
-        <form>
-          {configs[language].form.map((field) => (
-            <Field.Text
-              key={field.name}
-              icon={<Icon icon={field.icon} />}
-              name={field.name}
-              title={field.title}
-              type={"text"}
-              required={field.required}
-              onChange={(value) => {
-                setFieldValue(field.name, value);
-              }}
-              rtl={language === "FA"}
-              gridColumn={field.gridColumn}
-              multiLine={field.multiLine}
-              value={values[field.name as keyof typeof values]}
-            />
-          ))}
-
-          <Button
-            icon='ep:top-right'
-            title={configs[language].submit}
-            variant='primary'
-            onClick={() => {
-              ShowQuestion({
-                onConfirm() {
-                  CreateContact(values);
-                },
-                onCancel() {},
-              });
-            }}
+        <motion.div
+          className={styles.right}
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
+          <img
+            className={styles.avatar}
+            src={urls.STORAGE(components.image.path)}
           />
-        </form>
-      </motion.div>
-    </section>
+          <div className={styles.info}>
+            {infosHeader[language].map((row) => {
+              const { key, label } = row;
+              const value = components[row.key];
+              return (
+                <div
+                  className={styles.row}
+                  key={key}>
+                  <label>{label} : </label>
+                  <span>{value as any}</span>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        <motion.div
+          className={styles.left}
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}>
+          <h1>{configs[language].title}</h1>
+          <form>
+            {configs[language].form.map((field) => (
+              <Field
+                key={field.name}
+                icon={<Icon icon={field.icon} />}
+                name={field.name}
+                title={field.title}
+                type={"text"}
+                required={field.required}
+                onChange={(value) => {
+                  setFieldValue(field.name, value);
+                }}
+                rtl={language === "FA"}
+                gridColumn={field.gridColumn}
+                multiLine={field.multiLine}
+                value={values[field.name as keyof typeof values]}
+                errors={formik.errors}
+              />
+            ))}
+
+            <div className={styles.actions}>
+              <Button
+                icon='ep:top-right'
+                title={configs[language].submit}
+                variant='primary'
+                onClick={submitForm}
+              />
+            </div>
+          </form>
+        </motion.div>
+      </section>
+    </FormikProvider>
   );
 }

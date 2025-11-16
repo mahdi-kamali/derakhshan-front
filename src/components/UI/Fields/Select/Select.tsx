@@ -29,23 +29,7 @@ export default function Select(props: Extract<IField, ISelect>) {
       }}>
       <span className={styles.icon}>{icon}</span>
       <div className={styles.field}>
-        <select
-          onChange={(e) => {
-            const value = e.target.value;
-            onChange(value);
-          }}
-          name={name}
-          required={required}>
-          {options.map((opt) => {
-            return (
-              <option
-                key={opt.value}
-                value={opt.value}>
-                {opt.label}
-              </option>
-            );
-          })}
-        </select>
+       
       </div>
     </div>
   );

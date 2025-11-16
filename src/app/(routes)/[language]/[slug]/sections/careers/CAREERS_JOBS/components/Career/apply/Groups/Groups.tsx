@@ -51,7 +51,7 @@ export default function Groups(props: IProps) {
         title: language === LanguagesENUM.FA ? "کد ملی" : "National ID",
         required: true,
         name: "personalInfo.nationalId",
-        type: "text",
+        type: "number",
         onChange: (value) => console.log("National ID:", value),
         rtl: true,
         color: "black",
@@ -95,11 +95,21 @@ export default function Groups(props: IProps) {
         title: language === LanguagesENUM.FA ? "وضعیت تاهل" : "Marital Status",
         required: false,
         name: "personalInfo.maritalStatus",
-        type: "text",
+        type: "select",
         onChange: (value) => console.log("Marital Status:", value),
         rtl: true,
         color: "black",
         errors: errors,
+        options: [
+          {
+            label: language === LanguagesENUM.FA ? "مجرد" : "Single",
+            value: "single",
+          },
+          {
+            label: language === LanguagesENUM.FA ? "متاهل" : "Married",
+            value: "married",
+          },
+        ],
       },
       {
         icon: <Icon icon='mdi:shield-account' />,
@@ -109,11 +119,46 @@ export default function Groups(props: IProps) {
             : "Military Service Status",
         required: false,
         name: "personalInfo.militaryStatus",
-        type: "text",
+        type: "select",
         onChange: (value) => console.log("Military Status:", value),
         rtl: true,
         color: "black",
         errors: errors,
+        options: [
+          {
+            label: language === LanguagesENUM.FA ? "مشمول" : "Draft",
+            value: "draft",
+          },
+          {
+            label: language === LanguagesENUM.FA ? "معاف" : "Exempt",
+            value: "exempt",
+          },
+          {
+            label:
+              language === LanguagesENUM.FA
+                ? "پایان خدمت"
+                : "Completed Service",
+            value: "completed",
+          },
+          {
+            label: language === LanguagesENUM.FA ? "در حال خدمت" : "Serving",
+            value: "serving",
+          },
+          {
+            label:
+              language === LanguagesENUM.FA
+                ? "معافیت تحصیلی"
+                : "Educational Exemption",
+            value: "education-exempt",
+          },
+          {
+            label:
+              language === LanguagesENUM.FA
+                ? "معافیت پزشکی"
+                : "Medical Exemption",
+            value: "medical-exempt",
+          },
+        ],
       },
       {
         icon: <Icon icon='mdi:account-tie' />,
@@ -157,7 +202,7 @@ export default function Groups(props: IProps) {
         title: language === LanguagesENUM.FA ? "شماره تماس" : "Phone Number",
         required: true,
         name: "personalInfo.phoneNumber",
-        type: "tel",
+        type: "number",
         onChange: (value) => console.log("Phone:", value),
         rtl: true,
         color: "black",
@@ -256,9 +301,7 @@ export default function Groups(props: IProps) {
           ];
 
           return fields.map((field) => {
-            if (field.type === "array") return <></>;
-            if (field.type === "select") return <Field.Select {...field} />;
-            return <Field.Text {...field} />;
+            return <Field {...field} />;
           });
         },
         onAddRow(fieldName, index) {
@@ -328,14 +371,24 @@ export default function Groups(props: IProps) {
         icon: <Icon icon='mdi:account-question' />,
         title:
           language === LanguagesENUM.FA
-            ? "بیمه بیکاری استفاده کرده اید؟"
+            ? "بیمه بیکاری استفاده کرده‌اید؟"
             : "Used Unemployment Insurance?",
         name: "workExperience.usedUnemploymentInsurance",
-        type: "text",
+        type: "select",
         onChange: (value) => console.log("Used Unemployment Insurance:", value),
         rtl: true,
         color: "black",
         errors: errors,
+        options: [
+          {
+            label: language === LanguagesENUM.FA ? "بله" : "Yes",
+            value: "yes",
+          },
+          {
+            label: language === LanguagesENUM.FA ? "خیر" : "No",
+            value: "no",
+          },
+        ],
       },
       {
         type: "array",
@@ -409,9 +462,7 @@ export default function Groups(props: IProps) {
             },
           ];
           return fields.map((field) => {
-            if (field.type === "array") return <></>;
-            if (field.type === "select") return <Field.Select {...field} />;
-            return <Field.Text {...field} />;
+            return <Field {...field} />;
           });
         },
         onAddRow(fieldName, index) {
@@ -488,9 +539,7 @@ export default function Groups(props: IProps) {
           ];
 
           return fields.map((field) => {
-            if (field.type === "array") return <></>;
-            if (field.type === "select") return <Field.Select {...field} />;
-            return <Field.Text {...field} />;
+            return <Field {...field} />;
           });
         },
         onAddRow(fieldName, index) {
@@ -519,9 +568,6 @@ export default function Groups(props: IProps) {
     },
   };
 
-  // -------------------------
-  // نرم‌افزار / Software
-  // -------------------------
   // -------------------------
   // نرم‌افزار / Software
   // -------------------------
@@ -575,8 +621,14 @@ export default function Groups(props: IProps) {
 
           return fields.map((field) => {
             if (field.type === "array") return <></>;
-            if (field.type === "select") return <Field.Select {...field} />;
-            return <Field.Text {...field} />;
+            if (field.type === "select")
+              return (
+                <Field
+                  {...field}
+                  type='select'
+                />
+              );
+            return <Field {...field} />;
           });
         },
         onAddRow(fieldName, index) {
@@ -647,26 +699,7 @@ export default function Groups(props: IProps) {
                   : "Proficiency Level",
               required: true,
               name: `languages[${index}].level`,
-              type: "select",
-              options: [
-                {
-                  label: language === LanguagesENUM.FA ? "مبتدی" : "Beginner",
-                  value: "Beginner",
-                },
-                {
-                  label:
-                    language === LanguagesENUM.FA ? "متوسط" : "Intermediate",
-                  value: "Intermediate",
-                },
-                {
-                  label: language === LanguagesENUM.FA ? "پیشرفته" : "Advanced",
-                  value: "Advanced",
-                },
-                {
-                  label: language === LanguagesENUM.FA ? "حرفه‌ای" : "Fluent",
-                  value: "Fluent",
-                },
-              ],
+              type: "text",
               onChange: (value) =>
                 setFieldValue(`languages[${index}].level`, value),
               rtl: true,
@@ -676,9 +709,7 @@ export default function Groups(props: IProps) {
           ];
 
           return fields.map((field) => {
-            if (field.type === "array") return <></>;
-            if (field.type === "select") return <Field.Select {...field} />;
-            return <Field.Text {...field} />;
+            return <Field {...field} />;
           });
         },
         onAddRow(fieldName, index) {
@@ -720,7 +751,7 @@ export default function Groups(props: IProps) {
         title:
           language === LanguagesENUM.FA ? "آپلود رزومه" : "Upload Your Resume",
         name: "uplodas.resume",
-        type: "file",
+        type: "image",
         onChange: (value) => setFieldValue("uplodas.resume", value),
         rtl: true,
         color: "black",
@@ -733,7 +764,7 @@ export default function Groups(props: IProps) {
             ? "آپلود عکس سازمانی"
             : "Upload Organization Photo",
         name: "uplodas.organization",
-        type: "file",
+        type: "image",
         onChange: (value) => setFieldValue("uplodas.organization", value),
         rtl: true,
         color: "black",
@@ -806,24 +837,10 @@ export default function Groups(props: IProps) {
               <div className={styles.right}>
                 <div className={styles.group}>
                   <h2 className={styles.groupTitle}>{group.title}</h2>
-                  {groupError && (
-                    <p className={styles.error}>
-                      {typeof groupError === "string"
-                        ? groupError
-                        : "خطایی وجود دارد"}
-                    </p>
-                  )}
                   <div className={styles.fields}>
                     {group.fields.map((base) => {
-                      if (base.type === "file") {
-                        return <Field.Image {...(base as any)} />;
-                      }
-                      if (base.type === "array")
-                        return <Field.Array {...base} />;
-                      if (base.type === "select")
-                        return <Field.Select {...base} />;
                       return (
-                        <Field.Text
+                        <Field
                           {...base}
                           onChange={(value) => {
                             setFieldValue(base.name, value);

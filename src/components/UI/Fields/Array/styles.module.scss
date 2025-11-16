@@ -6,7 +6,6 @@
 
 .row {
     display: grid;
-    gap: 0.5rem;
     grid-template-columns: max-content 1fr;
     gap: 0.5rem;
     animation: fade 1s ease;
@@ -15,7 +14,7 @@
     .fields {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .remove {

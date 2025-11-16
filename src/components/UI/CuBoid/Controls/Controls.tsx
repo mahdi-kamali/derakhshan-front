@@ -94,6 +94,7 @@ export default function Controls({
                 onChange={handleRange}
                 min={item.min}
                 max={item.max}
+                dir="ltr"
               />
             </div>
           ))}
