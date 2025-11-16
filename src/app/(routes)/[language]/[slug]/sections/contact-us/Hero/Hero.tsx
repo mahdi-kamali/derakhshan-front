@@ -192,14 +192,12 @@ export default function Hero(props: IProps) {
     validateOnBlur: true,
   });
 
-  const { values, setFieldValue, handleChange, submitForm,errors } = formik;
+  const { values, setFieldValue, handleChange, submitForm, errors } = formik;
 
   const { mutate: CreateContact } = useMutation({
     mutationFn: CreateContactAPI,
     onSuccess(data, variables, onMutateResult, context) {},
   });
-
-  console.log(errors)
 
   return (
     <FormikProvider value={formik}>
