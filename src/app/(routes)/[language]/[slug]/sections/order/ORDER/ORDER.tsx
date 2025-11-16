@@ -35,6 +35,7 @@ const ORDER = () => {
         family: "",
         phone: "",
         email: "",
+        country: "",
       },
       companyName: "",
       industry: INDUSTRY_ENUM.OTHER,
@@ -79,6 +80,7 @@ const ORDER = () => {
       firstName: "نام",
       lastName: "نام خانوادگی",
       phone: "شماره همراه",
+      country: "کشور",
       email: "ایمیل",
       company: "شرکت",
       industry: "زمینه فعالیت",
@@ -104,6 +106,7 @@ const ORDER = () => {
       email: "Email",
       company: "Company",
       industry: "Industry",
+      country: "country",
       productInfo: "Product Information",
       productType: "Product Type",
       weight: "Product Weight (g)",
@@ -171,6 +174,15 @@ const ORDER = () => {
                   onChange={(value) => setFieldValue("companyName", value)}
                   title={t.company}
                   value={values.companyName}
+                  errors={errors}
+                />
+                <Field
+                  name='user.country'
+                  icon={<Icon icon='gis:search-country' />}
+                  type='text'
+                  onChange={(value) => setFieldValue("user.country", value)}
+                  title={t.country}
+                  value={values.user.country}
                   errors={errors}
                 />
                 <Field

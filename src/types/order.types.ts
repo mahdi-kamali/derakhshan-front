@@ -52,6 +52,7 @@ export interface IOrder {
     family: string;
     phone: string;
     email: string;
+    country: string;
   };
   companyName: string;
   industry: INDUSTRY_ENUM;

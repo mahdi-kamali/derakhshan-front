@@ -10,6 +10,7 @@ export const OrderValidationSchema: IValidation = {
     user: Yup.object({
       name: Yup.string().required("نام الزامی است"),
       family: Yup.string().required("نام خانوادگی الزامی است"),
+      country: Yup.string().required("کشور الزامی است"),
       phone: Yup.string()
         .matches(phoneRegExp, "شماره موبایل اشتباه است")
         .required("شماره تماس الزامی است"),
@@ -69,6 +70,7 @@ export const OrderValidationSchema: IValidation = {
     user: Yup.object({
       name: Yup.string().required("First name is required"),
       family: Yup.string().required("Last name is required"),
+      country: Yup.string().required("country is required"),
       phone: Yup.string()
         .matches(phoneRegExp, "phone number not valid")
         .required("Phone number is required"),
