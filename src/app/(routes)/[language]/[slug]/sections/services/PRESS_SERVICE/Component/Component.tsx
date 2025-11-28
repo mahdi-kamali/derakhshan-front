@@ -4,7 +4,7 @@ import Description from "@/components/UI/Section/Description/Description";
 import Slide from "@/components/UI/Slider/Slide/Slide";
 import Slider from "@/components/UI/Slider/Slider";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
@@ -26,55 +26,30 @@ type IProps = {
 export default function Component(props: IProps) {
   const { language, section } = props;
 
-  const bottomRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
   const component = section.components[language];
 
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
   useEffect(() => {
-    const handleHeroHeight = () => {
-      const bottom = bottomRef.current;
-      const container = containerRef.current;
-      if (bottom && container) {
-        const bottomHeight = bottom.offsetHeight;
-        container.style.height = `calc(100vh + ${bottomHeight}px)`;
-      }
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // When top section is OUT of view → show drawer
+        setDrawerVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.25, // trigger as soon as it enters
+      },
+    );
 
-    const waitForImages = () => {
-      const images = containerRef.current?.querySelectorAll("img") || [];
-      if (images.length === 0) {
-        handleHeroHeight();
-        return;
-      }
+    if (bottomRef.current) observer.observe(bottomRef.current);
 
-      let loaded = 0;
-      const checkDone = () => {
-        loaded++;
-        if (loaded === images.length) handleHeroHeight();
-      };
-
-      images.forEach((img) => {
-        if (img.complete) {
-          checkDone();
-        } else {
-          img.addEventListener("load", checkDone, { once: true });
-          img.addEventListener("error", checkDone, { once: true });
-        }
-      });
-    };
-
-    waitForImages();
-    window.addEventListener("resize", handleHeroHeight);
-
-    return () => {
-      window.removeEventListener("resize", handleHeroHeight);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <motion.section
-      ref={containerRef}
       className={styles.hero}
       lang={language}>
       <div className={styles.top}>
@@ -135,15 +110,18 @@ export default function Component(props: IProps) {
         </motion.div>
       </div>
 
-      <div className={styles.drawer}>
+      <div
+        className={[styles.drawer, drawerVisible && styles.showDrawer].join(
+          " ",
+        )}>
         <div className={styles.title}>
           <p>{component.title}</p>
         </div>
       </div>
 
       <div
-        ref={bottomRef}
-        className={styles.bottom}>
+        className={styles.bottom}
+        ref={bottomRef}>
         {/* Services Section */}
         <motion.div className={styles.services}>
           {component.services.map((service, index) => {

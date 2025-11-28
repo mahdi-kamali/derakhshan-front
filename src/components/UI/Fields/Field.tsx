@@ -108,6 +108,26 @@ export default function Field(props: IField) {
     );
   };
 
+  const RenderNumber = () => {
+    return (
+      <input
+        type={"number"}
+        placeholder={title}
+        name={name}
+        step={"0.001"}
+        onChange={(e) => {
+          const value = e.target.value;
+          onChange(value);
+          setTimeout(() => {
+            formik.validateField(name);
+          }, 100);
+        }}
+        required={required}
+        value={value}
+      />
+    );
+  };
+
   const RenderNormalField = () => {
     return (
       <input
@@ -136,6 +156,7 @@ export default function Field(props: IField) {
     if (type === "date") return RenderDatePicker();
     if (type === "image") return RenderImage();
     if (type === "text" && props.multiLine) return RenderTextArea();
+    if (type === "number") return RenderNumber();
     if (type === "array") return RenderArray();
     return RenderNormalField();
   };

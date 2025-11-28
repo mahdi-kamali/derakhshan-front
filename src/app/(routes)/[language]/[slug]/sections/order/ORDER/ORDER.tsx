@@ -122,6 +122,9 @@ const ORDER = () => {
     },
   }[language === LanguagesENUM.EN ? "EN" : "FA"];
 
+
+  console.log(errors)
+
   return (
     <PageContainer title={t.pageTitle}>
       <FormikContext value={formik}>
@@ -176,15 +179,17 @@ const ORDER = () => {
                   value={values.companyName}
                   errors={errors}
                 />
-                <Field
-                  name='user.country'
-                  icon={<Icon icon='gis:search-country' />}
-                  type='text'
-                  onChange={(value) => setFieldValue("user.country", value)}
-                  title={t.country}
-                  value={values.user.country}
-                  errors={errors}
-                />
+                {language === LanguagesENUM.EN && (
+                  <Field
+                    name='user.country'
+                    icon={<Icon icon='gis:search-country' />}
+                    type='text'
+                    onChange={(value) => setFieldValue("user.country", value)}
+                    title={t.country}
+                    value={values.user.country}
+                    errors={errors}
+                  />
+                )}
                 <Field
                   options={
                     language === LanguagesENUM.FA

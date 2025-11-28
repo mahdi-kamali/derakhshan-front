@@ -2,15 +2,21 @@ import { INDUSTRY_ENUM } from "@/types/order.types";
 import { IValidation } from "@/types/validation.types";
 import * as Yup from "yup";
 
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const phoneRegExp = /^(\+?98|0)9\d{9}$/;
+
+const onlyAlphabetRegExp = /^[\p{L} ]+$/u;
 
 export const OrderValidationSchema: IValidation = {
   FA: Yup.object({
     user: Yup.object({
-      name: Yup.string().required("نام الزامی است"),
-      family: Yup.string().required("نام خانوادگی الزامی است"),
-      country: Yup.string().required("کشور الزامی است"),
+      name: Yup.string()
+        .matches(onlyAlphabetRegExp, "فقط از حروف الفبا استفاده شود.")
+        .max(20, "حداقل 20 حرف میباشد")
+        .required("نام الزامی است"),
+      family: Yup.string()
+        .matches(onlyAlphabetRegExp, "فقط از حروف الفبا استفاده شود.")
+        .max(20, "حداقل 20 حرف میباشد")
+        .required("نام خانوادگی الزامی است"),
       phone: Yup.string()
         .matches(phoneRegExp, "شماره موبایل اشتباه است")
         .required("شماره تماس الزامی است"),
@@ -68,8 +74,14 @@ export const OrderValidationSchema: IValidation = {
   // ----------------------------------
   EN: Yup.object({
     user: Yup.object({
-      name: Yup.string().required("First name is required"),
-      family: Yup.string().required("Last name is required"),
+      name: Yup.string()
+        .matches(onlyAlphabetRegExp, "Only alphabetic characters are allowed.")
+        .max(20, "max 20 characters allowed")
+        .required("First name is required"),
+      family: Yup.string()
+        .matches(onlyAlphabetRegExp, "Only alphabetic characters are allowed.")
+        .max(20, "max 20 characters allowed")
+        .required("Last name is required"),
       country: Yup.string().required("country is required"),
       phone: Yup.string()
         .matches(phoneRegExp, "phone number not valid")
@@ -134,6 +146,8 @@ export const CareerApplySchema: IValidation = {
     // ───────────── PERSONAL INFO (object) ─────────────
     personalInfo: Yup.object({
       fullName: Yup.string()
+        .matches(onlyAlphabetRegExp, "فقط از حروف الفبا استفاده شود.")
+        .max(20, "حداقل 20 حرف میباشد")
         .typeError("نوع داده نامعتبر است (string)")
         .required("الزامی است"),
 
@@ -163,6 +177,8 @@ export const CareerApplySchema: IValidation = {
         .required("الزامی است"),
 
       fatherName: Yup.string()
+        .matches(onlyAlphabetRegExp, "فقط از حروف الفبا استفاده شود.")
+        .max(20, "حداقل 20 حرف میباشد")
         .typeError("نوع داده نامعتبر است (string)")
         .required("الزامی است"),
 
@@ -310,6 +326,8 @@ export const CareerApplySchema: IValidation = {
     // ───────────── PERSONAL INFO (object) ─────────────
     personalInfo: Yup.object({
       fullName: Yup.string()
+        .matches(onlyAlphabetRegExp, "Only alphabetic characters are allowed.")
+        .max(20, "max 20 characters allowed")
         .typeError("Invalid data type (expected string)")
         .required("Full name is required"),
 
@@ -339,6 +357,8 @@ export const CareerApplySchema: IValidation = {
         .required("Military status is required"),
 
       fatherName: Yup.string()
+        .matches(onlyAlphabetRegExp, "Only alphabetic characters are allowed.")
+        .max(20, "max 20 characters allowed")
         .typeError("Invalid data type (expected string)")
         .required("Father's name is required"),
 
@@ -484,8 +504,14 @@ export const CareerApplySchema: IValidation = {
 
 export const ContactUsSchema: IValidation = {
   EN: Yup.object({
-    firstName: Yup.string().required("enter your first name"),
-    lastName: Yup.string().required("enter your last name"),
+    firstName: Yup.string()
+      .matches(onlyAlphabetRegExp, "Only alphabetic characters are allowed.")
+      .max(20, "max 20 characters allowed")
+      .required("enter your first name"),
+    lastName: Yup.string()
+      .matches(onlyAlphabetRegExp, "Only alphabetic characters are allowed.")
+      .max(20, "max 20 characters allowed")
+      .required("enter your last name"),
 
     email: Yup.string()
       .email("Invalid email address")
@@ -503,8 +529,14 @@ export const ContactUsSchema: IValidation = {
   }),
 
   FA: Yup.object({
-    firstName: Yup.string().required("نام را وارد کنید"),
-    lastName: Yup.string().required("نام خانوادگی را وارد کنید"),
+    firstName: Yup.string()
+      .matches(onlyAlphabetRegExp, "فقط از حروف الفبا استفاده شود.")
+      .max(20, "حداقل 20 حرف میباشد")
+      .required("نام را وارد کنید"),
+    lastName: Yup.string()
+      .matches(onlyAlphabetRegExp, "فقط از حروف الفبا استفاده شود.")
+      .max(20, "حداقل 20 حرف میباشد")
+      .required("نام خانوادگی را وارد کنید"),
 
     email: Yup.string()
       .email("ایمیل وارد شده معتبر نیست")

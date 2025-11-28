@@ -13,7 +13,7 @@ import { GetCategoiresAPI } from "@/services/Categories/categories.services";
 export default function Categories() {
   const { language }: { language: LanguagesENUM } = useParams();
 
-  const { GoProducts, GoCategory } = useRedirect();
+  const { GoCategory } = useRedirect();
 
   const { data: categories } = useQuery({
     queryFn: GetCategoiresAPI,

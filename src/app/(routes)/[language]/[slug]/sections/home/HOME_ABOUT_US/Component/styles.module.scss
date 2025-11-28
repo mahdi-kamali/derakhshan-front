@@ -94,7 +94,6 @@
         z-index: 2;
         text-align: center;
       }
-
       &:nth-child(3) {
         position: absolute;
         margin-top: 1rem;
@@ -110,12 +109,23 @@
   @media screen and (max-width: 500px) {
     border-radius: 1rem;
     gap: 0 !important;
+
     flex-direction: column-reverse !important;
     .left {
     }
     .right {
-      img {
-        width: 8rem;
+      .agent {
+        img {
+          width: 8rem;
+        }
+        .info {
+          h2 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.7rem;
+          }
+        }
       }
     }
   }
