@@ -14,6 +14,8 @@ import Array from "./Array/Array";
 import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 
+import { NumericFormat } from "react-number-format";
+
 export default function Field(props: IField) {
   const { language }: { language: LanguagesENUM } = useParams();
 
@@ -110,20 +112,17 @@ export default function Field(props: IField) {
 
   const RenderNumber = () => {
     return (
-      <input
-        type={"number"}
+      <NumericFormat
+        value={value}
+        thousandSeparator=','
+        decimalSeparator='.'
         placeholder={title}
-        name={name}
-        step={"0.001"}
-        onChange={(e) => {
-          const value = e.target.value;
-          onChange(value);
+        onValueChange={(values) => {
+          onChange(values.value);
           setTimeout(() => {
             formik.validateField(name);
           }, 100);
         }}
-        required={required}
-        value={value}
       />
     );
   };

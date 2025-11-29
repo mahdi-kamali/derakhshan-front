@@ -122,9 +122,6 @@ const ORDER = () => {
     },
   }[language === LanguagesENUM.EN ? "EN" : "FA"];
 
-
-  console.log(errors)
-
   return (
     <PageContainer title={t.pageTitle}>
       <FormikContext value={formik}>
@@ -155,7 +152,7 @@ const ORDER = () => {
                 <Field
                   name='user.phone'
                   icon={<Icon icon='line-md:phone-filled' />}
-                  type='number'
+                  type='tel'
                   onChange={(value) => setFieldValue("user.phone", value)}
                   title={t.phone}
                   value={values.user.phone}

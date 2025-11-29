@@ -134,6 +134,10 @@ export default function Groups(props: IProps) {
             value: "exempt",
           },
           {
+            label: language === LanguagesENUM.FA ? "غیبت" : "absence",
+            value: "absence",
+          },
+          {
             label:
               language === LanguagesENUM.FA
                 ? "پایان خدمت"

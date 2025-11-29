@@ -45,6 +45,33 @@ export const ORDERS_INDUSTRY_OPTIONS_EN: Ioption[] = [
   },
 ];
 
+export const MILITARY_STATUS_OPTIONS_FA: Ioption[] = [
+  {
+    label: "مشمول",
+    value: "DRAFTED",
+  },
+  {
+    label: "در حال خدمت",
+    value: "SERVING",
+  },
+  {
+    label: "معافیت دائم",
+    value: "EXEMPT_PERMANENT",
+  },
+  {
+    label: "معافیت موقت",
+    value: "EXEMPT_TEMPORARY",
+  },
+  {
+    label: "پایان خدمت",
+    value: "COMPLETED",
+  },
+  {
+    label: "سایر",
+    value: "OTHER",
+  },
+];
+
 export interface IOrder {
   _id?: string;
   user: {
