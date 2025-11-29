@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { ReactElement, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { ApplyToCareerAPI } from "@/services/Careers/careers.services";
-import Groups from "./Groups/Groups";
+import Groups, { IGroupProps } from "./Groups/Groups";
 import { IField } from "@/components/UI/Fields/Field.types";
 import Button from "@/components/UI/Button/Button";
 import { ICareerApply } from "@/types/careers.types";
@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import { CareerApplySchema } from "@/utils/validations/validations";
 import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
+import Modal from "@/components/UI/Modal/Modal";
 
 export interface IGroupField<T> {
   title: string;
@@ -26,20 +27,19 @@ export interface IGroupField<T> {
 }
 
 interface IProps {
-  onFlip: () => void;
   career_id: string;
+  setShowModal: (show: boolean) => void;
+  showModal: boolean;
 }
 
 export default function ApplyForm(props: IProps) {
-  const { language }: { language: LanguagesENUM } = useParams();
+  const { career_id, setShowModal, showModal } = props;
 
-  const { onFlip, career_id } = props;
+  const { language }: { language: LanguagesENUM } = useParams();
 
   const { mutate: ApplyCareer } = useMutation({
     mutationFn: ApplyToCareerAPI,
-    onSuccess(data, variables, onMutateResult, context) {
-      onFlip();
-    },
+    onSuccess(data, variables, onMutateResult, context) {},
   });
 
   const formik = useFormik<ICareerApply>({
@@ -104,22 +104,63 @@ export default function ApplyForm(props: IProps) {
 
   const { values, errors, submitForm } = formik;
 
+  const [step, setStep] = useState<IGroupProps["step"]>(0);
+
   return (
-    <form className={styles.form}>
-      <FormikProvider value={formik}>
-        <Groups formik={formik} />
-        <div className={styles.actions}>
-          <Button
-            variant='success'
-            title='ثبت و ارسال'
-            icon=''
-            fill='fill'
-            onClick={() => {
-              submitForm();
-            }}
-          />
-        </div>
-      </FormikProvider>
-    </form>
+    <Modal
+      onClose={() => setShowModal(false)}
+      show={showModal}>
+      {() => {
+        return {
+          ACTIONS: [
+            {
+              title: "مرحله بعد",
+              icon: "icon-park-solid:right-c",
+              variant: "success",
+              onClick() {},
+            },
+            {
+              title: "مرحله قبل",
+              icon: "icon-park-solid:left-c",
+              variant: "danger",
+              style: {
+                display: "flex",
+                flexDirection: "row-reverse",
+              },
+              onClick() {},
+            },
+          ],
+          BODY: (
+            <form className={styles.form}>
+              <FormikProvider value={formik}>
+                <Groups
+                  formik={formik}
+                  step={step}
+                />
+                <div className={styles.actions}>
+                  <Button
+                    variant='success'
+                    title='ثبت و ارسال'
+                    icon=''
+                    fill='fill'
+                    onClick={() => {
+                      submitForm();
+                    }}
+                  />
+                </div>
+              </FormikProvider>
+            </form>
+          ),
+          FOOTER: (
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam quas rerum suscipit fugit praesentium unde error, rem
+              aut ut quia aliquam earum natus facilis incidunt accusamus magni,
+              quidem consequuntur blanditiis!
+            </p>
+          ),
+        };
+      }}
+    </Modal>
   );
 }

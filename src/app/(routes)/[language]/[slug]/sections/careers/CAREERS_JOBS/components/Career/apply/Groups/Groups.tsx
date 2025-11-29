@@ -17,12 +17,13 @@ import { IField } from "@/components/UI/Fields/Field.types";
 import WorkAnimation from "@/assets/animations/works/WorkAnimation";
 import SkillsAnimation from "@/assets/animations/Skills/SkillsAnimation";
 
-interface IProps {
+export interface IGroupProps {
   formik: FormikContextType<ICareerApply>;
+  step: 0 | 1 | 2 | 3 | 4 | 5;
 }
 
-export default function Groups(props: IProps) {
-  const { formik } = props;
+export default function Groups(props: IGroupProps) {
+  const { formik, step } = props;
   const { values, setFieldValue, handleChange, errors } = formik;
 
   const { language }: { language: LanguagesENUM } = useParams();
@@ -822,50 +823,36 @@ export default function Groups(props: IProps) {
     resumeUploadGroup,
   ];
 
-  return (
-    <VerticalTimeline
-      lineColor='red'
-      layout='1-column-right'>
-      {groups.map((group) => {
-        const groupError = errors[group.name];
+  const group = groups[step];
 
-        return (
-          <VerticalTimelineElement
-            className={styles.container}
-            contentStyle={{ padding: 0 }}
-            iconClassName={styles.iconClass}
-            contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-            icon={group.icon}>
-            <div className={styles.content}>
-              <div className={styles.right}>
-                <div className={styles.group}>
-                  <h2 className={styles.groupTitle}>{group.title}</h2>
-                  <div className={styles.fields}>
-                    {group.fields.map((base) => {
-                      return (
-                        <Field
-                          {...base}
-                          onChange={(value) => {
-                            setFieldValue(base.name, value);
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.left}>
-                <div className={styles.animation}>{group.info.animation}</div>
-                <div className={styles.info}>
-                  <h2>{group.info.title}</h2>
-                  <p>{group.info.description}</p>
-                </div>
-              </div>
+  return (
+    <div>
+      <div className={styles.content}>
+        <div className={styles.right}>
+          <div className={styles.group}>
+            <h2 className={styles.groupTitle}>{group.title}</h2>
+            <div className={styles.fields}>
+              {group.fields.map((base) => {
+                return (
+                  <Field
+                    {...base}
+                    onChange={(value) => {
+                      setFieldValue(base.name, value);
+                    }}
+                  />
+                );
+              })}
             </div>
-          </VerticalTimelineElement>
-        );
-      })}
-    </VerticalTimeline>
+          </div>
+        </div>
+        <div className={styles.left}>
+          <div className={styles.animation}>{group.info.animation}</div>
+          <div className={styles.info}>
+            <h2>{group.info.title}</h2>
+            <p>{group.info.description}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

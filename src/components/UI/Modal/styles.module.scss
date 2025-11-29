@@ -1,0 +1,39 @@
+.content {
+    margin: auto;
+    height: 50dvh;
+    min-width: 50dvw;
+    width: max-content !important;
+    color: black;
+    position: fixed;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 1em;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 1fr max-content;
+    gap: 1rem;
+    .children {
+        overflow: auto;
+    }
+}
+
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .content {
+        min-width: unset;
+        width: 90dvw !important;
+
+        height: max-content;
+        max-height: 80vh;
+    }
+}

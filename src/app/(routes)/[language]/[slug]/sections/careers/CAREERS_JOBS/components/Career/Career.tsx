@@ -5,7 +5,7 @@ import { ICareer } from "@/types/careers.types";
 import { urls } from "@/common/urls";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import ApplyForm from "./apply/ApplyForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ReactCardFlip from "react-card-flip";
 
@@ -19,24 +19,11 @@ export default function Career(props: IProps) {
 
   const values = career[language];
 
-  const [isApplying, setIsApplying] = useState(false);
+  const accordion = [styles.accordion].join(" ");
 
-  const accordion = [styles.accordion, isApplying && styles.expanded].join(" ");
+  const [showModal, setShowModal] = useState(false);
 
   const RenderApplyButton = () => {
-    if (isApplying) {
-      return (
-        <Button
-          title={
-            language === LanguagesENUM.FA ? "لغو و بستن" : "Cancel & Close"
-          }
-          icon='line-md:close'
-          variant='primary'
-          fill={values.type === "SPECIAL" ? "fill" : "outline"}
-          onClick={() => setIsApplying((prev) => !prev)}
-        />
-      );
-    }
     return (
       <Button
         title={
@@ -45,7 +32,7 @@ export default function Career(props: IProps) {
         icon='ep:top-right'
         variant='primary'
         fill={values.type === "SPECIAL" ? "fill" : "outline"}
-        onClick={() => setIsApplying((prev) => !prev)}
+        onClick={() => setShowModal(true)}
       />
     );
   };
@@ -85,7 +72,8 @@ export default function Career(props: IProps) {
         <div className={styles.back}>
           <ApplyForm
             career_id={career._id}
-            onFlip={() => setIsApplying((prev) => !prev)}
+            showModal={showModal}
+            setShowModal={setShowModal}
           />
         </div>
       </div>

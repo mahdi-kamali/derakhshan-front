@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 
-interface IProps {
+export interface IButtonProps {
   title: string;
   icon: string;
   variant: keyof typeof IVariant;
@@ -15,7 +15,7 @@ interface IProps {
   disabled?: boolean;
 }
 
-export default function Button(props: IProps) {
+export default function Button(props: IButtonProps) {
   const { language }: { language: LanguagesENUM } = useParams();
 
   const {
@@ -34,7 +34,6 @@ export default function Button(props: IProps) {
     styles[fill],
     disabled && styles.disabled,
   ].join(" ");
-
 
   return (
     <button
