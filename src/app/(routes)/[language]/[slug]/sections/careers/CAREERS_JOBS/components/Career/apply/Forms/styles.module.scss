@@ -77,16 +77,24 @@
 @media (max-width: 600px) {
     .content {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         margin-left: 0.5rem;
         .left {
             padding: 1em;
+            width: 100%;
+            svg {
+                height: 10rem;
+            }
             h2 {
                 font-size: 1rem;
+            }
+            p {
+                font-size: 0.75rem;
             }
         }
         .right {
             width: 100%;
+
             h2 {
                 font-size: 1rem;
             }

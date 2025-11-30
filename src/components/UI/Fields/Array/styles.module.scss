@@ -8,7 +8,6 @@
     display: grid;
     grid-template-columns: max-content 1fr;
     gap: 0.5rem;
-    animation: fade 1s ease;
     border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
     padding-bottom: 2em;
     .fields {

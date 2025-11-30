@@ -1,8 +1,4 @@
 import "react-vertical-timeline-component/style.min.css";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
 import Field from "@/components/UI/Fields/Field";
 import styles from "./styles.module.scss";
 import { IGroupField } from "../ApplyForm";
@@ -16,13 +12,13 @@ import LeaningAnimation from "@/assets/animations/learning/LeaningAnimation";
 import { IField } from "@/components/UI/Fields/Field.types";
 import WorkAnimation from "@/assets/animations/works/WorkAnimation";
 import SkillsAnimation from "@/assets/animations/Skills/SkillsAnimation";
-
+import * as lodash from "lodash";
 export interface IGroupProps {
   formik: FormikContextType<ICareerApply>;
-  step: 0 | 1 | 2 | 3 | 4 | 5;
+  step: number;
 }
 
-export default function Groups(props: IGroupProps) {
+export default function Forms(props: IGroupProps) {
   const { formik, step } = props;
   const { values, setFieldValue, handleChange, errors } = formik;
 
@@ -57,6 +53,7 @@ export default function Groups(props: IGroupProps) {
         rtl: true,
         color: "black",
         errors: errors,
+        sperators: false,
       },
       {
         icon: <Icon icon='mdi:cake-variant' />,
@@ -207,7 +204,7 @@ export default function Groups(props: IGroupProps) {
         title: language === LanguagesENUM.FA ? "شماره تماس" : "Phone Number",
         required: true,
         name: "personalInfo.phoneNumber",
-        type: "number",
+        type: "tel",
         onChange: (value) => console.log("Phone:", value),
         rtl: true,
         color: "black",
@@ -306,7 +303,13 @@ export default function Groups(props: IGroupProps) {
           ];
 
           return fields.map((field) => {
-            return <Field {...field} />;
+            const value = lodash.get(values, field.name);
+            return (
+              <Field
+                {...field}
+                value={value}
+              />
+            );
           });
         },
         onAddRow(fieldName, index) {
@@ -467,7 +470,13 @@ export default function Groups(props: IGroupProps) {
             },
           ];
           return fields.map((field) => {
-            return <Field {...field} />;
+            const value = lodash.get(values, field.name);
+            return (
+              <Field
+                {...field}
+                value={value}
+              />
+            );
           });
         },
         onAddRow(fieldName, index) {
@@ -510,7 +519,7 @@ export default function Groups(props: IGroupProps) {
         icon: <Icon icon='mdi:gauge' />,
         title:
           language === LanguagesENUM.FA ? "میزان تسلط" : "Proficiency Level",
-        name: "proficiencyLevel",
+        name: "skills",
         type: "array",
         onChange: (value) => console.log("Proficiency Level:", value),
         rtl: true,
@@ -544,7 +553,14 @@ export default function Groups(props: IGroupProps) {
           ];
 
           return fields.map((field) => {
-            return <Field {...field} />;
+            const value = lodash.get(values, field.name);
+
+            return (
+              <Field
+                {...field}
+                value={value}
+              />
+            );
           });
         },
         onAddRow(fieldName, index) {
@@ -625,15 +641,23 @@ export default function Groups(props: IGroupProps) {
           ];
 
           return fields.map((field) => {
+            const value = lodash.get(values, field.name);
+
             if (field.type === "array") return <></>;
             if (field.type === "select")
               return (
                 <Field
                   {...field}
                   type='select'
+                  value={value}
                 />
               );
-            return <Field {...field} />;
+            return (
+              <Field
+                {...field}
+                value={value}
+              />
+            );
           });
         },
         onAddRow(fieldName, index) {
@@ -714,7 +738,14 @@ export default function Groups(props: IGroupProps) {
           ];
 
           return fields.map((field) => {
-            return <Field {...field} />;
+            const value = lodash.get(values, field.name);
+
+            return (
+              <Field
+                {...field}
+                value={value}
+              />
+            );
           });
         },
         onAddRow(fieldName, index) {
@@ -833,12 +864,14 @@ export default function Groups(props: IGroupProps) {
             <h2 className={styles.groupTitle}>{group.title}</h2>
             <div className={styles.fields}>
               {group.fields.map((base) => {
+                const value = lodash.get(values, base.name);
                 return (
                   <Field
                     {...base}
                     onChange={(value) => {
                       setFieldValue(base.name, value);
                     }}
+                    value={value}
                   />
                 );
               })}

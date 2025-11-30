@@ -58,12 +58,17 @@ export default function Field(props: IField) {
       <DatePicker
         className={styles.datePicker}
         onChange={(event) => {
-          onChange(event?.toDate());
+          onChange(event?.format("YYYY/MM/DD"));
+          setTimeout(() => {
+            formik.validateField(name);
+          }, 100);
         }}
         calendar={language === LanguagesENUM.FA ? persian : english}
         locale={language === LanguagesENUM.FA ? persian_fa : english_en}
         ref={pickerRef}
         placeholder={props.title}
+        editable={false}
+        value={value}
       />
     );
   };
@@ -75,9 +80,13 @@ export default function Field(props: IField) {
         onChange={(e) => {
           const value = e.target.value;
           onChange(value);
+          setTimeout(() => {
+            formik.validateField(name);
+          }, 100);
         }}
         name={name}
-        required={required}>
+        required={required}
+        value={value}>
         <option
           key={"undefind"}
           value={undefined}>
@@ -106,16 +115,21 @@ export default function Field(props: IField) {
             formik.validateField(name);
           }, 100);
         }}
+        value={value}
       />
     );
   };
 
   const RenderNumber = () => {
+    const useSeperators =
+      (props as any).sperators === undefined ||
+      (props as any).sperators === true;
+
     return (
       <NumericFormat
         value={value}
-        thousandSeparator=','
-        decimalSeparator='.'
+        thousandSeparator={useSeperators ? "," : undefined}
+        decimalSeparator={useSeperators ? "." : undefined}
         placeholder={title}
         onValueChange={(values) => {
           onChange(values.value);
@@ -147,7 +161,12 @@ export default function Field(props: IField) {
   };
 
   const RenderArray = () => {
-    return <Array {...(props as any)} />;
+    return (
+      <Array
+        {...(props as any)}
+        value={value}
+      />
+    );
   };
 
   const RenderField = () => {

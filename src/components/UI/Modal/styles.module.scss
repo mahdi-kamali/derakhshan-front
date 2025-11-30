@@ -1,8 +1,9 @@
 .content {
     margin: auto;
-    height: 50dvh;
-    min-width: 50dvw;
-    width: max-content !important;
+    min-height: 80dvh;
+    height: max-content;
+    width: 50rem;
+    max-height: 80dvh;
     color: black;
     position: fixed;
     inset: 0;
@@ -34,6 +35,7 @@
         width: 90dvw !important;
 
         height: max-content;
+        min-height: 80dvh;
         max-height: 80vh;
     }
 }
