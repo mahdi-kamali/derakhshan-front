@@ -35,9 +35,7 @@ export const OrderValidationSchema: IValidation = {
       .max(30, "حداکثر 30 کاراکتر مجاز است")
       .required("نام شرکت الزامی است"),
 
-    industry: Yup.mixed<INDUSTRY_ENUM>()
-      .oneOf(Object.values(INDUSTRY_ENUM))
-      .required("صنعت الزامی است"),
+    industry: Yup.string().required("صنعت الزامی است"),
 
     product: Yup.object({
       image: Yup.mixed().required("آپلود تصویر محصول الزامی است"),
@@ -113,9 +111,7 @@ export const OrderValidationSchema: IValidation = {
       .max(30, "max 30 characters allowed")
       .required("Company name is required"),
 
-    industry: Yup.mixed<INDUSTRY_ENUM>()
-      .oneOf(Object.values(INDUSTRY_ENUM))
-      .required("Industry is required"),
+    industry: Yup.string().required("Industry is required"),
 
     product: Yup.object({
       image: Yup.mixed().nullable().required("Product image is required"),
@@ -157,7 +153,6 @@ export const OrderValidationSchema: IValidation = {
       .required("Description is required"),
   }),
 };
-
 
 export const CareerApplySchema: IValidation = {
   FA: Yup.object({

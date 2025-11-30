@@ -214,7 +214,7 @@ export default function Forms(props: IGroupProps) {
     info: {
       title:
         language === LanguagesENUM.FA
-          ? "راجب خودتان بگویید"
+          ? "درباره ی خودتان بگویید"
           : "Tell Us About Yourself",
       description:
         language === LanguagesENUM.FA

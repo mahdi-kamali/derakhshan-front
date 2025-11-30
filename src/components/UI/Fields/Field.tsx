@@ -149,7 +149,11 @@ export default function Field(props: IField) {
         name={name}
         onChange={(e) => {
           const value = e.target.value;
-          onChange(value);
+          let lettersOnly = value;
+          if (type === "text") {
+            lettersOnly = value.replace(/[0-9]/g, "");
+          }
+          onChange(lettersOnly);
           setTimeout(() => {
             formik.validateField(name);
           }, 100);
