@@ -152,11 +152,12 @@ const ORDER = () => {
                 <Field
                   name='user.phone'
                   icon={<Icon icon='line-md:phone-filled' />}
-                  type='tel'
+                  type='number'
                   onChange={(value) => setFieldValue("user.phone", value)}
                   title={t.phone}
                   value={values.user.phone}
                   errors={errors}
+                  sperators={false}
                 />
                 <Field
                   name='user.email'
