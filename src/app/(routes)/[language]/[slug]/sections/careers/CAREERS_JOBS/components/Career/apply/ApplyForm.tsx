@@ -57,6 +57,7 @@ export default function ApplyForm(props: IProps) {
         fatherJob: "",
         insuranceHistory: "",
         phoneNumber: "",
+        gender: "",
       },
       education: [
         {
@@ -116,28 +117,6 @@ export default function ApplyForm(props: IProps) {
     validateOnChange: false,
     validateOnBlur: true,
   });
-
-  // const personalInfo = useFormik({
-  //   initialValues: {
-  //     fullName: "",
-  //     nationalId: "",
-  //     birthDate: "",
-  //     birthPlace: "",
-  //     issuePlace: "",
-  //     maritalStatus: "",
-  //     militaryStatus: "",
-  //     fatherName: "",
-  //     fatherJob: "",
-  //     insuranceHistory: "",
-  //     phoneNumber: "",
-  //   },
-  //   validationSchema: CareerApplySchema[language].fields.personalInfo,
-  //   onSubmit: (values) => {
-  //     console.log("Personal Info Submitted", values);
-  //   },
-  //   validateOnChange: false,
-  //   validateOnBlur: true,
-  // });
 
   const { submitForm, errors, values } = formik;
 
@@ -265,7 +244,6 @@ export default function ApplyForm(props: IProps) {
               </FormikProvider>
             </form>
           ),
-
           FOOTER: memoFooter,
         };
       }}

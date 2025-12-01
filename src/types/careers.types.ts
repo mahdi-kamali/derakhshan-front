@@ -69,4 +69,5 @@ interface PersonalInfo {
   fatherJob: string;
   insuranceHistory: string;
   phoneNumber: string;
+  gender : string
 }

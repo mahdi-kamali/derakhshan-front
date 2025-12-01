@@ -137,6 +137,26 @@
     }
   }
 
+  &:lang(EN) {
+    .col {
+      padding: 0;
+      align-items: end;
+      .group {
+        align-items: end;
+        .links {
+          align-items: end;
+        }
+      }
+    }
+    @media (max-width: 600px) {
+      .left {
+        grid-template-columns: 1fr 1fr;
+        padding: 1em;
+        gap: 2rem !important;
+      }
+    }
+  }
+
   @media (max-width: 600px) {
     padding: 3em 0em;
     width: 100%;

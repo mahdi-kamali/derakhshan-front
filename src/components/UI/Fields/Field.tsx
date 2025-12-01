@@ -183,5 +183,6 @@ export default function Field(props: IField) {
     return RenderNormalField();
   };
 
+  if (props.show === false) return <></>
   return <Base {...props}>{RenderField()}</Base>;
 }

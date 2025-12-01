@@ -54,5 +54,6 @@ export type IField = {
   value?: any;
   onChange?: (value: any) => void;
   errors?: any;
+  show?: boolean;
 } & CSSProperties &
   IBase;

@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
-import { GetProductsAPI } from "@/services/Products/products.services";
 import { useQuery } from "@tanstack/react-query";
 import { urls } from "@/common/urls";
 import useRedirect from "@/hooks/useRedirect";

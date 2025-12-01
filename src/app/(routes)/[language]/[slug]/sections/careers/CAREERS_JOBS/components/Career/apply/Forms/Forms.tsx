@@ -56,6 +56,27 @@ export default function Forms(props: IGroupProps) {
         sperators: false,
       },
       {
+        icon: <Icon icon='icons8:gender' />,
+        title: language === LanguagesENUM.FA ? "جنسیت" : "Gender",
+        required: true,
+        name: "personalInfo.gender",
+        type: "select",
+        onChange: (value) => console.log("Gender:", value),
+        rtl: true,
+        color: "black",
+        errors: errors,
+        options: [
+          {
+            label: language === LanguagesENUM.FA ? "مرد" : "Male",
+            value: "male",
+          },
+          {
+            label: language === LanguagesENUM.FA ? "زن" : "Female",
+            value: "female",
+          },
+        ],
+      },
+      {
         icon: <Icon icon='mdi:cake-variant' />,
         title: language === LanguagesENUM.FA ? "تاریخ تولد" : "Date of Birth",
         required: true,
@@ -161,6 +182,7 @@ export default function Forms(props: IGroupProps) {
             value: "medical-exempt",
           },
         ],
+        show: values.personalInfo.gender === "male",
       },
       {
         icon: <Icon icon='mdi:account-tie' />,

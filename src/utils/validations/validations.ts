@@ -169,7 +169,7 @@ export const CareerApplySchema: IValidation = {
         .max(30, "حداکثر 30 حرف میباشد")
         .typeError("نوع داده نامعتبر است (string)")
         .required("الزامی است"),
-
+      gender: Yup.string().required("جنسیت الزامی است"),
       nationalId: Yup.string()
         .typeError("نوع داده نامعتبر است (string)")
         .matches(/^\d{10}$/, "باید 10 رقمی باشد")
@@ -196,10 +196,12 @@ export const CareerApplySchema: IValidation = {
         .max(30, "حداکثر 30 حرف میباشد")
         .required("الزامی است"),
 
-      militaryStatus: Yup.string()
-        .typeError("نوع داده نامعتبر است (string)")
-        .max(30, "حداکثر 30 حرف میباشد")
-        .required("الزامی است"),
+      militaryStatus: Yup.string().when("gender", {
+        is: "male",
+        then: (schema) =>
+          schema.required("الزامی است").max(30, "حداکثر 30 حرف میباشد"),
+        otherwise: (schema) => schema.nullable().notRequired(),
+      }),
 
       fatherName: Yup.string()
         .matches(onlyAlphabetRegExp, "فقط از حروف الفبا استفاده شود.")
@@ -378,6 +380,9 @@ export const CareerApplySchema: IValidation = {
         .max(30, "max 30 characters allowed")
         .typeError("Invalid data type (expected string)")
         .required("Full name is required"),
+      gender: Yup.string()
+        .oneOf(["male", "female"], "Gender must be male or female")
+        .required("Gender is required"),
 
       nationalId: Yup.string()
         .typeError("Invalid data type (expected string)")
@@ -400,15 +405,14 @@ export const CareerApplySchema: IValidation = {
         .max(30, "max 30 characters allowed")
         .required("Issue place is required"),
 
-      maritalStatus: Yup.string()
-        .typeError("Invalid data type (expected string)")
-        .max(30, "max 30 characters allowed")
-        .required("Marital status is required"),
-
-      militaryStatus: Yup.string()
-        .typeError("Invalid data type (expected string)")
-        .max(30, "max 30 characters allowed")
-        .required("Military status is required"),
+      militaryStatus: Yup.string().when("gender", {
+        is: "male",
+        then: (schema) =>
+          schema
+            .required("Military status is required for males")
+            .max(30, "max 30 characters allowed"),
+        otherwise: (schema) => schema.nullable().notRequired(),
+      }),
 
       fatherName: Yup.string()
         .matches(onlyAlphabetRegExp, "Only alphabetic characters are allowed.")
