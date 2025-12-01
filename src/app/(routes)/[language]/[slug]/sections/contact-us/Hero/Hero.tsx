@@ -11,8 +11,9 @@ import { FormikProvider, useFormik } from "formik";
 import { useMutation } from "@tanstack/react-query";
 import { CreateContactAPI } from "@/services/Contact-Us/contact_us.services";
 import { IContact } from "@/types/contact-us.types";
-import { ShowQuestion } from "@/utils/toast/Toast";
+import { ShowError, ShowQuestion } from "@/utils/toast/Toast";
 import { ContactUsSchema } from "@/utils/validations/validations";
+import useCaptcha from "@/components/ReCaptcha/useCaptcha";
 
 interface IProps {
   section: Extract<ISection, { type: "CONTACT_US" }>;
@@ -122,7 +123,7 @@ export default function Hero(props: IProps) {
           title: "شماره تماس",
           placeholder: "شماره تماس خود را وارد کنید",
           icon: "mdi:phone",
-          type: "tel",
+          type: "number",
           gridColumn: "-1/1",
         },
         {
@@ -168,6 +169,7 @@ export default function Hero(props: IProps) {
       { key: "email", label: "ایمیل" },
     ],
   };
+  const { ReCaptcha, SolveCaptcha, isCaptchaVisible, isSolved } = useCaptcha();
 
   const formik = useFormik({
     initialValues: {
@@ -182,7 +184,10 @@ export default function Hero(props: IProps) {
     onSubmit(values, formikHelpers) {
       ShowQuestion({
         onConfirm() {
-          CreateContact(values);
+          if (!isCaptchaVisible) {
+            ShowError("لطفا کپچا را کامل کنید.");
+            SolveCaptcha();
+          } else CreateContact(values);
         },
         onCancel() {},
       });
@@ -246,7 +251,7 @@ export default function Hero(props: IProps) {
                 icon={<Icon icon={field.icon} />}
                 name={field.name}
                 title={field.title}
-                type={"text"}
+                type={field.type as any}
                 required={field.required}
                 onChange={(value) => {
                   setFieldValue(field.name, value);
@@ -256,6 +261,7 @@ export default function Hero(props: IProps) {
                 multiLine={field.multiLine}
                 value={values[field.name as keyof typeof values]}
                 errors={formik.errors}
+                sperators={false}
               />
             ))}
 
@@ -269,6 +275,7 @@ export default function Hero(props: IProps) {
             </div>
           </form>
         </motion.div>
+        <ReCaptcha />
       </section>
     </FormikProvider>
   );

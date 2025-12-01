@@ -6,13 +6,14 @@ import Forms, { IGroupProps } from "./Forms/Forms";
 import { IField } from "@/components/UI/Fields/Field.types";
 import { ICareerApply } from "@/types/careers.types";
 import { FormikProvider, useFormik } from "formik";
-import { ShowQuestion } from "@/utils/toast/Toast";
+import { ShowError, ShowQuestion } from "@/utils/toast/Toast";
 import { CareerApplySchema } from "@/utils/validations/validations";
 import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import Modal from "@/components/UI/Modal/Modal";
 import "@progress/kendo-theme-default/dist/all.css";
 import StepperSection from "./Stepper/StepperSection";
+import useCaptcha from "@/components/ReCaptcha/useCaptcha";
 
 export interface IGroupField<T> {
   title: string;
@@ -122,16 +123,6 @@ export default function ApplyForm(props: IProps) {
 
   const [step, setStep] = useState<number>(0);
 
-  const memoFooter = useMemo(
-    () => (
-      <StepperSection
-        setStep={(newStep) => {}}
-        step={step}
-      />
-    ),
-    [step],
-  );
-
   const goToForm = async (field: keyof typeof values) => {
     try {
       const res = await (
@@ -150,6 +141,19 @@ export default function ApplyForm(props: IProps) {
     }
   };
 
+  const { ReCaptcha, SolveCaptcha, isSolved, isCaptchaVisible } = useCaptcha();
+  const memoFooter = useMemo(
+    () => (
+      <div>
+        <ReCaptcha />
+        <StepperSection
+          setStep={(newStep) => {}}
+          step={step}
+        />
+      </div>
+    ),
+    [step, isCaptchaVisible],
+  );
   useEffect(() => {
     formik.setErrors({});
   }, [step]);
@@ -201,7 +205,10 @@ export default function ApplyForm(props: IProps) {
                   variant: "success",
                   fill: "fill",
                   onClick() {
-                    submitForm();
+                    if (!isSolved) {
+                      SolveCaptcha();
+                      ShowError("لطفا کپچارا تکمیل کنید.");
+                    } else submitForm();
                   },
                 },
             {

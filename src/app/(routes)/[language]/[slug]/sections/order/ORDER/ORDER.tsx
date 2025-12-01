@@ -22,6 +22,7 @@ import useRedirect from "@/hooks/useRedirect";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { OrderValidationSchema } from "@/utils/validations/validations";
 import Field from "@/components/UI/Fields/Field";
+import useCaptcha from "@/components/ReCaptcha/useCaptcha";
 
 const ORDER = () => {
   const { language }: { language: LanguagesENUM } = useParams();
@@ -121,6 +122,8 @@ const ORDER = () => {
       confirmMsg: "Are you sure you want to submit the order?",
     },
   }[language === LanguagesENUM.EN ? "EN" : "FA"];
+
+  const { ReCaptcha, isSolved, SolveCaptcha } = useCaptcha();
 
   return (
     <PageContainer title={t.pageTitle}>
@@ -345,6 +348,7 @@ const ORDER = () => {
 
             {/* ACTION BUTTON */}
             <div className={styles.actions}>
+              <ReCaptcha />
               <Button
                 icon='none'
                 title={t.submit}
@@ -353,7 +357,8 @@ const ORDER = () => {
                   ShowQuestion({
                     message: t.confirmMsg,
                     onConfirm() {
-                      submitForm();
+                      if (!isSolved) SolveCaptcha();
+                      else submitForm();
                     },
                     onCancel() {},
                   });
