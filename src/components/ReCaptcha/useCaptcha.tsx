@@ -10,7 +10,7 @@ export default function useCaptcha() {
     setVisible(true);
   };
 
-  const key = "6LcyzB0sAAAAAL1gLBws7CPdr_KVBGXs9lEOFEBi";
+  const key = "6LeUwB0sAAAAAOHee2rXagWCCxC9MyGhFidrPyZo";
 
   const ReCaptcha = () => (
     <ReCAPTCHA
