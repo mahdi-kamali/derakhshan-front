@@ -123,8 +123,9 @@ export default function Hero(props: IProps) {
           title: "شماره تماس",
           placeholder: "شماره تماس خود را وارد کنید",
           icon: "mdi:phone",
-          type: "number",
+          type: "tel",
           gridColumn: "-1/1",
+          seperators : true
         },
         {
           name: "address",

@@ -141,6 +141,27 @@ export default function Field(props: IField) {
     );
   };
 
+  const RenderTel = () => {
+    return (
+      <input
+        type='tel'
+        placeholder={title}
+        name={name}
+        onChange={(e) => {
+          const value = e.target.value;
+          const numbersOnly = value.replace(/[^0-9+]/g, "");
+          onChange(numbersOnly);
+
+          setTimeout(() => {
+            formik.validateField(name);
+          }, 100);
+        }}
+        required={required}
+        value={value}
+      />
+    );
+  };
+
   const RenderNormalField = () => {
     return (
       <input
@@ -180,9 +201,10 @@ export default function Field(props: IField) {
     if (type === "text" && props.multiLine) return RenderTextArea();
     if (type === "number") return RenderNumber();
     if (type === "array") return RenderArray();
+    if (type === "tel") return RenderTel();
     return RenderNormalField();
   };
 
-  if (props.show === false) return <></>
+  if (props.show === false) return <></>;
   return <Base {...props}>{RenderField()}</Base>;
 }
