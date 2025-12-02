@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 import styles from "./layout.module.scss";
 
+
 interface IProps {
   children: React.ReactNode;
   params: Promise<{ language: string }>;
@@ -29,6 +30,7 @@ export default async function RootLayout({ children, params }: IProps) {
       <ReactQueryProvider>
         <body className={styles.layout}>
           <Header />
+
           {children}
           <Footer />
           <ToastContainer limit={2000} />
