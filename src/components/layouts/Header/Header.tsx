@@ -15,6 +15,7 @@ import Button from "@/components/UI/Button/Button";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { GetNavsAPI } from "@/services/Navs/Navs.services";
+import Search from "./Search/Search";
 
 export default function Header() {
   const pathName = usePathname();
@@ -56,6 +57,10 @@ export default function Header() {
             alt=''
           />
         </div>
+      </div>
+
+      <div className={styles.mid}>
+        <Search />
       </div>
 
       <div className={styles.right}>

@@ -5,12 +5,17 @@ import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { urls } from "@/common/urls";
 import useRedirect from "@/hooks/useRedirect";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { GetCategoiresAPI } from "@/services/Categories/categories.services";
+import { useState } from "react";
 
 export default function Categories() {
   const { language }: { language: LanguagesENUM } = useParams();
+
+  const query = useSearchParams();
+
+  const search = query.get("search") || "";
 
   const { GoCategory } = useRedirect();
 
@@ -27,40 +32,49 @@ export default function Categories() {
   return (
     <section>
       <div className={styles.list}>
-        {categories.data.map((cat, index) => {
-          return (
-            <motion.div
-              className={styles.category}
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 2, delay: index * 0.3 }} // Staggered delay for each product
-              viewport={{ once: true }} // Animates once when it comes into view
-            >
-              <div className={styles.content}>
-                <img
-                  src={urls.STORAGE(cat.image.path)}
-                  alt={cat.title}
-                />
-                <h2>
-                  {language === LanguagesENUM.FA ? cat.title : cat.en_title}
-                </h2>
-                <Button
-                  icon='ep:top-right'
-                  title={
-                    language === LanguagesENUM.EN
-                      ? "View Products"
-                      : "مشاهده محصولات"
-                  }
-                  variant='primary'
-                  onClick={() => {
-                    GoCategory(language as LanguagesENUM).single(cat._id);
-                  }}
-                />
-              </div>
-            </motion.div>
-          );
-        })}
+        {categories.data
+          .filter((cat) => {
+            const title =
+              language === LanguagesENUM.FA ? cat.title : cat.en_title;
+
+            console.log(search);
+            if (search === "") return true;
+            return title.includes(search);
+          })
+          .map((cat, index) => {
+            return (
+              <motion.div
+                className={styles.category}
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2, delay: index * 0.3 }} // Staggered delay for each product
+                viewport={{ once: true }} // Animates once when it comes into view
+              >
+                <div className={styles.content}>
+                  <img
+                    src={urls.STORAGE(cat.image.path)}
+                    alt={cat.title}
+                  />
+                  <h2>
+                    {language === LanguagesENUM.FA ? cat.title : cat.en_title}
+                  </h2>
+                  <Button
+                    icon='ep:top-right'
+                    title={
+                      language === LanguagesENUM.EN
+                        ? "View Products"
+                        : "مشاهده محصولات"
+                    }
+                    variant='primary'
+                    onClick={() => {
+                      GoCategory(language as LanguagesENUM).single(cat._id);
+                    }}
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
       </div>
     </section>
   );

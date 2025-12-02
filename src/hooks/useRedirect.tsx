@@ -16,7 +16,9 @@ export default function useRedirect() {
     },
     GoCategory: (language: LanguagesENUM) => {
       return {
-        list: () => redirect(`/${language}/categories`),
+        list: (search?: string) => {
+          redirect(`/${language}/categories?search=${search}`);
+        },
         single: (cat_id: ICategory["_id"]) =>
           redirect(`/${language}/categories/${cat_id}`),
       };

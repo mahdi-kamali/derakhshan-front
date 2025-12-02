@@ -1,0 +1,22 @@
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 0.25em 0.5em;
+    background-color: white;
+    border-radius: 0.25rem;
+    width: 100%;
+
+    input {
+        all: unset;
+        font-size: 0.8rem;
+        color: black;
+        width: 100%;
+    }
+
+    svg {
+        * {
+            color: black;
+        }
+    }
+}

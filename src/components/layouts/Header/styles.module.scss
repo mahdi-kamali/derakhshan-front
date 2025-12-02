@@ -2,10 +2,13 @@
 
 .header {
   position: fixed;
-  top: 0;
   display: flex;
   align-items: center;
 
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+
+  top: 0;
   justify-content: space-between;
   padding: 0.5em 1em;
   gap: 1rem;
@@ -20,7 +23,25 @@
   max-width: var(--app-max-width);
 
   @include breakpoint-max(md) {
-    align-items: start;
+    align-items: center;
+    z-index: 1000;
+    .right {
+      position: relative;
+      z-index: 1000;
+      .menuButton {
+        display: flex;
+        margin: 0 !important;
+      }
+      .menu {
+        position: absolute;
+        top: 1.2rem;
+        right: 0;
+        // background-color: black !important;
+        width: 100dvw;
+        padding: 2em 2em;
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+    }
   }
 
   .left {
@@ -31,10 +52,13 @@
     }
   }
 
+  .mid {
+    width: 100%;
+  }
+
   .right {
     display: flex;
     flex-direction: column;
-
     align-items: end;
     gap: 1rem;
 
@@ -130,4 +154,3 @@
     }
   }
 }
-
