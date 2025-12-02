@@ -6,7 +6,7 @@ import ReactQueryProvider from "@/app/prividers/ReactQueryProvider";
 import { ToastContainer } from "react-toastify";
 
 import styles from "./layout.module.scss";
-
+import ReCaptchaProvider from "@/providers/ReCaptchaProvider";
 
 interface IProps {
   children: React.ReactNode;
@@ -28,13 +28,15 @@ export default async function RootLayout({ children, params }: IProps) {
       lang={language.toUpperCase()}
       dir='rtl'>
       <ReactQueryProvider>
-        <body className={styles.layout}>
-          <Header />
+        <ReCaptchaProvider>
+          <body className={styles.layout}>
+            <Header />
 
-          {children}
-          <Footer />
-          <ToastContainer limit={2000} />
-        </body>
+            {children}
+            <Footer />
+            <ToastContainer limit={2000} />
+          </body>
+        </ReCaptchaProvider>
       </ReactQueryProvider>
     </html>
   );

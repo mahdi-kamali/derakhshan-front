@@ -15,16 +15,18 @@ import {
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Cuboid from "@/components/UI/CuBoid/CuBoid";
 import Controls from "@/components/UI/CuBoid/Controls/Controls";
-import { ShowQuestion } from "@/utils/toast/Toast";
+import { ShowError, ShowQuestion } from "@/utils/toast/Toast";
 import { useMutation } from "@tanstack/react-query";
 import { CreateOrderAPI } from "@/services/Orders/orders.services";
 import useRedirect from "@/hooks/useRedirect";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { OrderValidationSchema } from "@/utils/validations/validations";
 import Field from "@/components/UI/Fields/Field";
-import useCaptcha from "@/components/ReCaptcha/useCaptcha";
+import useCaptcha from "@/hooks/useCaptcha";
 
 const ORDER = () => {
+  const { SolveCaptcha, isSolving } = useCaptcha();
+
   const { language }: { language: LanguagesENUM } = useParams();
 
   const { GoHome } = useRedirect();
@@ -54,7 +56,14 @@ const ORDER = () => {
       description: "",
     },
     onSubmit(values, formikHelpers) {
-      CreateOrder(values);
+      SolveCaptcha({
+        onFail() {
+          ShowError("لطفا کپچارا حل کنید.");
+        },
+        onSuccess(token) {
+          CreateOrder(values);
+        },
+      });
     },
     validationSchema: OrderValidationSchema[language],
     validateOnBlur: true,
@@ -123,8 +132,6 @@ const ORDER = () => {
     },
   }[language === LanguagesENUM.EN ? "EN" : "FA"];
 
-  const { ReCaptcha, isSolved, SolveCaptcha } = useCaptcha();
-
   return (
     <PageContainer title={t.pageTitle}>
       <FormikContext value={formik}>
@@ -155,12 +162,11 @@ const ORDER = () => {
                 <Field
                   name='user.phone'
                   icon={<Icon icon='line-md:phone-filled' />}
-                  type='number'
+                  type='tel'
                   onChange={(value) => setFieldValue("user.phone", value)}
                   title={t.phone}
                   value={values.user.phone}
                   errors={errors}
-                  sperators={false}
                 />
                 <Field
                   name='user.email'
@@ -348,17 +354,16 @@ const ORDER = () => {
 
             {/* ACTION BUTTON */}
             <div className={styles.actions}>
-              <ReCaptcha />
               <Button
                 icon='none'
                 title={t.submit}
                 variant='primary'
+                disabled={isSolving}
                 onClick={() => {
                   ShowQuestion({
                     message: t.confirmMsg,
                     onConfirm() {
-                      if (!isSolved) SolveCaptcha();
-                      else submitForm();
+                      submitForm();
                     },
                     onCancel() {},
                   });

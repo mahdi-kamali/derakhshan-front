@@ -13,7 +13,6 @@ import { CreateContactAPI } from "@/services/Contact-Us/contact_us.services";
 import { IContact } from "@/types/contact-us.types";
 import { ShowError, ShowQuestion } from "@/utils/toast/Toast";
 import { ContactUsSchema } from "@/utils/validations/validations";
-import useCaptcha from "@/components/ReCaptcha/useCaptcha";
 
 interface IProps {
   section: Extract<ISection, { type: "CONTACT_US" }>;
@@ -125,7 +124,7 @@ export default function Hero(props: IProps) {
           icon: "mdi:phone",
           type: "tel",
           gridColumn: "-1/1",
-          seperators : true
+          seperators: true,
         },
         {
           name: "address",
@@ -170,7 +169,6 @@ export default function Hero(props: IProps) {
       { key: "email", label: "ایمیل" },
     ],
   };
-  const { ReCaptcha, SolveCaptcha, isCaptchaVisible, isSolved } = useCaptcha();
 
   const formik = useFormik({
     initialValues: {
@@ -185,10 +183,7 @@ export default function Hero(props: IProps) {
     onSubmit(values, formikHelpers) {
       ShowQuestion({
         onConfirm() {
-          if (!isCaptchaVisible) {
-            ShowError("لطفا کپچا را کامل کنید.");
-            SolveCaptcha();
-          } else CreateContact(values);
+          CreateContact(values);
         },
         onCancel() {},
       });
@@ -276,7 +271,6 @@ export default function Hero(props: IProps) {
             </div>
           </form>
         </motion.div>
-        <ReCaptcha />
       </section>
     </FormikProvider>
   );

@@ -13,7 +13,7 @@ import { LanguagesENUM } from "@/types/Language/Language.types";
 import Modal from "@/components/UI/Modal/Modal";
 import "@progress/kendo-theme-default/dist/all.css";
 import StepperSection from "./Stepper/StepperSection";
-import useCaptcha from "@/components/ReCaptcha/useCaptcha";
+import useCaptcha from "@/hooks/useCaptcha";
 
 export interface IGroupField<T> {
   title: string;
@@ -34,6 +34,8 @@ interface IProps {
 }
 
 export default function ApplyForm(props: IProps) {
+  const { SolveCaptcha, isSolving } = useCaptcha();
+
   const { setShowModal, showModal } = props;
 
   const { language }: { language: LanguagesENUM } = useParams();
@@ -107,11 +109,13 @@ export default function ApplyForm(props: IProps) {
       },
     },
     onSubmit(values, formikHelpers) {
-      ShowQuestion({
-        onConfirm() {
+      SolveCaptcha({
+        onSuccess(token) {
           ApplyCareer(values);
         },
-        onCancel() {},
+        onFail() {
+          ShowError("لطفا کپچارا حل کنید");
+        },
       });
     },
     validationSchema: CareerApplySchema[language],
@@ -141,18 +145,16 @@ export default function ApplyForm(props: IProps) {
     }
   };
 
-  const { ReCaptcha, SolveCaptcha, isSolved, isCaptchaVisible } = useCaptcha();
   const memoFooter = useMemo(
     () => (
       <div>
-        <ReCaptcha />
         <StepperSection
           setStep={(newStep) => {}}
           step={step}
         />
       </div>
     ),
-    [step, isCaptchaVisible],
+    [step],
   );
   useEffect(() => {
     formik.setErrors({});
@@ -205,10 +207,12 @@ export default function ApplyForm(props: IProps) {
                   variant: "success",
                   fill: "fill",
                   onClick() {
-                    if (!isSolved) {
-                      SolveCaptcha();
-                      ShowError("لطفا کپچارا تکمیل کنید.");
-                    } else submitForm();
+                    ShowQuestion({
+                      onConfirm() {
+                        submitForm();
+                      },
+                      onCancel() {},
+                    });
                   },
                 },
             {

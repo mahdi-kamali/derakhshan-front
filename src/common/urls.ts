@@ -34,5 +34,8 @@ export const urls = {
   SITE_SETTINGS: {
     list: BASE_URL + "/api/public/site-settings/",
   },
+  CAPTCHA : {
+    solve : ""
+  },
   STORAGE: (path: string) => `${BASE_URL}/${path}`,
 };
