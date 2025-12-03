@@ -32,7 +32,7 @@ export default function Search() {
         type='text'
         onChange={onChange}
         placeholder={
-          language === LanguagesENUM.FA ? "جتسجو کنید.." : "Search...."
+          language === LanguagesENUM.FA ? "جستجو کنید.." : "Search...."
         }
         dir={language === LanguagesENUM.FA ? "rtl" : "ltr"}
       />

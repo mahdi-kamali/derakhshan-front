@@ -106,7 +106,7 @@ export default function Component(props: IProps) {
             variant={"primary"}
             icon='none'
             onClick={() => {
-              route.push("/EN/products");
+              route.push(`/${language}/categories`);
             }}
           />
         </motion.div>

@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import styles from "./styles.module.scss";
 import { urls } from "@/common/urls";
@@ -6,7 +7,7 @@ import Description from "@/components/UI/Section/Description/Description";
 import HighLight from "@/components/UI/HighLight/HighLight";
 import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface IProps {
   section: Extract<ISection, { type: "HOME_ABOUT_US" }>;
@@ -14,7 +15,7 @@ interface IProps {
 }
 
 export default function Component(props: IProps) {
-  const router = redirect;
+  const router = useRouter();
 
   const { language, section } = props;
 
@@ -59,7 +60,7 @@ export default function Component(props: IProps) {
             variant={"primary"}
             icon='none'
             onClick={() => {
-              router("/FA/about-us");
+              router.push(`/${language}/about-us`);
             }}
           />
         </motion.div>

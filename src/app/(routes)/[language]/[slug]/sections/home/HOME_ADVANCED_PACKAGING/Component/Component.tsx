@@ -6,7 +6,7 @@ import { ISection } from "@/types/sections.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { urls } from "@/common/urls";
 import styles from "./styles.module.scss";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Description from "@/components/UI/Section/Description/Description";
 interface IProps {
   section: Extract<ISection, { type: "HOME_ADVANCED_PACKAGING" }>;
@@ -15,6 +15,8 @@ interface IProps {
 export default function Component(props: IProps) {
   const { language, section } = props;
   const component = section.components[props.language];
+
+  const router = useRouter();
 
   return (
     <motion.section
@@ -50,7 +52,7 @@ export default function Component(props: IProps) {
             variant={"primary"}
             icon='none'
             onClick={() => {
-              redirect("/EN/services");
+              router.push(`/${language}/services`);
             }}
           />
         </motion.div>

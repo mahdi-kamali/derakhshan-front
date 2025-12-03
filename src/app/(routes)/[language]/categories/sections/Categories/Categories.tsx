@@ -36,10 +36,8 @@ export default function Categories() {
           .filter((cat) => {
             const title =
               language === LanguagesENUM.FA ? cat.title : cat.en_title;
-
-            console.log(search);
             if (search === "") return true;
-            return title.includes(search);
+            return title.toLowerCase().includes(search);
           })
           .map((cat, index) => {
             return (
