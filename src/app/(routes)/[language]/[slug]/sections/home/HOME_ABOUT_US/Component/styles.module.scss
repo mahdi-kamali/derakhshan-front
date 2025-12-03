@@ -181,7 +181,7 @@
 
   .right {
     width: max-content;
-    height: 25rem !important;
+    height: 30rem !important;
     .agent {
       * {
         text-align: start !important;
@@ -259,9 +259,9 @@
         }
         &:nth-child(2) {
           position: absolute;
-          top: 3rem;
           z-index: 2;
           text-align: center;
+          bottom: 6rem;
           left: 9rem !important;
           .info {
             align-items: start;

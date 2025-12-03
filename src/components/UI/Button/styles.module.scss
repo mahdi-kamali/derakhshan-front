@@ -10,6 +10,7 @@
   border-radius: 0.25rem;
   cursor: pointer;
   direction: rtl;
+  font-weight: bold;
 
   span {
     font-size: 0.9rem;
@@ -58,5 +59,10 @@
 .button:lang(FA) {
   span {
     font-size: 0.9rem !important;
+  }
+}
+.button:lang(EN) {
+  span {
+    font-size: 1rem !important;
   }
 }

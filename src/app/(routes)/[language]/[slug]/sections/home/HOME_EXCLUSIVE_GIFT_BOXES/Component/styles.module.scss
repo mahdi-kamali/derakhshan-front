@@ -121,10 +121,13 @@
     }
   }
   &:lang(EN) {
-    .left {
-      align-items: end;
-      * {
-        text-align: end !important;
+    flex-direction: row !important;
+    
+
+    @media (max-width: 600px) {
+      flex-direction: column !important;
+      .left {
+     
       }
     }
   }

@@ -20,7 +20,7 @@ export default function Component(props: IProps) {
   const component = section.components[language];
 
   return (
-    <motion.section className={styles.HOME_EXCLUSIVE_GIFT_BOXES}>
+    <motion.section className={styles.HOME_EXCLUSIVE_GIFT_BOXES} lang={language}>
       <motion.div className={styles.right}>
         <motion.div
           className={styles.first}
