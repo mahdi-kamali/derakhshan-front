@@ -261,7 +261,8 @@
           position: absolute;
           z-index: 2;
           text-align: center;
-          bottom: 6rem;
+          top: 0rem !important;
+          bottom: 12rem !important;
           left: 9rem !important;
           .info {
             align-items: start;

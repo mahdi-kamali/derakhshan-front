@@ -1,9 +1,12 @@
 import { ICategory } from "@/types/category.types";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import { IProduct } from "@/types/products.types";
-import { redirect } from "next/navigation";
+import {  useRouter } from "next/navigation";
 
 export default function useRedirect() {
+
+  const redirect = useRouter().push
+
   return {
     GoHome: () => redirect("/FA/home"),
     NotFound: () => redirect("/404"),
