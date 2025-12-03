@@ -1,9 +1,8 @@
 .content {
     margin: auto;
-    min-height: 80dvh;
     height: max-content;
     width: 50rem;
-    max-height: 80dvh;
+    max-width: 90dvw;
     color: black;
     position: fixed;
     inset: 0;
@@ -30,12 +29,15 @@
 }
 
 @media (max-width: 600px) {
+
+    .children{
+        height: max-content !important;
+        max-height: 70dvh;
+        overflow: auto;
+    }
     .content {
         min-width: unset;
         width: 90dvw !important;
-
         height: max-content;
-        min-height: 80dvh;
-        max-height: 80vh;
     }
 }

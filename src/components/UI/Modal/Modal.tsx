@@ -27,7 +27,8 @@ export default function Modal(props: IProps) {
       }}
       open={show}
       onClose={onClose}
-      closeAfterTransition>
+      closeAfterTransition
+      disableEscapeKeyDown={false}>
       <Grow in={show}>
         <div className={styles.content}>
           <div className={styles.children}>{BODY}</div>

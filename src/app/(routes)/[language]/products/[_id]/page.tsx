@@ -9,6 +9,9 @@ import { urls } from "@/common/urls";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { IResponse } from "@/utils/axios/axios";
+import ImageModal from "./Modals/ImageModal";
+import { useState } from "react";
+import { IFile } from "@/types/files.types";
 
 const breakpointColumnsObj = {
   default: 2,
@@ -49,6 +52,8 @@ export default function Page() {
 
   const { data: product } = data;
 
+  const [showGalleryImage, setShowGalleryImage] = useState<IFile>();
+
   return (
     <PageContainer title={`${product.title}`}>
       <div className={styles.page}>
@@ -69,13 +74,24 @@ export default function Page() {
           columnClassName={styles.masonryGridColumn}>
           {product.gallery.map((gal, i) => {
             return (
-              <div
-                className={`${styles.frame} ${
-                  bigItems.includes(i) ? styles.big : styles.small
-                }`}
-                key={i}>
-                <img src={urls.STORAGE(gal.path)} />
-              </div>
+              <>
+                <div
+                  onClick={() => {
+                    setShowGalleryImage(gal);
+                  }}
+                  className={`${styles.frame} ${
+                    bigItems.includes(i) ? styles.big : styles.small
+                  }`}>
+                  <img src={urls.STORAGE(gal.path)} />
+                </div>
+                <ImageModal
+                  show={gal._id === showGalleryImage?._id}
+                  onClose={() => {
+                    setShowGalleryImage(undefined);
+                  }}
+                  image={gal.path}
+                />
+              </>
             );
           })}
         </Masonry>
