@@ -144,15 +144,25 @@
       }
     }
 
+    .services {
+      .row {
+        gap: 0;
+        direction: ltr !important;
+      }
+    }
+
     @media (max-width: 600px) {
       .row {
+        gap: 1rem !important;
+        .left {
+        }
         .right {
           display: flex !important;
           flex-direction: column;
-          align-items: end;
-          justify-content: end;
+          align-items: start !important;
+          justify-content: start !important;
           * {
-            text-align: end !important;
+            text-align: start !important;
           }
         }
       }

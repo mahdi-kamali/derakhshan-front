@@ -108,69 +108,134 @@ export default function ApplyForm(props: IProps) {
     },
   };
 
-  const formik = useFormik<ICareerApply>({
-    initialValues: {
-      career_id: props.career_id,
-      personalInfo: {
-        fullName: "",
-        nationalId: "",
-        birthDate: "",
-        birthPlace: "",
-        issuePlace: "",
-        maritalStatus: "",
-        militaryStatus: "",
-        fatherName: "",
-        fatherJob: "",
-        insuranceHistory: "",
-        phoneNumber: "",
-        gender: "",
-      },
-      education: [
-        {
-          fieldOfStudy: "",
-          gpa: "",
-          institute: "",
-          level: "",
-        },
-      ],
-      workExperience: {
-        lastSalary: "",
-        insuranceDuration: "",
-        usedUnemploymentInsurance: "",
-        works: [
-          {
-            duration: "",
-            organization: "",
-            role: "",
-            terminationReason: "",
-          },
-        ],
-      },
-      skills: [
-        {
-          level: "",
-          name: "",
-        },
-      ],
-      software: [
-        {
-          level: "",
-          name: "",
-        },
-      ],
-      languages: [
-        {
-          level: "",
-          name: "",
-        },
-      ],
-      description: "",
-      expectedSalary: "",
-      uploads: {
-        organization: undefined as any,
-        resume: undefined as any,
-      },
+  const tempData: ICareerApply = {
+    career_id: props.career_id,
+    personalInfo: {
+      fullName: "مهدی",
+      nationalId: "1362958204",
+      birthDate: "۱۴۰۴/۰۹/۱۳",
+      birthPlace: "تبریز",
+      issuePlace: "تبریز",
+      maritalStatus: "single",
+      militaryStatus: "completed",
+      fatherName: "یوسف",
+      fatherJob: "برنامه نویس",
+      insuranceHistory: "false",
+      phoneNumber: "09374905487",
+      gender: "male",
     },
+    education: [
+      {
+        fieldOfStudy: "مهندسی نرم‌افزار",
+        gpa: "20",
+        institute: "دانشگاه صنعتی شریف",
+        level: "bachelor",
+      },
+    ],
+    workExperience: {
+      lastSalary: "250000000",
+      insuranceDuration: "12",
+      usedUnemploymentInsurance: "yes",
+      works: [
+        {
+          duration: "12",
+          organization: "آلدی",
+          role: "برنامه نویسی",
+          terminationReason: "کمبود وقت",
+        },
+      ],
+    },
+    skills: [
+      {
+        level: "VERY_HIGH",
+        name: "برنامه نویسی",
+      },
+    ],
+    software: [
+      {
+        level: "VERY_HIGH",
+        name: "Vs Code",
+      },
+    ],
+    languages: [
+      {
+        level: "VERY_HIGH",
+        name: "انگلیسی",
+      },
+    ],
+    description: "این یک متن تستی است از سمت کاربر",
+    expectedSalary: "2555555",
+    uploads: {
+      organization: undefined as any,
+      resume: undefined as any,
+    },
+  };
+
+  const emptyData: ICareerApply = {
+    career_id: props.career_id,
+    personalInfo: {
+      fullName: "",
+      nationalId: "",
+      birthDate: "",
+      birthPlace: "",
+      issuePlace: "",
+      maritalStatus: "",
+      militaryStatus: "",
+      fatherName: "",
+      fatherJob: "",
+      insuranceHistory: "",
+      phoneNumber: "",
+      gender: "",
+    },
+    education: [
+      {
+        fieldOfStudy: "",
+        gpa: "",
+        institute: "",
+        level: "",
+      },
+    ],
+    workExperience: {
+      lastSalary: "",
+      insuranceDuration: "",
+      usedUnemploymentInsurance: "",
+      works: [
+        {
+          duration: "",
+          organization: "",
+          role: "",
+          terminationReason: "",
+        },
+      ],
+    },
+    skills: [
+      {
+        level: "",
+        name: "",
+      },
+    ],
+    software: [
+      {
+        level: "",
+        name: "",
+      },
+    ],
+    languages: [
+      {
+        level: "",
+        name: "",
+      },
+    ],
+    description: "",
+    expectedSalary: "",
+    uploads: {
+      organization: undefined as any,
+      resume: undefined as any,
+    },
+  };
+
+  const formik = useFormik<ICareerApply>({
+    initialValues: tempData,
     onSubmit(values, formikHelpers) {
       SolveCaptcha({
         onSuccess(token) {

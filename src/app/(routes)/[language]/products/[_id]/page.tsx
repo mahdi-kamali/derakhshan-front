@@ -56,7 +56,9 @@ export default function Page() {
 
   return (
     <PageContainer title={`${product.title}`}>
-      <div className={styles.page}>
+      <div
+        className={styles.page}
+        lang={language}>
         <div className={styles.right}>
           <h1>
             {language === LanguagesENUM.FA ? product.title : product.en_title}

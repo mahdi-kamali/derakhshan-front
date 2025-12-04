@@ -10,8 +10,8 @@
   @include breakpoint-max(md) {
     padding: 2em;
   }
-
   width: 100%;
+  gap: 2rem;
   .left {
     width: 80%;
     display: grid;
@@ -20,8 +20,11 @@
     max-width: 800px;
   }
   .right {
-    width: 80%;
-    margin: 4rem;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 4rem;
+
     p {
       line-height: 2;
     }

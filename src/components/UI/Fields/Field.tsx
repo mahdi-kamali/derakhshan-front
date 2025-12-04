@@ -216,22 +216,24 @@ export default function Field(props: IField) {
 
   const RenderTel = () => {
     return (
-      <input
-        type='tel'
-        placeholder={title}
-        name={name}
-        onChange={(e) => {
-          const value = e.target.value;
-          const numbersOnly = value.replace(/[^0-9+]/g, "");
-          onChange(numbersOnly);
+      <div style={{ display: "grid", gridTemplateColumns: "1fr max-content" }}>
+        <input
+          type='tel'
+          placeholder={title}
+          name={name}
+          onChange={(e) => {
+            const value = e.target.value;
+            const numbersOnly = value.replace(/[^0-9+]/g, "");
+            onChange(numbersOnly);
 
-          setTimeout(() => {
-            formik.validateField(name);
-          }, 100);
-        }}
-        required={required}
-        value={value}
-      />
+            setTimeout(() => {
+              formik.validateField(name);
+            }, 100);
+          }}
+          required={required}
+          value={value}
+        />
+      </div>
     );
   };
 
