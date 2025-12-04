@@ -45,6 +45,69 @@ export default function ApplyForm(props: IProps) {
     onSuccess(data, variables, onMutateResult, context) {},
   });
 
+  const initialValues = {
+    career_id: "12345",
+    personalInfo: {
+      fullName: "مهدی کمالی",
+      nationalId: "0012345678",
+      birthDate: "1375/05/12",
+      birthPlace: "تهران",
+      issuePlace: "تهران",
+      maritalStatus: "مجرد",
+      militaryStatus: "انجام شده",
+      fatherName: "علی کمالی",
+      fatherJob: "معلم",
+      insuranceHistory: "5 سال بیمه تامین اجتماعی",
+      phoneNumber: "09123456789",
+      gender: "مرد",
+    },
+    education: [
+      {
+        fieldOfStudy: "مهندسی نرم‌افزار",
+        gpa: "18.5",
+        institute: "دانشگاه صنعتی شریف",
+        level: "کارشناسی",
+      },
+    ],
+    workExperience: {
+      lastSalary: "15,000,000",
+      insuranceDuration: "3 سال",
+      usedUnemploymentInsurance: "خیر",
+      works: [
+        {
+          duration: "2 سال",
+          organization: "شرکت فناوران",
+          role: "توسعه‌دهنده وب",
+          terminationReason: "پایان قرارداد",
+        },
+      ],
+    },
+    skills: [
+      {
+        level: "متوسط",
+        name: "برنامه‌نویسی جاوااسکریپت",
+      },
+    ],
+    software: [
+      {
+        level: "پیشرفته",
+        name: "Photoshop",
+      },
+    ],
+    languages: [
+      {
+        level: "مسلط",
+        name: "انگلیسی",
+      },
+    ],
+    description: "علاقه‌مند به توسعه وب و کار با فریم‌ورک‌های مدرن.",
+    expectedSalary: "20,000,000",
+    uploads: {
+      organization: undefined,
+      resume: undefined,
+    },
+  };
+
   const formik = useFormik<ICareerApply>({
     initialValues: {
       career_id: props.career_id,

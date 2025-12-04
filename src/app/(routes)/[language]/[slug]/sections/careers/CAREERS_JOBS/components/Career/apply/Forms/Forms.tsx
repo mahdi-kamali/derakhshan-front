@@ -250,7 +250,7 @@ export default function Forms(props: IGroupProps) {
             value: true,
           },
           {
-            label: language === LanguagesENUM.EN ? "ندارم" : " I Dont",
+            label: language === LanguagesENUM.FA ? "ندارم" : " I Dont",
             value: false,
           },
         ],
@@ -328,7 +328,38 @@ export default function Forms(props: IGroupProps) {
               rtl: true,
               color: "black",
               errors: errors,
-              options: LEVELS_OPTIONS,
+              options: [
+                {
+                  label:
+                    language === LanguagesENUM.FA ? "سیکل" : "Middle School",
+                  value: "middle_school",
+                },
+                {
+                  label:
+                    language === LanguagesENUM.FA ? "دیپلم" : "High School",
+                  value: "high_school",
+                },
+                {
+                  label:
+                    language === LanguagesENUM.FA
+                      ? "فوق دیپلم"
+                      : "Associate Degree",
+                  value: "associate_degree",
+                },
+                {
+                  label: language === LanguagesENUM.FA ? "لیسانس" : "Bachelor",
+                  value: "bachelor",
+                },
+                {
+                  label:
+                    language === LanguagesENUM.FA ? "فوق لیسانس" : "Master",
+                  value: "master",
+                },
+                {
+                  label: language === LanguagesENUM.FA ? "دکترا" : "PhD",
+                  value: "phd",
+                },
+              ],
             },
             {
               icon: <Icon icon='mdi:calculator-variant' />,
