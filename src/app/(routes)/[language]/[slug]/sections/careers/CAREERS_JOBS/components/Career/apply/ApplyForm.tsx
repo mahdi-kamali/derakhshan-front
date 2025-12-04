@@ -235,7 +235,7 @@ export default function ApplyForm(props: IProps) {
   };
 
   const formik = useFormik<ICareerApply>({
-    initialValues: tempData,
+    initialValues: emptyData,
     onSubmit(values, formikHelpers) {
       SolveCaptcha({
         onSuccess(token) {

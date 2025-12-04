@@ -1,0 +1,59 @@
+.container {
+    display: flex !important;
+    align-items: center;
+    flex-direction: row-reverse;
+    color: white;
+    gap: 1rem;
+    * {
+        color: inherit !important;
+    }
+}
+
+.inputClass {
+    font-size: 1rem !important;
+    direction: ltr !important;
+}
+
+.searchClass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em !important;
+    gap: 0.5rem;
+}
+
+.buttonClass {
+    all: unset;
+    position: relative !important;
+    background-color: transparent !important;
+    border: none !important;
+    height: 2rem;
+    display: flex !important;
+    align-items: center;
+    width: 1rem;
+    justify-content: center;
+    &:hover {
+        background-color: red !important;
+    }
+}
+
+.root {
+    &:lang(FA) {
+        .container {
+            flex-direction: row !important;
+        }
+        .inputClass {
+            direction: ltr !important;
+            text-align: start;
+        }
+        .buttonClass {
+            display: none !important;
+        }
+    }
+}
+
+.dropDownClass {
+    * {
+        color: black;
+    }
+}

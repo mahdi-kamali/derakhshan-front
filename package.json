@@ -43,6 +43,7 @@
     "react-masonry-css": "^1.0.16",
     "react-multi-date-picker": "^4.5.2",
     "react-number-format": "^5.4.4",
+    "react-phone-input-2": "^2.15.1",
     "react-responsive": "^10.0.1",
     "react-select": "^5.10.1",
     "react-toastify": "^11.0.5",

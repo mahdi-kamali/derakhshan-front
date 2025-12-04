@@ -883,10 +883,9 @@ export default function Forms(props: IGroupProps) {
         rtl: true,
         color: "black",
         errors: errors,
-        accept: ".zip,.rar,.7zip",
         placeHolder:
           language === LanguagesENUM.FA ? "آپلود رزومه" : "Upload Your Resume",
-        maxSizeMB: 0.5,
+        maxSizeMB: 5,
       },
       {
         icon: <Icon icon='mdi:image-outline' />,

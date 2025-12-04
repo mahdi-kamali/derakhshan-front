@@ -15,7 +15,7 @@ type INormalField = {
   value?: any;
 };
 
-type ITelField = {
+export type ITelField = {
   type: "tel";
   onChange?: (value: any) => void;
   multiLine?: {
@@ -39,7 +39,7 @@ type IImageField = {
 
 type IFileField = {
   type: "file";
-  accept: ".zip,.rar,.7zip";
+  accept?: ".zip,.rar,.7zip" ;
   onChange: (value: any) => void;
   placeHolder: string;
   maxSizeMB: number;

@@ -17,6 +17,7 @@ import { LanguagesENUM } from "@/types/Language/Language.types";
 import { NumericFormat } from "react-number-format";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { ShowError } from "@/utils/toast/Toast";
+import Tel from "./Tel/Tel";
 
 export default function Field(props: IField) {
   const { language }: { language: LanguagesENUM } = useParams();
@@ -216,24 +217,11 @@ export default function Field(props: IField) {
 
   const RenderTel = () => {
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "1fr max-content" }}>
-        <input
-          type='tel'
-          placeholder={title}
-          name={name}
-          onChange={(e) => {
-            const value = e.target.value;
-            const numbersOnly = value.replace(/[^0-9+]/g, "");
-            onChange(numbersOnly);
-
-            setTimeout(() => {
-              formik.validateField(name);
-            }, 100);
-          }}
-          required={required}
-          value={value}
-        />
-      </div>
+      <Tel
+        {...(props as any)}
+        value={value}
+        formik={formik}
+      />
     );
   };
 
