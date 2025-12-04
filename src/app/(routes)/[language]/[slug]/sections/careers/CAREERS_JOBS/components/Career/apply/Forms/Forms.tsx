@@ -13,6 +13,7 @@ import { IField } from "@/components/UI/Fields/Field.types";
 import WorkAnimation from "@/assets/animations/works/WorkAnimation";
 import SkillsAnimation from "@/assets/animations/Skills/SkillsAnimation";
 import * as lodash from "lodash";
+import { Ioption } from "@/components/UI/Fields/Select/Select";
 export interface IGroupProps {
   formik: FormikContextType<ICareerApply>;
   step: number;
@@ -23,6 +24,29 @@ export default function Forms(props: IGroupProps) {
   const { values, setFieldValue, handleChange, errors } = formik;
 
   const { language }: { language: LanguagesENUM } = useParams();
+
+  const LEVELS_OPTIONS: Ioption[] = [
+    {
+      label: "کم",
+      value: "LOW",
+    },
+    {
+      label: "متوسط",
+      value: "MEDIUM",
+    },
+    {
+      label: "زیاد",
+      value: "HIGH",
+    },
+    {
+      label: "خیلی زیاد",
+      value: "VERY_HIGH",
+    },
+    {
+      label: "خیلی کم",
+      value: "VERY_LOW",
+    },
+  ];
 
   // مشخصات فردی / Personal Information
   const personalInfoGroup: IGroupField<ICareerApply> = {
@@ -288,12 +312,13 @@ export default function Forms(props: IGroupProps) {
                   : "Education Level",
               required: true,
               name: `education[${index}].level`,
-              type: "text",
+              type: "select",
               onChange: (value) =>
                 setFieldValue(`education[${index}].level`, value),
               rtl: true,
               color: "black",
               errors: errors,
+              options: LEVELS_OPTIONS,
             },
             {
               icon: <Icon icon='mdi:calculator-variant' />,
@@ -388,10 +413,10 @@ export default function Forms(props: IGroupProps) {
         icon: <Icon icon='mdi:clock-time-four-outline' />,
         title:
           language === LanguagesENUM.FA
-            ? "مدت زمان بیمه"
-            : "Insurance Duration",
+            ? "مدت زمان بیمه (ماه)"
+            : "Insurance Duration (month)",
         name: "workExperience.insuranceDuration",
-        type: "text",
+        type: "number",
         onChange: (value) => console.log("Insurance Duration:", value),
         rtl: true,
         color: "black",
@@ -463,10 +488,10 @@ export default function Forms(props: IGroupProps) {
               icon: <Icon icon='mdi:calendar-clock' />,
               title:
                 language === LanguagesENUM.FA
-                  ? "مدت همکاری"
-                  : "Duration of Employment",
+                  ? "مدت همکاری (ماه)"
+                  : "Duration of Employment ( Month )",
               name: `workExperience.works[${index}].duration`,
-              type: "text",
+              type: "number",
               onChange: (value) =>
                 setFieldValue(`workExperience.works[${index}].duration`, value),
               rtl: true,
@@ -565,12 +590,13 @@ export default function Forms(props: IGroupProps) {
                 language === LanguagesENUM.FA ? "میزان تسلط" : "skill level",
               required: true,
               name: `skills[${index}].level`,
-              type: "text",
+              type: "select",
               onChange: (value: any) =>
                 setFieldValue(`skills[${index}].level`, value),
               rtl: true,
               color: "black",
               errors: errors,
+              options: LEVELS_OPTIONS,
             },
           ];
 
@@ -653,12 +679,13 @@ export default function Forms(props: IGroupProps) {
                   : "Proficiency Level",
               required: true,
               name: `software[${index}].level`,
-              type: "text",
+              type: "select",
               onChange: (value) =>
                 setFieldValue(`software[${index}].level`, value),
               rtl: true,
               color: "black",
               errors: errors,
+              options: LEVELS_OPTIONS,
             },
           ];
 
@@ -750,12 +777,13 @@ export default function Forms(props: IGroupProps) {
                   : "Proficiency Level",
               required: true,
               name: `languages[${index}].level`,
-              type: "text",
+              type: "select",
               onChange: (value) =>
                 setFieldValue(`languages[${index}].level`, value),
               rtl: true,
               color: "black",
               errors: errors,
+              options: LEVELS_OPTIONS,
             },
           ];
 

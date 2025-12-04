@@ -37,6 +37,13 @@ type IImageField = {
   onChange: (value: any) => void;
 };
 
+type IFileField = {
+  type: "file";
+  accept: ".zip,.rar,.7zip";
+  onChange: (value: any) => void;
+  placeHolder : string
+};
+
 export type ArrayField = {
   type: "array";
   values: any[];
@@ -52,7 +59,14 @@ export type ISelect = {
   value?: IOption;
 };
 
-type IBase = INormalField | ArrayField | ISelect | IImageField | INumber | ITelField;
+type IBase =
+  | INormalField
+  | ArrayField
+  | ISelect
+  | IImageField
+  | INumber
+  | ITelField
+  | IFileField;
 
 export type IField = {
   name: string;
@@ -65,5 +79,6 @@ export type IField = {
   onChange?: (value: any) => void;
   errors?: any;
   show?: boolean;
+  max?: number;
 } & CSSProperties &
   IBase;

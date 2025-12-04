@@ -45,6 +45,26 @@
     }
 }
 
+.fileField {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: centere;
+        gap: 0.6rem;
+        cursor: pointer;
+        background-color: var(--color-success) !important;
+        border-radius: 100rem;
+        padding: 0.25em 0.5em;
+        background-color: var(--color-dark-font-secondary) !important;
+    }
+    input {
+        display: none !important;
+    }
+}
+
 .hasError {
     border-color: red;
     * {

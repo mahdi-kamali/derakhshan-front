@@ -15,6 +15,8 @@ import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 
 import { NumericFormat } from "react-number-format";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { ShowError } from "@/utils/toast/Toast";
 
 export default function Field(props: IField) {
   const { language }: { language: LanguagesENUM } = useParams();
@@ -27,6 +29,7 @@ export default function Field(props: IField) {
     type = "text",
     multiLine,
     value,
+    max = 9999999999999,
   } = props;
 
   const pickerRef = useRef<any>(null);
@@ -87,11 +90,6 @@ export default function Field(props: IField) {
         name={name}
         required={required}
         value={value}>
-        <option
-          key={"undefind"}
-          value={undefined}>
-          {title}
-        </option>
         {options.map((opt) => {
           return (
             <option
@@ -120,6 +118,51 @@ export default function Field(props: IField) {
     );
   };
 
+  const RenderFile = () => {
+    if (type !== "file") return <></>;
+    const { accept, placeHolder } = props as Extract<IField, { type: "file" }>;
+
+    return (
+      <label className={styles.fileField}>
+        <span>
+          <Icon
+            icon={
+              value ? "flat-color-icons:ok" : "qlementine-icons:empty-slot-16"
+            }
+          />
+          {placeHolder}
+        </span>
+
+        <input
+          type='file'
+          accept={accept}
+          required={required}
+          placeholder={title}
+          name={name}
+          onChange={(event) => {
+            const files = event.target.files || [];
+            if (files?.length > 0) {
+              const file = files[0].size;
+              const size = Number((file / 1000000).toFixed(2));
+              if (size > max) {
+                const error = `فایل نباید از ${max} مگابایت بزرگتر باشد`;
+                const errorEN = `فایل نباید از ${max} مگابایت بزرگتر باشد`;
+                ShowError(language === LanguagesENUM.FA ? error : errorEN);
+                return;
+              }
+            }
+
+            onChange(event);
+
+            setTimeout(() => {
+              formik.validateField(name);
+            }, 100);
+          }}
+        />
+      </label>
+    );
+  };
+
   const RenderNumber = () => {
     const useSeperators =
       (props as any).sperators === undefined ||
@@ -127,10 +170,14 @@ export default function Field(props: IField) {
 
     return (
       <NumericFormat
+        defaultValue={value}
         value={value}
         thousandSeparator={useSeperators ? "," : undefined}
         decimalSeparator={useSeperators ? "." : undefined}
         placeholder={title}
+        isAllowed={(value) => {
+          return max > Number(value.value);
+        }}
         onValueChange={(values) => {
           onChange(values.value);
           setTimeout(() => {
@@ -202,6 +249,7 @@ export default function Field(props: IField) {
     if (type === "number") return RenderNumber();
     if (type === "array") return RenderArray();
     if (type === "tel") return RenderTel();
+    if (type === "file") return RenderFile();
     return RenderNormalField();
   };
 

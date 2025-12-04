@@ -13,6 +13,8 @@
     grid-template-rows: 1fr max-content;
     gap: 1rem;
     .children {
+        max-height: 70dvh;
+
         overflow: auto;
     }
 }
@@ -32,7 +34,6 @@
 
     .children{
         height: max-content !important;
-        max-height: 70dvh;
         overflow: auto;
     }
     .content {

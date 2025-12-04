@@ -242,17 +242,25 @@ const ORDER = () => {
                   title={t.quantity}
                   value={values.product.quantity}
                   errors={errors}
+                  max={10000001}
                 />
 
-                <div style={{ gridColumn: "-1/1" }}>
+                <div>
                   <Field
                     name='product.image'
-                    icon={<Icon icon='line-md:image-twotone' />}
-                    type='image'
+                    icon={<Icon icon='line-md:file-filled' />}
+                    type='file'
                     onChange={(file) => setFieldValue("product.image", file)}
                     title={t.uploadImage}
                     value={values.product.image}
                     errors={errors}
+                    accept='.zip,.rar,.7zip'
+                    placeHolder={
+                      language === LanguagesENUM.FA
+                        ? "انتخاب فایل zip"
+                        : "Select .zip File"
+                    }
+                    max={5}
                   />
                 </div>
 
@@ -289,6 +297,7 @@ const ORDER = () => {
                         title={t.length}
                         value={values.product.dimensions.length}
                         errors={errors}
+                        max={1000}
                       />
                       <Field
                         name='product.dimensions.width'
@@ -300,6 +309,7 @@ const ORDER = () => {
                         title={t.width}
                         value={values.product.dimensions.width}
                         errors={errors}
+                        max={1000}
                       />
                       <Field
                         name='product.dimensions.height'
@@ -311,6 +321,7 @@ const ORDER = () => {
                         title={t.height}
                         value={values.product.dimensions.height}
                         errors={errors}
+                        max={1000}
                       />
                     </div>
                     <Controls

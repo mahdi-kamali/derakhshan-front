@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { ReactElement, useEffect, useMemo, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { ApplyToCareerAPI } from "@/services/Careers/careers.services";
-import Forms, { IGroupProps } from "./Forms/Forms";
+import Forms from "./Forms/Forms";
 import { IField } from "@/components/UI/Fields/Field.types";
 import { ICareerApply } from "@/types/careers.types";
 import { FormikProvider, useFormik } from "formik";
@@ -125,7 +125,7 @@ export default function ApplyForm(props: IProps) {
 
   const { submitForm, errors, values } = formik;
 
-  const [step, setStep] = useState<number>(0);
+  const [step, setStep] = useState<number>(6);
 
   const goToForm = async (field: keyof typeof values) => {
     try {
