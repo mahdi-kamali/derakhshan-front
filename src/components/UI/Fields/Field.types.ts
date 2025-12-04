@@ -41,7 +41,8 @@ type IFileField = {
   type: "file";
   accept: ".zip,.rar,.7zip";
   onChange: (value: any) => void;
-  placeHolder : string
+  placeHolder: string;
+  maxSizeMB: number;
 };
 
 export type ArrayField = {
@@ -80,5 +81,6 @@ export type IField = {
   errors?: any;
   show?: boolean;
   max?: number;
+  maxLength?: number;
 } & CSSProperties &
   IBase;

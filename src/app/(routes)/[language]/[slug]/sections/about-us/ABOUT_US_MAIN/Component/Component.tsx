@@ -64,7 +64,8 @@ export default function Component(props: IProps) {
                 delay: index + 0.5,
                 ease: "easeOut",
               }} // Ensures agents appear one by one after company fades in
-              viewport={{ once: true }}>
+              viewport={{ once: true }}
+              lang={language}>
               <div className={styles.left}>
                 <img
                   src={urls.STORAGE(agent.image.path)}

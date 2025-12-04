@@ -13,71 +13,84 @@ import { CreateContactAPI } from "@/services/Contact-Us/contact_us.services";
 import { IContact } from "@/types/contact-us.types";
 import { ShowError, ShowQuestion } from "@/utils/toast/Toast";
 import { ContactUsSchema } from "@/utils/validations/validations";
+import { IField } from "@/components/UI/Fields/Field.types";
 
 interface IProps {
   section: Extract<ISection, { type: "CONTACT_US" }>;
   language: LanguagesENUM;
 }
 
+interface IConfig {
+  background: string;
+  EN: {
+    title: string;
+    form: IField[];
+    submit: string;
+  };
+  FA: {
+    title: string;
+    form: IField[];
+    submit: string;
+  };
+}
+
 export default function Hero(props: IProps) {
   const { language, section } = props;
   const components = section.components[language].info;
 
-  const configs = {
+  const configs: IConfig = {
     background: "/images/contact-us/background.png",
+
     EN: {
       title: "Contact Us",
       form: [
         {
+          type: "text",
           name: "lastName",
           title: "Last Name",
-          placeholder: "Enter your last name",
-          icon: "mdi:account-box",
+          icon: <Icon icon={"mdi:account-box"} />,
           required: true,
         },
         {
+          type: "text",
           name: "firstName",
           title: "First Name",
-          placeholder: "Enter your first name",
-          icon: "mdi:account",
+          icon: <Icon icon={"mdi:account"} />,
           required: true,
         },
         {
+          type: "email",
           name: "email",
           title: "Email",
-          placeholder: "Enter your email address",
-          icon: "mdi:email",
-          type: "email",
+          icon: <Icon icon={"mdi:email"} />,
           required: true,
         },
         {
+          type: "url",
           name: "website",
           title: "Website",
-          placeholder: "Enter your website",
-          icon: "mdi:web",
-          type: "url",
+          icon: <Icon icon={"mdi:web"} />,
         },
         {
+          type: "tel",
           name: "phone",
           title: "Phone Number",
-          placeholder: "Enter your phone number",
-          icon: "mdi:phone",
-          type: "tel",
+          icon: <Icon icon={"mdi:phone"} />,
           gridColumn: "-1/1",
         },
         {
+          type: "text",
           name: "address",
           title: "Address",
-          placeholder: "Enter your address",
-          icon: "mdi:map-marker",
+          icon: <Icon icon={"mdi:map-marker"} />,
           gridColumn: "-1/1",
           multiLine: { cols: 5, rows: 5 },
         },
         {
+          type: "text",
           name: "message",
           title: "Message",
-          placeholder: "Type your message",
-          icon: "mdi:message-text",
+          icon: <Icon icon={"mdi:message-text"} />,
           required: true,
           gridColumn: "-1/1",
           multiLine: { cols: 5, rows: 5 },
@@ -85,60 +98,57 @@ export default function Hero(props: IProps) {
       ],
       submit: "Submit Contact Form",
     },
+
     FA: {
       title: "تماس با ما",
       form: [
         {
-          name: "lastName",
-          title: "نام خانوادگی",
-          placeholder: "نام خانوادگی خود را وارد کنید",
-          icon: "mdi:account-box",
-          required: true,
-        },
-        {
+          type: "text",
           name: "firstName",
           title: "نام",
-          placeholder: "نام خود را وارد کنید",
-          icon: "mdi:account",
+          icon: <Icon icon={"mdi:account"} />,
           required: true,
         },
         {
+          type: "text",
+          name: "lastName",
+          title: "نام خانوادگی",
+          icon: <Icon icon={"mdi:account-box"} />,
+          required: true,
+        },
+        {
+          type: "email",
           name: "email",
           title: "ایمیل",
-          placeholder: "ایمیل خود را وارد کنید",
-          icon: "mdi:email",
-          type: "email",
+          icon: <Icon icon={"mdi:email"} />,
           required: true,
         },
         {
+          type: "url",
           name: "website",
           title: "وبسایت",
-          placeholder: "وبسایت خود را وارد کنید",
-          icon: "mdi:web",
-          type: "url",
+          icon: <Icon icon={"mdi:web"} />,
         },
         {
+          type: "tel",
           name: "phone",
           title: "شماره تماس",
-          placeholder: "شماره تماس خود را وارد کنید",
-          icon: "mdi:phone",
-          type: "tel",
+          icon: <Icon icon={"mdi:phone"} />,
           gridColumn: "-1/1",
-          seperators: true,
         },
         {
+          type: "text",
           name: "address",
           title: "آدرس",
-          placeholder: "آدرس خود را وارد کنید",
-          icon: "mdi:map-marker",
+          icon: <Icon icon={"mdi:map-marker"} />,
           gridColumn: "-1/1",
           multiLine: { cols: 5, rows: 5 },
         },
         {
+          type: "text",
           name: "message",
           title: "پیام",
-          placeholder: "پیام خود را بنویسید...",
-          icon: "mdi:message-text",
+          icon: <Icon icon={"mdi:message-text"} />,
           required: true,
           gridColumn: "-1/1",
           multiLine: { cols: 5, rows: 5 },
@@ -225,7 +235,8 @@ export default function Hero(props: IProps) {
               return (
                 <div
                   className={styles.row}
-                  key={key}>
+                  key={key}
+                  lang={language}>
                   <label>{label} : </label>
                   <span>{value as any}</span>
                 </div>
@@ -244,7 +255,7 @@ export default function Hero(props: IProps) {
             {configs[language].form.map((field) => (
               <Field
                 key={field.name}
-                icon={<Icon icon={field.icon} />}
+                icon={field.icon}
                 name={field.name}
                 title={field.title}
                 type={field.type as any}

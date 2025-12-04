@@ -16,6 +16,7 @@ import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { GetNavsAPI } from "@/services/Navs/Navs.services";
 import Search from "./Search/Search";
+import { LanguagesENUM } from "@/types/Language/Language.types";
 
 export default function Header() {
   const pathName = usePathname();
@@ -96,6 +97,8 @@ export default function Header() {
                 {pages.map((page) => {
                   const { nav } = page;
                   const isActive = pathName.includes(page.slug);
+                  if (page.slug === "/careers" && language === LanguagesENUM.EN)
+                    return <></>;
                   return (
                     <Link
                       href={`/${language}${page.slug}`}

@@ -40,13 +40,11 @@
     margin: auto;
     padding: 2em;
     top: -4rem;
-
-    max-width: 1300px;
+    max-width: 1400px;
     .list {
       display: flex;
       justify-content: center;
       flex-direction: row-reverse;
-
       gap: 1rem;
       @include breakpoint-max(lg) {
         gap: 4rem;
@@ -97,11 +95,22 @@
             text-align: center !important;
           }
           .roles {
-            font-size: 1rem;
+            font-size: 0.75rem;
             letter-spacing: 0.08rem;
             line-height: 1.5;
+            opacity: 0.755;
           }
         }
+
+
+        &:lang(FA) {
+          .right {
+           .name {
+            font-size: 1.25rem;
+           }
+          }
+        }
+
       }
     }
 

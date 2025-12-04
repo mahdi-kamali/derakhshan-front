@@ -141,10 +141,12 @@
     .col {
       padding: 0;
       align-items: end;
+     
       .group {
-        align-items: end;
+        align-items: start;
+        direction: ltr;
         .links {
-          align-items: end;
+          align-items: start;
         }
       }
     }

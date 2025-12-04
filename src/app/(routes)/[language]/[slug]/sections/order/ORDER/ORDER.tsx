@@ -260,7 +260,7 @@ const ORDER = () => {
                         ? "انتخاب فایل zip"
                         : "Select .zip File"
                     }
-                    max={5}
+                    maxSizeMB={5}
                   />
                 </div>
 
@@ -359,6 +359,7 @@ const ORDER = () => {
                   }}
                   value={values.description}
                   errors={errors}
+                  maxLength={400}
                 />
               </div>
             </div>

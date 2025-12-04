@@ -30,6 +30,7 @@ export default function Field(props: IField) {
     multiLine,
     value,
     max = 9999999999999,
+    maxLength,
   } = props;
 
   const pickerRef = useRef<any>(null);
@@ -52,6 +53,7 @@ export default function Field(props: IField) {
         rows={multiLine.rows}
         cols={multiLine.cols}
         value={value}
+        maxLength={maxLength}
       />
     );
   };
@@ -90,6 +92,12 @@ export default function Field(props: IField) {
         name={name}
         required={required}
         value={value}>
+        <option
+          key={"undefind"}
+          value={""}>
+          {title}
+        </option>
+        ;
         {options.map((opt) => {
           return (
             <option
@@ -120,15 +128,18 @@ export default function Field(props: IField) {
 
   const RenderFile = () => {
     if (type !== "file") return <></>;
-    const { accept, placeHolder } = props as Extract<IField, { type: "file" }>;
+    const { accept, placeHolder, maxSizeMB } = props as Extract<
+      IField,
+      { type: "file" }
+    >;
 
     return (
-      <label className={styles.fileField}>
+      <label
+        className={styles.fileField}
+        lang={language}>
         <span>
           <Icon
-            icon={
-              value ? "flat-color-icons:ok" : "qlementine-icons:empty-slot-16"
-            }
+            icon={value ? "flat-color-icons:ok" : "ant-design:select-outlined"}
           />
           {placeHolder}
         </span>
@@ -141,15 +152,30 @@ export default function Field(props: IField) {
           name={name}
           onChange={(event) => {
             const files = event.target.files || [];
+
             if (files?.length > 0) {
               const file = files[0].size;
-              const size = Number((file / 1000000).toFixed(2));
-              if (size > max) {
-                const error = `فایل نباید از ${max} مگابایت بزرگتر باشد`;
-                const errorEN = `فایل نباید از ${max} مگابایت بزرگتر باشد`;
-                ShowError(language === LanguagesENUM.FA ? error : errorEN);
+              const size = Number((file / 1000).toFixed(2));
+
+              if (size > maxSizeMB * 1000) {
+                const unit = maxSizeMB < 1 ? "KB" : "MG";
+
+                const finalSize = maxSizeMB < 1 ? maxSizeMB * 1000 : maxSizeMB;
+
+                const errors = {
+                  EN: `The file must not be larger than ${finalSize} ${unit}`,
+                  FA: `فایل نباید از ${finalSize} ${unit} بزرگتر باشد`,
+                };
+
+                ShowError(errors[language]);
+                onChange(undefined);
                 return;
               }
+            }
+
+            if (files.length === 0) {
+              onChange(undefined);
+              return;
             }
 
             onChange(event);

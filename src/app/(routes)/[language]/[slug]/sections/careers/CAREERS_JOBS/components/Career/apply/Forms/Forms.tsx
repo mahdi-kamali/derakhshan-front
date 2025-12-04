@@ -239,11 +239,21 @@ export default function Forms(props: IGroupProps) {
             : "Insurance Payment Record",
         required: false,
         name: "personalInfo.insuranceHistory",
-        type: "text",
+        type: "select",
         onChange: (value) => console.log("Insurance History:", value),
         rtl: true,
         color: "black",
         errors: errors,
+        options: [
+          {
+            label: language === LanguagesENUM.FA ? "دارم" : "I Have",
+            value: true,
+          },
+          {
+            label: language === LanguagesENUM.EN ? "ندارم" : " I Dont",
+            value: false,
+          },
+        ],
       },
       {
         icon: <Icon icon='mdi:phone' />,
@@ -837,11 +847,15 @@ export default function Forms(props: IGroupProps) {
         title:
           language === LanguagesENUM.FA ? "آپلود رزومه" : "Upload Your Resume",
         name: "uplodas.resume",
-        type: "image",
+        type: "file",
         onChange: (value) => setFieldValue("uplodas.resume", value),
         rtl: true,
         color: "black",
         errors: errors,
+        accept: ".zip,.rar,.7zip",
+        placeHolder:
+          language === LanguagesENUM.FA ? "آپلود رزومه" : "Upload Your Resume",
+        maxSizeMB: 0.5,
       },
       {
         icon: <Icon icon='mdi:image-outline' />,
@@ -857,16 +871,6 @@ export default function Forms(props: IGroupProps) {
         errors: errors,
       },
       {
-        icon: <Icon icon='mdi:text' />,
-        title: language === LanguagesENUM.FA ? "توضیحات" : "Additional Notes",
-        name: "description",
-        onChange: (value) => console.log("Description:", value),
-        rtl: true,
-        multiLine: { rows: 3, cols: 30 },
-        color: "black",
-        errors: errors,
-      },
-      {
         icon: <Icon icon='mdi:cash-multiple' />,
         title:
           language === LanguagesENUM.FA ? "حقوق درخواستی" : "Expected Salary",
@@ -876,6 +880,18 @@ export default function Forms(props: IGroupProps) {
         rtl: true,
         color: "black",
         errors: errors,
+      },
+      {
+        icon: <Icon icon='mdi:text' />,
+        title: language === LanguagesENUM.FA ? "توضیحات" : "Additional Notes",
+        name: "description",
+        onChange: (value) => console.log("Description:", value),
+        rtl: true,
+        multiLine: { rows: 4, cols: 30 },
+        color: "black",
+        errors: errors,
+        type: "text",
+        maxLength: 400,
       },
     ],
     info: {

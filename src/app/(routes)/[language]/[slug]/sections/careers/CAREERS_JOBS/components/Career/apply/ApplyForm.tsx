@@ -125,34 +125,34 @@ export default function ApplyForm(props: IProps) {
 
   const { submitForm, errors, values } = formik;
 
-  const [step, setStep] = useState<number>(6);
+  const [step, setStep] = useState<number>(0);
 
   const goToForm = async (field: keyof typeof values) => {
     try {
-      const res = await (
-        CareerApplySchema[language].fields[field] as any
-      ).validate(values[field], {
-        recursive: true,
-        abortEarly: false,
-        disableStackTrace: false,
-      });
+      const fieldSchema = CareerApplySchema[language].fields[field] as any;
+
+      if (fieldSchema) {
+        const res = await fieldSchema.validate(values[field], {
+          recursive: true,
+          abortEarly: false,
+          disableStackTrace: false,
+        });
+      }
 
       setStep((prev) => prev + 1);
 
       return null;
     } catch (err: any) {
-      formik.submitForm();
+      formik.validateForm();
     }
   };
 
   const memoFooter = useMemo(
     () => (
-      <div>
-        <StepperSection
-          setStep={(newStep) => {}}
-          step={step}
-        />
-      </div>
+      <StepperSection
+        setStep={(newStep) => {}}
+        step={step}
+      />
     ),
     [step],
   );

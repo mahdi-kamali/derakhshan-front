@@ -5,9 +5,7 @@ import { ICareer } from "@/types/careers.types";
 import { urls } from "@/common/urls";
 import { LanguagesENUM } from "@/types/Language/Language.types";
 import ApplyForm from "./apply/ApplyForm";
-import { useEffect, useState } from "react";
-
-import ReactCardFlip from "react-card-flip";
+import { useState } from "react";
 
 interface IProps {
   career: ICareer;
