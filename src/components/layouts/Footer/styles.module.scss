@@ -150,11 +150,9 @@
           align-items: start;
           flex-wrap: wrap;
           max-width: 30ch;
-
-          span {
+          * {
             font-family: roboto-flex !important;
             line-height: 1.5;
-            flex-wrap: wrap;
           }
         }
       }
