@@ -26,7 +26,7 @@ export default function Tel(props: IProps) {
         containerStyle={{
           color: props.color,
         }}
-        country={"ir"}
+        country={language === LanguagesENUM.FA ?"ir" : "us"}
         inputClass={styles.inputClass}
         searchClass={styles.searchClass}
         dropdownClass={styles.dropDownClass}

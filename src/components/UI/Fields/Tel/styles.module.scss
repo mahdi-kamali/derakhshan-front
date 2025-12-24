@@ -50,10 +50,23 @@
             display: none !important;
         }
     }
+     &:lang(EN) {
+        .container {
+            flex-direction: row !important;
+        }
+        .inputClass {
+            direction: ltr !important;
+            text-align: start;
+        }
+        .buttonClass {
+            display: none !important;
+        }
+    }
 }
 
 .dropDownClass {
+    padding-left: 7em !important;
     * {
-        color: black;
+        color: black !important;
     }
 }
