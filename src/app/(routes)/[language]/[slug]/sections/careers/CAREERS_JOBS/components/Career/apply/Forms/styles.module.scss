@@ -60,6 +60,31 @@
     .right {
         border-radius: 1rem;
         background-color: rgb(228, 228, 228);
+        max-height: 70dvh;
+        overflow: auto;
+        direction: ltr !important;
+
+        /* Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: var(--bs-dark) transparent;
+
+        /* Chrome, Edge, Safari */
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--bs-dark);
+            border-radius: 10px;
+
+            &:hover {
+                background-color: darkred;
+            }
+        }
     }
 }
 
