@@ -42,16 +42,13 @@ export default function Page() {
 
   return (
     <PageContainer title={category.title}>
-      <div className={styles.page}>
+      <div
+        className={styles.page}
+        lang={language}>
         <div className={styles.right}>
-          <HighLight
-            marked={
-              language === LanguagesENUM.FA ? category.title : category.en_title
-            }
-            text={
-              language === LanguagesENUM.FA ? category.title : category.en_title
-            }
-          />
+          <h2 className={styles.head}>
+            {language === LanguagesENUM.FA ? category.title : category.en_title}
+          </h2>
           <Description>
             {language === LanguagesENUM.FA
               ? category.description

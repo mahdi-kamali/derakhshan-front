@@ -21,21 +21,19 @@
   }
   .right {
     display: flex !important;
+    flex-direction: column;
     align-items: center !important;
     justify-content: center !important;
     margin-top: 4rem;
 
+    .head {
+      font-size: 2rem !important;
+    }
+
     p {
       line-height: 2;
+      max-width: 70ch;
+      text-align: center;
     }
-  }
-}
-
-body:lang("FA") {
-  .right {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    text-align: right;
   }
 }
