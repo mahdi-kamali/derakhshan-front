@@ -41,7 +41,7 @@ const ORDER = () => {
         country: "",
       },
       companyName: "",
-      industry: INDUSTRY_ENUM.OTHER,
+      industry: undefined as any,
       product: {
         image: undefined as any,
         type: "",
@@ -56,13 +56,19 @@ const ORDER = () => {
       description: "",
     },
     onSubmit(values, formikHelpers) {
-      SolveCaptcha({
-        onFail() {
-          ShowError("لطفا کپچارا حل کنید.");
+      ShowQuestion({
+        message: t.confirmMsg,
+        onConfirm() {
+          SolveCaptcha({
+            onFail() {
+              ShowError("لطفا کپچارا حل کنید.");
+            },
+            onSuccess(token) {
+              CreateOrder(values);
+            },
+          });
         },
-        onSuccess(token) {
-          CreateOrder(values);
-        },
+        onCancel() {},
       });
     },
     validationSchema: OrderValidationSchema[language],
@@ -250,7 +256,9 @@ const ORDER = () => {
                     name='product.image'
                     icon={<Icon icon='line-md:file-filled' />}
                     type='file'
-                    onChange={(file) => setFieldValue("product.image", file)}
+                    onChange={(file) => {
+                      setFieldValue("product.image", file);
+                    }}
                     title={t.uploadImage}
                     value={values.product.image}
                     errors={errors}
@@ -288,17 +296,18 @@ const ORDER = () => {
                     <div className={styles.fiels}>
                       <h2>{t.measurement}</h2>
                       <Field
-                        name='product.dimensions.length'
-                        icon={<Icon icon='iconoir:truck-length' />}
+                        name='product.dimensions.height'
+                        icon={<Icon icon='ic:twotone-height' />}
                         type='number'
                         onChange={(value) =>
-                          setFieldValue("product.dimensions.length", value)
+                          setFieldValue("product.dimensions.height", value)
                         }
-                        title={t.length}
-                        value={values.product.dimensions.length}
+                        title={t.height}
+                        value={values.product.dimensions.height}
                         errors={errors}
                         max={1000}
                       />
+
                       <Field
                         name='product.dimensions.width'
                         icon={<Icon icon='radix-icons:width' />}
@@ -312,14 +321,14 @@ const ORDER = () => {
                         max={1000}
                       />
                       <Field
-                        name='product.dimensions.height'
-                        icon={<Icon icon='ic:twotone-height' />}
+                        name='product.dimensions.length'
+                        icon={<Icon icon='iconoir:truck-length' />}
                         type='number'
                         onChange={(value) =>
-                          setFieldValue("product.dimensions.height", value)
+                          setFieldValue("product.dimensions.length", value)
                         }
-                        title={t.height}
-                        value={values.product.dimensions.height}
+                        title={t.length}
+                        value={values.product.dimensions.length}
                         errors={errors}
                         max={1000}
                       />
@@ -372,13 +381,7 @@ const ORDER = () => {
                 variant='primary'
                 disabled={isSolving}
                 onClick={() => {
-                  ShowQuestion({
-                    message: t.confirmMsg,
-                    onConfirm() {
-                      submitForm();
-                    },
-                    onCancel() {},
-                  });
+                  submitForm();
                 }}
               />
             </div>

@@ -75,7 +75,11 @@ export default function FileInput(props: IField) {
             return;
           }
 
-          onChange(event);
+
+          onChange(files[0])
+
+
+
 
           setTimeout(() => {
             formik.validateField(name);

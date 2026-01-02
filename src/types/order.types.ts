@@ -22,7 +22,7 @@ export const ORDERS_INDUSTRY_OPTIONS_FA: Ioption[] = [
     value: INDUSTRY_ENUM.COSMETICS,
   },
   {
-    label: "سایر",
+    label: "سایز زمینه",
     value: INDUSTRY_ENUM.OTHER,
   },
 ];

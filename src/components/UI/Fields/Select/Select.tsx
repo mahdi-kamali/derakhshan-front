@@ -26,6 +26,10 @@ export default function Select(props: IField) {
   const { language }: { language: LanguagesENUM } = useParams();
   const formik = useFormikContext();
 
+  const placeHolder = `${title} ${
+    language === LanguagesENUM.FA ? "مشخص نشده" : "Not Specified"
+  } `;
+
   return (
     <select
       onChange={(e) => {
@@ -41,7 +45,7 @@ export default function Select(props: IField) {
       <option
         key={"undefind"}
         value={""}>
-        {title}
+        {placeHolder}
       </option>
       ;
       {options.map((opt) => {

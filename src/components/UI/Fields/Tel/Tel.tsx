@@ -6,6 +6,7 @@ import "react-phone-input-2/lib/style.css";
 import styles from "./styles.module.scss";
 import { useParams } from "next/navigation";
 import { LanguagesENUM } from "@/types/Language/Language.types";
+import { useEffect, useRef, useState } from "react";
 
 interface IProps extends Extract<IField, ITelField> {
   onChange: (event: any) => void;
@@ -17,6 +18,15 @@ export default function Tel(props: IProps) {
 
   const { language }: { language: LanguagesENUM } = useParams();
 
+  const [key, setKey] = useState(0);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (key > 0) {
+      inputRef.current?.focus();
+    }
+  }, [key]);
+
   return (
     <div
       className={styles.root}
@@ -26,14 +36,31 @@ export default function Tel(props: IProps) {
         containerStyle={{
           color: props.color,
         }}
-        country={language === LanguagesENUM.FA ?"ir" : "us"}
+        country={language === LanguagesENUM.FA ? "ir" : "us"}
         inputClass={styles.inputClass}
         searchClass={styles.searchClass}
         dropdownClass={styles.dropDownClass}
         buttonClass={styles.buttonClass}
+        value={props.value}
+        autoFormat={true}
+        key={key}
+        inputProps={{
+          ref: (el: any) => {
+            inputRef.current = el;
+          },
+        }}
         onChange={(e) => {
-          const value = e;
+          let value = e;
+
+          if (language === LanguagesENUM.FA) {
+            if (value.startsWith("980")) {
+              value = "98";
+              setKey((prev) => prev + 1);
+            }
+          }
+
           onChange(value);
+
           setTimeout(() => {
             formik.validateField(name);
           }, 100);
