@@ -794,9 +794,9 @@ export const ContactUsSchema: IValidation = {
       .required("enter your email"),
 
     phone: Yup.string()
-      .matches(phoneRegExp, "Invalid phone number")
+      .matches(phoneRegExp, "phone number not valid")
       .max(30, "max 30 characters allowed")
-      .required("enter your phone number"),
+      .required("Phone number is required"),
 
     message: Yup.string()
       .max(400, "Maximum 400 characters")
@@ -824,9 +824,9 @@ export const ContactUsSchema: IValidation = {
       .required("ایمیل را وارد کنید"),
 
     phone: Yup.string()
-      .matches(/^09\d{9}$/, "شماره موبایل معتبر نیست")
-      .max(30, "حداکثر 30 کاراکتر")
-      .required("شماره موبایل را وارد کنید"),
+      .matches(phoneRegExp, "شماره موبایل اشتباه است")
+      .max(30, "حداکثر 30 کاراکتر مجاز است")
+      .required("شماره تماس الزامی است"),
 
     message: Yup.string()
       .max(400, "حداکثر 400 کاراکتر")

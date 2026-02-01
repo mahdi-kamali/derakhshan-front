@@ -48,6 +48,7 @@ export default function Page() {
   const page = data.data;
   if (page === undefined) return;
   const { sections, title } = page;
+
   return (
     <PageContainer title={title}>
       {sections.map((section, index) => {

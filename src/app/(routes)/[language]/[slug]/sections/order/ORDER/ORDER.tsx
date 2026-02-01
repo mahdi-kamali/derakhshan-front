@@ -59,13 +59,13 @@ const ORDER = () => {
       ShowQuestion({
         message: t.confirmMsg,
         onConfirm() {
+          CreateOrder(values);
+
           SolveCaptcha({
             onFail() {
-              ShowError("لطفا کپچارا حل کنید.");
+              // ShowError("لطفا کپچارا حل کنید.");
             },
-            onSuccess(token) {
-              CreateOrder(values);
-            },
+            onSuccess(token) {},
           });
         },
         onCancel() {},
